@@ -145,7 +145,7 @@ export default function KernelCorePage() {
     setRunError(null);
     const r = await runKernelCalculation();
     if (r && 'error' in r) setRunError((r as { error: { message: string } }).error.message);
-    else if (r) setRun(r);
+    else if (r) setRun(r as KernelRunResponse);
     setRunning(false);
   }, []);
 

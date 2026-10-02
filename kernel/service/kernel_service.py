@@ -685,9 +685,14 @@ class Handler(BaseHTTPRequestHandler):
                                 "decision": "APPROVED" if decision == "APPROVE" else "REJECTED"})
 
 
+class _ReusableThreadingHTTPServer(ThreadingHTTPServer):
+    """سرور HTTP با اتصال مجدد سریع به پورت پس از ری‌استارت (رفع TIME_WAIT)."""
+    allow_reuse_address = True
+
+
 def main():
     port = DEFAULT_PORT
-    server = ThreadingHTTPServer(("127.0.0.1", port), Handler)
+    server = _ReusableThreadingHTTPServer(("127.0.0.1", port), Handler)
     print(f"[kernel] kernel core service listening on http://127.0.0.1:{port}  ({SERVICE_VERSION})")
     print(f"[kernel] kernel root: {KROOT}")
     try:
