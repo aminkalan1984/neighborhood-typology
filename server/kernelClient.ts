@@ -6,7 +6,7 @@
 // health می‌ماند. هیچ fallback عددی یا دادهٔ ساختگی وجود ندارد:
 // خطا = خطای استاندارد قرارداد.
 // ============================================================
-import { spawn, type ChildProcess } from 'node:child_process';
+import { spawn, spawnSync, type ChildProcess } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -54,21 +54,15 @@ export function findPython(): string {
   const candidates = process.env.KERNEL_PYTHON
     ? [process.env.KERNEL_PYTHON]
     : ['python', 'python3', 'py'];
-  // On Windows `py`/`python` resolve through PATH; pick the first that can run a tiny script.
+  // در ESM نمی‌توان از require استفاده کرد؛ spawnSync از import سطح‌بالا می‌آید.
+  // اولین مفسری که واقعاً اجرا می‌شود برگردانده می‌شود (ویندوز: py/python، لینوکس: python3).
   for (const c of candidates) {
     try {
-      const p = spawnSyncSafe(c, ['--version']);
-      if (p) return c;
+      const r = spawnSync(c, ['--version'], { stdio: 'ignore', timeout: 5_000 });
+      if (!r.error) return c;
     } catch { /* try next */ }
   }
   return 'python';
-}
-
-function spawnSyncSafe(cmd: string, args: string[]): boolean {
-  // spawnSync so --version check is synchronous and cheap
-  const { spawnSync } = require('node:child_process') as typeof import('node:child_process');
-  const r = spawnSync(cmd, args, { stdio: 'ignore', timeout: 5_000 });
-  return !r.error;
 }
 
 /** سرویس را راه‌اندازی می‌کند (اگر لازم باشد) و تا health OK منتظر می‌ماند. */
@@ -85,6 +79,7 @@ export async function ensureKernelService(): Promise<void> {
       throw new Error(`kernel service script missing: ${SERVICE_SCRIPT}`);
     }
     const python = findPython();
+    let spawnError: Error | null = null;
     // UTF-8 console + unbuffered output for reliable logs on Windows
     child = spawn(python, ['-X', 'utf8', '-u', SERVICE_SCRIPT], {
       cwd: KROOT,
@@ -93,6 +88,14 @@ export async function ensureKernelService(): Promise<void> {
     });
     child.stdout?.on('data', (d: Buffer) => console.log('[kernel-svc]', d.toString().trim()));
     child.stderr?.on('data', (d: Buffer) => console.log('[kernel-svc]', d.toString().trim()));
+    // بدون این هندلر، خطای راه‌اندازی (مثل نبود مفسر) به‌صورت رویداد error
+    // مدیریت‌نشده کل سرور Express را از پا می‌اندازد و همهٔ APIها ۵۰۰ می‌دهند.
+    child.on('error', (error: Error) => {
+      spawnError = error;
+      console.warn(`[kernel-svc] failed to launch '${python}': ${error.message}`);
+      child = null;
+      ensurePromise = null;
+    });
     child.on('exit', (code) => {
       console.warn(`[kernel-svc] service exited (code=${code})`);
       child = null;
@@ -102,6 +105,9 @@ export async function ensureKernelService(): Promise<void> {
     // wait for health
     const deadline = Date.now() + 20_000;
     while (Date.now() < deadline) {
+      if (spawnError) {
+        throw new Error(`kernel service failed to launch with '${python}': ${(spawnError as Error).message}`);
+      }
       try {
         const { status } = await fetchJson<unknown>('GET', '/v1/health', undefined, 1_500);
         if (status === 200) return;
@@ -109,7 +115,11 @@ export async function ensureKernelService(): Promise<void> {
       await new Promise((r) => setTimeout(r, 400));
     }
     throw new Error('kernel service did not become healthy within 20s');
-  })();
+  })().catch((error: unknown) => {
+    // شکست راه‌اندازی نباید فراخوانی‌های بعدی را برای همیشه قفل کند؛ اجازهٔ تلاش مجدد می‌دهیم.
+    ensurePromise = null;
+    throw error;
+  });
   return ensurePromise;
 }
 

@@ -237,12 +237,12 @@ export default function TerritorialWebGISPage({ focusProvince = null }: { focusP
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<LeafletMap | null>(null);
   const layersGroupRef = useRef<string[]>([]);
-  const provinceOutlineLayerRef = useRef<string[]>([]);
+  const provinceOutlineLayerRef = useRef<L.Layer[]>([]);
   const geoPointsLayerRef = useRef<string[]>([]);
   const choroplethLayerRef = useRef<string[]>([]);
   const pbfLayersGroupRef = useRef<string[]>([]);
   const vtLayersGroupRef = useRef<string[]>([]);
-  const basemapLayerRef = useRef<string | null>(null);
+  const basemapLayerRef = useRef<L.TileLayer | null>(null);
 
   // Layout & Panel Visibility States
   const [isZenMode, setIsZenMode] = useState<boolean>(false);
@@ -286,7 +286,7 @@ export default function TerritorialWebGISPage({ focusProvince = null }: { focusP
   // Selected Geo-Cell & Pinning System
   const [selectedCell, setSelectedCell] = useState<GeoCell | null>(PROVINCES_CELL_DATA[0]);
   const [pinnedCells, setPinnedCells] = useState<GeoCell[]>([]);
-  const [contextTab, setContextTab] = useState<'overview' | 'kpis' | 'trend' | 'flows' | 'events' | 'documents'>('overview');
+  const [contextTab, setContextTab] = useState<'overview' | 'kpis' | 'atlas' | 'trend' | 'flows' | 'events' | 'documents'>('overview');
 
   // Layer Z-Index Reordering Functions
   const moveLayerUp = (layerId: string) => {

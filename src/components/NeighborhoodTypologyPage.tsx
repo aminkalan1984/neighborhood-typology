@@ -373,7 +373,14 @@ export default function NeighborhoodTypologyPage({ onOpenGeoportal }: Neighborho
       updateForm('optional_boundary_geojson', null);
       setBoundaryFileName('');
     }
-    setMapPoint(location.center);
+    // مرکز یک candidate یا شیء {lat,lng} است یا جفت [lng,lat] مطابق ترتیب GeoJSON.
+    setMapPoint(
+      location.center
+        ? Array.isArray(location.center)
+          ? { lat: location.center[1], lng: location.center[0] }
+          : location.center
+        : null
+    );
     setNotice(`موقعیت «${location.canonical_name}» انتخاب شد؛ شهر و استان به‌صورت خودکار تکمیل شدند.`);
   };
 
@@ -566,7 +573,15 @@ export default function NeighborhoodTypologyPage({ onOpenGeoportal }: Neighborho
     setBusy(true);
     try {
       const started = await startTypologyRun(run.run_id);
-      if ('status' in started && typeof started.status === 'string') setRun((previous) => previous ? { ...previous, status: started.status, coverage: 'coverage' in started && started.coverage && typeof started.coverage === 'object' ? started.coverage as TypologyRunSummary['coverage'] : previous.coverage } : previous);
+      if ('status' in started && typeof started.status === 'string') {
+        // مقدار وضعیت/پوشش را پیش از فراخوانی setState استخراج می‌کنیم؛ narrowing داخل
+        // callback حفظ نمی‌شود چون عضویت شیء mutable است.
+        const startedStatus = started.status;
+        const startedCoverage = 'coverage' in started && started.coverage && typeof started.coverage === 'object'
+          ? started.coverage as TypologyRunSummary['coverage']
+          : null;
+        setRun((previous) => previous ? { ...previous, status: startedStatus, coverage: startedCoverage ?? previous.coverage } : previous);
+      }
       await collectLocalTypologyEvidence(run.run_id);
       const recomputed = await recomputeTypologyRun(run.run_id);
       setRun((previous) => previous ? { ...previous, ...recomputed } : previous);
@@ -806,7 +821,7 @@ export default function NeighborhoodTypologyPage({ onOpenGeoportal }: Neighborho
             missingCount={report.missing_data.length}
             evidenceCount={report.evidence.length}
             verificationEligible={report.verification_gates.eligible}
-            onChanged={() => loadReport(report.run_id, true, true)}
+            onChanged={() => void loadReport(report.run_id, true, true)}
           />
         </>
       )}
