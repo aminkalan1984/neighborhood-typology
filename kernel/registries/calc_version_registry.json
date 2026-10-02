@@ -1,0 +1,276 @@
+{
+  "versions": [
+    {
+      "version_id": "CALC-v0.2+88c105ec1aeb",
+      "family": "CALC-v0.2",
+      "signature": {
+        "family": "CALC-v0.2",
+        "weight_hash": "sha256:da93a20849c26a8bcdc4aae66beaac533c3eb6be0a716491ca50b20148ecd4e4",
+        "threshold_hash": "sha256:ba62693ea9d58dc6645a317572894810b5e9d526ea2ca61915dfc59dff538357",
+        "methodology_version": "algo.txt-2026",
+        "engine_version": "CALC-v0.1"
+      },
+      "created_at": "2026-09-02T01:44:20.440338+00:00"
+    },
+    {
+      "version_id": "CALC-v0.2+abf1c58c2bcf",
+      "family": "CALC-v0.2",
+      "signature": {
+        "family": "CALC-v0.2",
+        "weight_hash": "sha256:5f3f5e33ba068fe9039c3caaa0b665b4220e42d1cde10f62c094e72d39737808",
+        "threshold_hash": "sha256:ba62693ea9d58dc6645a317572894810b5e9d526ea2ca61915dfc59dff538357",
+        "methodology_version": "algo.txt-2026",
+        "engine_version": "CALC-v0.1"
+      },
+      "created_at": "2026-09-12T22:13:04.141500+00:00"
+    },
+    {
+      "version_id": "CALC-v0.2+5b8006b115fc",
+      "family": "CALC-v0.2",
+      "signature": {
+        "family": "CALC-v0.2",
+        "weight_hash": "sha256:e8e676d9b27db55999fa49ea8c546995820b6432dc0b66841a73893c1cbdb173",
+        "threshold_hash": "sha256:ba62693ea9d58dc6645a317572894810b5e9d526ea2ca61915dfc59dff538357",
+        "methodology_version": "algo.txt-2026",
+        "engine_version": "CALC-v0.1"
+      },
+      "created_at": "2026-09-12T22:28:48.762178+00:00"
+    },
+    {
+      "version_id": "CALC-v0.2+78432f5f67ac",
+      "family": "CALC-v0.2",
+      "signature": {
+        "family": "CALC-v0.2",
+        "weight_hash": "sha256:4e9f6aef1e91cd75e380fc73ec466c4a615a725da11690dc8c1896ff0442dd8e",
+        "threshold_hash": "sha256:ba62693ea9d58dc6645a317572894810b5e9d526ea2ca61915dfc59dff538357",
+        "methodology_version": "algo.txt-2026",
+        "engine_version": "CALC-v0.1"
+      },
+      "created_at": "2026-09-13T00:39:03.270226+00:00"
+    },
+    {
+      "version_id": "CALC-v0.2+544e3dd6c72f",
+      "family": "CALC-v0.2",
+      "signature": {
+        "family": "CALC-v0.2",
+        "weight_hash": "sha256:254dcce7dc3cc53951463c17be948b7684cc5ddff490d52c8ae98cff91bf382e",
+        "threshold_hash": "sha256:ba62693ea9d58dc6645a317572894810b5e9d526ea2ca61915dfc59dff538357",
+        "methodology_version": "algo.txt-2026",
+        "engine_version": "CALC-v0.1"
+      },
+      "created_at": "2026-09-13T00:42:12.238724+00:00"
+    },
+    {
+      "version_id": "CALC-v0.2+91971b9b0789",
+      "family": "CALC-v0.2",
+      "signature": {
+        "family": "CALC-v0.2",
+        "weight_hash": "sha256:9d646bbc644f99e9ebabfb1776e3402929575421afe5625c22edd8eb22e76035",
+        "threshold_hash": "sha256:ba62693ea9d58dc6645a317572894810b5e9d526ea2ca61915dfc59dff538357",
+        "methodology_version": "algo.txt-2026",
+        "engine_version": "CALC-v0.1"
+      },
+      "created_at": "2026-09-13T07:42:24.375510+00:00"
+    },
+    {
+      "version_id": "CALC-v0.2+ce52c08ff942",
+      "family": "CALC-v0.2",
+      "signature": {
+        "family": "CALC-v0.2",
+        "weight_hash": "sha256:ca0e5075fe2e9d1486b2d76cbdad84d6d76ea6d197b5b9c0bba98516751a1d58",
+        "threshold_hash": "sha256:ba62693ea9d58dc6645a317572894810b5e9d526ea2ca61915dfc59dff538357",
+        "methodology_version": "algo.txt-2026",
+        "engine_version": "CALC-v0.1"
+      },
+      "created_at": "2026-09-13T08:10:14.497458+00:00"
+    },
+    {
+      "version_id": "CALC-v0.2+5d2f53e585d4",
+      "family": "CALC-v0.2",
+      "signature": {
+        "family": "CALC-v0.2",
+        "weight_hash": "sha256:2fcd687fc07355557a7306efc52628553a1ff7e108d113ece23b982f01007be8",
+        "threshold_hash": "sha256:ba62693ea9d58dc6645a317572894810b5e9d526ea2ca61915dfc59dff538357",
+        "methodology_version": "algo.txt-2026",
+        "engine_version": "CALC-v0.1"
+      },
+      "created_at": "2026-09-13T08:21:35.354836+00:00"
+    },
+    {
+      "version_id": "CALC-v0.2+dfa9d1d7e895",
+      "family": "CALC-v0.2",
+      "signature": {
+        "family": "CALC-v0.2",
+        "weight_hash": "sha256:6c0dafdecb4afb1bdb0854abee0541847ab1c538e4daa6a727770b08bbe6aec0",
+        "threshold_hash": "sha256:ba62693ea9d58dc6645a317572894810b5e9d526ea2ca61915dfc59dff538357",
+        "methodology_version": "algo.txt-2026",
+        "engine_version": "CALC-v0.1"
+      },
+      "created_at": "2026-09-13T13:50:15.345831+00:00"
+    },
+    {
+      "version_id": "CALC-v0.2+f6012a3e8ac6",
+      "family": "CALC-v0.2",
+      "signature": {
+        "family": "CALC-v0.2",
+        "weight_hash": "sha256:21ec6f757532097e1e12790c6a1b532693756de1b838624485286d54bcdd2747",
+        "threshold_hash": "sha256:ba62693ea9d58dc6645a317572894810b5e9d526ea2ca61915dfc59dff538357",
+        "methodology_version": "algo.txt-2026",
+        "engine_version": "CALC-v0.1"
+      },
+      "created_at": "2026-09-13T14:11:07.623255+00:00"
+    },
+    {
+      "version_id": "CALC-v0.2+d4074ba920a8",
+      "family": "CALC-v0.2",
+      "signature": {
+        "family": "CALC-v0.2",
+        "weight_hash": "sha256:d3ba631b55933dc04d5ae4d317b52f1f3ffe03a20b4e02362927d89d9e0f3ffb",
+        "threshold_hash": "sha256:ba62693ea9d58dc6645a317572894810b5e9d526ea2ca61915dfc59dff538357",
+        "methodology_version": "algo.txt-2026",
+        "engine_version": "CALC-v0.1"
+      },
+      "created_at": "2026-09-13T14:11:40.769829+00:00"
+    },
+    {
+      "version_id": "CALC-v0.2+458d145fe9ef",
+      "family": "CALC-v0.2",
+      "signature": {
+        "family": "CALC-v0.2",
+        "weight_hash": "sha256:ca1aef0379752a5dcdcc4b4d4cf3d12578513345e9ffea8cac38b9af2ef24782",
+        "threshold_hash": "sha256:ba62693ea9d58dc6645a317572894810b5e9d526ea2ca61915dfc59dff538357",
+        "methodology_version": "algo.txt-2026",
+        "engine_version": "CALC-v0.1"
+      },
+      "created_at": "2026-09-14T17:24:05.455961+00:00"
+    },
+    {
+      "version_id": "CALC-v0.2+f404e54a2997",
+      "family": "CALC-v0.2",
+      "signature": {
+        "family": "CALC-v0.2",
+        "weight_hash": "sha256:de3bf71aeee6203e360ba805c7520209b62bb6073a411b0675411ce824bc39e3",
+        "threshold_hash": "sha256:ba62693ea9d58dc6645a317572894810b5e9d526ea2ca61915dfc59dff538357",
+        "methodology_version": "algo.txt-2026",
+        "engine_version": "CALC-v0.1"
+      },
+      "created_at": "2026-09-20T18:21:27.465619+00:00"
+    },
+    {
+      "version_id": "CALC-v0.2+ec0de03a1186",
+      "family": "CALC-v0.2",
+      "signature": {
+        "family": "CALC-v0.2",
+        "weight_hash": "sha256:c0c3bb71908c510446b58adf4c77b020c3210157996a2d56a3e5bee5ead92ab4",
+        "threshold_hash": "sha256:ba62693ea9d58dc6645a317572894810b5e9d526ea2ca61915dfc59dff538357",
+        "methodology_version": "algo.txt-2026",
+        "engine_version": "CALC-v0.1"
+      },
+      "created_at": "2026-09-20T18:21:38.285028+00:00"
+    },
+    {
+      "version_id": "CALC-v0.2+0998c2387caf",
+      "family": "CALC-v0.2",
+      "signature": {
+        "family": "CALC-v0.2",
+        "weight_hash": "sha256:bb866776c8163fdda5a608f0ce6ee5f75da27ae28537dc718efd12e8126a133c",
+        "threshold_hash": "sha256:ba62693ea9d58dc6645a317572894810b5e9d526ea2ca61915dfc59dff538357",
+        "methodology_version": "algo.txt-2026",
+        "engine_version": "CALC-v0.1"
+      },
+      "created_at": "2026-09-22T16:56:07.353365+00:00"
+    }
+  ],
+  "audit_trail": [
+    {
+      "ts": "2026-09-02T01:44:20.440350+00:00",
+      "action": "mint",
+      "version_id": "CALC-v0.2+88c105ec1aeb",
+      "reason": "input-version signature not previously registered"
+    },
+    {
+      "ts": "2026-09-12T22:13:04.141500+00:00",
+      "action": "mint",
+      "version_id": "CALC-v0.2+abf1c58c2bcf",
+      "reason": "input-version signature not previously registered"
+    },
+    {
+      "ts": "2026-09-12T22:28:48.762178+00:00",
+      "action": "mint",
+      "version_id": "CALC-v0.2+5b8006b115fc",
+      "reason": "input-version signature not previously registered"
+    },
+    {
+      "ts": "2026-09-13T00:39:03.270226+00:00",
+      "action": "mint",
+      "version_id": "CALC-v0.2+78432f5f67ac",
+      "reason": "input-version signature not previously registered"
+    },
+    {
+      "ts": "2026-09-13T00:42:12.238724+00:00",
+      "action": "mint",
+      "version_id": "CALC-v0.2+544e3dd6c72f",
+      "reason": "input-version signature not previously registered"
+    },
+    {
+      "ts": "2026-09-13T07:42:24.375510+00:00",
+      "action": "mint",
+      "version_id": "CALC-v0.2+91971b9b0789",
+      "reason": "input-version signature not previously registered"
+    },
+    {
+      "ts": "2026-09-13T08:10:14.497458+00:00",
+      "action": "mint",
+      "version_id": "CALC-v0.2+ce52c08ff942",
+      "reason": "input-version signature not previously registered"
+    },
+    {
+      "ts": "2026-09-13T08:21:35.354836+00:00",
+      "action": "mint",
+      "version_id": "CALC-v0.2+5d2f53e585d4",
+      "reason": "input-version signature not previously registered"
+    },
+    {
+      "ts": "2026-09-13T13:50:15.345831+00:00",
+      "action": "mint",
+      "version_id": "CALC-v0.2+dfa9d1d7e895",
+      "reason": "input-version signature not previously registered"
+    },
+    {
+      "ts": "2026-09-13T14:11:07.623255+00:00",
+      "action": "mint",
+      "version_id": "CALC-v0.2+f6012a3e8ac6",
+      "reason": "input-version signature not previously registered"
+    },
+    {
+      "ts": "2026-09-13T14:11:40.769829+00:00",
+      "action": "mint",
+      "version_id": "CALC-v0.2+d4074ba920a8",
+      "reason": "input-version signature not previously registered"
+    },
+    {
+      "ts": "2026-09-14T17:24:05.455961+00:00",
+      "action": "mint",
+      "version_id": "CALC-v0.2+458d145fe9ef",
+      "reason": "input-version signature not previously registered"
+    },
+    {
+      "ts": "2026-09-20T18:21:27.465619+00:00",
+      "action": "mint",
+      "version_id": "CALC-v0.2+f404e54a2997",
+      "reason": "input-version signature not previously registered"
+    },
+    {
+      "ts": "2026-09-20T18:21:38.285028+00:00",
+      "action": "mint",
+      "version_id": "CALC-v0.2+ec0de03a1186",
+      "reason": "input-version signature not previously registered"
+    },
+    {
+      "ts": "2026-09-22T16:56:07.353365+00:00",
+      "action": "mint",
+      "version_id": "CALC-v0.2+0998c2387caf",
+      "reason": "input-version signature not previously registered"
+    }
+  ]
+}

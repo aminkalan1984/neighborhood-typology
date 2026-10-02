@@ -1,0 +1,29 @@
+{
+  "run": "no_data_live_run",
+  "when": "2026-09-01T23:36:15.812409+00:00",
+  "indicators_loaded": 419,
+  "value_numbers_emitted": 0,
+  "status_distribution": {
+    "WAITING_FOR_DATA": 419
+  },
+  "QTR": {
+    "K": {
+      "value": null,
+      "status": "INSUFFICIENT_COVERAGE"
+    },
+    "Q": {
+      "value": null,
+      "status": "INSUFFICIENT_COVERAGE"
+    },
+    "T": {
+      "value": null,
+      "status": "INSUFFICIENT_COVERAGE"
+    },
+    "R": {
+      "value": null,
+      "status": "INSUFFICIENT_COVERAGE"
+    }
+  },
+  "fabricated_numbers": 0,
+  "proof": "با نبود داده محله، موتور برای هر ۴۱۹ شاخص فقط WAITING_FOR_DATA می‌دهد و هیچ عدد Q/T/R/K تولید نمی‌کند."
+}

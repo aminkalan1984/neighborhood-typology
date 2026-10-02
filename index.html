@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="اتاق وضعیت دیجیتال حکمرانی ایران — پایش بلادرنگ شاخص‌های ملی، بودجه و پروژه‌های راهبردی" />
+    <meta name="theme-color" content="#1E4841" />
+    <title>آرا - سامانه حکمرانی هوشمند ایران (ISGP)</title>
+    <script>
+      // دروازه بارگذاری قلم — تا آماده‌شدن وزیرمتن، ریشه مخفی می‌ماند (بدون پاپ‌این)
+      (function () {
+        var el = document.documentElement;
+        el.classList.add('fonts-pending');
+        /* گونهٔ ذخیره‌شدهٔ قلم (وزیرمتن / وزیرمتن گرد) — قبل از اولین رندر اعمال شود تا پرش قلم نداشته باشیم */
+        var rd = false;
+        try { rd = localStorage.getItem('ara-font-variant') === 'round-dots'; } catch (e) {}
+        if (rd) el.classList.add('font-round-dots');
+        var done = function () {
+          el.classList.remove('fonts-pending');
+          el.classList.add('fonts-ready');
+        };
+        if (document.fonts && document.fonts.load) {
+          var fam = rd ? 'Vazirmatn RD' : 'Vazirmatn';
+          Promise.all([
+            document.fonts.load('400 16px ' + fam),
+            document.fonts.load('700 16px ' + fam),
+            document.fonts.load('900 16px ' + fam),
+          ])
+            .then(done)
+            .catch(done);
+          setTimeout(done, 3000); /* شبکه کند → نمایش با قلم جایگزین */
+        } else {
+          done();
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

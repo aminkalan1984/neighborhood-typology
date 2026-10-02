@@ -1,0 +1,93 @@
+{
+  "mvp": "MVP-2 — Calculation Engine",
+  "pilot": "منطقه ۶ شهر تهران",
+  "reproducibility_key": {
+    "data_version": "pilot-D6-2026-09-02",
+    "methodology_version": "algo.txt-2026",
+    "indicator_version": "registry-419-v1",
+    "weight_set": "W-v1",
+    "threshold_set": "T-v1",
+    "calculation_version": "CALC-v0.2"
+  },
+  "A_what_was_built": [
+    "engine/calc_run.py — run orchestrator: 16-stage pipeline, per-indicator weights READ from W-v1, FLAG-2 standardization-eligibility guard, coverage-gated capital/C-A-U-E-O/Q-T-R aggregation, deterministic CalculationRun + sha256 fingerprint, append-only CalculationVersion mechanism",
+    "engine/confidence.py — multi-factor Evidence Confidence Engine (7 documented factors, level ladder ناکافی/محدود/قابل اتکا/همگرا/آزمون‌شده, single-stream-proxy≤محدود cap)",
+    "engine/bottleneck.py — AI-independent rule-based Bottleneck Engine (base-deficiency-first, abstention gate)",
+    "contract tests: test_calc_run.py (22), test_confidence.py (12), test_bottleneck.py (13)",
+    "real pilot run on Tehran District 6 -> neighborhood_result.json + calculation_run.json + drilldown.json"
+  ],
+  "B_evidence": {
+    "test_suites": {
+      "engine/tests/test_formulas.py": {
+        "passed": true,
+        "line": "TESTS: 18/18 passed"
+      },
+      "engine/tests/test_calc_run.py": {
+        "passed": true,
+        "line": "CALC_RUN CONTRACT TESTS: 22/22 passed"
+      },
+      "engine/tests/test_confidence.py": {
+        "passed": true,
+        "line": "CONFIDENCE CONTRACT TESTS: 12/12 passed"
+      },
+      "engine/tests/test_bottleneck.py": {
+        "passed": true,
+        "line": "BOTTLENECK CONTRACT TESTS: 13/13 passed"
+      },
+      "ingestion/tests/test_ingestion.py": {
+        "passed": true,
+        "line": "INGESTION TESTS: 27/27 passed"
+      },
+      "gis/tests/test_gis.py": {
+        "passed": true,
+        "line": "GIS TESTS: 18/18 passed"
+      }
+    },
+    "machine_checks": {
+      "determinism_identical_fingerprint": true,
+      "reproducibility_key_present": true,
+      "every_indicator_has_provenance": true,
+      "no_calculation_without_provenance": true,
+      "missing_never_zeroed_capitals": true,
+      "missing_never_zeroed_caueo": true,
+      "aggregation_only_on_qualified": true,
+      "qtr_four_separate": true,
+      "qtr_not_collapsed": true,
+      "proxy_labeled": true,
+      "weight_change_new_version": true,
+      "prior_result_reproducible": true,
+      "all_test_suites_pass": true,
+      "no_fabricated_numbers": true
+    },
+    "versioning_proof": {
+      "base_version": "CALC-v0.2+88c105ec1aeb",
+      "base_fp": "sha256:efa6a5e96f8885e5f2fe76daf60940e8b6fe73becc48bf89a36f9f6465970e2b",
+      "modified_weight_version": "CALC-v0.2+abf1c58c2bcf",
+      "modified_fp": "sha256:71281be0e53098ede0bd2fa03d0de19e21881e25d56f3840090080e7ae48f826",
+      "base_rerun_version": "CALC-v0.2+88c105ec1aeb",
+      "base_rerun_fp": "sha256:efa6a5e96f8885e5f2fe76daf60940e8b6fe73becc48bf89a36f9f6465970e2b",
+      "new_version_minted_on_weight_change": true,
+      "prior_reproduces_byte_identical": true,
+      "append_only_registry_versions": [
+        "CALC-v0.2+88c105ec1aeb",
+        "CALC-v0.2+abf1c58c2bcf"
+      ]
+    },
+    "fingerprint": "sha256:efa6a5e96f8885e5f2fe76daf60940e8b6fe73becc48bf89a36f9f6465970e2b",
+    "calc_version_id": "CALC-v0.2+88c105ec1aeb"
+  },
+  "C_known_limitations": [
+    "L/U آستانه‌ها و وزن‌ها کالیبره‌نشده‌اند (W-v1/T-v1, PENDING_VALIDATION) — نمرهٔ استانداردشده تولید نشد",
+    "هر ۶ مقدار پایلوت PROXY و تک‌جریانه‌اند؛ سطح اطمینان حداکثر «محدود»",
+    "مرز/داده رسمی شهرداری = ACCESS_REQUIRED؛ DEM (OpenTopography) = ACCESS_REQUIRED",
+    "دادهٔ U/E/O (پیمایشی/رفتاری) اصلاً برداشت نشده -> Q/T/R و گلوگاه قابل‌انتشار نیست",
+    "عبور ساختاری موتور ≠ اعتبار تجربی وزن/آستانه/جهت"
+  ],
+  "D_gate_decision": "CONDITIONAL PASS",
+  "D_conditions": [
+    "کالیبراسیون L/U + وزن‌ها با دادهٔ چندشهری پیش از انتشار هر نمرهٔ کمّی محله",
+    "افزودن دادهٔ پیمایشی/رفتاری برای مراحل U/E/O",
+    "دریافت مرز/داده رسمی شهرداری (رفع ACCESS_REQUIRED، جایگزینی proxy OSM)"
+  ],
+  "all_checks_pass": true
+}

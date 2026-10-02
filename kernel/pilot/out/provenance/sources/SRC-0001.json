@@ -1,0 +1,12 @@
+{
+  "source_id": "SRC-0001",
+  "source_name": "OpenStreetMap (Nominatim/Overpass, R6729037)",
+  "provider": "OpenStreetMap contributors",
+  "dataset_id": "OSM relation 6729037",
+  "url_api": "https://nominatim.openstreetmap.org/lookup",
+  "tier": "public-OSM-substitute",
+  "is_official": false,
+  "is_proxy": true,
+  "license": "ODbL",
+  "access_method": "Nominatim /lookup + Overpass API"
+}

@@ -1,0 +1,242 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "IndicatorRegistry(419)",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "کد": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "ساحت سه‌گانه": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "محور اصلی": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "ردیف منبع": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "عنوان شاخص": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "سرمایه اصلی": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "کد سرمایه": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "سرمایه‌های ثانویه": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "اطمینان نگاشت سرمایه": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "مرحله C-A-U-E-O": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "نقش سیستمی": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "هدف K/Q/T/R": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "جریان‌های شاهد": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "جهت": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "ضریب": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "وزن در ساحت (%)": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "پیشران ۱۰گانه": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "اطمینان نگاشت پیشران": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "خانواده محاسبه": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "قالب": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "واحد اصلی": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "محدوده نظری": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "روش استانداردسازی": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "وضعیت دسترسی": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "رویه‌های مرجع": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "منبع/داده موردنیاز": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "مراحل استخراج": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "فرمول محاسبه": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "کنترل کیفیت": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "تناوب پیشنهادی": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "تفکیک عدالت": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "وضعیت مقدار": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "وضعیت بازبینی روش": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "کد"
+  ]
+}

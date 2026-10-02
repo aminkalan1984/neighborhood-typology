@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>پرسشنامه عملیاتی تصمیم‌یار جامع محله</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--bg:#0f172a;--s:#1e293b;--s2:#334155;--b:#475569;--t:#f1f5f9;--td:#94a3b8;--a:#38bdf8;--g:#10b981;--r:#ef4444;--o:#f59e0b;--p:#a78bfa;--n:#22d3ee}
+  body{font-family:'Vazirmatn',sans-serif;background:var(--bg);color:var(--t);min-height:100vh;display:flex;justify-content:center;padding:16px}
+  .app{width:100%;max-width:640px}
+  
+  /* Progress */
+  .progress-wrap{position:sticky;top:0;z-index:50;background:var(--bg);padding:8px 0 12px;border-bottom:1px solid var(--b)}
+  .progress-bar{height:6px;background:var(--s2);border-radius:3px;overflow:hidden}
+  .progress-fill{height:100%;background:linear-gradient(90deg,var(--a),var(--p));border-radius:3px;transition:width .4s}
+  .progress-text{font-size:.65rem;color:var(--td);text-align:center;margin-top:4px;display:flex;justify-content:space-between}
+  
+  /* Pages */
+  .page{display:none;animation:fadeIn .3s}
+  .page.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  
+  /* Cards */
+  .card{background:var(--s);border:1px solid var(--b);border-radius:12px;padding:20px;margin-bottom:16px}
+  .card-header{display:flex;align-items:center;gap:8px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--s2)}
+  .card-icon{font-size:1.4rem}
+  .card-title{font-size:1rem;font-weight:700}
+  .card-sub{font-size:.7rem;color:var(--td);margin-top:2px}
+  
+  /* Form fields */
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:.75rem;font-weight:600;margin-bottom:6px;color:var(--td)}
+  .field label .req{color:var(--r);margin-right:2px}
+  .field select,.field input[type="number"],.field input[type="text"]{width:100%;padding:10px 12px;border:1px solid var(--b);border-radius:8px;background:var(--bg);color:var(--t);font-family:inherit;font-size:.85rem;appearance:none;-webkit-appearance:none}
+  .field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2394a3b8'%3E%3Cpath d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:12px center;padding-left:30px}
+  .field select:focus,.field input:focus{outline:none;border-color:var(--a);box-shadow:0 0 0 3px rgba(56,189,248,.15)}
+  .field.error select,.field.error input{border-color:var(--r)}
+  .field .error-msg{font-size:.65rem;color:var(--r);margin-top:4px;display:none}
+  .field.error .error-msg{display:block}
+  
+  /* Likert scale */
+  .likert-group{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:8px}
+  .likert-opt{display:flex;flex-direction:column;align-items:center;padding:10px 4px;border:2px solid var(--s2);border-radius:10px;cursor:pointer;transition:all .2s;text-align:center}
+  .likert-opt:hover{border-color:var(--a);background:rgba(56,189,248,.05)}
+  .likert-opt.selected{border-color:var(--a);background:rgba(56,189,248,.12);box-shadow:0 0 12px rgba(56,189,248,.15)}
+  .likert-num{font-size:1.1rem;font-weight:800;color:var(--a);font-family:monospace}
+  .likert-label{font-size:.55rem;color:var(--td);margin-top:3px;line-height:1.3}
+  .likert-sun{font-size:.7rem;margin-top:2px}
+  
+  /* Question */
+  .question{margin-bottom:20px;padding:16px;background:var(--bg);border:1px solid var(--b);border-radius:10px}
+  .q-header{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
+  .q-num{background:var(--a);color:#000;font-size:.7rem;font-weight:800;padding:3px 8px;border-radius:6px;flex-shrink:0;min-width:28px;text-align:center}
+  .q-code{font-family:monospace;font-size:.65rem;color:var(--p);margin-top:2px}
+  .q-text{font-size:.85rem;font-weight:600;line-height:1.6}
+  .q-chain{display:inline-block;font-size:.55rem;padding:2px 6px;border-radius:4px;margin-top:4px;font-weight:600}
+  .q-direction{display:inline-block;font-size:.6rem;padding:2px 6px;border-radius:4px;margin-top:4px;margin-right:4px}
+  .q-direction.asc{background:rgba(16,185,129,.15);color:var(--g)}
+  .q-direction.desc{background:rgba(239,68,68,.15);color:var(--r)}
+  
+  /* Buttons */
+  .btn-row{display:flex;gap:10px;margin-top:20px}
+  .btn{flex:1;padding:12px;border:none;border-radius:10px;font-family:inherit;font-size:.85rem;font-weight:700;cursor:pointer;transition:all .2s}
+  .btn-next{background:var(--a);color:#000}
+  .btn-next:hover{background:#7dd3fc;transform:translateY(-1px)}
+  .btn-next:disabled{opacity:.4;cursor:not-allowed;transform:none}
+  .btn-prev{background:var(--s2);color:var(--t);border:1px solid var(--b)}
+  .btn-prev:hover{background:var(--b)}
+  .btn-submit{background:var(--g);color:#fff}
+  .btn-submit:hover{background:#34d399}
+  .btn-reset{background:var(--r);color:#fff;padding:8px 16px;font-size:.75rem;border-radius:8px}
+  
+  /* Section headers */
+  .section-badge{text-align:center;margin-bottom:16px}
+  .section-badge span{display:inline-block;padding:6px 16px;border-radius:20px;font-size:.7rem;font-weight:700}
+  .section-badge .core{background:rgba(56,189,248,.15);color:var(--a);border:1px solid rgba(56,189,248,.3)}
+  .section-badge .chain-cap{background:rgba(16,185,129,.15);color:var(--g);border:1px solid rgba(16,185,129,.3)}
+  .section-badge .chain-acc{background:rgba(59,130,246,.15);color:#3b82f6;border:1px solid rgba(59,130,246,.3)}
+  .section-badge .chain-use{background:rgba(245,158,11,.15);color:var(--o);border:1px solid rgba(245,158,11,.3)}
+  .section-badge .chain-exp{background:rgba(167,139,250,.15);color:var(--p);border:1px solid rgba(167,139,250,.3)}
+  .section-badge .chain-out{background:rgba(239,68,68,.15);color:var(--r);border:1px solid rgba(239,68,68,.3)}
+  .section-badge .extended{background:rgba(245,158,11,.15);color:var(--o);border:1px solid rgba(245,158,11,.3)}
+  
+  /* Timer */
+  .timer{position:fixed;top:8px;left:8px;background:var(--s2);padding:4px 10px;border-radius:6px;font-size:.65rem;color:var(--td);font-family:monospace;z-index:100;border:1px solid var(--b)}
+  
+  /* Welcome */
+  .welcome{text-align:center;padding:30px 10px}
+  .welcome h2{font-size:1.3rem;font-weight:800;margin-bottom:12px;background:linear-gradient(135deg,var(--a),var(--p));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .welcome p{font-size:.8rem;color:var(--td);line-height:1.8;margin-bottom:12px}
+  .welcome .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0;text-align:right}
+  .welcome .info-item{background:var(--bg);padding:10px;border-radius:8px;border:1px solid var(--b)}
+  .welcome .info-item .label{font-size:.6rem;color:var(--td)}
+  .welcome .info-item .value{font-size:.85rem;font-weight:700;margin-top:2px}
+  .consent-box{background:var(--bg);border:1px solid var(--b);border-radius:8px;padding:14px;margin:16px 0;text-align:right}
+  .consent-box p{font-size:.7rem;color:var(--td);line-height:1.7;margin-bottom:8px}
+  .consent-check{display:flex;align-items:center;gap:8px;cursor:pointer}
+  .consent-check input{width:18px;height:18px;accent-color:var(--a)}
+  .consent-check label{font-size:.75rem;cursor:pointer}
+  
+  /* Summary */
+  .summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .summary-item{background:var(--bg);padding:10px;border-radius:8px;border:1px solid var(--b)}
+  .summary-item .s-label{font-size:.6rem;color:var(--td)}
+  .summary-item .s-value{font-size:.9rem;font-weight:700;margin-top:2px}
+  
+  /* JSON output */
+  .json-box{background:#000;border:1px solid var(--b);border-radius:8px;padding:12px;margin-top:12px;max-height:300px;overflow:auto;font-family:monospace;font-size:.65rem;direction:ltr;text-align:left;color:#22d3ee;white-space:pre-wrap;word-break:break-all}
+  
+  /* Skip notice */
+  .skip-notice{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.3);border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:.7rem;color:var(--o);text-align:center}
+  
+  /* Warning banner */
+  .warn-banner{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:8px;padding:8px 12px;margin-bottom:12px;font-size:.7rem;color:var(--r);display:none}
+  .warn-banner.visible{display:block}
+</style>
+</head>
+<body>
+<div class="timer" id="timer">⏱ 00:00</div>
+
+<div class="app">
+  <div class="progress-wrap">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    <div class="progress-text">
+      <span id="progressLabel">شروع</span>
+      <span id="progressPct">0٪</span>
+    </div>
+  </div>
+
+  <!-- ═══════════ PAGE 0: WELCOME ═══════════ -->
+  <div class="page active" id="page-0">
+    <div class="card">
+      <div class="welcome">
+        <h2>📋 پرسشنامه کیفیت زندگی محله</h2>
+        <p>این پرسشنامه بخشی از سامانه تصمیم‌یار جامع محله است و هدف آن سنجش کیفیت زندگی در محله شماست.</p>
+        
+        <div class="info-grid">
+          <div class="info-item"><div class="label">تعداد سؤالات اصلی</div><div class="value">۲۱ سؤال</div></div>
+          <div class="info-item"><div class="label">زمان تقریبی</div><div class="value">۸ تا ۱۵ دقیقه</div></div>
+          <div class="info-item"><div class="label">نوع مقیاس</div><div class="value">لیکرت ۵ نقطه‌ای</div></div>
+          <div class="info-item"><div class="label">منطق پرش</div><div class="value">۷ سؤال شرطی</div></div>
+        </div>
+        
+        <div class="consent-box">
+          <p><strong>的思想مهم:</strong> پاسخ‌های شما کاملاً محرمانه است و فقط به صورت تجمیعی استفاده می‌شود. هیچ اطلاعات شخصی شما ثبت نخواهد شد.</p>
+          <p>شما در هر مرحله حق انصراف دارید. شرکت در این پرسشنامه کاملاً داوطلبانه است.</p>
+          <div class="consent-check">
+            <input type="checkbox" id="consentCheck">
+            <label for="consentCheck">من شرایط فوق را مطالعه کرده و رضایت دارم</label>
+          </div>
+        </div>
+        
+        <div class="btn-row">
+          <button class="btn btn-next" id="btnStart" disabled onclick="goToPage(1)">شروع پرسشنامه ▶</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ PAGE 1: DEMOGRAPHICS ═══════════ -->
+  <div class="page" id="page-1">
+    <div class="card">
+      <div class="card-header">
+        <span class="card-icon">👤</span>
+        <div><div class="card-title">اطلاعات جمعیت‌شناختی</div><div class="card-sub">صفحه ۱ از ۷ — اطلاعات زیر فقط برای تفکیک تحلیل استفاده می‌شود</div></div>
+      </div>
+      
+      <div class="field" id="f_gender">
+        <label><span class="req">*</span> جنسیت</label>
+        <select id="d_gender"><option value="">— انتخاب کنید —</option><option value="1">مرد</option><option value="2">زن</option></select>
+        <div class="error-msg">لطفاً جنسیت را انتخاب کنید</div>
+      </div>
+      <div class="field" id="f_age">
+        <label><span class="req">*</span> سن (سال)</label>
+        <input type="number" id="d_age" min="18" max="120" placeholder="مثلاً ۳۵">
+        <div class="error-msg">سن باید بین ۱۸ تا ۱۲۰ سال باشد</div>
+      </div>
+      <div class="field" id="f_marital">
+        <label><span class="req">*</span> وضعیت تأهل</label>
+        <select id="d_marital"><option value="">— انتخاب کنید —</option><option value="1">مجرد</option><option value="2">متأهل</option><option value="3">مطلقه/بیوه</option></select>
+        <div class="error-msg">لطفاً وضعیت تأهل را انتخاب کنید</div>
+      </div>
+      <div class="field" id="f_residency">
+        <label><span class="req">*</span> مدت سکونت در این محله (سال)</label>
+        <input type="number" id="d_residency" min="0" max="100" placeholder="مثلاً ۱۰">
+        <div class="error-msg">مدت سکونت باید حداقل ۲ سال باشد (پیش‌شرط شرکت)</div>
+      </div>
+      <div class="field" id="f_housing">
+        <label><span class="req">*</span> وضعیت مسکن</label>
+        <select id="d_housing"><option value="">— انتخاب کنید —</option><option value="1">مالک</option><option value="2">اجاره‌ای</option><option value="3">رایگان (مهمان/وابسته)</option></select>
+        <div class="error-msg">لطفاً وضعیت مسکن را انتخاب کنید</div>
+      </div>
+      <div class="field" id="f_hhsize">
+        <label><span class="req">*</span> تعداد اعضای خانوار</label>
+        <input type="number" id="d_hhsize" min="1" max="20" placeholder="مثلاً ۴">
+        <div class="error-msg">تعداد اعضا باید حداقل ۱ نفر باشد</div>
+      </div>
+      <div class="field" id="f_edu">
+        <label><span class="req">*</span> سطح تحصیلات</label>
+        <select id="d_edu"><option value="">— انتخاب کنید —</option><option value="1">زیر دیپلم</option><option value="2">دیپلم</option><option value="3">کاردانی/کارشناسی</option><option value="4">کارشناسی ارشد</option><option value="5">دکترا</option></select>
+        <div class="error-msg">لطفاً سطح تحصیلات را انتخاب کنید</div>
+      </div>
+      <div class="field" id="f_employ">
+        <label><span class="req">*</span> وضعیت اشتغال</label>
+        <select id="d_employ"><option value="">— انتخاب کنید —</option><option value="1">شاغل</option><option value="2">بیکار</option><option value="3">بازنشسته</option><option value="4">خانه‌دار</option></select>
+        <div class="error-msg">لطفاً وضعیت اشتغال را انتخاب کنید</div>
+      </div>
+      
+      <div class="btn-row">
+        <button class="btn btn-prev" onclick="goToPage(0)">▶ قبلی</button>
+        <button class="btn btn-next" onclick="validateAndNext(1,2)">بعدی ◀</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ PAGE 2: CORE INDICATORS ═══════════ -->
+  <div class="page" id="page-2">
+    <div class="card">
+      <div class="card-header">
+        <span class="card-icon">🤝</span>
+        <div><div class="card-title">شاخص‌های هسته — سرمایه اجتماعی و فرهنگی</div><div class="card-sub">صفحه ۲ از ۷ — ۶ شاخص CLASS D</div></div>
+      </div>
+      <div class="section-badge"><span class="core">🔴 شاخص‌های هسته — غیرقابل جایگزینی</span></div>
+      <div id="coreQuestions"></div>
+      <div class="btn-row">
+        <button class="btn btn-prev" onclick="goToPage(1)">▶ قبلی</button>
+        <button class="btn btn-next" onclick="validateAndNext(2,3)">بعدی ◀</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ PAGE 3: CAPACITY ═══════════ -->
+  <div class="page" id="page-3">
+    <div class="card">
+      <div class="card-header">
+        <span class="card-icon">📦</span>
+        <div><div class="card-title">گویه‌های ادراکی — لایه ظرفیت</div><div class="card-sub">صفحه ۳ از ۷ — زنجیره C-A-U-E-O</div></div>
+      </div>
+      <div class="section-badge"><span class="chain-cap">C — ظرفیت: چه چیزی وجود دارد؟</span></div>
+      <div id="capacityQuestions"></div>
+      <div class="btn-row">
+        <button class="btn btn-prev" onclick="goToPage(2)">▶ قبلی</button>
+        <button class="btn btn-next" onclick="validateAndNext(3,4)">بعدی ◀</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ PAGE 4: ACCESS ═══════════ -->
+  <div class="page" id="page-4">
+    <div class="card">
+      <div class="card-header">
+        <span class="card-icon">🚪</span>
+        <div><div class="card-title">گویه‌های ادراکی — لایه دسترسی</div><div class="card-sub">صفحه ۴ از ۷</div></div>
+      </div>
+      <div class="section-badge"><span class="chain-acc">A — دسترسی: آیا مردم می‌توانند به آن برسند؟</span></div>
+      <div id="accessQuestions"></div>
+      <div class="btn-row">
+        <button class="btn btn-prev" onclick="goToPage(3)">▶ قبلی</button>
+        <button class="btn btn-next" onclick="validateAndNext(4,5)">بعدی ◀</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ PAGE 5: USE ═══════════ -->
+  <div class="page" id="page-5">
+    <div class="card">
+      <div class="card-header">
+        <span class="card-icon">🔧</span>
+        <div><div class="card-title">گویه‌های ادراکی — لایه استفاده</div><div class="card-sub">صفحه ۵ از ۷</div></div>
+      </div>
+      <div class="section-badge"><span class="chain-use">U — استفاده: آیا واقعاً قابل استفاده است؟</span></div>
+      <div id="useQuestions"></div>
+      <div class="btn-row">
+        <button class="btn btn-prev" onclick="goToPage(4)">▶ قبلی</button>
+        <button class="btn btn-next" onclick="validateAndNext(5,6)">بعدی ◀</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ PAGE 6: EXPERIENCE + OUTCOME ═══════════ -->
+  <div class="page" id="page-6">
+    <div class="card">
+      <div class="card-header">
+        <span class="card-icon">💡</span>
+        <div><div class="card-title">گویه‌های ادراکی — لایه تجربه و پیامد</div><div class="card-sub">صفحه ۶ از ۷</div></div>
+      </div>
+      <div class="section-badge"><span class="chain-exp">E — تجربه: مردم چه حسی دارند؟</span></div>
+      <div id="experienceQuestions"></div>
+      <div class="section-badge" style="margin-top:20px"><span class="chain-out">O — پیامد: چه تغییری ایجاد می‌شود؟</span></div>
+      <div id="outcomeQuestions"></div>
+      <div class="btn-row">
+        <button class="btn btn-prev" onclick="goToPage(5)">▶ قبلی</button>
+        <button class="btn btn-next" onclick="validateAndNext(6,7)">بعدی ◀</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ PAGE 7: EXTENDED (CONDITIONAL) ═══════════ -->
+  <div class="page" id="page-7">
+    <div class="card">
+      <div class="card-header">
+        <span class="card-icon">⚡</span>
+        <div><div class="card-title">سؤالات تکمیلی (شرطی)</div><div class="card-sub">صفحه ۷ از ۷ — فقط سؤالات فعال‌شده نمایش داده می‌شوند</div></div>
+      </div>
+      <div class="section-badge"><span class="extended">⚡ EXTENDED SET — بر اساس پاسخ‌های شما</span></div>
+      <div id="extendedNotice"></div>
+      <div id="extendedQuestions"></div>
+      <div id="noExtended" style="text-align:center;padding:30px;color:var(--td);font-size:.8rem">
+        ✅ هیچ سؤال تکمیلی فعال نشد — پاسخ‌های شما در محدوده عادی است.
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-prev" onclick="goToPage(6)">▶ قبلی</button>
+        <button class="btn btn-submit" onclick="submitSurvey()">📨 ارسال و مشاهده نتیجه</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ PAGE 8: SUMMARY ═══════════ -->
+  <div class="page" id="page-8">
+    <div class="card">
+      <div class="card-header">
+        <span class="card-icon">✅</span>
+        <div><div class="card-title">نتیجه پرسشنامه</div><div class="card-sub">خلاصه پاسخ‌ها و خروجی JSON</div></div>
+      </div>
+      <div id="summaryContent"></div>
+      <div class="btn-row">
+        <button class="btn btn-reset" onclick="resetSurvey()">🔄 شروع مجدد</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// DATA MODEL
+// ═══════════════════════════════════════════════════════════════
+
+const LIKERT = [
+  { val: 1, label: 'کاملاً مخالف', icon: '😞' },
+  { val: 2, label: 'مخالف', icon: '😐' },
+  { val: 3, label: 'نه موافق نه مخالف', icon: '🤔' },
+  { val: 4, label: 'موافق', icon: '🙂' },
+  { val: 5, label: 'کاملاً موافق', icon: '😊' },
+];
+
+const LIKERT_FREQ = [
+  { val: 1, label: 'هرگز', icon: '❌' },
+  { val: 2, label: 'به ندرت', icon: ' rare' },
+  { val: 3, label: 'گاهی', icon: '🔄' },
+  { val: 4, label: 'اغلب', icon: '✅' },
+  { val: 5, label: 'همیشه', icon: '🌟' },
+];
+
+// Chain stage colors
+const CHAIN_COLORS = {
+  CAPACITY: { bg: 'rgba(16,185,129,.12)', border: 'rgba(16,185,129,.3)', color: '#10b981', label: 'ظرفیت' },
+  ACCESS: { bg: 'rgba(59,130,246,.12)', border: 'rgba(59,130,246,.3)', color: '#3b82f6', label: 'دسترسی' },
+  USE: { bg: 'rgba(245,158,11,.12)', border: 'rgba(245,158,11,.3)', color: '#f59e0b', label: 'استفاده' },
+  EXPERIENCE: { bg: 'rgba(167,139,250,.12)', border: 'rgba(167,139,250,.3)', color: '#a78bfa', label: 'تجربه' },
+  OUTCOME: { bg: 'rgba(239,68,68,.12)', border: 'rgba(239,68,68,.3)', color: '#ef4444', label: 'پیامد' },
+};
+
+// All 21 core questions + 7 extended
+const QUESTIONS = [
+  // ── CORE (CLASS D) ──
+  { id:'S1', text:'در محله ما، مردم به یکدیگر اعتماد دارند.', capital:'S', chain:'CAPACITY', type:'core', direction:'asc', scale:'agree', weight:1.2 },
+  { id:'S2', text:'من به محله خودم تعلق دارم و آن را بخشی از هویت خود می‌دانم.', capital:'S', chain:'EXPERIENCE', type:'core', direction:'asc', scale:'agree', weight:1.0 },
+  { id:'S3', text:'مردم محله در کارهای خیرخواهانه و همکاری‌های داوطلبانه با یکدیگر مشارکت می‌کنند.', capital:'S', chain:'CAPACITY', type:'core', direction:'asc', scale:'freq', weight:1.0 },
+  { id:'C3', text:'محله من دارای هویت و تمایز مشخصی نسبت به سایر محلات است.', capital:'C', chain:'EXPERIENCE', type:'core', direction:'asc', scale:'agree', weight:1.0 },
+  { id:'C4', text:'من در فعالیت‌های فرهنگی محله (جشن‌ها، نمایشگاه‌ها، کلاس‌ها) شرکت می‌کنم.', capital:'C', chain:'USE', type:'core', direction:'asc', scale:'freq', weight:0.8 },
+  { id:'C5', text:'جوانان محله در فعالیت‌های فرهنگی و اجتماعی محله مشارکت فعال دارند.', capital:'C', chain:'OUTCOME', type:'core', direction:'asc', scale:'agree', weight:0.8 },
+  
+  // ── PERCEPTUAL: CAPACITY ──
+  { id:'C1_S', text:'محله ما از نظر فضای سبز و درختان غنی است.', capital:'N', chain:'CAPACITY', type:'perceptual', direction:'asc', scale:'agree' },
+  { id:'C2_S', text:'کیفیت هوا در بیشتر روزها در محله ما قابل قبول است.', capital:'N', chain:'CAPACITY', type:'perceptual', direction:'asc', scale:'agree' },
+  { id:'C3_S', text:'آلودگی صوتی در محله ما آزاردهنده است.', capital:'P', chain:'CAPACITY', type:'perceptual', direction:'desc', scale:'agree' },
+  
+  // ── PERCEPTUAL: ACCESS ──
+  { id:'A1', text:'دسترسی به حمل‌ونقل عمومی از محل سکونت من آسان است.', capital:'P', chain:'ACCESS', type:'perceptual', direction:'asc', scale:'agree' },
+  { id:'A2', text:'دسترسی به خدمات روزمره (نانوایی، داروخانه، بانک) آسان است.', capital:'P', chain:'ACCESS', type:'perceptual', direction:'asc', scale:'agree' },
+  { id:'A3', text:'مسیرهای پیاده در محله به یکدیگر متصل و جابه‌جایی پیاده آسان است.', capital:'P', chain:'ACCESS', type:'perceptual', direction:'asc', scale:'agree' },
+  
+  // ── PERCEPTUAL: USE ──
+  { id:'U1', text:'پیاده‌روها هموار، پیوسته و بدون مانع فیزیکی هستند.', capital:'P', chain:'USE', type:'perceptual', direction:'asc', scale:'agree' },
+  { id:'U2', text:'روشنایی معابر در شب کافی و یکنواخت است.', capital:'P', chain:'USE', type:'perceptual', direction:'asc', scale:'agree' },
+  { id:'U3', text:'پارک‌ها و فضاهای سبز محله امن، تمیز، فعال و قابل استفاده‌اند.', capital:'N', chain:'USE', type:'perceptual', direction:'asc', scale:'agree' },
+  
+  // ── PERCEPTUAL: EXPERIENCE ──
+  { id:'E1_S', text:'در طول روز در محله خود احساس امنیت می‌کنم.', capital:'S', chain:'EXPERIENCE', type:'perceptual', direction:'asc', scale:'agree' },
+  { id:'E2_S', text:'من به محله خود تعلق دارم و آن را دوست دارم.', capital:'S', chain:'EXPERIENCE', type:'perceptual', direction:'asc', scale:'agree' },
+  { id:'E3_S', text:'به همسایگان خود اعتماد دارم.', capital:'S', chain:'EXPERIENCE', type:'perceptual', direction:'asc', scale:'agree' },
+  
+  // ── PERCEPTUAL: OUTCOME ──
+  { id:'O1', text:'از زندگی در این محله راضی هستم.', capital:'S', chain:'OUTCOME', type:'perceptual', direction:'asc', scale:'agree' },
+  { id:'O2', text:'در یک ماه گذشته احساس تنهایی داشته‌ام.', capital:'S', chain:'OUTCOME', type:'perceptual', direction:'desc', scale:'agree' },
+  { id:'O3', text:'اگر شرایط مالی اجازه دهد، مایل به ادامه سکونت در این محله هستم.', capital:'S', chain:'OUTCOME', type:'perceptual', direction:'asc', scale:'agree' },
+  
+  // ── EXTENDED (CONDITIONAL) ──
+  { id:'H2', text:'آیا مهارت‌هایی دارید که بیش از ۶ ماه از آخرین استفاده آن‌ها گذشته باشد؟', capital:'H', chain:'CAPACITY', type:'extended', direction:'asc', scale:'agree', condition: (d) => { /* Always available when triggered */ return true; } },
+  { id:'H4', text:'آیا شغل فعلی شما با مهارت‌ها و تحصیلاتتان تناسب دارد؟', capital:'H', chain:'USE', type:'extended', direction:'asc', scale:'agree', condition: (d) => true },
+  { id:'S4', text:'آیا در ۶ ماه گذشته با همسایگان خود در تصمیم‌گیری یا حل مشکل محلی مشارکت کرده‌اید؟', capital:'S', chain:'USE', type:'extended', direction:'asc', scale:'freq', condition: (d) => answers.S3 != null && answers.S3 <= 2 },
+  { id:'S5', text:'آیا تاکنون با همکاری همسایگان مشکلی را در محله حل کرده‌اید؟', capital:'S', chain:'OUTCOME', type:'extended', direction:'asc', scale:'freq', condition: (d) => answers.S4 != null && answers.S4 <= 2 },
+  { id:'G1', text:'آیا در جلسات شورای محلی یا مجمع عمومی مسجد شرکت می‌کنید؟', capital:'G', chain:'USE', type:'extended', direction:'asc', scale:'freq', condition: (d) => true },
+  { id:'G3', text:'آیا نهادهای محله (شورا، مسجد، شهرداری) با یکدیگر هماهنگ عمل می‌کنند؟', capital:'G', chain:'CAPACITY', type:'extended', direction:'asc', scale:'agree', condition: (d) => true },
+  { id:'R5', text:'چقدر از اینترنت برای کار و زندگی روزمره خود استفاده می‌کنید؟', capital:'R', chain:'USE', type:'extended', direction:'asc', scale:'freq', condition: (d) => true },
+];
+
+// ═══════════════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════════════
+
+let currentPage = 0;
+let answers = {};
+let timerStart = null;
+let timerInterval = null;
+const TOTAL_PAGES = 8;
+
+// ═══════════════════════════════════════════════════════════════
+// RENDER
+// ═══════════════════════════════════════════════════════════════
+
+function renderLikertQuestion(q, container) {
+  const scale = q.scale === 'freq' ? LIKERT_FREQ : LIKERT;
+  const ch = CHAIN_COLORS[q.chain];
+  const dirLabel = q.direction === 'asc' ? '⬆ صعودی' : '⬇ نزولی';
+  const dirClass = q.direction === 'asc' ? 'asc' : 'desc';
+  const typeLabel = q.type === 'core' ? 'هسته' : q.type === 'perceptual' ? 'ادراکی' : 'تکمیلی';
+  const weightBadge = q.weight ? `<span style="font-size:.55rem;background:rgba(56,189,248,.15);color:var(--a);padding:1px 5px;border-radius:3px;margin-right:4px">w=${q.weight}</span>` : '';
+  
+  const div = document.createElement('div');
+  div.className = 'question';
+  div.id = `q-${q.id}`;
+  div.innerHTML = `
+    <div class="q-header">
+      <span class="q-num">${q.id}</span>
+      <div>
+        <div class="q-text">${q.text}</div>
+        <span class="q-chain" style="background:${ch.bg};border:1px solid ${ch.border};color:${ch.color}">${ch.label}</span>
+        <span class="q-direction ${dirClass}">${dirLabel}</span>
+        <span style="font-size:.55rem;background:var(--s2);padding:1px 5px;border-radius:3px;margin-right:4px">${typeLabel}</span>
+        ${weightBadge}
+      </div>
+    </div>
+    <div class="likert-group" id="likert-${q.id}">
+      ${scale.map(opt => `
+        <div class="likert-opt ${answers[q.id] === opt.val ? 'selected' : ''}" onclick="selectAnswer('${q.id}',${opt.val},this)">
+          <div class="likert-num">${opt.val}</div>
+          <div class="likert-sun">${opt.icon}</div>
+          <div class="likert-label">${opt.label}</div>
+        </div>
+      `).join('')}
+    </div>
+    <div class="warn-banner" id="warn-${q.id}">⚠️ لطفاً یک گزینه انتخاب کنید</div>
+  `;
+  container.appendChild(div);
+}
+
+function renderCoreQuestions() {
+  const container = document.getElementById('coreQuestions');
+  container.innerHTML = '';
+  QUESTIONS.filter(q => q.type === 'core').forEach(q => renderLikertQuestion(q, container));
+}
+
+function renderChainQuestions(chainKey, containerId) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = '';
+  QUESTIONS.filter(q => q.type === 'perceptual' && q.chain === chainKey).forEach(q => renderLikertQuestion(q, container));
+}
+
+function renderExtendedQuestions() {
+  const container = document.getElementById('extendedQuestions');
+  const notice = document.getElementById('extendedNotice');
+  const noExtended = document.getElementById('noExtended');
+  container.innerHTML = '';
+  
+  const extended = QUESTIONS.filter(q => q.type === 'extended');
+  let activeCount = 0;
+  
+  extended.forEach(q => {
+    // Check skip logic conditions
+    let isActive = false;
+    if (q.id === 'H2') isActive = true; // Always available when reached
+    else if (q.id === 'H4') isActive = true;
+    else if (q.id === 'S4') isActive = (answers.S3 != null && answers.S3 <= 2);
+    else if (q.id === 'S5') isActive = (answers.S4 != null && answers.S4 <= 2);
+    else if (q.id === 'G1') isActive = true;
+    else if (q.id === 'G3') isActive = true;
+    else if (q.id === 'R5') isActive = true;
+    
+    if (isActive) {
+      activeCount++;
+      renderLikertQuestion(q, container);
+    }
+  });
+  
+  if (activeCount > 0) {
+    notice.innerHTML = `<div class="skip-notice">⚡ ${activeCount} سؤال تکمیلی بر اساس پاسخ‌های شما فعال شد</div>`;
+    noExtended.style.display = 'none';
+  } else {
+    notice.innerHTML = '';
+    noExtended.style.display = 'block';
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// INTERACTIONS
+// ═══════════════════════════════════════════════════════════════
+
+function selectAnswer(qId, val, el) {
+  answers[qId] = val;
+  // Update UI
+  const group = document.getElementById(`likert-${qId}`);
+  group.querySelectorAll('.likert-opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  // Clear warning
+  const warn = document.getElementById(`warn-${qId}`);
+  if (warn) warn.classList.remove('visible');
+}
+
+function goToPage(n) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(`page-${n}`).classList.add('active');
+  currentPage = n;
+  updateProgress();
+  
+  // Render chain pages
+  if (n === 3) renderChainQuestions('CAPACITY', 'capacityQuestions');
+  if (n === 4) renderChainQuestions('ACCESS', 'accessQuestions');
+  if (n === 5) renderChainQuestions('USE', 'useQuestions');
+  if (n === 6) {
+    renderChainQuestions('EXPERIENCE', 'experienceQuestions');
+    renderChainQuestions('OUTCOME', 'outcomeQuestions');
+  }
+  if (n === 7) renderExtendedQuestions();
+  
+  // Start timer on first real page
+  if (n === 1 && !timerStart) startTimer();
+  
+  window.scrollTo(0, 0);
+}
+
+function validateAndNext(current, next) {
+  let valid = true;
+  
+  if (current === 1) {
+    // Demographics validation
+    const fields = [
+      { id: 'd_gender', field: 'f_gender', validate: v => v !== '' },
+      { id: 'd_age', field: 'f_age', validate: v => v !== '' && parseInt(v) >= 18 && parseInt(v) <= 120 },
+      { id: 'd_marital', field: 'f_marital', validate: v => v !== '' },
+      { id: 'd_residency', field: 'f_residency', validate: v => v !== '' && parseInt(v) >= 2 },
+      { id: 'd_housing', field: 'f_housing', validate: v => v !== '' },
+      { id: 'd_hhsize', field: 'f_hhsize', validate: v => v !== '' && parseInt(v) >= 1 },
+      { id: 'd_edu', field: 'f_edu', validate: v => v !== '' },
+      { id: 'd_employ', field: 'f_employ', validate: v => v !== '' },
+    ];
+    
+    fields.forEach(f => {
+      const el = document.getElementById(f.id);
+      const fieldEl = document.getElementById(f.field);
+      if (!f.validate(el.value)) {
+        fieldEl.classList.add('error');
+        valid = false;
+      } else {
+        fieldEl.classList.remove('error');
+      }
+    });
+  } else {
+    // Questions validation
+    let questionsToCheck = [];
+    if (current === 2) questionsToCheck = QUESTIONS.filter(q => q.type === 'core');
+    else if (current === 3) questionsToCheck = QUESTIONS.filter(q => q.type === 'perceptual' && q.chain === 'CAPACITY');
+    else if (current === 4) questionsToCheck = QUESTIONS.filter(q => q.type === 'perceptual' && q.chain === 'ACCESS');
+    else if (current === 5) questionsToCheck = QUESTIONS.filter(q => q.type === 'perceptual' && q.chain === 'USE');
+    else if (current === 6) questionsToCheck = QUESTIONS.filter(q => q.type === 'perceptual' && (q.chain === 'EXPERIENCE' || q.chain === 'OUTCOME'));
+    
+    questionsToCheck.forEach(q => {
+      if (answers[q.id] == null) {
+        const warn = document.getElementById(`warn-${q.id}`);
+        if (warn) warn.classList.add('visible');
+        valid = false;
+      }
+    });
+  }
+  
+  if (valid) goToPage(next);
+  else {
+    // Scroll to first error
+    const firstError = document.querySelector('.warn-banner.visible, .field.error');
+    if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// TIMER & PROGRESS
+// ═══════════════════════════════════════════════════════════════
+
+function startTimer() {
+  timerStart = Date.now();
+  timerInterval = setInterval(() => {
+    const elapsed = Math.floor((Date.now() - timerStart) / 1000);
+    const m = String(Math.floor(elapsed / 60)).padStart(2, '0');
+    const s = String(elapsed % 60).padStart(2, '0');
+    document.getElementById('timer').textContent = `⏱ ${m}:${s}`;
+  }, 1000);
+}
+
+function updateProgress() {
+  const pct = Math.round((currentPage / (TOTAL_PAGES - 1)) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressPct').textContent = pct + '٪';
+  const labels = ['شروع', 'جمعیت‌شناسی', 'شاخص‌های هسته', 'ظرفیت', 'دسترسی', 'استفاده', 'تجربه و پیامد', 'تکمیلی', 'نتیجه'];
+  document.getElementById('progressLabel').textContent = labels[currentPage] || '';
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SUBMIT & EXPORT
+// ═══════════════════════════════════════════════════════════════
+
+function submitSurvey() {
+  if (timerInterval) clearInterval(timerInterval);
+  const elapsed = Math.floor((Date.now() - timerStart) / 1000);
+  
+  // Standardize answers to 0-100
+  const standardized = {};
+  const coreAnswers = {};
+  const perceptualAnswers = {};
+  const extendedAnswers = {};
+  
+  QUESTIONS.forEach(q => {
+    if (answers[q.id] != null) {
+      let z;
+      if (q.direction === 'asc') {
+        z = Math.round(100 * (answers[q.id] - 1) / 4);
+      } else {
+        z = Math.round(100 * (5 - answers[q.id]) / 4);
+      }
+      standardized[q.id] = z;
+      
+      if (q.type === 'core') coreAnswers[q.id] = { raw: answers[q.id], standardized: z, capital: q.capital, chain: q.chain, weight: q.weight || 1 };
+      else if (q.type === 'perceptual') perceptualAnswers[q.id] = { raw: answers[q.id], standardized: z, capital: q.capital, chain: q.chain, direction: q.direction };
+      else extendedAnswers[q.id] = { raw: answers[q.id], standardized: z, capital: q.capital, chain: q.chain };
+    }
+  });
+  
+  // Compute K_S and K_C
+  const sIndicators = Object.values(coreAnswers).filter(a => a.capital === 'S');
+  const cIndicators = Object.values(coreAnswers).filter(a => a.capital === 'C');
+  const kS = sIndicators.length > 0 ? Math.round(sIndicators.reduce((sum, a) => sum + a.standardized * a.weight, 0) / sIndicators.reduce((sum, a) => sum + a.weight, 0)) : null;
+  const kC = cIndicators.length > 0 ? Math.round(cIndicators.reduce((sum, a) => sum + a.standardized * a.weight, 0) / cIndicators.reduce((sum, a) => sum + a.weight, 0)) : null;
+  
+  // Band function
+  const band = (s) => s >= 90 ? 'ممتاز' : s >= 75 ? 'خوب' : s >= 60 ? 'متوسط' : s >= 40 ? 'ضعیف' : 'بحرانی';
+  
+  const result = {
+    surveyId: `SURVEY-${Date.now()}`,
+    timestamp: new Date().toISOString(),
+    durationSeconds: elapsed,
+    durationFormatted: `${Math.floor(elapsed/60)}:${String(elapsed%60).padStart(2,'0')}`,
+    demographics: {
+      gender: document.getElementById('d_gender').value === '1' ? 'male' : 'female',
+      age: parseInt(document.getElementById('d_age').value),
+      maritalStatus: ['','single','married','divorced'][parseInt(document.getElementById('d_marital').value)],
+      residencyYears: parseInt(document.getElementById('d_residency').value),
+      housingStatus: ['','owner','renter','free'][parseInt(document.getElementById('d_housing').value)],
+      householdSize: parseInt(document.getElementById('d_hhsize').value),
+      education: ['','below_diploma','diploma','bachelors','masters','phd'][parseInt(document.getElementById('d_edu').value)],
+      employment: ['','employed','unemployed','retired','homemaker'][parseInt(document.getElementById('d_employ').value)],
+    },
+    coreIndicators: coreAnswers,
+    perceptualIndicators: perceptualAnswers,
+    extendedIndicators: Object.keys(extendedAnswers).length > 0 ? extendedAnswers : undefined,
+    aggregated: {
+      K_S: kS, K_S_band: kS != null ? band(kS) : null,
+      K_C: kC, K_C_band: kC != null ? band(kC) : null,
+    },
+    standardized,
+    qualityMetrics: {
+      totalQuestions: Object.keys(answers).length,
+      completionTime: elapsed,
+      missingRate: 0,
+    },
+  };
+  
+  // Render summary
+  const container = document.getElementById('summaryContent');
+  container.innerHTML = `
+    <div class="summary-grid">
+      <div class="summary-item"><div class="s-label">شناسه</div><div class="s-value" style="font-size:.65rem;font-family:monospace">${result.surveyId}</div></div>
+      <div class="summary-item"><div class="s-label">مدت زمان</div><div class="s-value">${result.durationFormatted}</div></div>
+      <div class="summary-item"><div class="s-label">K_S (اجتماعی)</div><div class="s-value" style="color:${kS>=75?'var(--g)':kS>=40?'var(--o)':'var(--r)'}">${kS} — ${result.aggregated.K_S_band}</div></div>
+      <div class="summary-item"><div class="s-label">K_C (فرهنگی)</div><div class="s-value" style="color:${kC>=75?'var(--g)':kC>=40?'var(--o)':'var(--r)'}">${kC} — ${result.aggregated.K_C_band}</div></div>
+      <div class="summary-item"><div class="s-label">تعداد سؤالات</div><div class="s-value">${result.qualityMetrics.totalQuestions}</div></div>
+      <div class="summary-item"><div class="s-label">منطق پرش</div><div class="s-value">${Object.keys(extendedAnswers).length} سؤال تکمیلی</div></div>
+    </div>
+    <h3 style="font-size:.8rem;margin:16px 0 8px">📊 خلاصه پاسخ‌ها</h3>
+    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:16px">
+      ${Object.entries(standardized).map(([k,v]) => `
+        <div style="text-align:center;padding:6px 2px;background:var(--bg);border-radius:6px;border:1px solid ${v>=75?'var(--g)':v>=40?'var(--o)':'var(--r)'}">
+          <div style="font-size:.55rem;color:var(--td)">${k}</div>
+          <div style="font-size:.85rem;font-weight:800;color:${v>=75?'var(--g)':v>=40?'var(--o)':'var(--r)'}">${v}</div>
+        </div>
+      `).join('')}
+    </div>
+    <h3 style="font-size:.8rem;margin:16px 0 8px">📄 خروجی JSON</h3>
+    <div class="json-box" id="jsonOutput">${JSON.stringify(result, null, 2)}</div>
+    <div class="btn-row" style="margin-top:12px">
+      <button class="btn btn-next" onclick="copyJSON()" style="font-size:.75rem;padding:8px">📋 کپی JSON</button>
+    </div>
+  `;
+  
+  goToPage(8);
+}
+
+function copyJSON() {
+  const text = document.getElementById('jsonOutput').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = event.target;
+    btn.textContent = '✅ کپی شد!';
+    setTimeout(() => btn.textContent = '📋 کپی JSON', 1500);
+  });
+}
+
+function resetSurvey() {
+  answers = {};
+  timerStart = null;
+  if (timerInterval) clearInterval(timerInterval);
+  document.getElementById('timer').textContent = '⏱ 00:00';
+  document.getElementById('consentCheck').checked = false;
+  document.getElementById('btnStart').disabled = true;
+  document.querySelectorAll('.field').forEach(f => f.classList.remove('error'));
+  goToPage(0);
+}
+
+// ═══════════════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════════════
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderCoreQuestions();
+  
+  document.getElementById('consentCheck').addEventListener('change', function() {
+    document.getElementById('btnStart').disabled = !this.checked;
+  });
+});
+</script>
+</body>
+</html>

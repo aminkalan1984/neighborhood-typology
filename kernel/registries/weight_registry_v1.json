@@ -1,0 +1,1695 @@
+{
+  "version": "W-v1",
+  "scheme": "equal_v1",
+  "calibrated": false,
+  "status": "PENDING_VALIDATION",
+  "provenance": "algo.txt §5.2 «در نسخه نخست، وزن‌ها برابرند. وزن‌دهی نهایی فقط پس از پایایی، روایی، تحلیل عاملی یا مدل معادلات ساختاری و تحلیل حساسیت.»",
+  "note_fa": "در نسخه ۱ همه شاخص‌های هم‌ساحت وزن برابر دارند. ستون‌های «ضریب» و «وزن در ساحت (%)» اطلس صرفاً به‌عنوان فراداده اهمیتِ مرجع (calibrated=false) ذخیره شده‌اند و وزن فعال محاسبه نیستند.",
+  "active_weights": "equal-per-capital (engine assigns w_i=1 to every OBSERVED indicator of a capital)",
+  "reference_only_atlas_coefficients": {
+    "PHY-001": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-002": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-003": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-004": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-005": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-006": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.411522633744856
+    },
+    "PHY-007": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-008": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.411522633744856
+    },
+    "PHY-009": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.411522633744856
+    },
+    "PHY-010": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.411522633744856
+    },
+    "PHY-011": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-012": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-013": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-014": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-015": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-016": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-017": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-018": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-019": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-020": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-021": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-022": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-023": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-024": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-025": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-026": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-027": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-028": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-029": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-030": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-031": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-032": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-033": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-034": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.411522633744856
+    },
+    "PHY-035": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-036": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-037": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-038": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-039": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-040": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-041": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-042": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-043": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-044": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-045": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-046": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-047": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-048": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-049": {
+      "zarib": 1,
+      "weight_in_domain_pct": 0.1371742112482853
+    },
+    "PHY-050": {
+      "zarib": 1,
+      "weight_in_domain_pct": 0.1371742112482853
+    },
+    "PHY-051": {
+      "zarib": 1,
+      "weight_in_domain_pct": 0.1371742112482853
+    },
+    "PHY-052": {
+      "zarib": 1,
+      "weight_in_domain_pct": 0.1371742112482853
+    },
+    "PHY-053": {
+      "zarib": 2,
+      "weight_in_domain_pct": 0.2743484224965706
+    },
+    "PHY-054": {
+      "zarib": 1,
+      "weight_in_domain_pct": 0.1371742112482853
+    },
+    "PHY-055": {
+      "zarib": 1,
+      "weight_in_domain_pct": 0.1371742112482853
+    },
+    "PHY-056": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-057": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-058": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-059": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-060": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-061": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-062": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-063": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-064": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-065": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-066": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-067": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-068": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-069": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-070": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.411522633744856
+    },
+    "PHY-071": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.411522633744856
+    },
+    "PHY-072": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.411522633744856
+    },
+    "PHY-073": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.411522633744856
+    },
+    "PHY-074": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.411522633744856
+    },
+    "PHY-075": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.411522633744856
+    },
+    "PHY-076": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.411522633744856
+    },
+    "PHY-077": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.411522633744856
+    },
+    "PHY-078": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.411522633744856
+    },
+    "PHY-079": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-080": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-081": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.411522633744856
+    },
+    "PHY-082": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-083": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-084": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-085": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-086": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-087": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-088": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-089": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-090": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-091": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-092": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-093": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-094": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-095": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-096": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-097": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-098": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-099": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-100": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-101": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-102": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-103": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-104": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-105": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-106": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-107": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-108": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-109": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-110": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-111": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-112": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-113": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-114": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-115": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-116": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-117": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-118": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-119": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-120": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-121": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-122": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-123": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-124": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-125": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-126": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-127": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-128": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-129": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-130": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-131": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-132": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-133": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-134": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-135": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-136": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-137": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-138": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-139": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-140": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-141": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-142": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-143": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.411522633744856
+    },
+    "PHY-144": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.411522633744856
+    },
+    "PHY-145": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-146": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-147": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-148": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-149": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-150": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.411522633744856
+    },
+    "PHY-151": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.411522633744856
+    },
+    "PHY-152": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-153": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-154": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.411522633744856
+    },
+    "PHY-155": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-156": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-157": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-158": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-159": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-160": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-161": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-162": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-163": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-164": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.5486968449931412
+    },
+    "PHY-165": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-166": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-167": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-168": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-169": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-170": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-171": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-172": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-173": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-174": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-175": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-176": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "PHY-177": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.6858710562414266
+    },
+    "BEH-001": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-002": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-003": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-004": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-005": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-006": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.330760749724366
+    },
+    "BEH-007": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-008": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-009": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-010": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-011": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-012": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-013": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-014": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-015": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-016": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-017": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-018": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-019": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-020": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.330760749724366
+    },
+    "BEH-021": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-022": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-023": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-024": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.330760749724366
+    },
+    "BEH-025": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.330760749724366
+    },
+    "BEH-026": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-027": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.330760749724366
+    },
+    "BEH-028": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-029": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-030": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-031": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-032": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-033": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-034": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-035": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-036": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-037": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-038": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-039": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-040": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.330760749724366
+    },
+    "BEH-041": {
+      "zarib": 2,
+      "weight_in_domain_pct": 0.2205071664829107
+    },
+    "BEH-042": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.330760749724366
+    },
+    "BEH-043": {
+      "zarib": 2,
+      "weight_in_domain_pct": 0.2205071664829107
+    },
+    "BEH-044": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-045": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-046": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-047": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-048": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-049": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-050": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-051": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-052": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-053": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-054": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-055": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-056": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-057": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-058": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-059": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-060": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-061": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-062": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-063": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-064": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-065": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-066": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-067": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-068": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-069": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-070": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-071": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-072": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-073": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-074": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-075": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-076": {
+      "zarib": 2,
+      "weight_in_domain_pct": 0.2205071664829107
+    },
+    "BEH-077": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-078": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-079": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-080": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-081": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-082": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-083": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-084": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-085": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-086": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.330760749724366
+    },
+    "BEH-087": {
+      "zarib": 2,
+      "weight_in_domain_pct": 0.2205071664829107
+    },
+    "BEH-088": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.330760749724366
+    },
+    "BEH-089": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.330760749724366
+    },
+    "BEH-090": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.330760749724366
+    },
+    "BEH-091": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.330760749724366
+    },
+    "BEH-092": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-093": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-094": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-095": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-096": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-097": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.330760749724366
+    },
+    "BEH-098": {
+      "zarib": 2,
+      "weight_in_domain_pct": 0.2205071664829107
+    },
+    "BEH-099": {
+      "zarib": 2,
+      "weight_in_domain_pct": 0.2205071664829107
+    },
+    "BEH-100": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.330760749724366
+    },
+    "BEH-101": {
+      "zarib": 2,
+      "weight_in_domain_pct": 0.2205071664829107
+    },
+    "BEH-102": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-103": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-104": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-105": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-106": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-107": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-108": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-109": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-110": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-111": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-112": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-113": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-114": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-115": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-116": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-117": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-118": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-119": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-120": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-121": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-122": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-123": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-124": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-125": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-126": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-127": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-128": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-129": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-130": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-131": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-132": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-133": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-134": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-135": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-136": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-137": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-138": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-139": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-140": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-141": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-142": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-143": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-144": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-145": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-146": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-147": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-148": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-149": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-150": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-151": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-152": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-153": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-154": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-155": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-156": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-157": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-158": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-159": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-160": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-161": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-162": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-163": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-164": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-165": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-166": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-167": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-168": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-169": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-170": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-171": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-172": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.330760749724366
+    },
+    "BEH-173": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.330760749724366
+    },
+    "BEH-174": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.330760749724366
+    },
+    "BEH-175": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.330760749724366
+    },
+    "BEH-176": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-177": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-178": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-179": {
+      "zarib": 3,
+      "weight_in_domain_pct": 0.330760749724366
+    },
+    "BEH-180": {
+      "zarib": 2,
+      "weight_in_domain_pct": 0.2205071664829107
+    },
+    "BEH-181": {
+      "zarib": 2,
+      "weight_in_domain_pct": 0.2205071664829107
+    },
+    "BEH-182": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-183": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-184": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-185": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-186": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-187": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-188": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-189": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-190": {
+      "zarib": 4,
+      "weight_in_domain_pct": 0.4410143329658214
+    },
+    "BEH-191": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-192": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-193": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-194": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-195": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-196": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-197": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-198": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-199": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-200": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-201": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-202": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-203": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-204": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-205": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-206": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-207": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-208": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "BEH-209": {
+      "zarib": 5,
+      "weight_in_domain_pct": 0.5512679162072767
+    },
+    "NOR-001": {
+      "zarib": 4,
+      "weight_in_domain_pct": 2.816901408450704
+    },
+    "NOR-002": {
+      "zarib": 4,
+      "weight_in_domain_pct": 2.816901408450704
+    },
+    "NOR-003": {
+      "zarib": 4,
+      "weight_in_domain_pct": 2.816901408450704
+    },
+    "NOR-004": {
+      "zarib": 2,
+      "weight_in_domain_pct": 1.408450704225352
+    },
+    "NOR-005": {
+      "zarib": 4,
+      "weight_in_domain_pct": 2.816901408450704
+    },
+    "NOR-006": {
+      "zarib": 4,
+      "weight_in_domain_pct": 2.816901408450704
+    },
+    "NOR-007": {
+      "zarib": 4,
+      "weight_in_domain_pct": 2.816901408450704
+    },
+    "NOR-008": {
+      "zarib": 4,
+      "weight_in_domain_pct": 2.816901408450704
+    },
+    "NOR-009": {
+      "zarib": 5,
+      "weight_in_domain_pct": 3.52112676056338
+    },
+    "NOR-010": {
+      "zarib": 4,
+      "weight_in_domain_pct": 2.816901408450704
+    },
+    "NOR-011": {
+      "zarib": 4,
+      "weight_in_domain_pct": 2.816901408450704
+    },
+    "NOR-012": {
+      "zarib": 4,
+      "weight_in_domain_pct": 2.816901408450704
+    },
+    "NOR-013": {
+      "zarib": 4,
+      "weight_in_domain_pct": 2.816901408450704
+    },
+    "NOR-014": {
+      "zarib": 4,
+      "weight_in_domain_pct": 2.816901408450704
+    },
+    "NOR-015": {
+      "zarib": 4,
+      "weight_in_domain_pct": 2.816901408450704
+    },
+    "NOR-016": {
+      "zarib": 5,
+      "weight_in_domain_pct": 3.52112676056338
+    },
+    "NOR-017": {
+      "zarib": 5,
+      "weight_in_domain_pct": 3.52112676056338
+    },
+    "NOR-018": {
+      "zarib": 5,
+      "weight_in_domain_pct": 3.52112676056338
+    },
+    "NOR-019": {
+      "zarib": 5,
+      "weight_in_domain_pct": 3.52112676056338
+    },
+    "NOR-020": {
+      "zarib": 5,
+      "weight_in_domain_pct": 3.52112676056338
+    },
+    "NOR-021": {
+      "zarib": 5,
+      "weight_in_domain_pct": 3.52112676056338
+    },
+    "NOR-022": {
+      "zarib": 4,
+      "weight_in_domain_pct": 2.816901408450704
+    },
+    "NOR-023": {
+      "zarib": 4,
+      "weight_in_domain_pct": 2.816901408450704
+    },
+    "NOR-024": {
+      "zarib": 4,
+      "weight_in_domain_pct": 2.816901408450704
+    },
+    "NOR-025": {
+      "zarib": 4,
+      "weight_in_domain_pct": 2.816901408450704
+    },
+    "NOR-026": {
+      "zarib": 4,
+      "weight_in_domain_pct": 2.816901408450704
+    },
+    "NOR-027": {
+      "zarib": 4,
+      "weight_in_domain_pct": 2.816901408450704
+    },
+    "NOR-028": {
+      "zarib": 4,
+      "weight_in_domain_pct": 2.816901408450704
+    },
+    "NOR-029": {
+      "zarib": 5,
+      "weight_in_domain_pct": 3.52112676056338
+    },
+    "NOR-030": {
+      "zarib": 5,
+      "weight_in_domain_pct": 3.52112676056338
+    },
+    "NOR-031": {
+      "zarib": 5,
+      "weight_in_domain_pct": 3.52112676056338
+    },
+    "NOR-032": {
+      "zarib": 5,
+      "weight_in_domain_pct": 3.52112676056338
+    },
+    "NOR-033": {
+      "zarib": 5,
+      "weight_in_domain_pct": 3.52112676056338
+    }
+  },
+  "audit_trail": [
+    {
+      "ts": "2026-09-01T23:34:39.018159+00:00",
+      "action": "create",
+      "by": "MVP-0 kernel",
+      "reason": "seed uncalibrated v1 from algo.txt §5.2"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "name": "سامانه آرا - اتاق وضعیت حکمرانی ایران",
+  "description": "سامانه حکمرانی هوشمند ایران (ISGP) - اتاق وضعیت ملی، شبیه‌ساز علّی و نقشه حرارتی مپ‌ایر (Map.ir WebGIS)",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

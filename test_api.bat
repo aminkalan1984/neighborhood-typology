@@ -1,0 +1,2 @@
+@echo off
+curl.exe https://tabitoken.com/v1/messages -H "x-api-key: sk-uLxvDOeX2J0bLz8RicsF5DnjJJp4eYmv32a28eV86gw2oonI" -H "anthropic-version: 2023-06-01" -H "Content-Type: application/json" -d @request.json

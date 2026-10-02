@@ -1,0 +1,1083 @@
+{
+  "calc_run": {
+    "family": "CALC-v0.2",
+    "calculation_version_id": "CALC-v0.2+88c105ec1aeb",
+    "engine_version": "CALC-v0.1",
+    "methodology_version": "algo.txt-2026",
+    "indicator_version": "registry-419-v1",
+    "data_version": "pilot-D6-2026-09-02",
+    "weight_set": {
+      "version": "W-v1",
+      "scheme": "equal_v1",
+      "calibrated": false,
+      "label": "W-v1",
+      "override": null,
+      "hash": "sha256:da93a20849c26a8bcdc4aae66beaac533c3eb6be0a716491ca50b20148ecd4e4"
+    },
+    "threshold_set": {
+      "version": "T-v1",
+      "hash": "sha256:ba62693ea9d58dc6645a317572894810b5e9d526ea2ca61915dfc59dff538357"
+    },
+    "min_coverage": 0.5,
+    "created_at": "2026-09-02T01:44:20.440981+00:00"
+  },
+  "neighborhood": {
+    "id": "IR-THR-D6",
+    "name_fa": "منطقه ۶ شهر تهران",
+    "name_en": "Tehran District 6",
+    "osm_relation": 6729037,
+    "boundary_version": "v1",
+    "boundary_area_km2": 21.403,
+    "metric_crs": "EPSG:32639",
+    "is_proxy": true,
+    "boundary_hash": "sha256:c09b482466e6ab38f914cbf4536b7403683e09d2ebfc22b4c8e57fdb3e239b43"
+  },
+  "stages": [
+    {
+      "stage": "ingest",
+      "description": "consumed 7 real pilot Measurement record(s)"
+    },
+    {
+      "stage": "validate",
+      "description": "re-asserted status/value hard guard (non-OBSERVED/EST/PROXY => value None)"
+    },
+    {
+      "stage": "clean",
+      "description": "no cleaning applied; values already validated during MVP-1 ingestion"
+    },
+    {
+      "stage": "harmonize",
+      "description": "units recorded per record; NOT coerced across incompatible scales"
+    },
+    {
+      "stage": "normalize",
+      "description": "eligibility guard applied; 6/7 standardized scores withheld as PENDING_VALIDATION"
+    },
+    {
+      "stage": "direction_transform",
+      "description": "direction verified from registry «جهت»/atlas; none silently flipped"
+    },
+    {
+      "stage": "threshold_transform",
+      "description": "no calibrated L/U available; no threshold banding applied to raw pilot values"
+    },
+    {
+      "stage": "weight_application",
+      "description": "per-indicator weights read from W-v1 (scheme=equal_v1, calibrated=False)"
+    },
+    {
+      "stage": "capital_aggregation",
+      "description": "Kj computed per capital over qualified normalized scores only; 8 capitals"
+    },
+    {
+      "stage": "caueo_aggregation",
+      "description": "C-A-U-E-O stage scores; stages with no acquired data => WAITING_FOR_DATA"
+    },
+    {
+      "stage": "qtr_aggregation",
+      "description": "K, Q, T, R computed as FOUR SEPARATE results — never collapsed into one score"
+    },
+    {
+      "stage": "equity_gap",
+      "description": "equity gap withheld — no group-disaggregated data"
+    },
+    {
+      "stage": "chain_gaps",
+      "description": "chain gaps require both endpoints OBSERVED; all endpoints abstained => INSUFFICIENT_COVERAGE"
+    },
+    {
+      "stage": "action_priority",
+      "description": "action priority not computable — severity/population/leverage/feasibility/equity factors unavailable"
+    },
+    {
+      "stage": "confidence",
+      "description": "evidence confidence computed by confidence.py (attached in the run assembler)"
+    }
+  ],
+  "records": [
+    {
+      "indicator_code": "PHY-003",
+      "operationalization": "count_within_boundary",
+      "raw": {
+        "value": 115.0,
+        "status": "PROXY",
+        "unit": "count",
+        "is_proxy": true,
+        "evidence_stream": [
+          "gis"
+        ],
+        "provenance_value_id": "VAL-00002"
+      },
+      "normalized": {
+        "indicator_code": "PHY-003",
+        "value": null,
+        "status": "PENDING_VALIDATION",
+        "is_proxy": true,
+        "missing_reason": "L/U uncalibrated: lu_status=OBSERVED_RANGE_UNCALIBRATED, placeholder L=0.0/U=100.0 (algo.txt §5.1 — L/U require calibration before standardization)؛ unit/scale mismatch: registry defines this indicator as «درصد جمعیت در آستانه؛ دقیقه/متر (کمکی)» on range «۰ تا ۱۰۰», but the pilot raw value is in «count» via operationalization «count_within_boundary» (a supply count / euclidean distance is NOT a %-population-within-threshold)",
+        "spatial_scale": null,
+        "downscaling_caveat": null,
+        "evidence_stream": [
+          "gis"
+        ],
+        "group": null
+      },
+      "eligibility": {
+        "eligible": false,
+        "reasons": [
+          "L/U uncalibrated: lu_status=OBSERVED_RANGE_UNCALIBRATED, placeholder L=0.0/U=100.0 (algo.txt §5.1 — L/U require calibration before standardization)",
+          "unit/scale mismatch: registry defines this indicator as «درصد جمعیت در آستانه؛ دقیقه/متر (کمکی)» on range «۰ تا ۱۰۰», but the pilot raw value is in «count» via operationalization «count_within_boundary» (a supply count / euclidean distance is NOT a %-population-within-threshold)"
+        ]
+      },
+      "weight": 1.0,
+      "capital_code": "P",
+      "capital_name": "کالبدی–زیرساختی",
+      "chain_stage": "A",
+      "qtr_target": "Q",
+      "direction_text": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "layer": "registry_419",
+      "title": "میزان فاصله دسترسی به پارک"
+    },
+    {
+      "indicator_code": "PHY-001",
+      "operationalization": "count_within_boundary",
+      "raw": {
+        "value": 68.0,
+        "status": "PROXY",
+        "unit": "count",
+        "is_proxy": true,
+        "evidence_stream": [
+          "gis"
+        ],
+        "provenance_value_id": "VAL-00003"
+      },
+      "normalized": {
+        "indicator_code": "PHY-001",
+        "value": null,
+        "status": "PENDING_VALIDATION",
+        "is_proxy": true,
+        "missing_reason": "L/U uncalibrated: lu_status=OBSERVED_RANGE_UNCALIBRATED, placeholder L=0.0/U=100.0 (algo.txt §5.1 — L/U require calibration before standardization)؛ unit/scale mismatch: registry defines this indicator as «درصد جمعیت در آستانه؛ دقیقه/متر (کمکی)» on range «۰ تا ۱۰۰», but the pilot raw value is in «count» via operationalization «count_within_boundary» (a supply count / euclidean distance is NOT a %-population-within-threshold)",
+        "spatial_scale": null,
+        "downscaling_caveat": null,
+        "evidence_stream": [
+          "gis"
+        ],
+        "group": null
+      },
+      "eligibility": {
+        "eligible": false,
+        "reasons": [
+          "L/U uncalibrated: lu_status=OBSERVED_RANGE_UNCALIBRATED, placeholder L=0.0/U=100.0 (algo.txt §5.1 — L/U require calibration before standardization)",
+          "unit/scale mismatch: registry defines this indicator as «درصد جمعیت در آستانه؛ دقیقه/متر (کمکی)» on range «۰ تا ۱۰۰», but the pilot raw value is in «count» via operationalization «count_within_boundary» (a supply count / euclidean distance is NOT a %-population-within-threshold)"
+        ]
+      },
+      "weight": 1.0,
+      "capital_code": "N",
+      "capital_name": "طبیعی–محیطی",
+      "chain_stage": "A",
+      "qtr_target": "Q",
+      "direction_text": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "layer": "registry_419",
+      "title": "میزان فاصلۀ دسترسی کودکان تا مدرسه"
+    },
+    {
+      "indicator_code": "PHY-002",
+      "operationalization": "count_within_boundary",
+      "raw": {
+        "value": 259.0,
+        "status": "PROXY",
+        "unit": "count",
+        "is_proxy": true,
+        "evidence_stream": [
+          "gis"
+        ],
+        "provenance_value_id": "VAL-00004"
+      },
+      "normalized": {
+        "indicator_code": "PHY-002",
+        "value": null,
+        "status": "PENDING_VALIDATION",
+        "is_proxy": true,
+        "missing_reason": "L/U uncalibrated: lu_status=OBSERVED_RANGE_UNCALIBRATED, placeholder L=0.0/U=100.0 (algo.txt §5.1 — L/U require calibration before standardization)؛ unit/scale mismatch: registry defines this indicator as «درصد جمعیت در آستانه؛ دقیقه/متر (کمکی)» on range «۰ تا ۱۰۰», but the pilot raw value is in «count» via operationalization «count_within_boundary» (a supply count / euclidean distance is NOT a %-population-within-threshold)",
+        "spatial_scale": null,
+        "downscaling_caveat": null,
+        "evidence_stream": [
+          "gis"
+        ],
+        "group": null
+      },
+      "eligibility": {
+        "eligible": false,
+        "reasons": [
+          "L/U uncalibrated: lu_status=OBSERVED_RANGE_UNCALIBRATED, placeholder L=0.0/U=100.0 (algo.txt §5.1 — L/U require calibration before standardization)",
+          "unit/scale mismatch: registry defines this indicator as «درصد جمعیت در آستانه؛ دقیقه/متر (کمکی)» on range «۰ تا ۱۰۰», but the pilot raw value is in «count» via operationalization «count_within_boundary» (a supply count / euclidean distance is NOT a %-population-within-threshold)"
+        ]
+      },
+      "weight": 1.0,
+      "capital_code": "R",
+      "capital_name": "شبکه‌ای–ارتباطی",
+      "chain_stage": "A",
+      "qtr_target": "Q",
+      "direction_text": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "layer": "registry_419",
+      "title": "میزان فاصلۀ دسترسی به اتوبوس واحد و تاکسی"
+    },
+    {
+      "indicator_code": "PHY-003",
+      "operationalization": "distance(euclidean_proxy_for_network)",
+      "raw": {
+        "value": 114.28,
+        "status": "PROXY",
+        "unit": "meter",
+        "is_proxy": true,
+        "evidence_stream": [
+          "gis"
+        ],
+        "provenance_value_id": "VAL-00005"
+      },
+      "normalized": {
+        "indicator_code": "PHY-003",
+        "value": null,
+        "status": "PENDING_VALIDATION",
+        "is_proxy": true,
+        "missing_reason": "L/U uncalibrated: lu_status=OBSERVED_RANGE_UNCALIBRATED, placeholder L=0.0/U=100.0 (algo.txt §5.1 — L/U require calibration before standardization)؛ unit/scale mismatch: registry defines this indicator as «درصد جمعیت در آستانه؛ دقیقه/متر (کمکی)» on range «۰ تا ۱۰۰», but the pilot raw value is in «meter» via operationalization «distance(euclidean_proxy_for_network)» (a supply count / euclidean distance is NOT a %-population-within-threshold)؛ direction mapping undefined: raw is euclidean distance-to-nearest (labelled proxy for network distance); registry direction «bigger=better» is defined on a %-in-threshold scale, not on raw meters — no defensible source-cited threshold to map meters->0-100",
+        "spatial_scale": null,
+        "downscaling_caveat": null,
+        "evidence_stream": [
+          "gis"
+        ],
+        "group": null
+      },
+      "eligibility": {
+        "eligible": false,
+        "reasons": [
+          "L/U uncalibrated: lu_status=OBSERVED_RANGE_UNCALIBRATED, placeholder L=0.0/U=100.0 (algo.txt §5.1 — L/U require calibration before standardization)",
+          "unit/scale mismatch: registry defines this indicator as «درصد جمعیت در آستانه؛ دقیقه/متر (کمکی)» on range «۰ تا ۱۰۰», but the pilot raw value is in «meter» via operationalization «distance(euclidean_proxy_for_network)» (a supply count / euclidean distance is NOT a %-population-within-threshold)",
+          "direction mapping undefined: raw is euclidean distance-to-nearest (labelled proxy for network distance); registry direction «bigger=better» is defined on a %-in-threshold scale, not on raw meters — no defensible source-cited threshold to map meters->0-100"
+        ]
+      },
+      "weight": 1.0,
+      "capital_code": "P",
+      "capital_name": "کالبدی–زیرساختی",
+      "chain_stage": "A",
+      "qtr_target": "Q",
+      "direction_text": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "layer": "registry_419",
+      "title": "میزان فاصله دسترسی به پارک"
+    },
+    {
+      "indicator_code": "PHY-001",
+      "operationalization": "distance(euclidean_proxy_for_network)",
+      "raw": {
+        "value": 253.28,
+        "status": "PROXY",
+        "unit": "meter",
+        "is_proxy": true,
+        "evidence_stream": [
+          "gis"
+        ],
+        "provenance_value_id": "VAL-00006"
+      },
+      "normalized": {
+        "indicator_code": "PHY-001",
+        "value": null,
+        "status": "PENDING_VALIDATION",
+        "is_proxy": true,
+        "missing_reason": "L/U uncalibrated: lu_status=OBSERVED_RANGE_UNCALIBRATED, placeholder L=0.0/U=100.0 (algo.txt §5.1 — L/U require calibration before standardization)؛ unit/scale mismatch: registry defines this indicator as «درصد جمعیت در آستانه؛ دقیقه/متر (کمکی)» on range «۰ تا ۱۰۰», but the pilot raw value is in «meter» via operationalization «distance(euclidean_proxy_for_network)» (a supply count / euclidean distance is NOT a %-population-within-threshold)؛ direction mapping undefined: raw is euclidean distance-to-nearest (labelled proxy for network distance); registry direction «bigger=better» is defined on a %-in-threshold scale, not on raw meters — no defensible source-cited threshold to map meters->0-100",
+        "spatial_scale": null,
+        "downscaling_caveat": null,
+        "evidence_stream": [
+          "gis"
+        ],
+        "group": null
+      },
+      "eligibility": {
+        "eligible": false,
+        "reasons": [
+          "L/U uncalibrated: lu_status=OBSERVED_RANGE_UNCALIBRATED, placeholder L=0.0/U=100.0 (algo.txt §5.1 — L/U require calibration before standardization)",
+          "unit/scale mismatch: registry defines this indicator as «درصد جمعیت در آستانه؛ دقیقه/متر (کمکی)» on range «۰ تا ۱۰۰», but the pilot raw value is in «meter» via operationalization «distance(euclidean_proxy_for_network)» (a supply count / euclidean distance is NOT a %-population-within-threshold)",
+          "direction mapping undefined: raw is euclidean distance-to-nearest (labelled proxy for network distance); registry direction «bigger=better» is defined on a %-in-threshold scale, not on raw meters — no defensible source-cited threshold to map meters->0-100"
+        ]
+      },
+      "weight": 1.0,
+      "capital_code": "N",
+      "capital_name": "طبیعی–محیطی",
+      "chain_stage": "A",
+      "qtr_target": "Q",
+      "direction_text": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "layer": "registry_419",
+      "title": "میزان فاصلۀ دسترسی کودکان تا مدرسه"
+    },
+    {
+      "indicator_code": "ONL-011",
+      "operationalization": "nearest_epicenter_distance",
+      "raw": {
+        "value": 40.703,
+        "status": "PROXY",
+        "unit": "km",
+        "is_proxy": true,
+        "evidence_stream": [
+          "objective"
+        ],
+        "provenance_value_id": "VAL-00007"
+      },
+      "normalized": {
+        "indicator_code": "ONL-011",
+        "value": null,
+        "status": "PENDING_VALIDATION",
+        "is_proxy": true,
+        "missing_reason": "no L/U in threshold registry for this indicator (not calibratable yet)؛ direction mapping undefined: raw is euclidean distance-to-nearest (labelled proxy for network distance); registry direction «bigger=better» is defined on a %-in-threshold scale, not on raw meters — no defensible source-cited threshold to map meters->0-100",
+        "spatial_scale": null,
+        "downscaling_caveat": null,
+        "evidence_stream": [
+          "objective"
+        ],
+        "group": null
+      },
+      "eligibility": {
+        "eligible": false,
+        "reasons": [
+          "no L/U in threshold registry for this indicator (not calibratable yet)",
+          "direction mapping undefined: raw is euclidean distance-to-nearest (labelled proxy for network distance); registry direction «bigger=better» is defined on a %-in-threshold scale, not on raw meters — no defensible source-cited threshold to map meters->0-100"
+        ]
+      },
+      "weight": 1.0,
+      "capital_code": null,
+      "capital_name": "کالبدی–زیرساختی",
+      "chain_stage": null,
+      "qtr_target": null,
+      "direction_text": "کمتر بهتر",
+      "layer": "online_83",
+      "title": "نرخ رخداد زمین‌لرزه‌های M≥4.5 پیرامون"
+    },
+    {
+      "indicator_code": "ONL-001",
+      "operationalization": "dem_zonal_mean",
+      "raw": {
+        "value": null,
+        "status": "ACCESS_REQUIRED",
+        "unit": "meter",
+        "is_proxy": false,
+        "evidence_stream": [],
+        "provenance_value_id": "VAL-DEM-D6"
+      },
+      "normalized": {
+        "indicator_code": "ONL-001",
+        "value": null,
+        "status": "ACCESS_REQUIRED",
+        "is_proxy": false,
+        "missing_reason": "no valid raw input to normalize",
+        "spatial_scale": null,
+        "downscaling_caveat": null,
+        "evidence_stream": [],
+        "group": null
+      },
+      "eligibility": {
+        "eligible": false,
+        "reasons": [
+          "raw input not OBSERVED/PROXY/ESTIMATED"
+        ]
+      },
+      "weight": 1.0,
+      "capital_code": null,
+      "capital_name": "کالبدی–زیرساختی",
+      "chain_stage": null,
+      "qtr_target": null,
+      "direction_text": "خنثی/زمینه‌ای",
+      "layer": "online_83",
+      "title": "میانگین و میانه ارتفاع"
+    }
+  ],
+  "aggregates": {
+    "capitals": {
+      "C": {
+        "name": "K[C]",
+        "value": null,
+        "status": "WAITING_FOR_DATA",
+        "formula_id": "Kj=Sum(w*Z)/Sum(w)",
+        "inputs": [],
+        "sources": [],
+        "versions": {
+          "data_version": "pilot-D6-2026-09-02",
+          "methodology_version": "algo.txt-2026",
+          "indicator_version": "registry-419-v1",
+          "weight_set": "W-v1",
+          "threshold_set": "T-v1",
+          "calculation_version": "CALC-v0.2"
+        },
+        "note": "no data acquired for this group",
+        "coverage_detail": {
+          "n_qualified": 0,
+          "n_attempted": 0,
+          "n_registry": 8,
+          "coverage": 0.0,
+          "min_coverage": 0.5
+        },
+        "capital_name": "فرهنگی–هویتی",
+        "confidence": {
+          "level": "ناکافی",
+          "score": 0.0,
+          "reason": "aggregate abstained (no number published)",
+          "n_members": 0
+        }
+      },
+      "EC": {
+        "name": "K[EC]",
+        "value": null,
+        "status": "WAITING_FOR_DATA",
+        "formula_id": "Kj=Sum(w*Z)/Sum(w)",
+        "inputs": [],
+        "sources": [],
+        "versions": {
+          "data_version": "pilot-D6-2026-09-02",
+          "methodology_version": "algo.txt-2026",
+          "indicator_version": "registry-419-v1",
+          "weight_set": "W-v1",
+          "threshold_set": "T-v1",
+          "calculation_version": "CALC-v0.2"
+        },
+        "note": "no data acquired for this group",
+        "coverage_detail": {
+          "n_qualified": 0,
+          "n_attempted": 0,
+          "n_registry": 109,
+          "coverage": 0.0,
+          "min_coverage": 0.5
+        },
+        "capital_name": "اقتصادی",
+        "confidence": {
+          "level": "ناکافی",
+          "score": 0.0,
+          "reason": "aggregate abstained (no number published)",
+          "n_members": 0
+        }
+      },
+      "G": {
+        "name": "K[G]",
+        "value": null,
+        "status": "WAITING_FOR_DATA",
+        "formula_id": "Kj=Sum(w*Z)/Sum(w)",
+        "inputs": [],
+        "sources": [],
+        "versions": {
+          "data_version": "pilot-D6-2026-09-02",
+          "methodology_version": "algo.txt-2026",
+          "indicator_version": "registry-419-v1",
+          "weight_set": "W-v1",
+          "threshold_set": "T-v1",
+          "calculation_version": "CALC-v0.2"
+        },
+        "note": "no data acquired for this group",
+        "coverage_detail": {
+          "n_qualified": 0,
+          "n_attempted": 0,
+          "n_registry": 70,
+          "coverage": 0.0,
+          "min_coverage": 0.5
+        },
+        "capital_name": "نهادی–حکمرانی",
+        "confidence": {
+          "level": "ناکافی",
+          "score": 0.0,
+          "reason": "aggregate abstained (no number published)",
+          "n_members": 0
+        }
+      },
+      "H": {
+        "name": "K[H]",
+        "value": null,
+        "status": "WAITING_FOR_DATA",
+        "formula_id": "Kj=Sum(w*Z)/Sum(w)",
+        "inputs": [],
+        "sources": [],
+        "versions": {
+          "data_version": "pilot-D6-2026-09-02",
+          "methodology_version": "algo.txt-2026",
+          "indicator_version": "registry-419-v1",
+          "weight_set": "W-v1",
+          "threshold_set": "T-v1",
+          "calculation_version": "CALC-v0.2"
+        },
+        "note": "no data acquired for this group",
+        "coverage_detail": {
+          "n_qualified": 0,
+          "n_attempted": 0,
+          "n_registry": 17,
+          "coverage": 0.0,
+          "min_coverage": 0.5
+        },
+        "capital_name": "انسانی",
+        "confidence": {
+          "level": "ناکافی",
+          "score": 0.0,
+          "reason": "aggregate abstained (no number published)",
+          "n_members": 0
+        }
+      },
+      "N": {
+        "name": "K[N]",
+        "value": null,
+        "status": "INSUFFICIENT_COVERAGE",
+        "formula_id": "Kj=Sum(w*Z)/Sum(w)",
+        "inputs": [],
+        "sources": [],
+        "versions": {
+          "data_version": "pilot-D6-2026-09-02",
+          "methodology_version": "algo.txt-2026",
+          "indicator_version": "registry-419-v1",
+          "weight_set": "W-v1",
+          "threshold_set": "T-v1",
+          "calculation_version": "CALC-v0.2"
+        },
+        "note": "indicators were acquired but none produced a valid standardized score (all PENDING_VALIDATION); no aggregate is published",
+        "coverage_detail": {
+          "n_qualified": 0,
+          "n_attempted": 2,
+          "n_registry": 86,
+          "coverage": 0.0,
+          "min_coverage": 0.5
+        },
+        "capital_name": "طبیعی–محیطی",
+        "confidence": {
+          "level": "ناکافی",
+          "score": 0.0,
+          "reason": "aggregate abstained (no number published)",
+          "n_members": 0
+        }
+      },
+      "P": {
+        "name": "K[P]",
+        "value": null,
+        "status": "INSUFFICIENT_COVERAGE",
+        "formula_id": "Kj=Sum(w*Z)/Sum(w)",
+        "inputs": [],
+        "sources": [],
+        "versions": {
+          "data_version": "pilot-D6-2026-09-02",
+          "methodology_version": "algo.txt-2026",
+          "indicator_version": "registry-419-v1",
+          "weight_set": "W-v1",
+          "threshold_set": "T-v1",
+          "calculation_version": "CALC-v0.2"
+        },
+        "note": "indicators were acquired but none produced a valid standardized score (all PENDING_VALIDATION); no aggregate is published",
+        "coverage_detail": {
+          "n_qualified": 0,
+          "n_attempted": 2,
+          "n_registry": 60,
+          "coverage": 0.0,
+          "min_coverage": 0.5
+        },
+        "capital_name": "کالبدی–زیرساختی",
+        "confidence": {
+          "level": "ناکافی",
+          "score": 0.0,
+          "reason": "aggregate abstained (no number published)",
+          "n_members": 0
+        }
+      },
+      "R": {
+        "name": "K[R]",
+        "value": null,
+        "status": "INSUFFICIENT_COVERAGE",
+        "formula_id": "Kj=Sum(w*Z)/Sum(w)",
+        "inputs": [],
+        "sources": [],
+        "versions": {
+          "data_version": "pilot-D6-2026-09-02",
+          "methodology_version": "algo.txt-2026",
+          "indicator_version": "registry-419-v1",
+          "weight_set": "W-v1",
+          "threshold_set": "T-v1",
+          "calculation_version": "CALC-v0.2"
+        },
+        "note": "indicators were acquired but none produced a valid standardized score (all PENDING_VALIDATION); no aggregate is published",
+        "coverage_detail": {
+          "n_qualified": 0,
+          "n_attempted": 1,
+          "n_registry": 37,
+          "coverage": 0.0,
+          "min_coverage": 0.5
+        },
+        "capital_name": "شبکه‌ای–ارتباطی",
+        "confidence": {
+          "level": "ناکافی",
+          "score": 0.0,
+          "reason": "aggregate abstained (no number published)",
+          "n_members": 0
+        }
+      },
+      "S": {
+        "name": "K[S]",
+        "value": null,
+        "status": "WAITING_FOR_DATA",
+        "formula_id": "Kj=Sum(w*Z)/Sum(w)",
+        "inputs": [],
+        "sources": [],
+        "versions": {
+          "data_version": "pilot-D6-2026-09-02",
+          "methodology_version": "algo.txt-2026",
+          "indicator_version": "registry-419-v1",
+          "weight_set": "W-v1",
+          "threshold_set": "T-v1",
+          "calculation_version": "CALC-v0.2"
+        },
+        "note": "no data acquired for this group",
+        "coverage_detail": {
+          "n_qualified": 0,
+          "n_attempted": 0,
+          "n_registry": 32,
+          "coverage": 0.0,
+          "min_coverage": 0.5
+        },
+        "capital_name": "اجتماعی",
+        "confidence": {
+          "level": "ناکافی",
+          "score": 0.0,
+          "reason": "aggregate abstained (no number published)",
+          "n_members": 0
+        }
+      }
+    },
+    "caueo": {
+      "C": {
+        "name": "stage[C]",
+        "value": null,
+        "status": "WAITING_FOR_DATA",
+        "formula_id": "mean(w*Z) over stage",
+        "inputs": [],
+        "sources": [],
+        "versions": {
+          "data_version": "pilot-D6-2026-09-02",
+          "methodology_version": "algo.txt-2026",
+          "indicator_version": "registry-419-v1",
+          "weight_set": "W-v1",
+          "threshold_set": "T-v1",
+          "calculation_version": "CALC-v0.2"
+        },
+        "note": "no data acquired for this group",
+        "coverage_detail": {
+          "n_qualified": 0,
+          "n_attempted": 0,
+          "n_registry": 146,
+          "coverage": 0.0,
+          "min_coverage": 0.5
+        },
+        "confidence": {
+          "level": "ناکافی",
+          "score": 0.0,
+          "reason": "aggregate abstained (no number published)",
+          "n_members": 0
+        }
+      },
+      "A": {
+        "name": "stage[A]",
+        "value": null,
+        "status": "INSUFFICIENT_COVERAGE",
+        "formula_id": "mean(w*Z) over stage",
+        "inputs": [],
+        "sources": [],
+        "versions": {
+          "data_version": "pilot-D6-2026-09-02",
+          "methodology_version": "algo.txt-2026",
+          "indicator_version": "registry-419-v1",
+          "weight_set": "W-v1",
+          "threshold_set": "T-v1",
+          "calculation_version": "CALC-v0.2"
+        },
+        "note": "indicators were acquired but none produced a valid standardized score (all PENDING_VALIDATION); no aggregate is published",
+        "coverage_detail": {
+          "n_qualified": 0,
+          "n_attempted": 5,
+          "n_registry": 105,
+          "coverage": 0.0,
+          "min_coverage": 0.5
+        },
+        "confidence": {
+          "level": "ناکافی",
+          "score": 0.0,
+          "reason": "aggregate abstained (no number published)",
+          "n_members": 0
+        }
+      },
+      "U": {
+        "name": "stage[U]",
+        "value": null,
+        "status": "WAITING_FOR_DATA",
+        "formula_id": "mean(w*Z) over stage",
+        "inputs": [],
+        "sources": [],
+        "versions": {
+          "data_version": "pilot-D6-2026-09-02",
+          "methodology_version": "algo.txt-2026",
+          "indicator_version": "registry-419-v1",
+          "weight_set": "W-v1",
+          "threshold_set": "T-v1",
+          "calculation_version": "CALC-v0.2"
+        },
+        "note": "no data acquired for this group",
+        "coverage_detail": {
+          "n_qualified": 0,
+          "n_attempted": 0,
+          "n_registry": 61,
+          "coverage": 0.0,
+          "min_coverage": 0.5
+        },
+        "confidence": {
+          "level": "ناکافی",
+          "score": 0.0,
+          "reason": "aggregate abstained (no number published)",
+          "n_members": 0
+        }
+      },
+      "E": {
+        "name": "stage[E]",
+        "value": null,
+        "status": "WAITING_FOR_DATA",
+        "formula_id": "mean(w*Z) over stage",
+        "inputs": [],
+        "sources": [],
+        "versions": {
+          "data_version": "pilot-D6-2026-09-02",
+          "methodology_version": "algo.txt-2026",
+          "indicator_version": "registry-419-v1",
+          "weight_set": "W-v1",
+          "threshold_set": "T-v1",
+          "calculation_version": "CALC-v0.2"
+        },
+        "note": "no data acquired for this group",
+        "coverage_detail": {
+          "n_qualified": 0,
+          "n_attempted": 0,
+          "n_registry": 82,
+          "coverage": 0.0,
+          "min_coverage": 0.5
+        },
+        "confidence": {
+          "level": "ناکافی",
+          "score": 0.0,
+          "reason": "aggregate abstained (no number published)",
+          "n_members": 0
+        }
+      },
+      "O": {
+        "name": "stage[O]",
+        "value": null,
+        "status": "WAITING_FOR_DATA",
+        "formula_id": "mean(w*Z) over stage",
+        "inputs": [],
+        "sources": [],
+        "versions": {
+          "data_version": "pilot-D6-2026-09-02",
+          "methodology_version": "algo.txt-2026",
+          "indicator_version": "registry-419-v1",
+          "weight_set": "W-v1",
+          "threshold_set": "T-v1",
+          "calculation_version": "CALC-v0.2"
+        },
+        "note": "no data acquired for this group",
+        "coverage_detail": {
+          "n_qualified": 0,
+          "n_attempted": 0,
+          "n_registry": 25,
+          "coverage": 0.0,
+          "min_coverage": 0.5
+        },
+        "confidence": {
+          "level": "ناکافی",
+          "score": 0.0,
+          "reason": "aggregate abstained (no number published)",
+          "n_members": 0
+        }
+      }
+    },
+    "qtr": {
+      "K": {
+        "name": "K",
+        "value": null,
+        "status": "WAITING_FOR_DATA",
+        "formula_id": "K=weighted_mean(labelled indicators)",
+        "inputs": [],
+        "sources": [],
+        "versions": {
+          "data_version": "pilot-D6-2026-09-02",
+          "methodology_version": "algo.txt-2026",
+          "indicator_version": "registry-419-v1",
+          "weight_set": "W-v1",
+          "threshold_set": "T-v1",
+          "calculation_version": "CALC-v0.2"
+        },
+        "note": "no data acquired for this group",
+        "coverage_detail": {
+          "n_qualified": 0,
+          "n_attempted": 0,
+          "n_registry": 80,
+          "coverage": 0.0,
+          "min_coverage": 0.5
+        },
+        "confidence": {
+          "level": "ناکافی",
+          "score": 0.0,
+          "reason": "aggregate abstained (no number published)",
+          "n_members": 0
+        }
+      },
+      "Q": {
+        "name": "Q",
+        "value": null,
+        "status": "INSUFFICIENT_COVERAGE",
+        "formula_id": "Q=weighted_mean(labelled indicators)",
+        "inputs": [],
+        "sources": [],
+        "versions": {
+          "data_version": "pilot-D6-2026-09-02",
+          "methodology_version": "algo.txt-2026",
+          "indicator_version": "registry-419-v1",
+          "weight_set": "W-v1",
+          "threshold_set": "T-v1",
+          "calculation_version": "CALC-v0.2"
+        },
+        "note": "indicators were acquired but none produced a valid standardized score (all PENDING_VALIDATION); no aggregate is published",
+        "coverage_detail": {
+          "n_qualified": 0,
+          "n_attempted": 5,
+          "n_registry": 152,
+          "coverage": 0.0,
+          "min_coverage": 0.5
+        },
+        "confidence": {
+          "level": "ناکافی",
+          "score": 0.0,
+          "reason": "aggregate abstained (no number published)",
+          "n_members": 0
+        }
+      },
+      "T": {
+        "name": "T",
+        "value": null,
+        "status": "WAITING_FOR_DATA",
+        "formula_id": "T=weighted_mean(labelled indicators)",
+        "inputs": [],
+        "sources": [],
+        "versions": {
+          "data_version": "pilot-D6-2026-09-02",
+          "methodology_version": "algo.txt-2026",
+          "indicator_version": "registry-419-v1",
+          "weight_set": "W-v1",
+          "threshold_set": "T-v1",
+          "calculation_version": "CALC-v0.2"
+        },
+        "note": "no data acquired for this group",
+        "coverage_detail": {
+          "n_qualified": 0,
+          "n_attempted": 0,
+          "n_registry": 107,
+          "coverage": 0.0,
+          "min_coverage": 0.5
+        },
+        "confidence": {
+          "level": "ناکافی",
+          "score": 0.0,
+          "reason": "aggregate abstained (no number published)",
+          "n_members": 0
+        }
+      },
+      "R": {
+        "name": "R",
+        "value": null,
+        "status": "WAITING_FOR_DATA",
+        "formula_id": "R=weighted_mean(labelled indicators)",
+        "inputs": [],
+        "sources": [],
+        "versions": {
+          "data_version": "pilot-D6-2026-09-02",
+          "methodology_version": "algo.txt-2026",
+          "indicator_version": "registry-419-v1",
+          "weight_set": "W-v1",
+          "threshold_set": "T-v1",
+          "calculation_version": "CALC-v0.2"
+        },
+        "note": "no data acquired for this group",
+        "coverage_detail": {
+          "n_qualified": 0,
+          "n_attempted": 0,
+          "n_registry": 40,
+          "coverage": 0.0,
+          "min_coverage": 0.5
+        },
+        "confidence": {
+          "level": "ناکافی",
+          "score": 0.0,
+          "reason": "aggregate abstained (no number published)",
+          "n_members": 0
+        }
+      }
+    },
+    "equity": {
+      "name": "equity_gap",
+      "value": null,
+      "status": "INSUFFICIENT_COVERAGE",
+      "formula_id": "P_best-P_worst",
+      "inputs": [],
+      "sources": [],
+      "versions": {
+        "data_version": "pilot-D6-2026-09-02",
+        "methodology_version": "algo.txt-2026",
+        "indicator_version": "registry-419-v1",
+        "weight_set": "W-v1",
+        "threshold_set": "T-v1",
+        "calculation_version": "CALC-v0.2"
+      },
+      "note": "no group-disaggregated data in the pilot; no equity verdict (algo.txt §3,§7.4)",
+      "confidence": {
+        "level": "ناکافی",
+        "score": 0.0,
+        "reason": "aggregate abstained (no number published)",
+        "n_members": 0
+      }
+    },
+    "chain_gaps": {
+      "G_CA": {
+        "name": "G_CA=C-A",
+        "value": null,
+        "status": "INSUFFICIENT_COVERAGE",
+        "formula_id": "G_CA=C-A",
+        "inputs": [],
+        "sources": [],
+        "versions": {},
+        "note": "endpoint missing"
+      },
+      "G_AU": {
+        "name": "G_AU=A-U",
+        "value": null,
+        "status": "INSUFFICIENT_COVERAGE",
+        "formula_id": "G_AU=A-U",
+        "inputs": [],
+        "sources": [],
+        "versions": {},
+        "note": "endpoint missing"
+      },
+      "G_UE": {
+        "name": "G_UE=U-E",
+        "value": null,
+        "status": "INSUFFICIENT_COVERAGE",
+        "formula_id": "G_UE=U-E",
+        "inputs": [],
+        "sources": [],
+        "versions": {},
+        "note": "endpoint missing"
+      },
+      "G_EO": {
+        "name": "G_EO=E-O",
+        "value": null,
+        "status": "INSUFFICIENT_COVERAGE",
+        "formula_id": "G_EO=E-O",
+        "inputs": [],
+        "sources": [],
+        "versions": {},
+        "note": "endpoint missing"
+      }
+    },
+    "priority": {
+      "name": "priority",
+      "value": null,
+      "status": "INSUFFICIENT_COVERAGE",
+      "formula_id": "S×P×L×F×E",
+      "inputs": [],
+      "sources": [],
+      "versions": {},
+      "note": "missing factors: ['severity', 'population', 'leverage', 'feasibility', 'equity']"
+    },
+    "bottleneck": {
+      "status": "INSUFFICIENT_COVERAGE",
+      "primary_bottleneck": null,
+      "base_deficiency": {
+        "flagged": false,
+        "reason": "C not observed"
+      },
+      "stage_scores": {
+        "C": {
+          "value": null,
+          "status": "WAITING_FOR_DATA"
+        },
+        "A": {
+          "value": null,
+          "status": "INSUFFICIENT_COVERAGE"
+        },
+        "U": {
+          "value": null,
+          "status": "WAITING_FOR_DATA"
+        },
+        "E": {
+          "value": null,
+          "status": "WAITING_FOR_DATA"
+        },
+        "O": {
+          "value": null,
+          "status": "WAITING_FOR_DATA"
+        }
+      },
+      "chain_gaps": {
+        "G_CA": {
+          "value": null,
+          "status": "INSUFFICIENT_COVERAGE"
+        },
+        "G_AU": {
+          "value": null,
+          "status": "INSUFFICIENT_COVERAGE"
+        },
+        "G_UE": {
+          "value": null,
+          "status": "INSUFFICIENT_COVERAGE"
+        },
+        "G_EO": {
+          "value": null,
+          "status": "INSUFFICIENT_COVERAGE"
+        }
+      },
+      "gap_ranking": [],
+      "decomposition": {
+        "capital": {
+          "available": false,
+          "note": "no observed stage data"
+        },
+        "chain_stage": {
+          "available": false,
+          "note": "no observed stage data"
+        },
+        "location": {
+          "available": false,
+          "note": "no observed stage data"
+        },
+        "group": {
+          "available": false,
+          "note": "no observed stage data"
+        },
+        "time": {
+          "available": false,
+          "note": "no observed stage data"
+        }
+      },
+      "needed_data": [
+        "حداقل یک مرحله C-A-U-E-O با نمرهٔ استانداردشدهٔ معتبر (اکنون همه PENDING_VALIDATION/بدون‌داده)",
+        "کالیبراسیون L/U و وزن‌ها برای تولید نمرهٔ ۰–۱۰۰",
+        "دادهٔ مراحل U/E/O (پیمایشی/رفتاری) که برای پایلوت اصلاً برداشت نشده",
+        "تفکیک مکانی/گروهی/زمانی برای مکان‌یابی گلوگاه در ۵ بُعد"
+      ],
+      "note": "گلوگاه قابل‌تعیین نیست؛ شواهد کافی برای تشخیص وجود ندارد (هیچ مرحله‌ای نمرهٔ معتبر ندارد).",
+      "ai_independent": true,
+      "confidence": {
+        "level": "ناکافی",
+        "reason": "C-A-U-E-O abstained"
+      }
+    }
+  },
+  "reproducibility_key": {
+    "data_version": "pilot-D6-2026-09-02",
+    "methodology_version": "algo.txt-2026",
+    "indicator_version": "registry-419-v1",
+    "weight_set": "W-v1",
+    "threshold_set": "T-v1",
+    "calculation_version": "CALC-v0.2"
+  },
+  "fingerprint": "sha256:efa6a5e96f8885e5f2fe76daf60940e8b6fe73becc48bf89a36f9f6465970e2b"
+}

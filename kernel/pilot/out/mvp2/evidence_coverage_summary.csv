@@ -1,0 +1,8 @@
+﻿indicator_code,operationalization,raw_status,standardized_status,is_proxy,evidence_stream,confidence_level,confidence_score
+PHY-003,count_within_boundary,PROXY,PENDING_VALIDATION,True,gis,محدود,0.6511
+PHY-001,count_within_boundary,PROXY,PENDING_VALIDATION,True,gis,محدود,0.6511
+PHY-002,count_within_boundary,PROXY,PENDING_VALIDATION,True,gis,محدود,0.6511
+PHY-003,distance(euclidean_proxy_for_network),PROXY,PENDING_VALIDATION,True,gis,محدود,0.6511
+PHY-001,distance(euclidean_proxy_for_network),PROXY,PENDING_VALIDATION,True,gis,محدود,0.6511
+ONL-011,nearest_epicenter_distance,PROXY,PENDING_VALIDATION,True,objective,محدود,0.6354
+ONL-001,dem_zonal_mean,ACCESS_REQUIRED,ACCESS_REQUIRED,False,,ناکافی,0.46

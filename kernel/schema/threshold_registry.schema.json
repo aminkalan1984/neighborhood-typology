@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ThresholdRegistry",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "calibrated": {
+      "type": "boolean"
+    },
+    "status": {
+      "enum": [
+        "OBSERVED",
+        "MISSING",
+        "NOT_APPLICABLE",
+        "INVALID",
+        "ESTIMATED",
+        "PROXY",
+        "INSUFFICIENT_COVERAGE",
+        "WAITING_FOR_DATA",
+        "SOURCE_UNAVAILABLE",
+        "ACCESS_REQUIRED",
+        "PENDING_VALIDATION"
+      ]
+    },
+    "provenance": {
+      "type": "string"
+    },
+    "status_bands": {
+      "type": "array"
+    },
+    "audit_trail": {
+      "type": "array"
+    },
+    "indicator_LU": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "version",
+    "calibrated",
+    "status",
+    "provenance",
+    "status_bands"
+  ]
+}

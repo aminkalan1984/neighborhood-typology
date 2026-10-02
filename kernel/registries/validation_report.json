@@ -1,0 +1,76 @@
+{
+  "generated": "2026-09-01T23:38:15.577214+00:00",
+  "structural_gate": "PASS",
+  "counts": {
+    "registry_419": 419,
+    "core_40": 40,
+    "online_83": 83,
+    "procedures_25": 25,
+    "questionnaire_15": 15,
+    "sources_23": 23
+  },
+  "register_saht_split": {
+    "PHY": 177,
+    "BEH": 209,
+    "NOR": 33
+  },
+  "total_nonempty_cells": 21707,
+  "nonempty_reconciles": true,
+  "duplicate_codes": 0,
+  "layers_physically_separate": [
+    "registry_419.json",
+    "core_40.json",
+    "online_83.json"
+  ],
+  "schema_validation": "100% (each layer validates against its JSON Schema; code field required, all fields typed)",
+  "std_formula_provenance": {
+    "positive": "VERBATIM atlas رجیستر_419 col روش استانداردسازی = 100×clip((x−L)/(U−L),0,1) [341]; prose in algo.txt §5.1",
+    "inverse": "VERBATIM atlas col روش استانداردسازی = 100×clip((U−x)/(U−L),0,1) [58]; prose in algo.txt §5.1",
+    "threshold": "atlas: تابع قطعه‌ای فاصله از دامنه مطلوب؛ L/U پس از کالیبراسیون [20]",
+    "capital_score_Kj": "reconstruction consistent with algo.txt §5.2 (میانگین وزنی، وزن‌های برابر v1)",
+    "chain_gaps": "reconstruction consistent with algo.txt §7.1 (G_CA,G_AU,G_UE,G_EO)",
+    "equity_gap": "consistent with algo.txt §7.4/§11 (بهترین گروه − محروم‌ترین گروه)",
+    "priority": "algo.txt §9.3 lists 5 factors; multiplicative form = user-asserted/standard operational"
+  },
+  "weights_thresholds": {
+    "weight_version": "W-v1",
+    "threshold_version": "T-v1",
+    "calibrated": false,
+    "status": "PENDING_VALIDATION"
+  },
+  "engine": {
+    "formula_tests": "18/18 PASS",
+    "no_data_run": "419->WAITING_FOR_DATA, 0 numbers, QTR INSUFFICIENT_COVERAGE",
+    "missing_never_zero": true,
+    "qtr_separate": true
+  },
+  "min_nonfield_set": {
+    "total": 251,
+    "tiers": {
+      "Tier-2": 153,
+      "Tier-3": 91,
+      "Tier-1": 7
+    },
+    "online_operational_layer": 83,
+    "transparent_proxy": 11
+  },
+  "source_inventory_availability": {
+    "ONLINE_AVAILABLE": 96,
+    "ACCESS_REQUIRED": 10
+  },
+  "artifact_sha256": {
+    "core_40.json": "f63ffaac769b6d1007cb778771e1e0bb12eb9568b5944756fcab7e4405ec9243",
+    "data_dictionary.json": "c5160c3eb8fa452c8179c351abb8fa789bff58809955453ec9ff599adf3d54a2",
+    "min_nonfield_indicator_set.csv": "bd61e76ad4d88c9962b7fff664bf38b483d2117bdee9809ffd0cef7125067cbc",
+    "min_nonfield_indicator_set.json": "2bba8f10221a0af44abd5c59999ff35bee80b95fbc6973f4f18a449e8c29c605",
+    "online_83.json": "2668b8b2704826cf4bbb47387d4e74631dfcc17ebbd0efae49d753c3680c4195",
+    "procedures_25.json": "e96c1da531283c6f4463a2d0081eb9c014d4da10101c3b57b61086c46e660cbe",
+    "questionnaire_15.json": "e54280354c14c70944ccc0129e5cf08ddcd2f9ea71bdf31223c26109071b895b",
+    "registry_419.json": "972c0a0eb8788892965ca1afe270d6db563aa270349453fe539c5bcb284efd27",
+    "source_inventory.csv": "357804357262a6dd05180b441e8f9cbde44216269fcb4b0375fff367d4819474",
+    "source_inventory.json": "1f3c8a6fcf4a64518229c7f9081f2b6130375941278e8279694c6db6f97f9a45",
+    "sources_23.json": "b5d365ff6c144855fb01212499a4a2841805219c10b4e4c76533c15c9c9a2725",
+    "threshold_registry_v1.json": "9b5d648310dd6cdfede0aacb7318441a22cb805187e5c46994f31353c7583a3f",
+    "weight_registry_v1.json": "b7ede0a86f770c45170778987e8fd15f9e986215d34f5363e6a1cc5b417e8fc3"
+  }
+}

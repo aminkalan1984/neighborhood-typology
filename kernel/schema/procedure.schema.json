@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ExtractionProcedure(25)",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "کد": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "خانواده منبع/رویه": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "وضعیت دسترسی": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "نشانی‌ها": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "فیلدهای لازم": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "گام‌های عملی": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "محدودیت و کنترل": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "کد"
+  ]
+}

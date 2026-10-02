@@ -1,0 +1,4 @@
+{
+  "tests_passed": true,
+  "stdout_tail": "PASS positive x=50 -> 50\nPASS positive clip high -> 100\nPASS positive clip low -> 0\nPASS inverse PHY-014 x=30 -> 70\nPASS missing -> MISSING not 0\nPASS threshold PHY-017 -> PENDING_VALIDATION\nPASS Kj mean(80,40)=60 coverage2/3\nPASS coverage 25% -> INSUFFICIENT_COVERAGE\nPASS QTR 4 separate keys\nPASS G_AU=75-42=33\nPASS gap missing endpoint refuses\nPASS equity 1 group refuses\nPASS equity gap=39\nPASS priority 3*4*5*0.5*2=60\nPASS priority missing factor refuses\nPASS band 35->بحرانی\nPASS band 80->خوب\nPASS Measurement guard blocks MISSING+number\n\nTESTS: 18/18 passed\n"
+}

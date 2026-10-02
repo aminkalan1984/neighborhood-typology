@@ -1,0 +1,39 @@
+{
+  "data_coverage": {
+    "total_registry_indicators": 419,
+    "distinct_indicators_with_real_data": 4,
+    "distinct_codes": [
+      "ONL-011",
+      "PHY-001",
+      "PHY-002",
+      "PHY-003"
+    ],
+    "measurements_acquired": 6,
+    "access_required": 1,
+    "pct_indicators_with_real_data": 0.95,
+    "indicators_with_valid_standardized_score": 0,
+    "pct_with_valid_standardized_score": 0.0,
+    "multi_source_values": 0,
+    "stale_values": 0,
+    "note": "پوشش داده معادل کیفیت نیست. هیچ نمرهٔ استانداردشدهٔ معتبری تولید نشد (همه PENDING_VALIDATION به‌دلیل عدم‌تطابق واحد و L/U کالیبره‌نشده)."
+  },
+  "evidence_coverage": {
+    "values_assessed": 7,
+    "level_counts": {
+      "محدود": 6,
+      "ناکافی": 1
+    },
+    "proxy_values": 6,
+    "multi_stream_values": 0,
+    "streams_present": [
+      "gis",
+      "objective"
+    ],
+    "streams_missing_for_full_Q": [
+      "behavioral (U/E)",
+      "perceptual (E survey)",
+      "objective outcome (O)"
+    ],
+    "note": "چهار جریان شاهد جدا نگه داشته شده‌اند؛ در پایلوت فقط GIS و عینی حاضرند."
+  }
+}

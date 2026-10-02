@@ -1,0 +1,24 @@
+[
+  {
+    "action": "add_version",
+    "neighborhood_id": "TEST-N",
+    "version_id": "v1",
+    "at": "2026-09-13T13:56:17.437406+00:00",
+    "tier": "auxiliary_proxy",
+    "is_official": false,
+    "is_proxy": true,
+    "geometry_hash": "sha256:3498d02ea6376c6508f5f9fc582f777dc4926e45fc1fe92099bbbb477f5345a0",
+    "provenance_ref": "VAL-BOUNDARY-TEST"
+  },
+  {
+    "action": "add_version",
+    "neighborhood_id": "TEST-N",
+    "version_id": "v2",
+    "at": "2026-09-13T13:56:17.455312+00:00",
+    "tier": "auxiliary_proxy",
+    "is_official": false,
+    "is_proxy": true,
+    "geometry_hash": "sha256:3498d02ea6376c6508f5f9fc582f777dc4926e45fc1fe92099bbbb477f5345a0",
+    "provenance_ref": "VAL-BOUNDARY-TEST-2"
+  }
+]

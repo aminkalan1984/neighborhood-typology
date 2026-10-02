@@ -1,0 +1,792 @@
+{
+  "neighborhood": {
+    "id": "IR-THR-D6",
+    "name_fa": "منطقه ۶ شهر تهران",
+    "name_en": "Tehran District 6",
+    "osm_relation": 6729037,
+    "boundary_version": "v1",
+    "boundary_area_km2": 21.403,
+    "metric_crs": "EPSG:32639",
+    "is_proxy": true,
+    "boundary_hash": "sha256:c09b482466e6ab38f914cbf4536b7403683e09d2ebfc22b4c8e57fdb3e239b43"
+  },
+  "records": [
+    {
+      "dataset_id": "OSM Overpass area 3606729037",
+      "indicator_code": "PHY-003",
+      "measurement": {
+        "indicator_code": "PHY-003",
+        "value": 115.0,
+        "status": "PROXY",
+        "is_proxy": true,
+        "missing_reason": null,
+        "spatial_scale": "district(admin_level=9)",
+        "downscaling_caveat": "count is supply-proxy, not per-resident access; OSM completeness varies",
+        "evidence_stream": [
+          "gis"
+        ],
+        "group": null
+      },
+      "provenance_value_id": "VAL-00002",
+      "quality_score": {
+        "score": 0.8571,
+        "coverage": 1.0,
+        "is_valid": true,
+        "blocking_failures": [],
+        "n_checks": 7
+      },
+      "unmapped_columns": [],
+      "approval_status": "PENDING_APPROVAL",
+      "approval_note": "manual approval required (proxy/low-quality/sensitive)",
+      "quality_checks": [
+        {
+          "check": "type_validation",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "type number ok",
+          "findings": {
+            "expected": "number"
+          }
+        },
+        {
+          "check": "null_missing_analysis",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "observed=115 missing=0 (missing kept separate, never zero)",
+          "findings": {
+            "field": "lon",
+            "observed": 115,
+            "missing": 0,
+            "total": 115,
+            "coverage": 1.0
+          }
+        },
+        {
+          "check": "duplicate_detection",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "0 duplicate rows on ['lon']",
+          "findings": {
+            "duplicate_count": 0,
+            "duplicates": []
+          }
+        },
+        {
+          "check": "unit_validation",
+          "status": "WARN",
+          "blocking": false,
+          "detail": "registry unit unknown; cannot verify",
+          "findings": {
+            "declared": "count",
+            "registry": null
+          }
+        },
+        {
+          "check": "date_validation",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "date parses and is plausible",
+          "findings": {
+            "value": "2026-09-02T00:49:02.129088+00:00",
+            "year": 2026
+          }
+        },
+        {
+          "check": "range_validation",
+          "status": "WARN",
+          "blocking": false,
+          "detail": "L/U uncalibrated (lu_status=OBSERVED_RANGE_UNCALIBRATED); standardized verdict deferred",
+          "findings": {
+            "value": 115,
+            "L": 0.0,
+            "U": 100.0,
+            "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+            "verdict": "PENDING_VALIDATION"
+          }
+        },
+        {
+          "check": "outlier_detection",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "0 IQR outliers flagged (not removed)",
+          "findings": {
+            "q1": 51.3943683,
+            "q3": 51.4108959,
+            "iqr": 0.016527600000003417,
+            "fence": [
+              51.36957689999999,
+              51.435687300000005
+            ],
+            "outlier_count": 0,
+            "outliers": []
+          }
+        }
+      ],
+      "standardization_attempt": {
+        "eligible": false,
+        "standardized": {
+          "indicator_code": "PHY-003",
+          "value": null,
+          "status": "PENDING_VALIDATION",
+          "reason": "L/U uncalibrated (lu_status=OBSERVED_RANGE_UNCALIBRATED); unit mismatch: input 'count' != registry 0–100 scale"
+        }
+      },
+      "operationalization": "count_within_boundary"
+    },
+    {
+      "dataset_id": "OSM Overpass area 3606729037",
+      "indicator_code": "PHY-001",
+      "measurement": {
+        "indicator_code": "PHY-001",
+        "value": 68.0,
+        "status": "PROXY",
+        "is_proxy": true,
+        "missing_reason": null,
+        "spatial_scale": "district(admin_level=9)",
+        "downscaling_caveat": "count is supply-proxy; OSM school tagging incomplete",
+        "evidence_stream": [
+          "gis"
+        ],
+        "group": null
+      },
+      "provenance_value_id": "VAL-00003",
+      "quality_score": {
+        "score": 0.8571,
+        "coverage": 1.0,
+        "is_valid": true,
+        "blocking_failures": [],
+        "n_checks": 7
+      },
+      "unmapped_columns": [],
+      "approval_status": "PENDING_APPROVAL",
+      "approval_note": "manual approval required (proxy/low-quality/sensitive)",
+      "quality_checks": [
+        {
+          "check": "type_validation",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "type number ok",
+          "findings": {
+            "expected": "number"
+          }
+        },
+        {
+          "check": "null_missing_analysis",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "observed=68 missing=0 (missing kept separate, never zero)",
+          "findings": {
+            "field": "lon",
+            "observed": 68,
+            "missing": 0,
+            "total": 68,
+            "coverage": 1.0
+          }
+        },
+        {
+          "check": "duplicate_detection",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "0 duplicate rows on ['lon']",
+          "findings": {
+            "duplicate_count": 0,
+            "duplicates": []
+          }
+        },
+        {
+          "check": "unit_validation",
+          "status": "WARN",
+          "blocking": false,
+          "detail": "registry unit unknown; cannot verify",
+          "findings": {
+            "declared": "count",
+            "registry": null
+          }
+        },
+        {
+          "check": "date_validation",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "date parses and is plausible",
+          "findings": {
+            "value": "2026-09-02T00:49:02.129088+00:00",
+            "year": 2026
+          }
+        },
+        {
+          "check": "range_validation",
+          "status": "WARN",
+          "blocking": false,
+          "detail": "L/U uncalibrated (lu_status=OBSERVED_RANGE_UNCALIBRATED); standardized verdict deferred",
+          "findings": {
+            "value": 68,
+            "L": 0.0,
+            "U": 100.0,
+            "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+            "verdict": "PENDING_VALIDATION"
+          }
+        },
+        {
+          "check": "outlier_detection",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "0 IQR outliers flagged (not removed)",
+          "findings": {
+            "q1": 51.395984575,
+            "q3": 51.41052545,
+            "iqr": 0.014540875000001563,
+            "fence": [
+              51.374173262499994,
+              51.4323367625
+            ],
+            "outlier_count": 0,
+            "outliers": []
+          }
+        }
+      ],
+      "standardization_attempt": {
+        "eligible": false,
+        "standardized": {
+          "indicator_code": "PHY-001",
+          "value": null,
+          "status": "PENDING_VALIDATION",
+          "reason": "L/U uncalibrated (lu_status=OBSERVED_RANGE_UNCALIBRATED); unit mismatch: input 'count' != registry 0–100 scale"
+        }
+      },
+      "operationalization": "count_within_boundary"
+    },
+    {
+      "dataset_id": "OSM Overpass area 3606729037",
+      "indicator_code": "PHY-002",
+      "measurement": {
+        "indicator_code": "PHY-002",
+        "value": 259.0,
+        "status": "PROXY",
+        "is_proxy": true,
+        "missing_reason": null,
+        "spatial_scale": "district(admin_level=9)",
+        "downscaling_caveat": "bus_stop count is supply-proxy for transit access",
+        "evidence_stream": [
+          "gis"
+        ],
+        "group": null
+      },
+      "provenance_value_id": "VAL-00004",
+      "quality_score": {
+        "score": 0.8571,
+        "coverage": 1.0,
+        "is_valid": true,
+        "blocking_failures": [],
+        "n_checks": 7
+      },
+      "unmapped_columns": [],
+      "approval_status": "PENDING_APPROVAL",
+      "approval_note": "manual approval required (proxy/low-quality/sensitive)",
+      "quality_checks": [
+        {
+          "check": "type_validation",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "type number ok",
+          "findings": {
+            "expected": "number"
+          }
+        },
+        {
+          "check": "null_missing_analysis",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "observed=259 missing=0 (missing kept separate, never zero)",
+          "findings": {
+            "field": "lon",
+            "observed": 259,
+            "missing": 0,
+            "total": 259,
+            "coverage": 1.0
+          }
+        },
+        {
+          "check": "duplicate_detection",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "0 duplicate rows on ['lon']",
+          "findings": {
+            "duplicate_count": 0,
+            "duplicates": []
+          }
+        },
+        {
+          "check": "unit_validation",
+          "status": "WARN",
+          "blocking": false,
+          "detail": "registry unit unknown; cannot verify",
+          "findings": {
+            "declared": "count",
+            "registry": null
+          }
+        },
+        {
+          "check": "date_validation",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "date parses and is plausible",
+          "findings": {
+            "value": "2026-09-02T00:49:02.129088+00:00",
+            "year": 2026
+          }
+        },
+        {
+          "check": "range_validation",
+          "status": "WARN",
+          "blocking": false,
+          "detail": "L/U uncalibrated (lu_status=OBSERVED_RANGE_UNCALIBRATED); standardized verdict deferred",
+          "findings": {
+            "value": 259,
+            "L": 0.0,
+            "U": 100.0,
+            "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+            "verdict": "PENDING_VALIDATION"
+          }
+        },
+        {
+          "check": "outlier_detection",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "0 IQR outliers flagged (not removed)",
+          "findings": {
+            "q1": 51.393176,
+            "q3": 51.41500415,
+            "iqr": 0.021828150000004598,
+            "fence": [
+              51.36043377499999,
+              51.44774637500001
+            ],
+            "outlier_count": 0,
+            "outliers": []
+          }
+        }
+      ],
+      "standardization_attempt": {
+        "eligible": false,
+        "standardized": {
+          "indicator_code": "PHY-002",
+          "value": null,
+          "status": "PENDING_VALIDATION",
+          "reason": "L/U uncalibrated (lu_status=OBSERVED_RANGE_UNCALIBRATED); unit mismatch: input 'count' != registry 0–100 scale"
+        }
+      },
+      "operationalization": "count_within_boundary"
+    },
+    {
+      "dataset_id": "OSM Overpass area 3606729037",
+      "indicator_code": "PHY-003",
+      "measurement": {
+        "indicator_code": "PHY-003",
+        "value": 114.28,
+        "status": "PROXY",
+        "is_proxy": true,
+        "missing_reason": null,
+        "spatial_scale": "from district centroid",
+        "downscaling_caveat": "Euclidean straight-line used as an EXPLICIT proxy for network distance; underestimates real travel distance.",
+        "evidence_stream": [
+          "gis"
+        ],
+        "group": null
+      },
+      "provenance_value_id": "VAL-00005",
+      "quality_score": {
+        "score": 0.8571,
+        "coverage": 1.0,
+        "is_valid": true,
+        "blocking_failures": [],
+        "n_checks": 7
+      },
+      "unmapped_columns": [],
+      "approval_status": "PENDING_APPROVAL",
+      "approval_note": "manual approval required (proxy/low-quality/sensitive)",
+      "quality_checks": [
+        {
+          "check": "type_validation",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "type number ok",
+          "findings": {
+            "expected": "number"
+          }
+        },
+        {
+          "check": "null_missing_analysis",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "observed=115 missing=0 (missing kept separate, never zero)",
+          "findings": {
+            "field": "lon",
+            "observed": 115,
+            "missing": 0,
+            "total": 115,
+            "coverage": 1.0
+          }
+        },
+        {
+          "check": "duplicate_detection",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "0 duplicate rows on ['lon']",
+          "findings": {
+            "duplicate_count": 0,
+            "duplicates": []
+          }
+        },
+        {
+          "check": "unit_validation",
+          "status": "WARN",
+          "blocking": false,
+          "detail": "registry unit unknown; cannot verify",
+          "findings": {
+            "declared": "meter",
+            "registry": null
+          }
+        },
+        {
+          "check": "date_validation",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "date parses and is plausible",
+          "findings": {
+            "value": "2026-09-02T00:49:02.129088+00:00",
+            "year": 2026
+          }
+        },
+        {
+          "check": "range_validation",
+          "status": "WARN",
+          "blocking": false,
+          "detail": "L/U uncalibrated (lu_status=OBSERVED_RANGE_UNCALIBRATED); standardized verdict deferred",
+          "findings": {
+            "value": 114.28,
+            "L": 0.0,
+            "U": 100.0,
+            "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+            "verdict": "PENDING_VALIDATION"
+          }
+        },
+        {
+          "check": "outlier_detection",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "0 IQR outliers flagged (not removed)",
+          "findings": {
+            "q1": 51.3943683,
+            "q3": 51.4108959,
+            "iqr": 0.016527600000003417,
+            "fence": [
+              51.36957689999999,
+              51.435687300000005
+            ],
+            "outlier_count": 0,
+            "outliers": []
+          }
+        }
+      ],
+      "standardization_attempt": {
+        "eligible": false,
+        "standardized": {
+          "indicator_code": "PHY-003",
+          "value": null,
+          "status": "PENDING_VALIDATION",
+          "reason": "L/U uncalibrated (lu_status=OBSERVED_RANGE_UNCALIBRATED); unit mismatch: input 'meter' != registry 0–100 scale; direction ambiguity: PHY-003 raw distance implies inverse but registry جهت='مستقیم (بیشتر=بهتر)'; direction unconfirmed"
+        }
+      },
+      "operationalization": "distance(euclidean_proxy_for_network)"
+    },
+    {
+      "dataset_id": "OSM Overpass area 3606729037",
+      "indicator_code": "PHY-001",
+      "measurement": {
+        "indicator_code": "PHY-001",
+        "value": 253.28,
+        "status": "PROXY",
+        "is_proxy": true,
+        "missing_reason": null,
+        "spatial_scale": "from district centroid",
+        "downscaling_caveat": "Euclidean straight-line used as an EXPLICIT proxy for network distance; underestimates real travel distance.",
+        "evidence_stream": [
+          "gis"
+        ],
+        "group": null
+      },
+      "provenance_value_id": "VAL-00006",
+      "quality_score": {
+        "score": 0.8571,
+        "coverage": 1.0,
+        "is_valid": true,
+        "blocking_failures": [],
+        "n_checks": 7
+      },
+      "unmapped_columns": [],
+      "approval_status": "PENDING_APPROVAL",
+      "approval_note": "manual approval required (proxy/low-quality/sensitive)",
+      "quality_checks": [
+        {
+          "check": "type_validation",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "type number ok",
+          "findings": {
+            "expected": "number"
+          }
+        },
+        {
+          "check": "null_missing_analysis",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "observed=68 missing=0 (missing kept separate, never zero)",
+          "findings": {
+            "field": "lon",
+            "observed": 68,
+            "missing": 0,
+            "total": 68,
+            "coverage": 1.0
+          }
+        },
+        {
+          "check": "duplicate_detection",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "0 duplicate rows on ['lon']",
+          "findings": {
+            "duplicate_count": 0,
+            "duplicates": []
+          }
+        },
+        {
+          "check": "unit_validation",
+          "status": "WARN",
+          "blocking": false,
+          "detail": "registry unit unknown; cannot verify",
+          "findings": {
+            "declared": "meter",
+            "registry": null
+          }
+        },
+        {
+          "check": "date_validation",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "date parses and is plausible",
+          "findings": {
+            "value": "2026-09-02T00:49:02.129088+00:00",
+            "year": 2026
+          }
+        },
+        {
+          "check": "range_validation",
+          "status": "WARN",
+          "blocking": false,
+          "detail": "L/U uncalibrated (lu_status=OBSERVED_RANGE_UNCALIBRATED); standardized verdict deferred",
+          "findings": {
+            "value": 253.28,
+            "L": 0.0,
+            "U": 100.0,
+            "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+            "verdict": "PENDING_VALIDATION"
+          }
+        },
+        {
+          "check": "outlier_detection",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "0 IQR outliers flagged (not removed)",
+          "findings": {
+            "q1": 51.395984575,
+            "q3": 51.41052545,
+            "iqr": 0.014540875000001563,
+            "fence": [
+              51.374173262499994,
+              51.4323367625
+            ],
+            "outlier_count": 0,
+            "outliers": []
+          }
+        }
+      ],
+      "standardization_attempt": {
+        "eligible": false,
+        "standardized": {
+          "indicator_code": "PHY-001",
+          "value": null,
+          "status": "PENDING_VALIDATION",
+          "reason": "L/U uncalibrated (lu_status=OBSERVED_RANGE_UNCALIBRATED); unit mismatch: input 'meter' != registry 0–100 scale; direction ambiguity: PHY-001 raw distance implies inverse but registry جهت='مستقیم (بیشتر=بهتر)'; direction unconfirmed"
+        }
+      },
+      "operationalization": "distance(euclidean_proxy_for_network)"
+    },
+    {
+      "dataset_id": "ComCat",
+      "indicator_code": "ONL-011",
+      "measurement": {
+        "indicator_code": "ONL-011",
+        "value": 40.703,
+        "status": "PROXY",
+        "is_proxy": true,
+        "missing_reason": null,
+        "spatial_scale": "region ~±0.8° of centroid",
+        "downscaling_caveat": "proxy seismic-exposure; NOT a hazard verdict (GEM PSHA=ACCESS_REQUIRED)",
+        "evidence_stream": [
+          "objective"
+        ],
+        "group": null
+      },
+      "provenance_value_id": "VAL-00007",
+      "quality_score": {
+        "score": 0.7857,
+        "coverage": 1.0,
+        "is_valid": true,
+        "blocking_failures": [],
+        "n_checks": 7
+      },
+      "unmapped_columns": [],
+      "approval_status": "PENDING_APPROVAL",
+      "approval_note": "manual approval required (proxy/low-quality/sensitive)",
+      "quality_checks": [
+        {
+          "check": "type_validation",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "type number ok",
+          "findings": {
+            "expected": "number"
+          }
+        },
+        {
+          "check": "null_missing_analysis",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "observed=1 missing=0 (missing kept separate, never zero)",
+          "findings": {
+            "field": "km",
+            "observed": 1,
+            "missing": 0,
+            "total": 1,
+            "coverage": 1.0
+          }
+        },
+        {
+          "check": "duplicate_detection",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "0 duplicate rows on ['km']",
+          "findings": {
+            "duplicate_count": 0,
+            "duplicates": []
+          }
+        },
+        {
+          "check": "unit_validation",
+          "status": "WARN",
+          "blocking": false,
+          "detail": "registry unit unknown; cannot verify",
+          "findings": {
+            "declared": "km",
+            "registry": null
+          }
+        },
+        {
+          "check": "date_validation",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "date parses and is plausible",
+          "findings": {
+            "value": "2026-09-02T00:49:38.673393+00:00",
+            "year": 2026
+          }
+        },
+        {
+          "check": "range_validation",
+          "status": "WARN",
+          "blocking": false,
+          "detail": "no registry L/U for indicator -> range cannot be verified",
+          "findings": {
+            "value": 40.703,
+            "lu": null,
+            "verdict": "PENDING_VALIDATION"
+          }
+        },
+        {
+          "check": "outlier_detection",
+          "status": "WARN",
+          "blocking": false,
+          "detail": "too few numeric values for IQR",
+          "findings": {
+            "n": 1
+          }
+        }
+      ],
+      "standardization_attempt": {
+        "eligible": false,
+        "standardized": {
+          "indicator_code": "ONL-011",
+          "value": null,
+          "status": "N/A_online_measure",
+          "reason": "ONL online measure: raw OBSERVED, not standardized to 0–100 in MVP-1"
+        }
+      },
+      "operationalization": "nearest_epicenter_distance"
+    },
+    {
+      "dataset_id": "COP30",
+      "indicator_code": "ONL-001",
+      "measurement": {
+        "indicator_code": "ONL-001",
+        "value": null,
+        "status": "ACCESS_REQUIRED",
+        "is_proxy": false,
+        "missing_reason": "OpenTopography COP30 requires API key (HTTP 401); no number produced",
+        "spatial_scale": null,
+        "downscaling_caveat": null,
+        "evidence_stream": [],
+        "group": null
+      },
+      "provenance_value_id": "VAL-DEM-D6",
+      "quality_score": {
+        "is_valid": false,
+        "note": "source access required"
+      },
+      "approval_status": "BLOCKED_ACCESS_REQUIRED",
+      "operationalization": "dem_zonal_mean",
+      "standardization_attempt": {
+        "eligible": false
+      }
+    }
+  ],
+  "qtr_guardrail": {
+    "K": {
+      "value": null,
+      "status": "WAITING_FOR_DATA",
+      "note": ""
+    },
+    "Q": {
+      "value": null,
+      "status": "WAITING_FOR_DATA",
+      "note": ""
+    },
+    "T": {
+      "value": null,
+      "status": "WAITING_FOR_DATA",
+      "note": ""
+    },
+    "R": {
+      "value": null,
+      "status": "WAITING_FOR_DATA",
+      "note": ""
+    }
+  },
+  "reproducibility_key": {
+    "data_version": "pilot-D6-2026-09-02",
+    "methodology_version": "algo.txt-2026",
+    "indicator_version": "registry-419-v1",
+    "weight_set": "W-v1",
+    "threshold_set": "T-v1",
+    "calculation_version": "CALC-v0.1"
+  }
+}

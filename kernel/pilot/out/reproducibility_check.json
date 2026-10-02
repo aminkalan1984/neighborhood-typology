@@ -1,0 +1,13 @@
+{
+  "fingerprint_run1": "sha256:62e670ae94ac491b9c8ffc91bde99db33abf2d3702e91621c96360c1524d9690",
+  "fingerprint_run2": "sha256:62e670ae94ac491b9c8ffc91bde99db33abf2d3702e91621c96360c1524d9690",
+  "identical": true,
+  "reproducibility_key": {
+    "data_version": "pilot-D6-2026-09-02",
+    "methodology_version": "algo.txt-2026",
+    "indicator_version": "registry-419-v1",
+    "weight_set": "W-v1",
+    "threshold_set": "T-v1",
+    "calculation_version": "CALC-v0.1"
+  }
+}

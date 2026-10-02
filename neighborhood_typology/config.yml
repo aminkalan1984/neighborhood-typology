@@ -1,0 +1,27 @@
+version: "1.0"
+scoring:
+  scale_min: 1.0
+  scale_max: 5.0
+  low_anchor_upper_exclusive: 2.0
+  high_anchor_lower_inclusive: 4.0
+  minimum_domain_weight_coverage: 0.70
+  minimum_driver_weight_coverage: 0.50
+  minimum_bootstrap_label_stability: 0.80
+  maximum_reference_year_gap: 2
+  allow_imputation_in_certified_result: false
+privacy:
+  minimum_publishable_cell_count: 10
+  remove_direct_identifiers: true
+  store_sensitive_coordinates: false
+reference_cohort:
+  required: true
+  match_fields: [settlement_type, province, population_band, climate_zone]
+aggregation:
+  within_domain: weighted_arithmetic_mean
+  across_domains: geometric_mean
+  equal_domain_weight_for_SI: true
+quality:
+  boundary_confidence_minimum: 0.90
+  raster_valid_pixel_share_minimum: 0.80
+  survey_response_rate_minimum: 0.60
+  field_double_rating_share: 0.10

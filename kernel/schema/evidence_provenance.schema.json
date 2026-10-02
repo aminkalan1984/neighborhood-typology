@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EvidenceProvenance",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "indicator_code": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "producer": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "dataset_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "access_method": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "spatial_resolution": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "temporal_coverage": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "capture_date": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "qc_status": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reliability_confidence": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "stream": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "objective",
+          "gis",
+          "behavioral",
+          "perceptual"
+        ]
+      }
+    }
+  },
+  "required": [
+    "indicator_code",
+    "source"
+  ]
+}

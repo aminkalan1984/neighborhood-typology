@@ -1,0 +1,43 @@
+{
+  "value_id": "VAL-BOUNDARY-D6",
+  "indicator_code": null,
+  "formula_id": "boundary_area(metric_crs)",
+  "resulting_value": 21.403,
+  "unit": "km2",
+  "source_id": "SRC-0001",
+  "source_name": "OpenStreetMap (Nominatim/Overpass, R6729037)",
+  "provider": "OpenStreetMap contributors",
+  "dataset_id": "OSM relation 6729037",
+  "url_api": "https://nominatim.openstreetmap.org/lookup",
+  "request_params": {
+    "osm_ids": "R6729037",
+    "format": "jsonv2",
+    "polygon_geojson": 1
+  },
+  "timestamp_acquired": "2026-09-02T00:47:04.455010+00:00",
+  "observation_period": "OSM snapshot @ acquisition",
+  "geographic_extent": "Tehran District 6 (منطقه ۶)",
+  "crs": "EPSG:4326",
+  "spatial_resolution": "OSM vector",
+  "temporal_resolution": "snapshot",
+  "spatial_scale": "municipal district (admin_level=9)",
+  "downscaling_caveat": "District-level boundary; NOT a micro-neighborhood sub-unit",
+  "raw_file_ref": "pilot/raw/boundary_R6729037_nominatim.json",
+  "raw_file_hash": "sha256:3d483ab4cd25d315f025b4504c992da0986d149f8ee0d2d2a3a0c72919f018a1",
+  "record_ref": "relation/6729037",
+  "processing_version": "algo.txt-2026",
+  "transformation_steps": [],
+  "quality_checks": [],
+  "confidence": null,
+  "evidence_class": "gis",
+  "is_proxy": true,
+  "methodology_version": "algo.txt-2026",
+  "reproducibility_key": {
+    "data_version": "pilot-D6-2026-09-02",
+    "methodology_version": "algo.txt-2026",
+    "indicator_version": "registry-419-v1",
+    "weight_set": "W-v1",
+    "threshold_set": "T-v1",
+    "calculation_version": "CALC-v0.1"
+  }
+}

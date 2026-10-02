@@ -1,0 +1,79 @@
+/* ===== ARA PLATFORM · DATA-FLOW MOTION GRAPHIC ADDITIONS ===== */
+/* این لایه فقط توکن‌های پلتفرم آرا را روی زبان بصری مشترک سوار می‌کند. */
+
+:root{
+  --ara-src:#42d7ff;      /* منابع داده */
+  --ara-ingest:#3ddc84;   /* ورود و دروازه */
+  --ara-store:#b892ff;    /* رجیستری و انبار داده */
+  --ara-kernel:#ff8a2b;   /* هستهٔ محاسبات */
+  --ara-analyze:#ffd166;  /* موتورهای تحلیل */
+  --ara-decision:#f4698a; /* تصمیم و انتشار */
+  --ara-serve:#7fa4c4;    /* سرو و تحویل */
+}
+
+#brand{border-right-color:var(--ara-kernel)}
+#head{border-left-color:var(--sceneAccent)}
+
+/* نشان پلتفرم */
+#brand:after{background:linear-gradient(90deg,transparent,var(--ara-kernel),transparent);opacity:.5}
+
+/* لِجند جریان‌ها */
+#leg .row i{width:24px;height:3px}
+#leg .row[data-flow="source"] i{background:var(--ara-src)}
+#leg .row[data-flow="ingest"] i{background:var(--ara-ingest)}
+#leg .row[data-flow="store"]  i{background:var(--ara-store)}
+#leg .row[data-flow="compute"] i{background:var(--ara-kernel)}
+#leg .row[data-flow="analyze"] i{background:var(--ara-analyze)}
+#leg .row[data-flow="decision"] i{background:var(--ara-decision)}
+#leg .row[data-flow="serve"] i{background:var(--ara-serve)}
+
+/* مأموریت */
+#mission{height:40px}
+#mission .ms b{font-size:9.5px}
+
+/* کارت شواهد: رنگ سطح‌بندی */
+#cardTier[data-tier="VERIFIED"]{border-color:#3ddc84;color:#3ddc84}
+#cardTier[data-tier="FACT"]{border-color:#32d3ff;color:#32d3ff}
+#cardTier[data-tier="CLAIM"]{border-color:#ffd166;color:#ffd166}
+#cardTier[data-tier="INFERENCE"]{border-color:#b892ff;color:#b892ff}
+#cardTier[data-tier="CONFLICT"]{border-color:#ff8a2b;color:#ff8a2b}
+#cardTier[data-tier="UNKNOWN"]{border-color:#7c8aa2;color:#7c8aa2}
+#cardTier[data-tier="PENDING"]{border-color:#f4698a;color:#f4698a}
+
+/* سناریو باندها */
+#bandChip{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:4px 9px;border-radius:999px;
+  border:1px solid #7a97c63d;font:700 8.5px "Space Grotesk",monospace;letter-spacing:.08em;color:#9fb0c8}
+#bandChip i{width:7px;height:7px;border-radius:50%;background:currentColor;box-shadow:0 0 9px currentColor}
+
+/* فازها: تم رنگی اختصاصی هر فاز */
+#p2Launch{--p2:var(--ara-kernel)}
+#p3Launch{--p3:var(--ara-analyze)}
+#p4Launch{--p3:var(--ara-decision)}
+
+/* سایه‌ی لبه‌های پرتکرار در فضای کاری */
+.p2Stage,.p3Stage,.p4Stage{scrollbar-width:thin}
+
+/* واژه‌نامه */
+.term{border-bottom:1px dotted var(--ara-src);cursor:help}
+body.theme-light .term{border-bottom-color:#007b9c}
+
+/* تمام‌صفحه */
+#fsHint{position:fixed;left:50%;top:12px;transform:translateX(-50%);z-index:20;padding:6px 12px;border-radius:99px;
+  border:1px solid #7a97c633;background:#060b14cc;color:#8fa0b7;font:700 8px Tahoma;pointer-events:none;opacity:0;
+  transition:opacity .3s}
+#fsHint.on{opacity:1}
+@media(max-width:820px){#fsHint{display:none}}
+
+/* جدول‌های صحنه در پنل لایه‌ها */
+.araKV{display:grid;grid-template-columns:96px 1fr;gap:8px;padding:7px 0;border-top:1px solid #7a97c61c}
+.araKV span{direction:ltr;text-align:left;font:700 7.5px "Space Grotesk",monospace;letter-spacing:.1em;color:#60728c}
+.araKV b{font-size:10px;line-height:1.7;color:#c8d3e2;font-weight:600}
+
+/* درخشش مسیر فعال */
+body[data-phase="source"] #head{border-left-color:var(--ara-src)}
+body[data-phase="ingest"] #head{border-left-color:var(--ara-ingest)}
+body[data-phase="store"] #head{border-left-color:var(--ara-store)}
+body[data-phase="compute"] #head{border-left-color:var(--ara-kernel)}
+body[data-phase="analyze"] #head{border-left-color:var(--ara-analyze)}
+body[data-phase="decision"] #head{border-left-color:var(--ara-decision)}
+body[data-phase="serve"] #head{border-left-color:var(--ara-serve)}

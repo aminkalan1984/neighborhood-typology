@@ -1,0 +1,41 @@
+{
+  "value_id": "VAL-00003",
+  "indicator_code": "PHY-001",
+  "formula_id": "raw_observation",
+  "resulting_value": null,
+  "unit": null,
+  "source_id": "SRC-SERVICE",
+  "source_name": null,
+  "provider": null,
+  "dataset_id": null,
+  "url_api": null,
+  "request_params": {
+    "dataset_id": "service-request"
+  },
+  "timestamp_acquired": "2026-09-13T13:56:16.003489+00:00",
+  "observation_period": null,
+  "geographic_extent": null,
+  "crs": null,
+  "spatial_resolution": null,
+  "temporal_resolution": null,
+  "spatial_scale": null,
+  "downscaling_caveat": null,
+  "raw_file_ref": null,
+  "raw_file_hash": null,
+  "record_ref": null,
+  "processing_version": "algo.txt-2026",
+  "transformation_steps": [],
+  "quality_checks": [],
+  "confidence": null,
+  "evidence_class": "objective",
+  "is_proxy": false,
+  "methodology_version": "algo.txt-2026",
+  "reproducibility_key": {
+    "data_version": "service-input",
+    "methodology_version": "algo.txt-2026",
+    "indicator_version": "registry-419-v1",
+    "weight_set": "W-v1",
+    "threshold_set": "T-v1",
+    "calculation_version": "CALC-v0.2"
+  }
+}

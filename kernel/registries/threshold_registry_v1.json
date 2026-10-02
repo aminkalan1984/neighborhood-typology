@@ -1,0 +1,3402 @@
+{
+  "version": "T-v1",
+  "calibrated": false,
+  "status": "PENDING_VALIDATION",
+  "provenance": "باندها: algo.txt §5.4؛ L/U هر شاخص: رجیستر_419 ستون «محدوده نظری» + «روش استانداردسازی». algo.txt §5.1/§5.4: «حدود L و U و آستانه‌ها باید با داده چند شهر کالیبره شوند؛ عددهای اولیه حقیقت ثابت نیستند» و «این مرزها نقطه شروع عملیاتی‌اند، نه قانون علمی نهایی».",
+  "status_bands": [
+    {
+      "lo": 0,
+      "hi": 39,
+      "label_fa": "بحرانی",
+      "action_fa": "مداخله فوری"
+    },
+    {
+      "lo": 40,
+      "hi": 59,
+      "label_fa": "ضعیف",
+      "action_fa": "مداخله اولویت‌دار"
+    },
+    {
+      "lo": 60,
+      "hi": 74,
+      "label_fa": "متوسط",
+      "action_fa": "بهبود هدفمند"
+    },
+    {
+      "lo": 75,
+      "hi": 89,
+      "label_fa": "خوب",
+      "action_fa": "تثبیت و ارتقا"
+    },
+    {
+      "lo": 90,
+      "hi": 100,
+      "label_fa": "ممتاز",
+      "action_fa": "حفاظت و انتقال تجربه"
+    }
+  ],
+  "indicator_LU": {
+    "PHY-001": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-002": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-003": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-004": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-005": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-006": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-007": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-008": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-009": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-010": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-011": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-012": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-013": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-014": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "PHY-015": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-016": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-017": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "آستانه‌ای/بهینه (فاصله از دامنه معیار سنجیده شود)",
+      "standardization": "تابع قطعه‌ای فاصله از دامنه مطلوب؛ L/U پس از کالیبراسیون"
+    },
+    "PHY-018": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-019": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-020": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "PHY-021": {
+      "L": null,
+      "U": null,
+      "range_text": "۰ تا بی‌نهایت؛ کران عملی پس از کالیبراسیون",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-022": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-023": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-024": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "PHY-025": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-026": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-027": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-028": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-029": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-030": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-031": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-032": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-033": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-034": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-035": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-036": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-037": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-038": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "PHY-039": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "آستانه‌ای/بهینه (فاصله از دامنه معیار سنجیده شود)",
+      "standardization": "تابع قطعه‌ای فاصله از دامنه مطلوب؛ L/U پس از کالیبراسیون"
+    },
+    "PHY-040": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-041": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-042": {
+      "L": null,
+      "U": null,
+      "range_text": "۰ تا بی‌نهایت؛ کران عملی پس از کالیبراسیون",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "PHY-043": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "PHY-044": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "آستانه‌ای/بهینه (فاصله از دامنه معیار سنجیده شود)",
+      "standardization": "تابع قطعه‌ای فاصله از دامنه مطلوب؛ L/U پس از کالیبراسیون"
+    },
+    "PHY-045": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "PHY-046": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-047": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-048": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-049": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-050": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-051": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-052": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-053": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-054": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-055": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-056": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-057": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-058": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-059": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-060": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-061": {
+      "L": null,
+      "U": null,
+      "range_text": "۰ تا بی‌نهایت؛ کران عملی پس از کالیبراسیون",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-062": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-063": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "PHY-064": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-065": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-066": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "PHY-067": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "PHY-068": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-069": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-070": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-071": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "آستانه‌ای/بهینه (فاصله از دامنه معیار سنجیده شود)",
+      "standardization": "تابع قطعه‌ای فاصله از دامنه مطلوب؛ L/U پس از کالیبراسیون"
+    },
+    "PHY-072": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-073": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-074": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-075": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-076": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-077": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-078": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-079": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-080": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-081": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-082": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-083": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-084": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-085": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-086": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-087": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-088": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-089": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-090": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-091": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-092": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-093": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-094": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-095": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-096": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-097": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-098": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-099": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-100": {
+      "L": 0.0,
+      "U": 1.0,
+      "range_text": "۰ تا ۱",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "آستانه‌ای/بهینه (فاصله از دامنه معیار سنجیده شود)",
+      "standardization": "تابع قطعه‌ای فاصله از دامنه مطلوب؛ L/U پس از کالیبراسیون"
+    },
+    "PHY-101": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-102": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-103": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-104": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-105": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-106": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-107": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-108": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-109": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-110": {
+      "L": null,
+      "U": null,
+      "range_text": "۰ تا بی‌نهایت؛ کران عملی پس از کالیبراسیون",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-111": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-112": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-113": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-114": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-115": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-116": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "PHY-117": {
+      "L": null,
+      "U": null,
+      "range_text": "۰ تا بی‌نهایت؛ کران عملی پس از کالیبراسیون",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-118": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-119": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-120": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-121": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-122": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "PHY-123": {
+      "L": null,
+      "U": null,
+      "range_text": "۰ تا بی‌نهایت؛ کران عملی پس از کالیبراسیون",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "PHY-124": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "PHY-125": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "PHY-126": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-127": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-128": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-129": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-130": {
+      "L": 0.0,
+      "U": 1.0,
+      "range_text": "۰ تا ۱",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "PHY-131": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-132": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-133": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-134": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-135": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-136": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-137": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-138": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-139": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-140": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "PHY-141": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "آستانه‌ای/بهینه (فاصله از دامنه معیار سنجیده شود)",
+      "standardization": "تابع قطعه‌ای فاصله از دامنه مطلوب؛ L/U پس از کالیبراسیون"
+    },
+    "PHY-142": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-143": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-144": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-145": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-146": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-147": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-148": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-149": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-150": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-151": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-152": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-153": {
+      "L": null,
+      "U": null,
+      "range_text": "۰ تا بی‌نهایت؛ کران عملی پس از کالیبراسیون",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "PHY-154": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-155": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-156": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-157": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-158": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-159": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-160": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-161": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "PHY-162": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-163": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "PHY-164": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-165": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-166": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "PHY-167": {
+      "L": null,
+      "U": null,
+      "range_text": "۰ تا بی‌نهایت؛ کران عملی پس از کالیبراسیون",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "آستانه‌ای/بهینه (فاصله از دامنه معیار سنجیده شود)",
+      "standardization": "تابع قطعه‌ای فاصله از دامنه مطلوب؛ L/U پس از کالیبراسیون"
+    },
+    "PHY-168": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-169": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "PHY-170": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-171": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-172": {
+      "L": null,
+      "U": null,
+      "range_text": "۰ تا بی‌نهایت؛ کران عملی پس از کالیبراسیون",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "PHY-173": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "PHY-174": {
+      "L": null,
+      "U": null,
+      "range_text": "۰ تا بی‌نهایت؛ کران عملی پس از کالیبراسیون",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "PHY-175": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-176": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "PHY-177": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-001": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-002": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-003": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-004": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-005": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-006": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-007": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-008": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-009": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-010": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-011": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "آستانه‌ای/بهینه (فاصله از دامنه معیار سنجیده شود)",
+      "standardization": "تابع قطعه‌ای فاصله از دامنه مطلوب؛ L/U پس از کالیبراسیون"
+    },
+    "BEH-012": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "آستانه‌ای/بهینه (فاصله از دامنه معیار سنجیده شود)",
+      "standardization": "تابع قطعه‌ای فاصله از دامنه مطلوب؛ L/U پس از کالیبراسیون"
+    },
+    "BEH-013": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-014": {
+      "L": null,
+      "U": null,
+      "range_text": "۰ تا بی‌نهایت؛ کران عملی پس از کالیبراسیون",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "آستانه‌ای/بهینه (فاصله از دامنه معیار سنجیده شود)",
+      "standardization": "تابع قطعه‌ای فاصله از دامنه مطلوب؛ L/U پس از کالیبراسیون"
+    },
+    "BEH-015": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-016": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-017": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-018": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-019": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-020": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-021": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "آستانه‌ای/بهینه (فاصله از دامنه معیار سنجیده شود)",
+      "standardization": "تابع قطعه‌ای فاصله از دامنه مطلوب؛ L/U پس از کالیبراسیون"
+    },
+    "BEH-022": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-023": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-024": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-025": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-026": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-027": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-028": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-029": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-030": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-031": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-032": {
+      "L": null,
+      "U": null,
+      "range_text": "۰ تا بی‌نهایت؛ کران عملی پس از کالیبراسیون",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-033": {
+      "L": null,
+      "U": null,
+      "range_text": "۰ تا بی‌نهایت؛ کران عملی پس از کالیبراسیون",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-034": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-035": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-036": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-037": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-038": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-039": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-040": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-041": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-042": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-043": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-044": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "آستانه‌ای/بهینه (فاصله از دامنه معیار سنجیده شود)",
+      "standardization": "تابع قطعه‌ای فاصله از دامنه مطلوب؛ L/U پس از کالیبراسیون"
+    },
+    "BEH-045": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-046": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-047": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-048": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-049": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-050": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-051": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-052": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "آستانه‌ای/بهینه (فاصله از دامنه معیار سنجیده شود)",
+      "standardization": "تابع قطعه‌ای فاصله از دامنه مطلوب؛ L/U پس از کالیبراسیون"
+    },
+    "BEH-053": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-054": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-055": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-056": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-057": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-058": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-059": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-060": {
+      "L": null,
+      "U": null,
+      "range_text": "۰ تا بی‌نهایت؛ کران عملی پس از کالیبراسیون",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-061": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-062": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-063": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-064": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-065": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-066": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-067": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-068": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "آستانه‌ای/بهینه (فاصله از دامنه معیار سنجیده شود)",
+      "standardization": "تابع قطعه‌ای فاصله از دامنه مطلوب؛ L/U پس از کالیبراسیون"
+    },
+    "BEH-069": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-070": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-071": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "آستانه‌ای/بهینه (فاصله از دامنه معیار سنجیده شود)",
+      "standardization": "تابع قطعه‌ای فاصله از دامنه مطلوب؛ L/U پس از کالیبراسیون"
+    },
+    "BEH-072": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-073": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-074": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-075": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-076": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-077": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-078": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-079": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-080": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-081": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-082": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-083": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-084": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-085": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-086": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-087": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-088": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-089": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-090": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-091": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-092": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-093": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-094": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-095": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-096": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-097": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-098": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-099": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-100": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-101": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-102": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-103": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-104": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-105": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-106": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-107": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "آستانه‌ای/بهینه (فاصله از دامنه معیار سنجیده شود)",
+      "standardization": "تابع قطعه‌ای فاصله از دامنه مطلوب؛ L/U پس از کالیبراسیون"
+    },
+    "BEH-108": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-109": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-110": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-111": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-112": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-113": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-114": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-115": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-116": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-117": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-118": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-119": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-120": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-121": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-122": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-123": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-124": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-125": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-126": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-127": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-128": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-129": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-130": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-131": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-132": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-133": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-134": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-135": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "آستانه‌ای/بهینه (فاصله از دامنه معیار سنجیده شود)",
+      "standardization": "تابع قطعه‌ای فاصله از دامنه مطلوب؛ L/U پس از کالیبراسیون"
+    },
+    "BEH-136": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-137": {
+      "L": null,
+      "U": null,
+      "range_text": "۰ تا بی‌نهایت؛ کران عملی پس از کالیبراسیون",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-138": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-139": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-140": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-141": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-142": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-143": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-144": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-145": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-146": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-147": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-148": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-149": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-150": {
+      "L": null,
+      "U": null,
+      "range_text": "۰ تا بی‌نهایت؛ کران عملی پس از کالیبراسیون",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-151": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-152": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-153": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-154": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "آستانه‌ای/بهینه (فاصله از دامنه معیار سنجیده شود)",
+      "standardization": "تابع قطعه‌ای فاصله از دامنه مطلوب؛ L/U پس از کالیبراسیون"
+    },
+    "BEH-155": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-156": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-157": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-158": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-159": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-160": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-161": {
+      "L": null,
+      "U": null,
+      "range_text": "۰ تا بی‌نهایت؛ کران عملی پس از کالیبراسیون",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-162": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-163": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-164": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-165": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-166": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-167": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-168": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-169": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-170": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-171": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-172": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-173": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-174": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-175": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-176": {
+      "L": 0.0,
+      "U": 1.0,
+      "range_text": "۰ تا ۱",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-177": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-178": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-179": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-180": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-181": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-182": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-183": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-184": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-185": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-186": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-187": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-188": {
+      "L": null,
+      "U": null,
+      "range_text": "۰ تا بی‌نهایت؛ کران عملی پس از کالیبراسیون",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "آستانه‌ای/بهینه (فاصله از دامنه معیار سنجیده شود)",
+      "standardization": "تابع قطعه‌ای فاصله از دامنه مطلوب؛ L/U پس از کالیبراسیون"
+    },
+    "BEH-189": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-190": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-191": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-192": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-193": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-194": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-195": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-196": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-197": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-198": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-199": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-200": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-201": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-202": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-203": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-204": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-205": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-206": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-207": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "BEH-208": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "BEH-209": {
+      "L": null,
+      "U": null,
+      "range_text": "۰ تا بی‌نهایت؛ کران عملی پس از کالیبراسیون",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "NOR-001": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "NOR-002": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "NOR-003": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "NOR-004": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "NOR-005": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "NOR-006": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "NOR-007": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "NOR-008": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "NOR-009": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "NOR-010": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "NOR-011": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "NOR-012": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "NOR-013": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "معکوس (مقدار بیشتر = وضعیت نامطلوب‌تر)",
+      "standardization": "100×clip((U−x)/(U−L),0,1)"
+    },
+    "NOR-014": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "NOR-015": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "NOR-016": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "NOR-017": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "NOR-018": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "آستانه‌ای/بهینه (فاصله از دامنه معیار سنجیده شود)",
+      "standardization": "تابع قطعه‌ای فاصله از دامنه مطلوب؛ L/U پس از کالیبراسیون"
+    },
+    "NOR-019": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "NOR-020": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "NOR-021": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "NOR-022": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "NOR-023": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "NOR-024": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "NOR-025": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "NOR-026": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "NOR-027": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "NOR-028": {
+      "L": null,
+      "U": null,
+      "range_text": "وابسته به تعریف؛ نیازمند استاندارد/گروه همتا",
+      "lu_status": "PENDING_VALIDATION",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "NOR-029": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "NOR-030": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "NOR-031": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "NOR-032": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    },
+    "NOR-033": {
+      "L": 0.0,
+      "U": 100.0,
+      "range_text": "۰ تا ۱۰۰",
+      "lu_status": "OBSERVED_RANGE_UNCALIBRATED",
+      "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)",
+      "standardization": "100×clip((x−L)/(U−L),0,1)"
+    }
+  },
+  "n_indicators": 419,
+  "n_LU_pending_calibration": 50,
+  "audit_trail": [
+    {
+      "ts": "2026-09-01T23:34:39.018159+00:00",
+      "action": "create",
+      "by": "MVP-0 kernel",
+      "reason": "seed uncalibrated v1; bands from §5.4, L/U from atlas register"
+    }
+  ]
+}

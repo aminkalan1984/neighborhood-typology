@@ -1,0 +1,58 @@
+# ============================================================
+# سامانه آرا — استقرار تک‌سرویسی
+#   docker compose up -d --build      →  http://localhost:8080
+#   docker compose logs -f ara        →  مشاهدهٔ لاگ‌ها
+#   docker compose down               →  توقف
+# دادهٔ تولیدشدهٔ سرور (اجراها، حافظه، متادیتای ماهواره، کش منابع) در volume
+# پایدار «ara-data» نگه داشته می‌شود و با حذف کانتینر از دست نمی‌رود.
+# ============================================================
+services:
+  ara:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ara-decision-platform:latest
+    container_name: ara-platform
+    restart: unless-stopped
+
+    # رازها و تنظیمات از فایل .env.local خوانده می‌شوند (در تصویر کپی نمی‌شود).
+    # اگر فایل نباشد، سرویس با «قابلیت‌های غیرفعال» بالا می‌آید و /api/health وضعیت را گزارش می‌کند.
+    env_file:
+      - path: .env.local
+        required: false
+
+    environment:
+      SCI_PORT: "4001"
+      NODE_ENV: "production"
+      TRUST_PROXY_HOPS: "1"          # پشت nginx/Cloudflare
+      KERNEL_PYTHON: "python3"
+      KERNEL_SERVICE_PORT: "4105"
+      SOURCE_CACHE_DIR: "/app/server/data/source-cache"
+      # ARA_ANTHROPIC_API_KEY / ARA_ANTHROPIC_BASE_URL / OPENAQ_API_KEY / HEALTHSITES_API_KEY
+      # از .env.local یا متغیرهای محیطی سرور تأمین می‌شوند.
+
+    ports:
+      # روی تمام اینترفیس‌ها (0.0.0.0) باز می‌شود؛ یعنی دسترسی مستقیم از اینترنت.
+      # در حالت dev یا سرور شخصی: http://<IP>:8080   ←  کافی است.
+      - "8080:4001"
+
+    volumes:
+      - ara-data:/app/server/data
+
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:'+(process.env.SCI_PORT||4001)+'/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+
+    # پردازش COG ماهواره‌ای و محاسبات kernel می‌توانند سنگین شوند؛
+    # در سرورهای کوچک این محدودیت‌ها را متناسب با منابع تنظیم کنید.
+    deploy:
+      resources:
+        limits:
+          memory: 2g
+
+volumes:
+  ara-data:
+    name: ara-data

@@ -1,0 +1,9 @@
+﻿indicator_code,operationalization,raw_status,raw_value,unit,is_proxy,evidence_stream,standardized_status,approval,provenance_value_id,coverage,quality_score
+BOUNDARY,boundary_area(metric_crs),PROXY,21.403,km2,True,gis,N/A,APPROVED_PROXY,VAL-BOUNDARY-D6,1.0,
+PHY-003,count_within_boundary,PROXY,115.0,,True,gis,PENDING_VALIDATION,PENDING_APPROVAL,VAL-00002,1.0,0.8571
+PHY-001,count_within_boundary,PROXY,68.0,,True,gis,PENDING_VALIDATION,PENDING_APPROVAL,VAL-00003,1.0,0.8571
+PHY-002,count_within_boundary,PROXY,259.0,,True,gis,PENDING_VALIDATION,PENDING_APPROVAL,VAL-00004,1.0,0.8571
+PHY-003,distance(euclidean_proxy_for_network),PROXY,114.28,,True,gis,PENDING_VALIDATION,PENDING_APPROVAL,VAL-00005,1.0,0.8571
+PHY-001,distance(euclidean_proxy_for_network),PROXY,253.28,,True,gis,PENDING_VALIDATION,PENDING_APPROVAL,VAL-00006,1.0,0.8571
+ONL-011,nearest_epicenter_distance,PROXY,40.703,,True,objective,N/A_online_measure,PENDING_APPROVAL,VAL-00007,1.0,0.7857
+ONL-001,dem_zonal_mean,ACCESS_REQUIRED,,,False,,,BLOCKED_ACCESS_REQUIRED,VAL-DEM-D6,,

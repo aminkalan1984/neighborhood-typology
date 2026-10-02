@@ -1,0 +1,12 @@
+{
+  "source_id": "SRC-0003",
+  "source_name": "USGS ComCat",
+  "provider": "USGS",
+  "dataset_id": "ComCat",
+  "url_api": "https://earthquake.usgs.gov/fdsnws/event/1/query",
+  "tier": "validated-scientific",
+  "is_official": true,
+  "is_proxy": true,
+  "license": "public domain (USGS)",
+  "access_method": "FDSNWS event query"
+}

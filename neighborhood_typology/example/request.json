@@ -1,0 +1,9 @@
+{
+  "neighborhood_name": "محله نمونه — داده آزمایشی، نه محله واقعی",
+  "city_or_county": "شهر نمونه",
+  "province": "استان نمونه",
+  "settlement_type": "urban",
+  "reference_year": 2025,
+  "boundary_geojson": null,
+  "requested_output": "provisional_until_boundary_and_evidence_are_approved"
+}

@@ -1,0 +1,13 @@
+[
+  {
+    "action": "add_version",
+    "neighborhood_id": "IR-THR-D6",
+    "version_id": "v1",
+    "at": "2026-09-02T00:48:30.794641+00:00",
+    "tier": "public-OSM-substitute",
+    "is_official": false,
+    "is_proxy": true,
+    "geometry_hash": "sha256:c09b482466e6ab38f914cbf4536b7403683e09d2ebfc22b4c8e57fdb3e239b43",
+    "provenance_ref": "VAL-BOUNDARY-D6"
+  }
+]

@@ -1,0 +1,290 @@
+{
+  "boundary_area": [
+    {
+      "level": "result",
+      "value_id": "VAL-BOUNDARY-D6",
+      "resulting_value": 21.403,
+      "unit": "km2",
+      "confidence": null,
+      "is_proxy": true,
+      "reproducibility_key": {
+        "data_version": "pilot-D6-2026-09-02",
+        "methodology_version": "algo.txt-2026",
+        "indicator_version": "registry-419-v1",
+        "weight_set": "W-v1",
+        "threshold_set": "T-v1",
+        "calculation_version": "CALC-v0.1"
+      }
+    },
+    {
+      "level": "indicator",
+      "indicator_code": null,
+      "evidence_class": "gis",
+      "methodology_version": "algo.txt-2026"
+    },
+    {
+      "level": "formula",
+      "formula_id": "boundary_area(metric_crs)"
+    },
+    {
+      "level": "raw_value",
+      "resulting_value": 21.403,
+      "unit": "km2"
+    },
+    {
+      "level": "source",
+      "source_id": "SRC-0001",
+      "source_name": "OpenStreetMap (Nominatim/Overpass, R6729037)",
+      "provider": "OpenStreetMap contributors",
+      "dataset_id": "OSM relation 6729037",
+      "is_proxy": true
+    },
+    {
+      "level": "request",
+      "url_api": "https://nominatim.openstreetmap.org/lookup",
+      "request_params": {
+        "osm_ids": "R6729037",
+        "format": "jsonv2",
+        "polygon_geojson": 1
+      }
+    },
+    {
+      "level": "file_record",
+      "raw_file_ref": "pilot/raw/boundary_R6729037_nominatim.json",
+      "record_ref": "relation/6729037",
+      "raw_file_hash": "sha256:3d483ab4cd25d315f025b4504c992da0986d149f8ee0d2d2a3a0c72919f018a1"
+    },
+    {
+      "level": "date",
+      "timestamp_acquired": "2026-09-02T00:47:04.455010+00:00",
+      "observation_period": "OSM snapshot @ acquisition"
+    },
+    {
+      "level": "processing",
+      "processing_version": "algo.txt-2026",
+      "transformation_steps": [
+        {
+          "op": "validate_crs",
+          "detail": {
+            "check": "validate_crs",
+            "status": "PASS",
+            "blocking": false,
+            "detail": "CRS recognized",
+            "crs": "EPSG:4326",
+            "epsg": 4326,
+            "is_geographic": true
+          },
+          "at": "2026-09-02T00:53:38.771819+00:00"
+        },
+        {
+          "op": "validate_topology",
+          "detail": {
+            "was_valid": true,
+            "now_valid": true
+          },
+          "at": "2026-09-02T00:53:38.771835+00:00"
+        },
+        {
+          "op": "reproject",
+          "detail": {
+            "from": "EPSG:4326",
+            "to": "EPSG:32639"
+          },
+          "at": "2026-09-02T00:53:38.771840+00:00"
+        }
+      ]
+    },
+    {
+      "level": "qc",
+      "quality_checks": [
+        {
+          "check": "validate_crs",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "CRS recognized",
+          "crs": "EPSG:4326",
+          "epsg": 4326,
+          "is_geographic": true
+        },
+        {
+          "check": "topology",
+          "status": "PASS",
+          "findings": {
+            "was_valid": true,
+            "now_valid": true,
+            "area_positive": true,
+            "empty": false,
+            "geom_type": "Polygon"
+          }
+        },
+        {
+          "check": "boundary_verification",
+          "status": "PASS",
+          "findings": {
+            "is_boundary_admin": true,
+            "geom_type_polygonal": true,
+            "geom_valid": true,
+            "rings_closed": true,
+            "centroid_in_tehran": true,
+            "inside_iran": true,
+            "area_plausible_5_60_km2": true
+          }
+        }
+      ]
+    }
+  ],
+  "nearest_earthquake": [
+    {
+      "level": "result",
+      "value_id": "VAL-00007",
+      "resulting_value": 40.703,
+      "unit": "km",
+      "confidence": null,
+      "is_proxy": true,
+      "reproducibility_key": {
+        "data_version": "pilot-D6-2026-09-02",
+        "methodology_version": "algo.txt-2026",
+        "indicator_version": "registry-419-v1",
+        "weight_set": "W-v1",
+        "threshold_set": "T-v1",
+        "calculation_version": "CALC-v0.1"
+      }
+    },
+    {
+      "level": "indicator",
+      "indicator_code": "ONL-011",
+      "evidence_class": "objective",
+      "methodology_version": "algo.txt-2026"
+    },
+    {
+      "level": "formula",
+      "formula_id": "nearest_epicenter_distance"
+    },
+    {
+      "level": "raw_value",
+      "resulting_value": 40.703,
+      "unit": "km"
+    },
+    {
+      "level": "source",
+      "source_id": "SRC-0003",
+      "source_name": "USGS ComCat",
+      "provider": "USGS",
+      "dataset_id": "ComCat",
+      "is_proxy": true
+    },
+    {
+      "level": "request",
+      "url_api": "https://earthquake.usgs.gov/fdsnws/event/1/query",
+      "request_params": {
+        "dataset_id": "ComCat",
+        "ts": "2026-09-02T00:49:38.673393+00:00",
+        "period": "1900-01-01..now",
+        "raw_file": "pilot/raw/usgs_eq_region.json",
+        "record_ref": "nearest M>=4.5 epicenter"
+      }
+    },
+    {
+      "level": "file_record",
+      "raw_file_ref": "pilot/raw/usgs_eq_region.json",
+      "record_ref": "nearest M>=4.5 epicenter",
+      "raw_file_hash": "sha256:99ee9e3760e30076f92224f7824b81fa8c9311d176095ce782459797b539e683"
+    },
+    {
+      "level": "date",
+      "timestamp_acquired": "2026-09-02T00:49:38.673393+00:00",
+      "observation_period": "1900-01-01..now"
+    },
+    {
+      "level": "processing",
+      "processing_version": "algo.txt-2026",
+      "transformation_steps": [
+        {
+          "op": "ingest_value",
+          "detail": {
+            "value_field": "km",
+            "status": "PROXY"
+          },
+          "at": "2026-09-02T00:53:38.861378+00:00"
+        }
+      ]
+    },
+    {
+      "level": "qc",
+      "quality_checks": [
+        {
+          "check": "type_validation",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "type number ok",
+          "findings": {
+            "expected": "number"
+          }
+        },
+        {
+          "check": "null_missing_analysis",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "observed=1 missing=0 (missing kept separate, never zero)",
+          "findings": {
+            "field": "km",
+            "observed": 1,
+            "missing": 0,
+            "total": 1,
+            "coverage": 1.0
+          }
+        },
+        {
+          "check": "duplicate_detection",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "0 duplicate rows on ['km']",
+          "findings": {
+            "duplicate_count": 0,
+            "duplicates": []
+          }
+        },
+        {
+          "check": "unit_validation",
+          "status": "WARN",
+          "blocking": false,
+          "detail": "registry unit unknown; cannot verify",
+          "findings": {
+            "declared": "km",
+            "registry": null
+          }
+        },
+        {
+          "check": "date_validation",
+          "status": "PASS",
+          "blocking": false,
+          "detail": "date parses and is plausible",
+          "findings": {
+            "value": "2026-09-02T00:49:38.673393+00:00",
+            "year": 2026
+          }
+        },
+        {
+          "check": "range_validation",
+          "status": "WARN",
+          "blocking": false,
+          "detail": "no registry L/U for indicator -> range cannot be verified",
+          "findings": {
+            "value": 40.703,
+            "lu": null,
+            "verdict": "PENDING_VALIDATION"
+          }
+        },
+        {
+          "check": "outlier_detection",
+          "status": "WARN",
+          "blocking": false,
+          "detail": "too few numeric values for IQR",
+          "findings": {
+            "n": 1
+          }
+        }
+      ]
+    }
+  ]
+}

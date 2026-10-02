@@ -1,0 +1,12 @@
+{
+  "source_id": "SRC-0001",
+  "source_name": "OpenStreetMap (Overpass area query, R6729037)",
+  "provider": "OpenStreetMap contributors",
+  "dataset_id": "OSM Overpass area 3606729037",
+  "url_api": "https://overpass-api.de/api/interpreter",
+  "tier": "public-OSM-substitute",
+  "is_official": false,
+  "is_proxy": true,
+  "license": "ODbL",
+  "access_method": "Overpass API"
+}

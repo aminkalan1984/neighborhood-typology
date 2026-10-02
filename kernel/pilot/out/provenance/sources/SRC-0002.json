@@ -1,0 +1,12 @@
+{
+  "source_id": "SRC-0002",
+  "source_name": "شهرداری تهران — نقشه رسمی حدود مناطق (official GIS/SDI)",
+  "provider": "Tehran Municipality",
+  "dataset_id": "official district boundary (not obtained)",
+  "url_api": null,
+  "tier": "official-GIS",
+  "is_official": true,
+  "is_proxy": false,
+  "license": null,
+  "access_method": "ACCESS_REQUIRED"
+}

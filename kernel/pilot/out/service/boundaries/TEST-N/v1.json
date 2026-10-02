@@ -1,0 +1,40 @@
+{
+  "neighborhood_id": "TEST-N",
+  "version_id": "v1",
+  "geometry_geojson": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          51.0,
+          35.0
+        ],
+        [
+          51.01,
+          35.0
+        ],
+        [
+          51.01,
+          35.01
+        ],
+        [
+          51.0,
+          35.01
+        ],
+        [
+          51.0,
+          35.0
+        ]
+      ]
+    ]
+  },
+  "geometry_wkt": "POLYGON ((51 35, 51.01 35, 51.01 35.01, 51 35.01, 51 35))",
+  "crs": "EPSG:4326",
+  "tier": "auxiliary_proxy",
+  "is_official": false,
+  "is_proxy": true,
+  "provenance_ref": "VAL-BOUNDARY-TEST",
+  "geometry_hash": "sha256:3498d02ea6376c6508f5f9fc582f777dc4926e45fc1fe92099bbbb477f5345a0",
+  "valid_from": "2026-09-13T13:56:17.437406+00:00",
+  "note": ""
+}

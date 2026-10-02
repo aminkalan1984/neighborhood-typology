@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title>آواتار کاربر</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f6b4f" />
+      <stop offset="1" stop-color="#9ad8b4" />
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#bg)" />
+  <circle cx="64" cy="49" r="23" fill="#f6d2b7" />
+  <path d="M35 48c2-22 15-33 30-33 18 0 29 13 30 34-9-8-18-12-31-12-10 0-19 4-29 11Z" fill="#263b36" />
+  <path d="M25 119c3-27 17-42 39-42s36 15 39 42Z" fill="#e8f4ec" />
+  <path d="M47 78c5 7 11 10 17 10s12-3 17-10l8 7c-7 12-16 18-25 18s-18-6-25-18Z" fill="#0f6b4f" opacity=".85" />
+</svg>

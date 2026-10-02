@@ -1,0 +1,250 @@
+[
+ {
+  "code": "00",
+  "name": "مرکزی",
+  "counties": 12,
+  "bakhshs": 4,
+  "dehestans": 50,
+  "cities": 41
+ },
+ {
+  "code": "01",
+  "name": "گیلان",
+  "counties": 17,
+  "bakhshs": 6,
+  "dehestans": 70,
+  "cities": 63
+ },
+ {
+  "code": "02",
+  "name": "مازندران",
+  "counties": 22,
+  "bakhshs": 7,
+  "dehestans": 75,
+  "cities": 67
+ },
+ {
+  "code": "03",
+  "name": "آذربایجان شرقی",
+  "counties": 21,
+  "bakhshs": 5,
+  "dehestans": 90,
+  "cities": 82
+ },
+ {
+  "code": "04",
+  "name": "آذربایجان غربی",
+  "counties": 20,
+  "bakhshs": 6,
+  "dehestans": 63,
+  "cities": 53
+ },
+ {
+  "code": "05",
+  "name": "کرمانشاه",
+  "counties": 14,
+  "bakhshs": 7,
+  "dehestans": 51,
+  "cities": 43
+ },
+ {
+  "code": "06",
+  "name": "خوزستان",
+  "counties": 29,
+  "bakhshs": 5,
+  "dehestans": 113,
+  "cities": 105
+ },
+ {
+  "code": "07",
+  "name": "فارس",
+  "counties": 37,
+  "bakhshs": 8,
+  "dehestans": 142,
+  "cities": 131
+ },
+ {
+  "code": "08",
+  "name": "کرمان",
+  "counties": 23,
+  "bakhshs": 8,
+  "dehestans": 103,
+  "cities": 89
+ },
+ {
+  "code": "09",
+  "name": "خراسان رضوی",
+  "counties": 34,
+  "bakhshs": 7,
+  "dehestans": 119,
+  "cities": 113
+ },
+ {
+  "code": "10",
+  "name": "اصفهان",
+  "counties": 28,
+  "bakhshs": 5,
+  "dehestans": 136,
+  "cities": 129
+ },
+ {
+  "code": "11",
+  "name": "سیستان وبلوچستان",
+  "counties": 26,
+  "bakhshs": 6,
+  "dehestans": 65,
+  "cities": 59
+ },
+ {
+  "code": "12",
+  "name": "کردستان",
+  "counties": 10,
+  "bakhshs": 6,
+  "dehestans": 43,
+  "cities": 36
+ },
+ {
+  "code": "13",
+  "name": "همدان",
+  "counties": 10,
+  "bakhshs": 6,
+  "dehestans": 44,
+  "cities": 36
+ },
+ {
+  "code": "14",
+  "name": "چهارمحال وبختیاری",
+  "counties": 11,
+  "bakhshs": 6,
+  "dehestans": 48,
+  "cities": 43
+ },
+ {
+  "code": "15",
+  "name": "لرستان",
+  "counties": 11,
+  "bakhshs": 6,
+  "dehestans": 46,
+  "cities": 39
+ },
+ {
+  "code": "16",
+  "name": "ایلام",
+  "counties": 12,
+  "bakhshs": 5,
+  "dehestans": 33,
+  "cities": 29
+ },
+ {
+  "code": "17",
+  "name": "کهگیلویه وبویراحمد",
+  "counties": 9,
+  "bakhshs": 7,
+  "dehestans": 23,
+  "cities": 18
+ },
+ {
+  "code": "18",
+  "name": "بوشهر",
+  "counties": 10,
+  "bakhshs": 6,
+  "dehestans": 47,
+  "cities": 42
+ },
+ {
+  "code": "19",
+  "name": "زنجان",
+  "counties": 8,
+  "bakhshs": 6,
+  "dehestans": 33,
+  "cities": 25
+ },
+ {
+  "code": "20",
+  "name": "سمنان",
+  "counties": 8,
+  "bakhshs": 3,
+  "dehestans": 25,
+  "cities": 21
+ },
+ {
+  "code": "21",
+  "name": "یزد",
+  "counties": 12,
+  "bakhshs": 5,
+  "dehestans": 34,
+  "cities": 29
+ },
+ {
+  "code": "22",
+  "name": "هرمزگان",
+  "counties": 13,
+  "bakhshs": 8,
+  "dehestans": 60,
+  "cities": 52
+ },
+ {
+  "code": "23",
+  "name": "تهران",
+  "counties": 16,
+  "bakhshs": 6,
+  "dehestans": 87,
+  "cities": 80
+ },
+ {
+  "code": "24",
+  "name": "اردبیل",
+  "counties": 12,
+  "bakhshs": 6,
+  "dehestans": 44,
+  "cities": 37
+ },
+ {
+  "code": "25",
+  "name": "قم",
+  "counties": 3,
+  "bakhshs": 4,
+  "dehestans": 17,
+  "cities": 14
+ },
+ {
+  "code": "26",
+  "name": "قزوین",
+  "counties": 6,
+  "bakhshs": 7,
+  "dehestans": 37,
+  "cities": 32
+ },
+ {
+  "code": "27",
+  "name": "گلستان",
+  "counties": 14,
+  "bakhshs": 5,
+  "dehestans": 42,
+  "cities": 38
+ },
+ {
+  "code": "28",
+  "name": "خراسان شمالی",
+  "counties": 8,
+  "bakhshs": 5,
+  "dehestans": 32,
+  "cities": 27
+ },
+ {
+  "code": "29",
+  "name": "خراسان جنوبی",
+  "counties": 11,
+  "bakhshs": 5,
+  "dehestans": 40,
+  "cities": 33
+ },
+ {
+  "code": "30",
+  "name": "البرز",
+  "counties": 7,
+  "bakhshs": 3,
+  "dehestans": 33,
+  "cities": 30
+ }
+]

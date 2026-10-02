@@ -1,0 +1,822 @@
+{
+  "drilldown": {
+    "VAL-00002": {
+      "result": {
+        "indicator_code": "PHY-003",
+        "operationalization": "count_within_boundary",
+        "raw_value": 115.0,
+        "raw_unit": "count",
+        "standardized_status": "PENDING_VALIDATION",
+        "standardized_reason": "L/U uncalibrated: lu_status=OBSERVED_RANGE_UNCALIBRATED, placeholder L=0.0/U=100.0 (algo.txt §5.1 — L/U require calibration before standardization)؛ unit/scale mismatch: registry defines this indicator as «درصد جمعیت در آستانه؛ دقیقه/متر (کمکی)» on range «۰ تا ۱۰۰», but the pilot raw value is in «count» via operationalization «count_within_boundary» (a supply count / euclidean distance is NOT a %-population-within-threshold)"
+      },
+      "indicator": {
+        "title": "میزان فاصله دسترسی به پارک",
+        "capital": "P",
+        "chain_stage": "A",
+        "qtr_target": "Q",
+        "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)"
+      },
+      "formula": "count_within_boundary",
+      "raw_value": 115.0,
+      "unit": "count",
+      "source": {
+        "source_id": "SRC-0001",
+        "source_name": "OpenStreetMap (Nominatim/Overpass, R6729037)",
+        "provider": "OpenStreetMap contributors",
+        "dataset_id": "OSM relation 6729037"
+      },
+      "request_api": {
+        "url_api": "https://nominatim.openstreetmap.org/lookup",
+        "request_params": {
+          "dataset_id": "OSM Overpass area 3606729037",
+          "ts": "2026-09-02T00:49:02.129088+00:00",
+          "period": "OSM snapshot",
+          "raw_file": "pilot/raw/pois_D6_overpass.json",
+          "record_ref": "leisure=park count"
+        }
+      },
+      "file_record": {
+        "raw_file_ref": "pilot/raw/pois_D6_overpass.json",
+        "raw_file_hash": "sha256:c5a62057530ef4136994ce8035b1a04f323502180a4baa0e164851ec458922c6",
+        "record_ref": "leisure=park count"
+      },
+      "date": "2026-09-02T00:49:02.129088+00:00",
+      "observation_period": "OSM snapshot",
+      "processing": {
+        "processing_version": "algo.txt-2026",
+        "transformation_steps": [],
+        "crs": "EPSG:32639"
+      },
+      "qc": {
+        "quality_checks": [],
+        "quality_score": 0.8571
+      },
+      "confidence": {
+        "level": "محدود",
+        "score": 0.6511,
+        "factors": {
+          "source_credibility": {
+            "score": 0.35,
+            "weight": 0.25,
+            "contribution": 0.0875,
+            "explain": "tier «public_osm» = 0.35"
+          },
+          "spatial_granularity": {
+            "score": 0.65,
+            "weight": 0.2,
+            "contribution": 0.13,
+            "explain": "scale «district» is 1 level(s) coarser than target «neighborhood»"
+          },
+          "completeness": {
+            "score": 1.0,
+            "weight": 0.15,
+            "contribution": 0.15,
+            "explain": "completeness=1.0"
+          },
+          "quality_check": {
+            "score": 0.8571,
+            "weight": 0.15,
+            "contribution": 0.1286,
+            "explain": "QC score=0.8571"
+          },
+          "recency": {
+            "score": 1.0,
+            "weight": 0.1,
+            "contribution": 0.1,
+            "explain": "age 0d within expected cadence 365d"
+          },
+          "stream_count": {
+            "score": 0.4,
+            "weight": 0.1,
+            "contribution": 0.04,
+            "explain": "single evidence stream"
+          },
+          "proxy_penalty": {
+            "score": 0.3,
+            "weight": 0.05,
+            "contribution": 0.015,
+            "explain": "explicit proxy → penalised"
+          }
+        },
+        "ceiling": "محدود",
+        "base_level": "قابل اتکا",
+        "n_streams": 1,
+        "streams": [
+          "gis"
+        ],
+        "is_proxy": true,
+        "reason": "not experimentally tested/calibrated → cannot reach آزمون‌شده؛ single/uncorroborated stream → cannot reach همگرا؛ single-stream PROXY → capped at محدود (constraint 7)"
+      },
+      "is_proxy": true,
+      "reproducibility_key": {
+        "data_version": "pilot-D6-2026-09-02",
+        "methodology_version": "algo.txt-2026",
+        "indicator_version": "registry-419-v1",
+        "weight_set": "W-v1",
+        "threshold_set": "T-v1",
+        "calculation_version": "CALC-v0.2"
+      }
+    },
+    "VAL-00003": {
+      "result": {
+        "indicator_code": "PHY-001",
+        "operationalization": "count_within_boundary",
+        "raw_value": 68.0,
+        "raw_unit": "count",
+        "standardized_status": "PENDING_VALIDATION",
+        "standardized_reason": "L/U uncalibrated: lu_status=OBSERVED_RANGE_UNCALIBRATED, placeholder L=0.0/U=100.0 (algo.txt §5.1 — L/U require calibration before standardization)؛ unit/scale mismatch: registry defines this indicator as «درصد جمعیت در آستانه؛ دقیقه/متر (کمکی)» on range «۰ تا ۱۰۰», but the pilot raw value is in «count» via operationalization «count_within_boundary» (a supply count / euclidean distance is NOT a %-population-within-threshold)"
+      },
+      "indicator": {
+        "title": "میزان فاصلۀ دسترسی کودکان تا مدرسه",
+        "capital": "N",
+        "chain_stage": "A",
+        "qtr_target": "Q",
+        "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)"
+      },
+      "formula": "count_within_boundary",
+      "raw_value": 68.0,
+      "unit": "count",
+      "source": {
+        "source_id": "SRC-0001",
+        "source_name": "OpenStreetMap (Nominatim/Overpass, R6729037)",
+        "provider": "OpenStreetMap contributors",
+        "dataset_id": "OSM relation 6729037"
+      },
+      "request_api": {
+        "url_api": "https://nominatim.openstreetmap.org/lookup",
+        "request_params": {
+          "dataset_id": "OSM Overpass area 3606729037",
+          "ts": "2026-09-02T00:49:02.129088+00:00",
+          "period": "OSM snapshot",
+          "raw_file": "pilot/raw/pois_D6_overpass.json",
+          "record_ref": "amenity=school count"
+        }
+      },
+      "file_record": {
+        "raw_file_ref": "pilot/raw/pois_D6_overpass.json",
+        "raw_file_hash": "sha256:62ba8184aa80e7c3ccf93b2bd83fcade51899b20bb491e3c116ac9463190e3b2",
+        "record_ref": "amenity=school count"
+      },
+      "date": "2026-09-02T00:49:02.129088+00:00",
+      "observation_period": "OSM snapshot",
+      "processing": {
+        "processing_version": "algo.txt-2026",
+        "transformation_steps": [],
+        "crs": "EPSG:32639"
+      },
+      "qc": {
+        "quality_checks": [],
+        "quality_score": 0.8571
+      },
+      "confidence": {
+        "level": "محدود",
+        "score": 0.6511,
+        "factors": {
+          "source_credibility": {
+            "score": 0.35,
+            "weight": 0.25,
+            "contribution": 0.0875,
+            "explain": "tier «public_osm» = 0.35"
+          },
+          "spatial_granularity": {
+            "score": 0.65,
+            "weight": 0.2,
+            "contribution": 0.13,
+            "explain": "scale «district» is 1 level(s) coarser than target «neighborhood»"
+          },
+          "completeness": {
+            "score": 1.0,
+            "weight": 0.15,
+            "contribution": 0.15,
+            "explain": "completeness=1.0"
+          },
+          "quality_check": {
+            "score": 0.8571,
+            "weight": 0.15,
+            "contribution": 0.1286,
+            "explain": "QC score=0.8571"
+          },
+          "recency": {
+            "score": 1.0,
+            "weight": 0.1,
+            "contribution": 0.1,
+            "explain": "age 0d within expected cadence 365d"
+          },
+          "stream_count": {
+            "score": 0.4,
+            "weight": 0.1,
+            "contribution": 0.04,
+            "explain": "single evidence stream"
+          },
+          "proxy_penalty": {
+            "score": 0.3,
+            "weight": 0.05,
+            "contribution": 0.015,
+            "explain": "explicit proxy → penalised"
+          }
+        },
+        "ceiling": "محدود",
+        "base_level": "قابل اتکا",
+        "n_streams": 1,
+        "streams": [
+          "gis"
+        ],
+        "is_proxy": true,
+        "reason": "not experimentally tested/calibrated → cannot reach آزمون‌شده؛ single/uncorroborated stream → cannot reach همگرا؛ single-stream PROXY → capped at محدود (constraint 7)"
+      },
+      "is_proxy": true,
+      "reproducibility_key": {
+        "data_version": "pilot-D6-2026-09-02",
+        "methodology_version": "algo.txt-2026",
+        "indicator_version": "registry-419-v1",
+        "weight_set": "W-v1",
+        "threshold_set": "T-v1",
+        "calculation_version": "CALC-v0.2"
+      }
+    },
+    "VAL-00004": {
+      "result": {
+        "indicator_code": "PHY-002",
+        "operationalization": "count_within_boundary",
+        "raw_value": 259.0,
+        "raw_unit": "count",
+        "standardized_status": "PENDING_VALIDATION",
+        "standardized_reason": "L/U uncalibrated: lu_status=OBSERVED_RANGE_UNCALIBRATED, placeholder L=0.0/U=100.0 (algo.txt §5.1 — L/U require calibration before standardization)؛ unit/scale mismatch: registry defines this indicator as «درصد جمعیت در آستانه؛ دقیقه/متر (کمکی)» on range «۰ تا ۱۰۰», but the pilot raw value is in «count» via operationalization «count_within_boundary» (a supply count / euclidean distance is NOT a %-population-within-threshold)"
+      },
+      "indicator": {
+        "title": "میزان فاصلۀ دسترسی به اتوبوس واحد و تاکسی",
+        "capital": "R",
+        "chain_stage": "A",
+        "qtr_target": "Q",
+        "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)"
+      },
+      "formula": "count_within_boundary",
+      "raw_value": 259.0,
+      "unit": "count",
+      "source": {
+        "source_id": "SRC-0001",
+        "source_name": "OpenStreetMap (Nominatim/Overpass, R6729037)",
+        "provider": "OpenStreetMap contributors",
+        "dataset_id": "OSM relation 6729037"
+      },
+      "request_api": {
+        "url_api": "https://nominatim.openstreetmap.org/lookup",
+        "request_params": {
+          "dataset_id": "OSM Overpass area 3606729037",
+          "ts": "2026-09-02T00:49:02.129088+00:00",
+          "period": "OSM snapshot",
+          "raw_file": "pilot/raw/pois_D6_overpass.json",
+          "record_ref": "highway=bus_stop count"
+        }
+      },
+      "file_record": {
+        "raw_file_ref": "pilot/raw/pois_D6_overpass.json",
+        "raw_file_hash": "sha256:c72493f61a0af0a1729781fea2be73ba47440b1f71597cbb9683662751196bb1",
+        "record_ref": "highway=bus_stop count"
+      },
+      "date": "2026-09-02T00:49:02.129088+00:00",
+      "observation_period": "OSM snapshot",
+      "processing": {
+        "processing_version": "algo.txt-2026",
+        "transformation_steps": [],
+        "crs": "EPSG:32639"
+      },
+      "qc": {
+        "quality_checks": [],
+        "quality_score": 0.8571
+      },
+      "confidence": {
+        "level": "محدود",
+        "score": 0.6511,
+        "factors": {
+          "source_credibility": {
+            "score": 0.35,
+            "weight": 0.25,
+            "contribution": 0.0875,
+            "explain": "tier «public_osm» = 0.35"
+          },
+          "spatial_granularity": {
+            "score": 0.65,
+            "weight": 0.2,
+            "contribution": 0.13,
+            "explain": "scale «district» is 1 level(s) coarser than target «neighborhood»"
+          },
+          "completeness": {
+            "score": 1.0,
+            "weight": 0.15,
+            "contribution": 0.15,
+            "explain": "completeness=1.0"
+          },
+          "quality_check": {
+            "score": 0.8571,
+            "weight": 0.15,
+            "contribution": 0.1286,
+            "explain": "QC score=0.8571"
+          },
+          "recency": {
+            "score": 1.0,
+            "weight": 0.1,
+            "contribution": 0.1,
+            "explain": "age 0d within expected cadence 365d"
+          },
+          "stream_count": {
+            "score": 0.4,
+            "weight": 0.1,
+            "contribution": 0.04,
+            "explain": "single evidence stream"
+          },
+          "proxy_penalty": {
+            "score": 0.3,
+            "weight": 0.05,
+            "contribution": 0.015,
+            "explain": "explicit proxy → penalised"
+          }
+        },
+        "ceiling": "محدود",
+        "base_level": "قابل اتکا",
+        "n_streams": 1,
+        "streams": [
+          "gis"
+        ],
+        "is_proxy": true,
+        "reason": "not experimentally tested/calibrated → cannot reach آزمون‌شده؛ single/uncorroborated stream → cannot reach همگرا؛ single-stream PROXY → capped at محدود (constraint 7)"
+      },
+      "is_proxy": true,
+      "reproducibility_key": {
+        "data_version": "pilot-D6-2026-09-02",
+        "methodology_version": "algo.txt-2026",
+        "indicator_version": "registry-419-v1",
+        "weight_set": "W-v1",
+        "threshold_set": "T-v1",
+        "calculation_version": "CALC-v0.2"
+      }
+    },
+    "VAL-00005": {
+      "result": {
+        "indicator_code": "PHY-003",
+        "operationalization": "distance(euclidean_proxy_for_network)",
+        "raw_value": 114.28,
+        "raw_unit": "meter",
+        "standardized_status": "PENDING_VALIDATION",
+        "standardized_reason": "L/U uncalibrated: lu_status=OBSERVED_RANGE_UNCALIBRATED, placeholder L=0.0/U=100.0 (algo.txt §5.1 — L/U require calibration before standardization)؛ unit/scale mismatch: registry defines this indicator as «درصد جمعیت در آستانه؛ دقیقه/متر (کمکی)» on range «۰ تا ۱۰۰», but the pilot raw value is in «meter» via operationalization «distance(euclidean_proxy_for_network)» (a supply count / euclidean distance is NOT a %-population-within-threshold)؛ direction mapping undefined: raw is euclidean distance-to-nearest (labelled proxy for network distance); registry direction «bigger=better» is defined on a %-in-threshold scale, not on raw meters — no defensible source-cited threshold to map meters->0-100"
+      },
+      "indicator": {
+        "title": "میزان فاصله دسترسی به پارک",
+        "capital": "P",
+        "chain_stage": "A",
+        "qtr_target": "Q",
+        "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)"
+      },
+      "formula": "distance(euclidean_proxy_for_network)",
+      "raw_value": 114.28,
+      "unit": "meter",
+      "source": {
+        "source_id": "SRC-0001",
+        "source_name": "OpenStreetMap (Nominatim/Overpass, R6729037)",
+        "provider": "OpenStreetMap contributors",
+        "dataset_id": "OSM relation 6729037"
+      },
+      "request_api": {
+        "url_api": "https://nominatim.openstreetmap.org/lookup",
+        "request_params": {
+          "dataset_id": "OSM Overpass area 3606729037",
+          "ts": "2026-09-02T00:49:02.129088+00:00",
+          "period": "OSM snapshot",
+          "raw_file": "pilot/raw/pois_D6_overpass.json",
+          "record_ref": "nearest park distance"
+        }
+      },
+      "file_record": {
+        "raw_file_ref": "pilot/raw/pois_D6_overpass.json",
+        "raw_file_hash": "sha256:d40eb3516a5caed0a7bb35bfa5c18234d6c3fc73dea28ed1549912f4981c2370",
+        "record_ref": "nearest park distance"
+      },
+      "date": "2026-09-02T00:49:02.129088+00:00",
+      "observation_period": "OSM snapshot",
+      "processing": {
+        "processing_version": "algo.txt-2026",
+        "transformation_steps": [],
+        "crs": "EPSG:32639"
+      },
+      "qc": {
+        "quality_checks": [],
+        "quality_score": 0.8571
+      },
+      "confidence": {
+        "level": "محدود",
+        "score": 0.6511,
+        "factors": {
+          "source_credibility": {
+            "score": 0.35,
+            "weight": 0.25,
+            "contribution": 0.0875,
+            "explain": "tier «public_osm» = 0.35"
+          },
+          "spatial_granularity": {
+            "score": 0.65,
+            "weight": 0.2,
+            "contribution": 0.13,
+            "explain": "scale «district» is 1 level(s) coarser than target «neighborhood»"
+          },
+          "completeness": {
+            "score": 1.0,
+            "weight": 0.15,
+            "contribution": 0.15,
+            "explain": "completeness=1.0"
+          },
+          "quality_check": {
+            "score": 0.8571,
+            "weight": 0.15,
+            "contribution": 0.1286,
+            "explain": "QC score=0.8571"
+          },
+          "recency": {
+            "score": 1.0,
+            "weight": 0.1,
+            "contribution": 0.1,
+            "explain": "age 0d within expected cadence 365d"
+          },
+          "stream_count": {
+            "score": 0.4,
+            "weight": 0.1,
+            "contribution": 0.04,
+            "explain": "single evidence stream"
+          },
+          "proxy_penalty": {
+            "score": 0.3,
+            "weight": 0.05,
+            "contribution": 0.015,
+            "explain": "explicit proxy → penalised"
+          }
+        },
+        "ceiling": "محدود",
+        "base_level": "قابل اتکا",
+        "n_streams": 1,
+        "streams": [
+          "gis"
+        ],
+        "is_proxy": true,
+        "reason": "not experimentally tested/calibrated → cannot reach آزمون‌شده؛ single/uncorroborated stream → cannot reach همگرا؛ single-stream PROXY → capped at محدود (constraint 7)"
+      },
+      "is_proxy": true,
+      "reproducibility_key": {
+        "data_version": "pilot-D6-2026-09-02",
+        "methodology_version": "algo.txt-2026",
+        "indicator_version": "registry-419-v1",
+        "weight_set": "W-v1",
+        "threshold_set": "T-v1",
+        "calculation_version": "CALC-v0.2"
+      }
+    },
+    "VAL-00006": {
+      "result": {
+        "indicator_code": "PHY-001",
+        "operationalization": "distance(euclidean_proxy_for_network)",
+        "raw_value": 253.28,
+        "raw_unit": "meter",
+        "standardized_status": "PENDING_VALIDATION",
+        "standardized_reason": "L/U uncalibrated: lu_status=OBSERVED_RANGE_UNCALIBRATED, placeholder L=0.0/U=100.0 (algo.txt §5.1 — L/U require calibration before standardization)؛ unit/scale mismatch: registry defines this indicator as «درصد جمعیت در آستانه؛ دقیقه/متر (کمکی)» on range «۰ تا ۱۰۰», but the pilot raw value is in «meter» via operationalization «distance(euclidean_proxy_for_network)» (a supply count / euclidean distance is NOT a %-population-within-threshold)؛ direction mapping undefined: raw is euclidean distance-to-nearest (labelled proxy for network distance); registry direction «bigger=better» is defined on a %-in-threshold scale, not on raw meters — no defensible source-cited threshold to map meters->0-100"
+      },
+      "indicator": {
+        "title": "میزان فاصلۀ دسترسی کودکان تا مدرسه",
+        "capital": "N",
+        "chain_stage": "A",
+        "qtr_target": "Q",
+        "direction": "مستقیم (مقدار بیشتر = ظرفیت/وضعیت بهتر)"
+      },
+      "formula": "distance(euclidean_proxy_for_network)",
+      "raw_value": 253.28,
+      "unit": "meter",
+      "source": {
+        "source_id": "SRC-0001",
+        "source_name": "OpenStreetMap (Nominatim/Overpass, R6729037)",
+        "provider": "OpenStreetMap contributors",
+        "dataset_id": "OSM relation 6729037"
+      },
+      "request_api": {
+        "url_api": "https://nominatim.openstreetmap.org/lookup",
+        "request_params": {
+          "dataset_id": "OSM Overpass area 3606729037",
+          "ts": "2026-09-02T00:49:02.129088+00:00",
+          "period": "OSM snapshot",
+          "raw_file": "pilot/raw/pois_D6_overpass.json",
+          "record_ref": "nearest school distance"
+        }
+      },
+      "file_record": {
+        "raw_file_ref": "pilot/raw/pois_D6_overpass.json",
+        "raw_file_hash": "sha256:f69a8463e58e67c8a240c075e2a89d86bf1b50f61c42dd078d669704447a764b",
+        "record_ref": "nearest school distance"
+      },
+      "date": "2026-09-02T00:49:02.129088+00:00",
+      "observation_period": "OSM snapshot",
+      "processing": {
+        "processing_version": "algo.txt-2026",
+        "transformation_steps": [],
+        "crs": "EPSG:32639"
+      },
+      "qc": {
+        "quality_checks": [],
+        "quality_score": 0.8571
+      },
+      "confidence": {
+        "level": "محدود",
+        "score": 0.6511,
+        "factors": {
+          "source_credibility": {
+            "score": 0.35,
+            "weight": 0.25,
+            "contribution": 0.0875,
+            "explain": "tier «public_osm» = 0.35"
+          },
+          "spatial_granularity": {
+            "score": 0.65,
+            "weight": 0.2,
+            "contribution": 0.13,
+            "explain": "scale «district» is 1 level(s) coarser than target «neighborhood»"
+          },
+          "completeness": {
+            "score": 1.0,
+            "weight": 0.15,
+            "contribution": 0.15,
+            "explain": "completeness=1.0"
+          },
+          "quality_check": {
+            "score": 0.8571,
+            "weight": 0.15,
+            "contribution": 0.1286,
+            "explain": "QC score=0.8571"
+          },
+          "recency": {
+            "score": 1.0,
+            "weight": 0.1,
+            "contribution": 0.1,
+            "explain": "age 0d within expected cadence 365d"
+          },
+          "stream_count": {
+            "score": 0.4,
+            "weight": 0.1,
+            "contribution": 0.04,
+            "explain": "single evidence stream"
+          },
+          "proxy_penalty": {
+            "score": 0.3,
+            "weight": 0.05,
+            "contribution": 0.015,
+            "explain": "explicit proxy → penalised"
+          }
+        },
+        "ceiling": "محدود",
+        "base_level": "قابل اتکا",
+        "n_streams": 1,
+        "streams": [
+          "gis"
+        ],
+        "is_proxy": true,
+        "reason": "not experimentally tested/calibrated → cannot reach آزمون‌شده؛ single/uncorroborated stream → cannot reach همگرا؛ single-stream PROXY → capped at محدود (constraint 7)"
+      },
+      "is_proxy": true,
+      "reproducibility_key": {
+        "data_version": "pilot-D6-2026-09-02",
+        "methodology_version": "algo.txt-2026",
+        "indicator_version": "registry-419-v1",
+        "weight_set": "W-v1",
+        "threshold_set": "T-v1",
+        "calculation_version": "CALC-v0.2"
+      }
+    },
+    "VAL-00007": {
+      "result": {
+        "indicator_code": "ONL-011",
+        "operationalization": "nearest_epicenter_distance",
+        "raw_value": 40.703,
+        "raw_unit": "km",
+        "standardized_status": "PENDING_VALIDATION",
+        "standardized_reason": "no L/U in threshold registry for this indicator (not calibratable yet)؛ direction mapping undefined: raw is euclidean distance-to-nearest (labelled proxy for network distance); registry direction «bigger=better» is defined on a %-in-threshold scale, not on raw meters — no defensible source-cited threshold to map meters->0-100"
+      },
+      "indicator": {
+        "title": "نرخ رخداد زمین‌لرزه‌های M≥4.5 پیرامون",
+        "capital": null,
+        "chain_stage": null,
+        "qtr_target": null,
+        "direction": "کمتر بهتر"
+      },
+      "formula": "nearest_epicenter_distance",
+      "raw_value": 40.703,
+      "unit": "km",
+      "source": {
+        "source_id": "SRC-0003",
+        "source_name": "USGS ComCat",
+        "provider": "USGS",
+        "dataset_id": "ComCat"
+      },
+      "request_api": {
+        "url_api": "https://earthquake.usgs.gov/fdsnws/event/1/query",
+        "request_params": {
+          "dataset_id": "ComCat",
+          "ts": "2026-09-02T00:49:38.673393+00:00",
+          "period": "1900-01-01..now",
+          "raw_file": "pilot/raw/usgs_eq_region.json",
+          "record_ref": "nearest M>=4.5 epicenter"
+        }
+      },
+      "file_record": {
+        "raw_file_ref": "pilot/raw/usgs_eq_region.json",
+        "raw_file_hash": "sha256:99ee9e3760e30076f92224f7824b81fa8c9311d176095ce782459797b539e683",
+        "record_ref": "nearest M>=4.5 epicenter"
+      },
+      "date": "2026-09-02T00:49:38.673393+00:00",
+      "observation_period": "1900-01-01..now",
+      "processing": {
+        "processing_version": "algo.txt-2026",
+        "transformation_steps": [],
+        "crs": "EPSG:32639"
+      },
+      "qc": {
+        "quality_checks": [],
+        "quality_score": 0.7857
+      },
+      "confidence": {
+        "level": "محدود",
+        "score": 0.6354,
+        "factors": {
+          "source_credibility": {
+            "score": 0.85,
+            "weight": 0.25,
+            "contribution": 0.2125,
+            "explain": "tier «scientific_remote_sensing» = 0.85"
+          },
+          "spatial_granularity": {
+            "score": 0.0,
+            "weight": 0.2,
+            "contribution": 0.0,
+            "explain": "scale «region» is 3 level(s) coarser than target «neighborhood»"
+          },
+          "completeness": {
+            "score": 1.0,
+            "weight": 0.15,
+            "contribution": 0.15,
+            "explain": "completeness=1.0"
+          },
+          "quality_check": {
+            "score": 0.7857,
+            "weight": 0.15,
+            "contribution": 0.1179,
+            "explain": "QC score=0.7857"
+          },
+          "recency": {
+            "score": 1.0,
+            "weight": 0.1,
+            "contribution": 0.1,
+            "explain": "age 0d within expected cadence 365d"
+          },
+          "stream_count": {
+            "score": 0.4,
+            "weight": 0.1,
+            "contribution": 0.04,
+            "explain": "single evidence stream"
+          },
+          "proxy_penalty": {
+            "score": 0.3,
+            "weight": 0.05,
+            "contribution": 0.015,
+            "explain": "explicit proxy → penalised"
+          }
+        },
+        "ceiling": "محدود",
+        "base_level": "قابل اتکا",
+        "n_streams": 1,
+        "streams": [
+          "objective"
+        ],
+        "is_proxy": true,
+        "reason": "not experimentally tested/calibrated → cannot reach آزمون‌شده؛ single/uncorroborated stream → cannot reach همگرا؛ single-stream PROXY → capped at محدود (constraint 7)"
+      },
+      "is_proxy": true,
+      "reproducibility_key": {
+        "data_version": "pilot-D6-2026-09-02",
+        "methodology_version": "algo.txt-2026",
+        "indicator_version": "registry-419-v1",
+        "weight_set": "W-v1",
+        "threshold_set": "T-v1",
+        "calculation_version": "CALC-v0.2"
+      }
+    },
+    "VAL-DEM-D6": {
+      "result": {
+        "indicator_code": "ONL-001",
+        "operationalization": "dem_zonal_mean",
+        "raw_value": null,
+        "raw_unit": "meter",
+        "standardized_status": "ACCESS_REQUIRED",
+        "standardized_reason": "no valid raw input to normalize"
+      },
+      "indicator": {
+        "title": "میانگین و میانه ارتفاع",
+        "capital": null,
+        "chain_stage": null,
+        "qtr_target": null,
+        "direction": "خنثی/زمینه‌ای"
+      },
+      "formula": "dem_zonal_mean",
+      "raw_value": null,
+      "unit": "meter",
+      "source": {
+        "source_id": "SRC-0004",
+        "source_name": "Copernicus DEM GLO-30 via OpenTopography",
+        "provider": "ESA/Copernicus via OpenTopography",
+        "dataset_id": "COP30"
+      },
+      "request_api": {
+        "url_api": "https://portal.opentopography.org/API/globaldem",
+        "request_params": {
+          "demtype": "COP30",
+          "south": 35.7006576,
+          "north": 35.7521851,
+          "west": 51.377614,
+          "east": 51.4275001,
+          "outputFormat": "GTiff"
+        }
+      },
+      "file_record": {
+        "raw_file_ref": null,
+        "raw_file_hash": null,
+        "record_ref": null
+      },
+      "date": null,
+      "observation_period": null,
+      "processing": {
+        "processing_version": null,
+        "transformation_steps": [],
+        "crs": "EPSG:4326"
+      },
+      "qc": {
+        "quality_checks": [],
+        "quality_score": null
+      },
+      "confidence": {
+        "level": "ناکافی",
+        "score": 0.46,
+        "factors": {
+          "source_credibility": {
+            "score": 0.4,
+            "weight": 0.25,
+            "contribution": 0.1,
+            "explain": "tier «auxiliary_proxy» = 0.4"
+          },
+          "spatial_granularity": {
+            "score": 0.3,
+            "weight": 0.2,
+            "contribution": 0.06,
+            "explain": "scale «unknown» is 2 level(s) coarser than target «neighborhood»"
+          },
+          "completeness": {
+            "score": 0.5,
+            "weight": 0.15,
+            "contribution": 0.075,
+            "explain": "completeness=0.5"
+          },
+          "quality_check": {
+            "score": 0.5,
+            "weight": 0.15,
+            "contribution": 0.075,
+            "explain": "QC score=0.5"
+          },
+          "recency": {
+            "score": 1.0,
+            "weight": 0.1,
+            "contribution": 0.1,
+            "explain": "age 0d within expected cadence 365d"
+          },
+          "stream_count": {
+            "score": 0.0,
+            "weight": 0.1,
+            "contribution": 0.0,
+            "explain": "no evidence stream"
+          },
+          "proxy_penalty": {
+            "score": 1.0,
+            "weight": 0.05,
+            "contribution": 0.05,
+            "explain": "direct measurement"
+          }
+        },
+        "ceiling": "ناکافی",
+        "base_level": "محدود",
+        "n_streams": 0,
+        "streams": [],
+        "is_proxy": false,
+        "reason": "no published number → ناکافی"
+      },
+      "is_proxy": false,
+      "reproducibility_key": {
+        "data_version": "pilot-D6-2026-09-02",
+        "methodology_version": "algo.txt-2026",
+        "indicator_version": "registry-419-v1",
+        "weight_set": "W-v1",
+        "threshold_set": "T-v1",
+        "calculation_version": "CALC-v0.2"
+      }
+    }
+  }
+}

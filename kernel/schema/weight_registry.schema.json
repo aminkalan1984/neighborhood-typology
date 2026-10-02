@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WeightRegistry",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "scheme": {
+      "type": "string"
+    },
+    "calibrated": {
+      "type": "boolean"
+    },
+    "status": {
+      "enum": [
+        "OBSERVED",
+        "MISSING",
+        "NOT_APPLICABLE",
+        "INVALID",
+        "ESTIMATED",
+        "PROXY",
+        "INSUFFICIENT_COVERAGE",
+        "WAITING_FOR_DATA",
+        "SOURCE_UNAVAILABLE",
+        "ACCESS_REQUIRED",
+        "PENDING_VALIDATION"
+      ]
+    },
+    "provenance": {
+      "type": "string"
+    },
+    "audit_trail": {
+      "type": "array"
+    },
+    "weights": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "version",
+    "scheme",
+    "calibrated",
+    "status",
+    "provenance"
+  ]
+}

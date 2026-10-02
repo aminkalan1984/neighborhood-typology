@@ -1,0 +1,131 @@
+{
+  "neighborhood": {
+    "id": "IR-THR-D6",
+    "name_fa": "منطقه ۶ شهر تهران",
+    "name_en": "Tehran District 6",
+    "osm_relation": 6729037,
+    "boundary_version": "v1",
+    "boundary_area_km2": 21.403,
+    "metric_crs": "EPSG:32639",
+    "is_proxy": true,
+    "boundary_hash": "sha256:c09b482466e6ab38f914cbf4536b7403683e09d2ebfc22b4c8e57fdb3e239b43"
+  },
+  "indicators": [
+    {
+      "indicator_code": "BOUNDARY",
+      "operationalization": "boundary_area(metric_crs)",
+      "raw_status": "PROXY",
+      "raw_value": 21.403,
+      "unit": "km2",
+      "is_proxy": true,
+      "evidence_stream": "gis",
+      "standardized_status": "N/A",
+      "approval": "APPROVED_PROXY",
+      "provenance_value_id": "VAL-BOUNDARY-D6",
+      "coverage": 1.0,
+      "quality_score": null
+    },
+    {
+      "indicator_code": "PHY-003",
+      "operationalization": "count_within_boundary",
+      "raw_status": "PROXY",
+      "raw_value": 115.0,
+      "unit": null,
+      "is_proxy": true,
+      "evidence_stream": "gis",
+      "standardized_status": "PENDING_VALIDATION",
+      "approval": "PENDING_APPROVAL",
+      "provenance_value_id": "VAL-00002",
+      "coverage": 1.0,
+      "quality_score": 0.8571
+    },
+    {
+      "indicator_code": "PHY-001",
+      "operationalization": "count_within_boundary",
+      "raw_status": "PROXY",
+      "raw_value": 68.0,
+      "unit": null,
+      "is_proxy": true,
+      "evidence_stream": "gis",
+      "standardized_status": "PENDING_VALIDATION",
+      "approval": "PENDING_APPROVAL",
+      "provenance_value_id": "VAL-00003",
+      "coverage": 1.0,
+      "quality_score": 0.8571
+    },
+    {
+      "indicator_code": "PHY-002",
+      "operationalization": "count_within_boundary",
+      "raw_status": "PROXY",
+      "raw_value": 259.0,
+      "unit": null,
+      "is_proxy": true,
+      "evidence_stream": "gis",
+      "standardized_status": "PENDING_VALIDATION",
+      "approval": "PENDING_APPROVAL",
+      "provenance_value_id": "VAL-00004",
+      "coverage": 1.0,
+      "quality_score": 0.8571
+    },
+    {
+      "indicator_code": "PHY-003",
+      "operationalization": "distance(euclidean_proxy_for_network)",
+      "raw_status": "PROXY",
+      "raw_value": 114.28,
+      "unit": null,
+      "is_proxy": true,
+      "evidence_stream": "gis",
+      "standardized_status": "PENDING_VALIDATION",
+      "approval": "PENDING_APPROVAL",
+      "provenance_value_id": "VAL-00005",
+      "coverage": 1.0,
+      "quality_score": 0.8571
+    },
+    {
+      "indicator_code": "PHY-001",
+      "operationalization": "distance(euclidean_proxy_for_network)",
+      "raw_status": "PROXY",
+      "raw_value": 253.28,
+      "unit": null,
+      "is_proxy": true,
+      "evidence_stream": "gis",
+      "standardized_status": "PENDING_VALIDATION",
+      "approval": "PENDING_APPROVAL",
+      "provenance_value_id": "VAL-00006",
+      "coverage": 1.0,
+      "quality_score": 0.8571
+    },
+    {
+      "indicator_code": "ONL-011",
+      "operationalization": "nearest_epicenter_distance",
+      "raw_status": "PROXY",
+      "raw_value": 40.703,
+      "unit": null,
+      "is_proxy": true,
+      "evidence_stream": "objective",
+      "standardized_status": "N/A_online_measure",
+      "approval": "PENDING_APPROVAL",
+      "provenance_value_id": "VAL-00007",
+      "coverage": 1.0,
+      "quality_score": 0.7857
+    },
+    {
+      "indicator_code": "ONL-001",
+      "operationalization": "dem_zonal_mean",
+      "raw_status": "ACCESS_REQUIRED",
+      "raw_value": null,
+      "unit": null,
+      "is_proxy": false,
+      "evidence_stream": "",
+      "standardized_status": null,
+      "approval": "BLOCKED_ACCESS_REQUIRED",
+      "provenance_value_id": "VAL-DEM-D6",
+      "coverage": null,
+      "quality_score": null
+    }
+  ],
+  "status_counts": {
+    "PROXY": 7,
+    "ACCESS_REQUIRED": 1
+  }
+}

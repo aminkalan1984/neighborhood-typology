@@ -1,0 +1,645 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+/* ==========================================================================
+   آرا — نظام طراحی اتاق وضعیت (Design Tokens)
+   تم: سفید → سبزهای متنوع · Brand: طیف سبز · Signal: نعنایی زنده · Wall: سبز جنگلی
+   ========================================================================== */
+@theme {
+  /* توکن قلم رابط — از متغیر زنده --font-ui پیروی می‌کند تا سوییچ گونهٔ Round-Dots بدون بازبارگذاری کار کند */
+  --font-sans: var(--font-ui);
+
+  /* Brand — طیف کامل سبز (روشن → جنگلی) */
+  --color-brand-50: #EEF7F1;
+  --color-brand-100: #DDEFE3;
+  --color-brand-200: #BEE1CB;
+  --color-brand-300: #94CCAA;
+  --color-brand-400: #5FB485;
+  --color-brand-500: #3C9C6A;
+  --color-brand-600: #2C8156;
+  --color-brand-700: #236B48;
+  --color-brand-800: #1D5940; /* primary */
+  --color-brand-900: #12402D; /* deep */
+  --color-brand-950: #0A281C;
+
+  /* Signal — نعنایی زنده (Live) */
+  --color-signal-100: #EAFBD8;
+  --color-signal-200: #D8F5BE;
+  --color-signal-300: #C9F2A8;
+  --color-signal-400: #BBF49C; /* primary accent */
+  --color-signal-500: #9BE86F;
+
+  /* Paper — سفید تا سبز روشن */
+  --color-paper: #F6F9F7;
+  --color-surface: #FFFFFF;
+  --color-line: #E3EAE5;
+  --color-line-strong: #CFDAD3;
+
+  /* Ink — متن سبز-خاکستری */
+  --color-ink-900: #14231D;
+  --color-ink-800: #1F332B;
+  --color-ink-700: #34493F;
+  --color-ink-500: #557064;
+  --color-ink-400: #70897E;
+  --color-ink-300: #8FA59A;
+
+  /* Wall — سبز جنگلی اتاق فرمان (Wall Mode) */
+  --color-wall-950: #04120D;
+  --color-wall-900: #072018;
+  --color-wall-850: #0B2A1F;
+  --color-wall-800: #103627;
+  --color-wall-700: #174631;
+  --color-wall-600: #1F5A3F;
+
+  /* Seal — برنز رسمی (برای نکات برجسته) */
+  --color-seal-300: #E9D9A6;
+  --color-seal-400: #D4BC72;
+  --color-seal-500: #C9A227;
+
+  /* Status — معنایی */
+  --color-ok: #10B981;
+  --color-ok-700: #0E7A5C;
+  --color-ok-soft: #E7F7F0;
+  --color-warn: #E8930C;
+  --color-warn-700: #B26D05;
+  --color-warn-soft: #FCF0DC;
+  --color-danger: #E5484D;
+  --color-danger-700: #B03A3E;
+  --color-danger-soft: #FDECEC;
+  --color-info: #0D9488; /* فیروزه‌ای-سبز */
+  --color-info-700: #0B6E66;
+  --color-info-soft: #E0F5F2;
+
+  /* Shadows — عمق کنترل‌شده */
+  --shadow-card: 0 1px 2px rgba(20, 35, 29, 0.05), 0 2px 8px rgba(20, 35, 29, 0.05);
+  --shadow-card-hover: 0 2px 4px rgba(20, 35, 29, 0.07), 0 12px 28px -8px rgba(20, 35, 29, 0.15);
+  --shadow-pop: 0 8px 16px rgba(20, 35, 29, 0.11), 0 24px 56px -12px rgba(20, 35, 29, 0.26);
+  --shadow-glow: 0 0 0 1px rgba(187, 244, 156, 0.35), 0 0 24px rgba(187, 244, 156, 0.25);
+
+  /* Radius */
+  --radius-panel: 1.25rem;
+  --radius-inset: 0.875rem;
+}
+
+/* ==========================================================================
+   حالت تاریک کلاس‌محور — «ویدئووال» کلاس .dark را روی ریشه اتاق وضعیت می‌گذارد
+   ========================================================================== */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+  مقیاس قلم — وزیرمتن نسبت به Tahoma هم‌اندازهٔ نقطه بزرگ‌تری دارد؛
+  برای پایایی خوانایی، اندازه‌های ریز قدیمی (۸٫۵ تا ۱۱px) با نقشهٔ زیر
+  به‌صورت سیستماتیک بزرگ‌تر می‌شوند. این قواعد بدون لایه (un-layered)
+  نوشته شده‌اند تا بر یوتیلیتی‌های Tailwind غلبه کنند؛ تمام صدها محل
+  استفادهٔ کلاس‌ها در سراسر پروژه بدون ویرایش، از مقیاس جدید پیروی می‌کنند.
+  mapping: 8.5px→10px · 9px→10.5px · 10px→11px · 11px→12px
+*/
+.text-\[8\.5px\] { font-size: 10px; line-height: 1.6; }
+.text-\[9px\] { font-size: 10.5px; line-height: 1.6; }
+.text-\[10px\] { font-size: 11px; line-height: 1.6; }
+.text-\[11px\] { font-size: 12px; line-height: 1.6; }
+
+/* ==========================================================================
+   پایه
+   ========================================================================== */
+:root {
+  /* قلم فعال رابط کاربری — تنها محل تعریف پشتهٔ قلم؛ سوییچ و توکن‌ها همه به این متغیر اشاره می‌کنند */
+  --font-ui: Vazirmatn, Tahoma, Arial, ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-ui);
+  font-variant-numeric: tabular-nums;
+  color-scheme: light;
+  background-color: var(--color-paper);
+  color: var(--color-ink-800);
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+* {
+  font-family: var(--font-ui) !important;
+}
+
+/* ─── گونهٔ Round-Dots وزیرمتن — با کلاس روی <html> فعال می‌شود (تنظیمات → قلم رابط کاربری) ─── */
+.font-round-dots {
+  --font-ui: "Vazirmatn RD", Vazirmatn, Tahoma, Arial, ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: clip; /* سپر سرریز افقی — خطای رایج داشبوردها */
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ==========================================================================
+   دروازه بارگذاری قلم — هرگز پاپ‌این فونت نداشته باشیم
+   ========================================================================== */
+html.fonts-pending #root {
+  opacity: 0;
+}
+html.fonts-ready #root {
+  opacity: 1;
+  transition: opacity 0.45s ease-out;
+}
+
+/* ==========================================================================
+   اسکرول‌بار سفارشی (جایگزین کلاس‌های پلاگین موجود در کد)
+   ========================================================================== */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line-strong) transparent;
+}
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--color-line-strong);
+  border-radius: 999px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ink-300);
+}
+.dark *::-webkit-scrollbar-thumb {
+  background: var(--color-wall-700);
+}
+.dark *::-webkit-scrollbar-thumb:hover {
+  background: var(--color-wall-600);
+}
+
+/* ==========================================================================
+   اسلایدرها — مسیر و دستگیره برند
+   ========================================================================== */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(to left, var(--color-line-strong), var(--color-line));
+}
+.dark input[type="range"]::-webkit-slider-runnable-track {
+  background: linear-gradient(to left, var(--color-wall-700), var(--color-wall-800));
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -7px;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: #FFFFFF;
+  border: 3px solid var(--color-brand-800);
+  box-shadow: 0 1px 4px rgba(23, 33, 30, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.12);
+  box-shadow: 0 2px 8px rgba(30, 72, 65, 0.35);
+}
+.dark input[type="range"]::-webkit-slider-thumb {
+  border-color: var(--color-signal-400);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+input[type="range"]::-moz-range-track {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-line-strong);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: #FFFFFF;
+  border: 3px solid var(--color-brand-800);
+}
+
+/* ==========================================================================
+   انیمیشن‌ها — حرکت معنادار، نه تزئین
+   ========================================================================== */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* نوار خبری (مارکی) — محتوای تکراری ۵۰٪ جابه‌جا می‌شود تا حلقه بدون‌پرش باشد */
+@keyframes marquee-rtl {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(50%);
+  }
+}
+
+/* نقطه زنده — ضربان بدون چشمک‌زدن کل بلاک */
+@keyframes live-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(187, 244, 156, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 7px rgba(187, 244, 156, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(187, 244, 156, 0);
+  }
+}
+
+@keyframes live-pulse-red {
+  0% {
+    box-shadow: 0 0 0 0 rgba(229, 72, 77, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 7px rgba(229, 72, 77, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(229, 72, 77, 0);
+  }
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-marquee-rtl {
+  animation: marquee-rtl 36s linear infinite;
+}
+.animate-marquee-rtl:hover {
+  animation-play-state: paused;
+}
+
+.animate-live-pulse {
+  animation: live-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-live-pulse-red {
+  animation: live-pulse-red 1.6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ==========================================================================
+   اجزای تکراری (Component Primitives)
+   ========================================================================== */
+@layer components {
+  /* پنل کارت استاندارد */
+  .panel-card {
+    @apply border border-line rounded-[var(--radius-panel)] bg-surface shadow-[var(--shadow-card)];
+    transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  }
+  .panel-card:hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+  .dark .panel-card {
+    @apply border-wall-700 bg-wall-900/80;
+  }
+  .dark .panel-card:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 16px 40px -12px rgba(0, 0, 0, 0.6);
+  }
+
+  /* سربرگ پنل */
+  .panel-heading {
+    @apply flex items-center gap-2;
+  }
+  .panel-title {
+    @apply text-sm font-black text-ink-900;
+  }
+  .dark .panel-title {
+    @apply text-slate-100;
+  }
+
+  /* کاشی آیکون */
+  .icon-tile {
+    @apply flex items-center justify-center rounded-xl bg-brand-100 text-brand-800 size-9 shrink-0;
+  }
+  .dark .icon-tile {
+    @apply bg-wall-800 text-signal-400;
+  }
+
+  /* نشان وضعیت */
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[10px] font-extrabold;
+  }
+
+  /* نقطه زنده */
+  .live-dot {
+    @apply inline-block size-2 rounded-full bg-signal-400;
+    animation: live-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  .live-dot-danger {
+    @apply inline-block size-2 rounded-full bg-danger;
+    animation: live-pulse-red 1.6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* مسیر تصمیم صفحه تحلیل: به‌جای تکرار ناوبری، موقعیت کاربر را شفاف نگه می‌دارد. */
+  .decision-journey {
+    scroll-margin-top: 1rem;
+  }
+
+  .decision-hero {
+    position: relative;
+    isolation: isolate;
+  }
+}
+
+@keyframes decision-view-enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.decision-view-enter {
+  animation: decision-view-enter 0.32s ease-out both;
+}
+
+/* ==========================================================================
+   نقشهٔ SVG ایران — برچسب استان‌ها (تطبیق با حالت تاریک ویدئووال)
+   ========================================================================== */
+.map-province-label {
+  fill: rgba(29, 89, 64, 0.78);
+}
+.dark .map-province-label {
+  fill: rgba(187, 244, 156, 0.85);
+}
+
+/* ==========================================================================
+   دسترس‌پذیری — حرکت کاهش‌یافته
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   کانتور مرز استان در ژئوپرتال — Tooltip
+   ========================================================================== */
+.province-outline-tooltip {
+  direction: rtl;
+  background: rgba(6, 23, 20, 0.92);
+  border: 1px solid rgba(52, 211, 153, 0.55);
+  border-radius: 10px;
+  color: #d1fae5;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45), 0 0 12px rgba(16, 185, 129, 0.25);
+}
+.province-outline-tooltip::before {
+  display: none;
+}
+
+/* ─── انیمیشن «مارش مورچه‌ها»: داش خط کانتور دور مرز استان می‌چرخد ─── */
+.province-outline-animated {
+  animation: province-dash-march 1.1s linear infinite;
+  /* در حالت reduced-motion حالت پایانی (خط ثابت) حفظ شود */
+  animation-fill-mode: both;
+}
+@keyframes province-dash-march {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    /* یک پریود کامل الگوی dash (10+8=18) → اتصال بدون پرش */
+    stroke-dashoffset: -18;
+  }
+}
+
+/* ─── پالس آرام هالهٔ بیرونی کانتور ─── */
+.province-outline-halo {
+  animation: province-halo-pulse 2.4s ease-in-out infinite;
+  animation-fill-mode: both;
+}
+@keyframes province-halo-pulse {
+  0%,
+  100% {
+    /* opacit پیش‌فرض لایه 0.3 است؛ مقدار المان را بالا می‌گیریم تا پالس محسوس باشد */
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   گراف علت و معلولی زنده (React Flow) — موج انتشار اثرات
+   ═══════════════════════════════════════════════════ */
+
+/* جریان «موج اثر» روی یال‌های هایلایت‌شده: خط‌چین متحرک روی خط پایه */
+.edge-effect-flow {
+  animation: effect-dash-flow 0.9s linear infinite;
+}
+@keyframes effect-dash-flow {
+  to {
+    /* پریود کامل الگو (5+11=16) → جریان بدون پرش */
+    stroke-dashoffset: -16;
+  }
+}
+
+/* هالهٔ نورانی نقطهٔ متحرک انتشار اثر */
+.edge-effect-dot {
+  filter: drop-shadow(0 0 3px currentColor);
+}
+
+/* ─── هماهنگی React Flow با تم روشن/سبز داشبورد ─── */
+.causal-flow {
+  font-family: inherit;
+}
+.causal-flow .react-flow__controls {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 6px rgb(15 23 42 / 0.14);
+}
+.causal-flow .react-flow__controls-button {
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  color: #334155;
+  width: 26px;
+  height: 26px;
+}
+.causal-flow .react-flow__controls-button:hover {
+  background: #f0fdf4;
+  color: #065f46;
+}
+.causal-flow .react-flow__minimap {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 6px rgb(15 23 42 / 0.1);
+}
+.causal-flow .react-flow__attribution {
+  background: transparent !important;
+  font-size: 9px !important;
+  opacity: 0.45;
+  border-radius: 8px 0 0 0;
+}
+.causal-flow .react-flow__handle {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.causal-flow .react-flow__node:hover .react-flow__handle {
+  opacity: 1;
+}
+.causal-flow .react-flow__edge-path {
+  transition: opacity 0.25s ease;
+}
+
+/* ─── نقشهٔ تعاملی انتخاب نقطه (گونه‌شناسی) ─────────────────── */
+.typology-map-wrap {
+  background: #eef3f0;
+  z-index: 0;
+}
+.typology-map-wrap .leaflet-container {
+  font-family: inherit;
+  background: #eaf0ec;
+}
+.typology-map-wrap .leaflet-control-zoom {
+  border: 1px solid #d7e3dc;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgb(15 23 42 / 0.12);
+}
+.typology-map-wrap .leaflet-control-zoom a {
+  color: #1D5940;
+  background: #ffffff;
+}
+.typology-map-wrap .leaflet-control-zoom a:hover {
+  background: #f0f7f3;
+}
+.typology-map-wrap .leaflet-control-attribution {
+  font-size: 8px !important;
+  background: rgb(255 255 255 / 0.7) !important;
+  color: #64748b;
+}
+.typology-map-wrap .leaflet-control-attribution a {
+  color: #2E9E6B;
+}
+
+/* نشانگر نقطهٔ انتخابی (پالس قرمز) */
+.typology-pick-marker {
+  background: transparent !important;
+  border: none !important;
+}
+.typology-pick-marker .typology-ping {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 2px solid rgba(229, 72, 77, 0.65);
+  animation: typologyPing 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+.typology-pick-marker .typology-core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  background: #E5484D;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 6px rgb(15 23 42 / 0.35);
+}
+@keyframes typologyPing {
+  0% {
+    transform: scale(0.4);
+    opacity: 0.9;
+  }
+  80%,
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* تول‌تیپ استان */
+.typology-tooltip {
+  border: 1px solid #d7e3dc !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 14px rgb(15 23 42 / 0.14) !important;
+  background: #ffffff !important;
+  padding: 0 !important;
+  overflow: hidden;
+}
+.typology-tooltip::before {
+  display: none !important;
+}
+.typology-tip {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 6px 10px;
+}
+.typology-tip .tip-name {
+  font-size: 10px;
+  font-weight: 900;
+  color: #1e293b;
+}
+.typology-tip .tip-si {
+  font-size: 8.5px;
+  font-weight: 800;
+}
+
+/* Dark basemap tiles — invert + hue-rotate for dark mode */
+.dark-tiles {
+  filter: invert(1) hue-rotate(180deg) brightness(1.1) contrast(0.9);
+}

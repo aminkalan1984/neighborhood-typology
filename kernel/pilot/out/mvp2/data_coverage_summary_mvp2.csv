@@ -1,0 +1,10 @@
+﻿metric,value
+total_registry_indicators,419
+distinct_indicators_with_real_data,4
+measurements_acquired,6
+access_required,1
+pct_indicators_with_real_data,0.95
+indicators_with_valid_standardized_score,0
+pct_with_valid_standardized_score,0.0
+multi_source_values,0
+stale_values,0

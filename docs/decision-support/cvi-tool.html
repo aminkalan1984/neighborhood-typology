@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تست روایی محتوا (CVI) — ۲۱ شاخص پیمایشی</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--bg:#0f172a;--s:#1e293b;--s2:#334155;--b:#475569;--t:#f1f5f9;--td:#94a3b8;--a:#38bdf8;--g:#10b981;--r:#ef4444;--o:#f59e0b;--p:#a78bfa}
+  body{font-family:'Vazirmatn',sans-serif;background:var(--bg);color:var(--t);min-height:100vh;padding:16px}
+  .app{max-width:760px;margin:0 auto}
+  
+  .hero{text-align:center;padding:28px 16px;background:linear-gradient(180deg,rgba(167,139,250,.1),transparent);border-radius:16px;margin-bottom:20px;border:1px solid var(--b)}
+  .hero h1{font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,var(--p),var(--a));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+  .hero p{font-size:.78rem;color:var(--td);line-height:1.7;max-width:600px;margin:0 auto}
+  
+  .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+  .info-card{background:var(--s);border:1px solid var(--b);border-radius:10px;padding:14px;text-align:center}
+  .info-card .val{font-size:1.6rem;font-weight:800;margin-bottom:4px}
+  .info-card .lbl{font-size:.65rem;color:var(--td)}
+  
+  .method-box{background:var(--s);border:1px solid var(--b);border-radius:12px;padding:18px;margin-bottom:20px}
+  .method-box h3{font-size:.9rem;font-weight:700;margin-bottom:10px;color:var(--p)}
+  .method-box p{font-size:.75rem;color:var(--td);line-height:1.8;margin-bottom:8px}
+  .method-box .formula{font-family:monospace;background:var(--bg);padding:8px 12px;border-radius:6px;margin:8px 0;font-size:.7rem;color:var(--a);direction:ltr;text-align:center}
+  
+  .expert-section{background:var(--s);border:1px solid var(--b);border-radius:12px;padding:18px;margin-bottom:20px}
+  .expert-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+  .expert-row input,.expert-row select{width:100%;padding:10px;border:1px solid var(--b);border-radius:8px;background:var(--bg);color:var(--t);font-family:inherit;font-size:.8rem}
+  .expert-row input:focus,.expert-row select:focus{outline:none;border-color:var(--a)}
+  
+  .expert-add{background:var(--s2);border:1px dashed var(--b);border-radius:8px;padding:10px;text-align:center;cursor:pointer;color:var(--td);font-size:.75rem;transition:all .2s}
+  .expert-add:hover{border-color:var(--a);color:var(--a)}
+  
+  .scale-legend{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:12px 0;padding:10px;background:var(--bg);border-radius:8px}
+  .scale-item{display:flex;align-items:center;gap:4px;font-size:.65rem}
+  .scale-dot{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;color:#fff}
+  
+  .indicator-card{background:var(--s);border:1px solid var(--b);border-radius:10px;padding:16px;margin-bottom:12px;transition:border-color .2s}
+  .indicator-card.rated{border-color:var(--g);background:rgba(16,185,129,.03)}
+  .ind-header{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px}
+  .ind-code{background:var(--s2);color:#fff;font-size:.7rem;font-weight:800;padding:4px 8px;border-radius:6px;font-family:monospace;flex-shrink:0}
+  .ind-text{font-size:.82rem;font-weight:600;line-height:1.6}
+  .ind-meta{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px}
+  .ind-tag{font-size:.55rem;padding:2px 6px;border-radius:4px;background:var(--s2);color:var(--td)}
+  
+  .rating-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+  .rating-group{background:var(--bg);border-radius:8px;padding:10px;text-align:center}
+  .rating-label{font-size:.7rem;font-weight:700;margin-bottom:6px}
+  .rating-opts{display:flex;justify-content:center;gap:4px}
+  .rating-btn{width:36px;height:36px;border-radius:8px;border:2px solid var(--s2);background:var(--bg);color:var(--td);font-weight:700;font-size:.8rem;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center}
+  .rating-btn:hover{border-color:var(--a)}
+  .rating-btn.sel{border-color:var(--a);background:rgba(56,189,248,.15);color:var(--a)}
+  
+  .notes-input{width:100%;padding:8px;border:1px solid var(--b);border-radius:6px;background:var(--bg);color:var(--t);font-family:inherit;font-size:.72rem;margin-top:8px;resize:none}
+  .notes-input:focus{outline:none;border-color:var(--a)}
+  
+  .progress-wrap{position:sticky;top:0;z-index:50;background:var(--bg);padding:8px 0 12px;border-bottom:1px solid var(--b);margin-bottom:16px}
+  .progress-bar{height:6px;background:var(--s2);border-radius:3px;overflow:hidden}
+  .progress-fill{height:100%;background:linear-gradient(90deg,var(--p),var(--a));border-radius:3px;transition:width .3s}
+  .progress-text{font-size:.65rem;color:var(--td);text-align:center;margin-top:4px}
+  
+  .results{background:var(--s);border:1px solid var(--b);border-radius:12px;padding:20px;margin-top:20px;display:none}
+  .results.show{display:block}
+  .results h3{font-size:1rem;font-weight:700;margin-bottom:14px;color:var(--g)}
+  
+  .result-table{width:100%;border-collapse:collapse;font-size:.7rem;margin-bottom:16px}
+  .result-table th{background:var(--s2);padding:8px;text-align:center;border:1px solid var(--b);font-weight:700}
+  .result-table td{padding:8px;text-align:center;border:1px solid var(--b)}
+  .result-table .pass{color:var(--g);font-weight:700}
+  .result-table .fail{color:var(--r);font-weight:700}
+  .result-table .warn{color:var(--o);font-weight:700}
+  
+  .big-score{text-align:center;padding:20px;background:var(--bg);border-radius:12px;margin:16px 0}
+  .big-score .num{font-size:3rem;font-weight:900}
+  .big-score .lbl{font-size:.8rem;color:var(--td);margin-top:4px}
+  
+  .json-box{background:#000;border:1px solid var(--b);border-radius:8px;padding:12px;max-height:250px;overflow:auto;font-family:monospace;font-size:.62rem;direction:ltr;text-align:left;color:#22d3ee;white-space:pre-wrap;word-break:break-all}
+  
+  .btn{padding:12px 24px;border:none;border-radius:10px;font-family:inherit;font-size:.85rem;font-weight:700;cursor:pointer;transition:all .2s}
+  .btn-primary{background:var(--p);color:#fff;width:100%;margin-top:16px}
+  .btn-primary:hover{background:#8b5cf6}
+  .btn-copy{background:var(--s2);color:var(--t);border:1px solid var(--b);font-size:.75rem;padding:8px 16px;margin-top:8px}
+  
+  .section-title{font-size:.85rem;font-weight:700;color:var(--p);margin:20px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--p);display:flex;align-items:center;gap:6px}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="hero">
+    <h1>📋 تست روایی محتوا (Content Validity Index)</h1>
+    <p>ارزیابی ۲۱ شاخص پیمایشی تصمیم‌یار جامع محله توسط پنل خبرگان — سه معیار: <strong>مرتبط بودن</strong>، <strong>واضح بودن</strong>، <strong>ضرورت</strong></p>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-card"><div class="val" style="color:var(--a)" id="totalInd">21</div><div class="lbl">تعداد شاخص</div></div>
+    <div class="info-card"><div class="val" style="color:var(--p)" id="totalExperts">0</div><div class="lbl">تعداد خبره</div></div>
+    <div class="info-card"><div class="val" style="color:var(--g)" id="totalRated">0</div><div class="lbl">تعداد امتیازدهی شده</div></div>
+  </div>
+
+  <!-- Methodology -->
+  <div class="method-box">
+    <h3>📐 روش‌شناسی CVI</h3>
+    <p><strong>I-CVI (Item-level CVI):</strong> درصد خبرگانی که یک شاخص را با امتیاز ۳ یا ۴ (مرتبط/بسیار مرتبط) ارزیابی کرده‌اند.</p>
+    <div class="formula">I-CVI = (تعداد خبرگان امتیاز ۳ یا ۴) / (کل خبرگان)</div>
+    <p><strong>S-CVI/Ave (Scale-level CVI):</strong> میانگین I-CVI تمام شاخص‌ها.</p>
+    <div class="formula">S-CVI/Ave = Σ(I-CVI_i) / n</div>
+    <p><strong>آستانه‌های قبول:</strong></p>
+    <p>• <span style="color:var(--g)">I-CVI ≥ 0.78</span> (برای ۶ خبره یا بیشتر) — قبول ✅</p>
+    <p>• <span style="color:var(--o)">I-CVI = 0.70–0.78</span> — نیازمند بازبینی و اصلاح ⚠️</p>
+    <p>• <span style="color:var(--r)">I-CVI < 0.70</span> — رد و حذف یا بازطراحی ❌</p>
+    <p>• <span style="color:var(--g)">S-CVI/Ave ≥ 0.90</span> — روایی محتوای کل پرسشنامه قبول ✅</p>
+  </div>
+
+  <!-- Expert Panel -->
+  <div class="expert-section">
+    <div class="section-title">👥 پنل خبرگان</div>
+    <div id="expertList"></div>
+    <div class="expert-add" onclick="addExpert()">+ افزودن خبره</div>
+  </div>
+
+  <!-- Scale Legend -->
+  <div class="scale-legend">
+    <div class="scale-item"><div class="scale-dot" style="background:var(--r)">۱</div> اصلاً مرتبط</div>
+    <div class="scale-item"><div class="scale-dot" style="background:var(--o)">۲</div> تا حدی مرتبط</div>
+    <div class="scale-item"><div class="scale-dot" style="background:#60a5fa">۳</div> مرتبط</div>
+    <div class="scale-item"><div class="scale-dot" style="background:var(--g)">۴</div> بسیار مرتبط</div>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-wrap">
+    <div class="progress-bar"><div class="progress-fill" id="progFill" style="width:0%"></div></div>
+    <div class="progress-text" id="progText">۰ از ۲۱ شاخص امتیازدهی شده</div>
+  </div>
+
+  <!-- Indicators -->
+  <div id="indicatorsContainer"></div>
+
+  <!-- Calculate Button -->
+  <button class="btn btn-primary" onclick="calculateCVI()">📊 محاسبه CVI و نمایش نتایج</button>
+
+  <!-- Results -->
+  <div class="results" id="resultsPanel">
+    <h3>📊 نتایج تست روایی محتوا</h3>
+    <div id="bigScores"></div>
+    <div id="resultTable"></div>
+    <div id="jsonOutput"></div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════════
+
+const INDICATORS = [
+  {id:'S1',text:'در محله ما، مردم به یکدیگر اعتماد دارند.',capital:'S',construct:'اعتماد بین‌فردی',chain:'ظرفیت',type:'هسته'},
+  {id:'S2',text:'من به محله خودم تعلق دارم و آن را بخشی از هویت خود می‌دانم.',capital:'S',construct:'تعلق و دلبستگی',chain:'تجربه',type:'هسته'},
+  {id:'S3',text:'مردم محله در کارهای خیرخواهانه و همکاری‌های داوطلبانه با یکدیگر مشارکت می‌کنند.',capital:'S',construct:'سرمایه اجتماعی شبکه‌ای',chain:'ظرفیت',type:'هسته'},
+  {id:'C3',text:'محله من دارای هویت و تمایز مشخصی نسبت به سایر محلات است.',capital:'C',construct:'هویت و تمایز',chain:'تجربه',type:'هسته'},
+  {id:'C4',text:'من در فعالیت‌های فرهنگی محله (جشن‌ها، نمایشگاه‌ها، کلاس‌ها) شرکت می‌کنم.',capital:'C',construct:'مشارکت فرهنگی',chain:'استفاده',type:'هسته'},
+  {id:'C5',text:'جوانان محله در فعالیت‌های فرهنگی و اجتماعی محله مشارکت فعال دارند.',capital:'C',construct:'بازتولید فرهنگی',chain:'پیامد',type:'هسته'},
+  {id:'C1_S',text:'محله ما از نظر فضای سبز و درختان غنی است.',capital:'N',construct:'ادراک ظرفیت طبیعی',chain:'ظرفیت',type:'ادراکی'},
+  {id:'C2_S',text:'کیفیت هوا در بیشتر روزها در محله ما قابل قبول است.',capital:'N',construct:'ادراک کیفیت محیطی',chain:'ظرفیت',type:'ادراکی'},
+  {id:'C3_S',text:'آلودگی صوتی در محله ما آزاردهنده است.',capital:'P',construct:'ادراک آلودگی',chain:'ظرفیت',type:'ادراکی'},
+  {id:'A1',text:'دسترسی به حمل‌ونقل عمومی از محل سکونت من آسان است.',capital:'P',construct:'ادراک دسترسی حمل‌ونقل',chain:'دسترسی',type:'ادراکی'},
+  {id:'A2',text:'دسترسی به خدمات روزمره (نانوایی، داروخانه، بانک) آسان است.',capital:'P',construct:'ادراک دسترسی خدمات',chain:'دسترسی',type:'ادراکی'},
+  {id:'A3',text:'مسیرهای پیاده در محله به یکدیگر متصل و جابه‌جایی پیاده آسان است.',capital:'P',construct:'ادراک پیاده‌پذیری',chain:'دسترسی',type:'ادراکی'},
+  {id:'U1',text:'پیاده‌روها هموار، پیوسته و بدون مانع فیزیکی هستند.',capital:'P',construct:'ادراک استفاده‌پذیری',chain:'استفاده',type:'ادراکی'},
+  {id:'U2',text:'روشنایی معابر در شب کافی و یکنواخت است.',capital:'P',construct:'ادراک امنیت زیستی',chain:'استفاده',type:'ادراکی'},
+  {id:'U3',text:'پارک‌ها و فضاهای سبز محله امن، تمیز، فعال و قابل استفاده‌اند.',capital:'N',construct:'ادراک کیفیت فضا',chain:'استفاده',type:'ادراکی'},
+  {id:'E1_S',text:'در طول روز در محله خود احساس امنیت می‌کنم.',capital:'S',construct:'احساس امنیت',chain:'تجربه',type:'ادراکی'},
+  {id:'E2_S',text:'من به محله خود تعلق دارم و آن را دوست دارم.',capital:'S',construct:'احساس تعلق',chain:'تجربه',type:'ادراکی'},
+  {id:'E3_S',text:'به همسایگان خود اعتماد دارم.',capital:'S',construct:'اعتماد',chain:'تجربه',type:'ادراکی'},
+  {id:'O1',text:'از زندگی در این محله راضی هستم.',capital:'S',construct:'رضایت کلی',chain:'پیامد',type:'ادراکی'},
+  {id:'O2',text:'در یک ماه گذشته احساس تنهایی داشته‌ام.',capital:'S',construct:'تنهایی',chain:'پیامد',type:'ادراکی'},
+  {id:'O3',text:'اگر شرایط مالی اجازه دهد، مایل به ادامه سکونت در این محله هستم.',capital:'S',construct:'قصد رفتاری',chain:'پیامد',type:'ادراکی'},
+];
+
+let experts = [];
+let ratings = {}; // ratings[expertIdx][indicatorId] = {relevance:1-4, clarity:1-4, necessity:1-4, notes:''}
+
+// ═══════════════════════════════════════════
+// RENDER
+// ═══════════════════════════════════════════
+
+function addExpert() {
+  const idx = experts.length;
+  experts.push({name:'', field:''});
+  ratings[idx] = {};
+  renderExperts();
+}
+
+function renderExperts() {
+  const list = document.getElementById('expertList');
+  list.innerHTML = experts.map((e, i) => `
+    <div class="expert-row">
+      <input type="text" placeholder="نام خبره ${i+1}" value="${e.name}" onchange="experts[${i}].name=this.value">
+      <select onchange="experts[${i}].field=this.value">
+        <option value="">حوزه تخصص</option>
+        <option value="شهرسازی" ${e.field==='شهرسازی'?'selected':''}>شهرسازی</option>
+        <option value="جامعه‌شناسی" ${e.field==='جامعه‌شناسی'?'selected':''}>جامعه‌شناسی</option>
+        <option value="روان‌شناسی" ${e.field==='روان‌شناسی'?'selected':''}>روان‌شناسی</option>
+        <option value="مدیریت شهری" ${e.field==='مدیریت شهری'?'selected':''}>مدیریت شهری</option>
+        <option value="اقتصاد" ${e.field==='اقتصاد'?'selected':''}>اقتصاد</option>
+        <option value="GIS" ${e.field==='GIS'?'selected':''}>GIS و سنجش‌ازدور</option>
+        <option value="علوم اجتماعی" ${e.field==='علوم اجتماعی'?'selected':''}>علوم اجتماعی</option>
+      </select>
+    </div>
+  `).join('');
+  document.getElementById('totalExperts').textContent = experts.length;
+}
+
+function renderIndicators() {
+  const container = document.getElementById('indicatorsContainer');
+  const capitalColors = {S:'#fb923c',C:'#a78bfa',N:'#22d3ee',P:'#34d399',H:'#f472b6',E:'#facc15',G:'#f87171',R:'#60a5fa'};
+  const chainColors = {'ظرفیت':'#10b981','دسترسی':'#3b82f6','استفاده':'#f59e0b','تجربه':'#8b5cf6','پیامد':'#ef4444'};
+  
+  container.innerHTML = INDICATORS.map((ind, idx) => {
+    const cc = capitalColors[ind.capital] || '#94a3b8';
+    const chc = chainColors[ind.chain] || '#94a3b8';
+    return `
+      <div class="indicator-card" id="card-${ind.id}">
+        <div class="ind-header">
+          <span class="ind-code" style="background:${cc}">${ind.id}</span>
+          <div>
+            <div class="ind-text">${ind.text}</div>
+            <div class="ind-meta">
+              <span class="ind-tag" style="background:${cc}22;color:${cc}">سرمایه ${ind.capital}</span>
+              <span class="ind-tag" style="background:${chc}22;color:${chc}">${ind.chain}</span>
+              <span class="ind-tag">${ind.type}</span>
+              <span class="ind-tag">سازه: ${ind.construct}</span>
+            </div>
+          </div>
+        </div>
+        <div class="rating-row">
+          <div class="rating-group">
+            <div class="rating-label" style="color:var(--a)">مرتبط بودن</div>
+            <div class="rating-opts">
+              ${[1,2,3,4].map(v => `<button class="rating-btn" id="rel-${ind.id}-${v}" onclick="setRating('${ind.id}','relevance',${v})">${v}</button>`).join('')}
+            </div>
+          </div>
+          <div class="rating-group">
+            <div class="rating-label" style="color:var(--o)">واضح بودن</div>
+            <div class="rating-opts">
+              ${[1,2,3,4].map(v => `<button class="rating-btn" id="cla-${ind.id}-${v}" onclick="setRating('${ind.id}','clarity',${v})">${v}</button>`).join('')}
+            </div>
+          </div>
+          <div class="rating-group">
+            <div class="rating-label" style="color:var(--g)">ضرورت</div>
+            <div class="rating-opts">
+              ${[1,2,3,4].map(v => `<button class="rating-btn" id="nec-${ind.id}-${v}" onclick="setRating('${ind.id}','necessity',${v})">${v}</button>`).join('')}
+            </div>
+          </div>
+        </div>
+        <textarea class="notes-input" placeholder="یادداشت اختیاری خبره..." rows="1" onchange="setNotes('${ind.id}',this.value)"></textarea>
+      </div>
+    `;
+  }).join('');
+}
+
+// ═══════════════════════════════════════════
+// INTERACTIONS
+// ═══════════════════════════════════════════
+
+function setRating(indId, dimension, value) {
+  const expertIdx = 0; // Default to first expert; in real use would have expert selection
+  if (!ratings[expertIdx]) ratings[expertIdx] = {};
+  if (!ratings[expertIdx][indId]) ratings[expertIdx][indId] = {relevance:0, clarity:0, necessity:0, notes:''};
+  ratings[expertIdx][indId][dimension] = value;
+  
+  // Update button visuals
+  const prefix = dimension === 'relevance' ? 'rel' : dimension === 'clarity' ? 'cla' : 'nec';
+  [1,2,3,4].forEach(v => {
+    const btn = document.getElementById(`${prefix}-${indId}-${v}`);
+    if (btn) btn.className = v === value ? 'rating-btn sel' : 'rating-btn';
+  });
+  
+  // Check if fully rated
+  const r = ratings[expertIdx][indId];
+  const card = document.getElementById(`card-${indId}`);
+  if (r.relevance > 0 && r.clarity > 0 && r.necessity > 0) {
+    card.classList.add('rated');
+  }
+  
+  updateProgress();
+}
+
+function setNotes(indId, value) {
+  const expertIdx = 0;
+  if (!ratings[expertIdx]) ratings[expertIdx] = {};
+  if (!ratings[expertIdx][indId]) ratings[expertIdx][indId] = {relevance:0, clarity:0, necessity:0, notes:''};
+  ratings[expertIdx][indId].notes = value;
+}
+
+function updateProgress() {
+  const expertIdx = 0;
+  const rated = INDICATORS.filter(ind => {
+    const r = ratings[expertIdx]?.[ind.id];
+    return r && r.relevance > 0 && r.clarity > 0 && r.necessity > 0;
+  }).length;
+  const pct = Math.round((rated / INDICATORS.length) * 100);
+  document.getElementById('progFill').style.width = pct + '%';
+  document.getElementById('progText').textContent = `${rated} از ${INDICATORS.length} شاخص امتیازدهی شده`;
+  document.getElementById('totalRated').textContent = rated;
+}
+
+// ═══════════════════════════════════════════
+// CALCULATE CVI
+// ═══════════════════════════════════════════
+
+function calculateCVI() {
+  const numExperts = Math.max(experts.length, 1);
+  const results = [];
+  
+  INDICATORS.forEach(ind => {
+    let relCount = 0, claCount = 0, necCount = 0;
+    let totalRel = 0, totalCla = 0, totalNec = 0;
+    let count = 0;
+    
+    for (let ei = 0; ei < numExperts; ei++) {
+      const r = ratings[ei]?.[ind.id];
+      if (r && r.relevance > 0) {
+        count++;
+        totalRel += r.relevance;
+        totalCla += r.clarity;
+        totalNec += r.necessity;
+        if (r.relevance >= 3) relCount++;
+        if (r.clarity >= 3) claCount++;
+        if (r.necessity >= 3) necCount++;
+      }
+    }
+    
+    if (count === 0) count = 1; // Avoid division by zero
+    
+    const iCVI_rel = relCount / numExperts;
+    const iCVI_cla = claCount / numExperts;
+    const iCVI_nec = necCount / numExperts;
+    const iCVI_avg = (iCVI_rel + iCVI_cla + iCVI_nec) / 3;
+    const avgRel = totalRel / count;
+    const avgCla = totalCla / count;
+    const avgNec = totalNec / count;
+    
+    const status = iCVI_avg >= 0.78 ? 'PASS' : iCVI_avg >= 0.70 ? 'REVIEW' : 'FAIL';
+    
+    results.push({
+      ...ind,
+      iCVI_rel: iCVI_rel.toFixed(2),
+      iCVI_cla: iCVI_cla.toFixed(2),
+      iCVI_nec: iCVI_nec.toFixed(2),
+      iCVI_avg: iCVI_avg.toFixed(2),
+      avgRel: avgRel.toFixed(1),
+      avgCla: avgCla.toFixed(1),
+      avgNec: avgNec.toFixed(1),
+      status,
+    });
+  });
+  
+  // S-CVI/Ave
+  const sCVI_rel = results.reduce((s, r) => s + parseFloat(r.iCVI_rel), 0) / results.length;
+  const sCVI_cla = results.reduce((s, r) => s + parseFloat(r.iCVI_cla), 0) / results.length;
+  const sCVI_nec = results.reduce((s, r) => s + parseFloat(r.iCVI_nec), 0) / results.length;
+  const sCVI_avg = (sCVI_rel + sCVI_cla + sCVI_nec) / 3;
+  
+  const passCount = results.filter(r => r.status === 'PASS').length;
+  const reviewCount = results.filter(r => r.status === 'REVIEW').length;
+  const failCount = results.filter(r => r.status === 'FAIL').length;
+  
+  // Render results
+  const panel = document.getElementById('resultsPanel');
+  panel.classList.add('show');
+  
+  document.getElementById('bigScores').innerHTML = `
+    <div class="info-grid" style="margin:0">
+      <div class="big-score">
+        <div class="num" style="color:${sCVI_avg>=0.9?'var(--g)':sCVI_avg>=0.8?'var(--o)':'var(--r)'}">${sCVI_avg.toFixed(3)}</div>
+        <div class="lbl">S-CVI/Ave (کل)</div>
+      </div>
+      <div class="big-score">
+        <div class="num" style="color:var(--g)">${passCount}</div>
+        <div class="lbl">قبول ✅</div>
+      </div>
+      <div class="big-score">
+        <div class="num" style="color:var(--o)">${reviewCount}</div>
+        <div class="lbl">بازبینی ⚠️</div>
+      </div>
+      <div class="big-score">
+        <div class="num" style="color:var(--r)">${failCount}</div>
+        <div class="lbl">رد ❌</div>
+      </div>
+    </div>
+  `;
+  
+  document.getElementById('resultTable').innerHTML = `
+    <table class="result-table">
+      <thead>
+        <tr>
+          <th>کد</th>
+          <th>شاخص</th>
+          <th>I-CVI<br>مرتبط</th>
+          <th>I-CVI<br>واضح</th>
+          <th>I-CVI<br>ضرورت</th>
+          <th>I-CVI<br>میانگین</th>
+          <th>میانگین<br>خام</th>
+          <th>وضعیت</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${results.map(r => `
+          <tr>
+            <td style="font-weight:700;font-family:monospace">${r.id}</td>
+            <td style="text-align:right;font-size:.65rem">${r.construct}</td>
+            <td>${r.iCVI_rel}</td>
+            <td>${r.iCVI_cla}</td>
+            <td>${r.iCVI_nec}</td>
+            <td style="font-weight:700;color:${parseFloat(r.iCVI_avg)>=0.78?'var(--g)':parseFloat(r.iCVI_avg)>=0.70?'var(--o)':'var(--r)'}">${r.iCVI_avg}</td>
+            <td style="font-size:.6rem">${r.avgRel} / ${r.avgCla} / ${r.avgNec}</td>
+            <td class="${r.status === 'PASS' ? 'pass' : r.status === 'REVIEW' ? 'warn' : 'fail'}">${r.status === 'PASS' ? '✅ قبول' : r.status === 'REVIEW' ? '⚠️ بازبینی' : '❌ رد'}</td>
+          </tr>
+        `).join('')}
+        <tr style="background:var(--s2);font-weight:700">
+          <td colspan="2">S-CVI/Ave</td>
+          <td>${sCVI_rel.toFixed(3)}</td>
+          <td>${sCVI_cla.toFixed(3)}</td>
+          <td>${sCVI_nec.toFixed(3)}</td>
+          <td style="color:${sCVI_avg>=0.9?'var(--g)':'var(--o)'}">${sCVI_avg.toFixed(3)}</td>
+          <td colspan="2">${sCVI_avg>=0.9?'✅ روایی محتوا تأیید شد':'⚠️ نیازمند بازبینی'}</td>
+        </tr>
+      </tbody>
+    </table>
+  `;
+  
+  // JSON output
+  const output = {
+    methodology: 'Content Validity Index (CVI)',
+    date: new Date().toISOString(),
+    numExperts: experts.length,
+    experts: experts.map(e => ({name: e.name, field: e.field})),
+    indicators: results.map(r => ({
+      id: r.id, construct: r.construct, capital: r.capital,
+      I_CVI_relevance: parseFloat(r.iCVI_rel),
+      I_CVI_clarity: parseFloat(r.iCVI_cla),
+      I_CVI_necessity: parseFloat(r.iCVI_nec),
+      I_CVI_average: parseFloat(r.iCVI_avg),
+      averageRaw: {relevance: parseFloat(r.avgRel), clarity: parseFloat(r.avgCla), necessity: parseFloat(r.avgNec)},
+      verdict: r.status,
+    })),
+    scaleLevel: {
+      S_CVI_Ave_relevance: parseFloat(sCVI_rel.toFixed(3)),
+      S_CVI_Ave_clarity: parseFloat(sCVI_cla.toFixed(3)),
+      S_CVI_Ave_necessity: parseFloat(sCVI_nec.toFixed(3)),
+      S_CVI_Ave_overall: parseFloat(sCVI_avg.toFixed(3)),
+    },
+    thresholds: { I_CVI_accept: 0.78, I_CVI_review: 0.70, S_CVI_Ave_accept: 0.90 },
+    summary: { pass: passCount, review: reviewCount, fail: failCount },
+  };
+  
+  document.getElementById('jsonOutput').innerHTML = `
+    <div class="section-title">📄 خروجی JSON</div>
+    <div class="json-box">${JSON.stringify(output, null, 2)}</div>
+    <button class="btn-copy" onclick="navigator.clipboard.writeText(document.querySelector('.json-box').textContent).then(()=>this.textContent='✅ کپی شد')">📋 کپی JSON</button>
+  `;
+  
+  panel.scrollIntoView({ behavior: 'smooth' });
+}
+
+// ═══════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  addExpert(); // Add first expert
+  renderIndicators();
+});
+</script>
+</body>
+</html>

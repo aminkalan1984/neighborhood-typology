@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OnlineMeasures(83)",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "کد": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "ساحت": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "ردیف‌های شاخص مادر": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "شاخص‌های مادر در فهرست ۴۱۹‌گانه": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "دسته‌های مادر": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "شاخص عملیاتی برخط": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "نوع انطباق": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "نقش در گونه‌بندی": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "مقیاس استفاده": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "واحد": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "ورودی/باند لازم": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "شیوه محاسبه": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "جهت تفسیر": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "منبع": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "تولیدکننده": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "شناسه مجموعه‌داده": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "لینک منبع": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "تفکیک مکانی": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "پوشش زمانی": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "روش دسترسی": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "پوشش ایران": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "هندسه تجمیع": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "کنترل کیفیت اجباری": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "محدودیت/توضیح": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "اطمینان پوشش و بازتولید": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "تاریخ کنترل منبع": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "کد"
+  ]
+}

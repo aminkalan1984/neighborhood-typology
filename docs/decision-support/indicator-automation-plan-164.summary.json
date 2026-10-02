@@ -1,0 +1,46 @@
+{
+  "generated_at": "2026-08-27T14:37:46.441Z",
+  "source_file": "شاخص_های_اختصاصی_الگوریتم_کیفیت_محله - رجیستر_164.csv",
+  "row_count": 164,
+  "by_engine": {
+    "سنجش": 76,
+    "تشخیص": 35,
+    "یادگیری": 35,
+    "تجویز": 18
+  },
+  "by_automation_class": {
+    "C_DERIVED_DETERMINISTIC": 57,
+    "D_HYBRID_REVIEW": 49,
+    "B_RESTRICTED_AUTOMATIC": 26,
+    "E_SURVEY_OR_FIELD": 21,
+    "A_PUBLIC_AUTOMATIC": 11
+  },
+  "by_allowed_output": {
+    "COMPUTE_AFTER_UPSTREAM_QA": 57,
+    "PROVISIONAL_THEN_REVIEW": 48,
+    "VERIFIED_AFTER_CONTRACT": 26,
+    "SURVEY_ONLY": 19,
+    "PROVISIONAL_PUBLIC": 10,
+    "FIELD_AUDIT_ONLY": 1,
+    "VERIFIED_OPEN_EO": 1,
+    "HUMAN_DECISION_REQUIRED": 1,
+    "BEHAVIORAL_OBSERVATION_ONLY": 1
+  },
+  "by_phase": {
+    "P3": 55,
+    "P2": 48,
+    "P0": 41,
+    "P1": 20
+  },
+  "without_field_survey": {
+    "بله": 94,
+    "جزئی/مشروط": 49,
+    "خیر": 21
+  },
+  "invariants": [
+    "Missing data is never converted to zero.",
+    "Perceptual constructs are never replaced by POI, satellite, LLM, or national-level proxies.",
+    "Scores are computed only from validated measurements with registry and formula versions.",
+    "Public proxies remain provisional until calibrated against authoritative neighborhood data."
+  ]
+}

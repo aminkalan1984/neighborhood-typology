@@ -1,0 +1,46 @@
+# زمینهٔ ساخت را سبک نگه می‌دارد: دارایی‌های تولیدشده، داده‌های خام حجیم و
+# متغیرهای محیطی هرگز وارد تصویر نمی‌شوند.
+node_modules
+dist
+build
+coverage
+
+# کنترل نسخه و ابزارهای محلی
+.git
+.gitignore
+.github
+.claude
+.kombai
+.mimocode
+.qodo
+.freebuff
+.vscode
+.idea
+
+# دادهٔ خام و تولیدشدهٔ سنگین (در استقرار به‌صورت volume تأمین می‌شود)
+iran.pbf
+server/data
+artifacts
+Portals
+geojson
+algorithm
+شاخص
+*.log
+*.pbf
+*.tif
+*.zip
+
+# رازها — فقط از طریق env/env_file در زمان اجرا تزریق می‌شوند
+.env
+.env.*
+!.env.example
+
+# پایتون
+__pycache__
+*.pyc
+.venv
+venv
+
+# ویندوز
+Thumbs.db
+desktop.ini

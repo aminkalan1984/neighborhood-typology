@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نقشه ارتباط ۲۱ شاخص پیمایشی با الگوریتم تصمیم‌یار</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--bg:#0f172a;--s:#1e293b;--s2:#334155;--b:#475569;--t:#f1f5f9;--td:#94a3b8;--a:#38bdf8;--g:#10b981;--r:#ef4444;--o:#f59e0b;--p:#a78bfa;--n:#22d3ee}
+  body{font-family:'Vazirmatn',sans-serif;background:var(--bg);color:var(--t);min-height:100vh}
+  
+  /* ─── PRINT / PDF ─── */
+  @media print{
+    body{background:#fff;color:#111}
+    .no-print{display:none!important}
+    .flow-canvas{background:#fff!important}
+    .node{border-color:#333!important;background:#fff!important;color:#111!important}
+    .node-label{color:#111!important}
+    .node-sub{color:#555!important}
+    svg line,svg path{stroke:#333!important}
+    .animated-dot{display:none!important}
+    @page{size:A3 landscape;margin:10mm}
+  }
+  
+  /* ─── HEADER ─── */
+  .hero{text-align:center;padding:24px 16px 12px;border-bottom:1px solid var(--b)}
+  .hero h1{font-size:1.3rem;font-weight:800;background:linear-gradient(135deg,var(--a),var(--p));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .hero p{font-size:.72rem;color:var(--td);margin-top:4px}
+  .toolbar{display:flex;justify-content:center;gap:8px;padding:10px;border-bottom:1px solid var(--b);background:var(--s)}
+  .toolbar button{padding:6px 14px;border:1px solid var(--b);border-radius:6px;background:var(--s2);color:var(--t);font-family:inherit;font-size:.72rem;cursor:pointer;transition:all .2s}
+  .toolbar button:hover{border-color:var(--a);background:rgba(56,189,248,.1)}
+  .toolbar button.active{border-color:var(--a);background:rgba(56,189,248,.15);color:var(--a)}
+  
+  /* ─── FLOW CANVAS ─── */
+  .flow-wrap{position:relative;overflow:auto;padding:20px}
+  .flow-canvas{position:relative;width:100%;min-height:1100px;background:var(--bg)}
+  
+  /* SVG layer */
+  .flow-canvas svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1}
+  .flow-canvas svg line{stroke-width:1.5;opacity:.2}
+  .flow-canvas svg line.hl{stroke-width:2.5;opacity:.7}
+  .flow-canvas svg path{fill:none;stroke-width:1.5;opacity:.15}
+  .flow-canvas svg path.hl{stroke-width:2.5;opacity:.6}
+  
+  /* Animated dots */
+  .animated-dot{r:3;opacity:0}
+  .animated-dot.active{opacity:1;animation:dotMove 2s linear infinite}
+  @keyframes dotMove{0%{opacity:0}10%{opacity:1}90%{opacity:1}100%{opacity:0}}
+  
+  /* Nodes */
+  .node{position:absolute;border:2px solid var(--b);border-radius:10px;background:var(--s);padding:10px 14px;text-align:center;z-index:2;cursor:pointer;transition:all .25s}
+  .node:hover,.node.sel{transform:scale(1.06);box-shadow:0 0 20px rgba(56,189,248,.2);z-index:3}
+  .node.sel{border-color:var(--a)!important}
+  .node-label{font-size:.72rem;font-weight:700;white-space:nowrap}
+  .node-sub{font-size:.55rem;color:var(--td);margin-top:2px}
+  .node-icon{font-size:1.2rem;margin-bottom:2px}
+  .node-code{font-family:monospace;font-size:.6rem;font-weight:800;color:#fff;background:var(--s2);padding:2px 6px;border-radius:4px;display:inline-block;margin-bottom:3px}
+  
+  /* ─── COLUMNS ─── */
+  .col-left{right:calc(50% + 280px);width:220px}
+  .col-center{left:calc(50% - 240px);width:480px}
+  .col-right{left:calc(50% + 280px);width:220px}
+  
+  /* ─── INDICATOR NODES (Left) ─── */
+  .ind-node{position:absolute;right:0;width:210px;display:flex;align-items:center;gap:6px;padding:6px 8px;border-radius:8px;border:1px solid var(--b);background:var(--s);cursor:pointer;transition:all .2s;z-index:2}
+  .ind-node:hover,.ind-node.sel{border-color:var(--a);background:rgba(56,189,248,.08);transform:translateX(-3px)}
+  .ind-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+  .ind-text{font-size:.62rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .ind-meta{font-size:.48rem;color:var(--td)}
+  
+  /* ─── RIGHT PANEL ─── */
+  .detail-panel{position:fixed;top:0;left:0;width:280px;height:100vh;background:var(--s);border-right:1px solid var(--b);z-index:100;padding:16px;overflow-y:auto;transform:translateX(-100%);transition:transform .3s}
+  .detail-panel.open{transform:translateX(0)}
+  .detail-panel .close-btn{position:absolute;top:8px;left:8px;background:none;border:none;color:var(--td);font-size:1.2rem;cursor:pointer}
+  .detail-card{background:var(--bg);border:1px solid var(--b);border-radius:8px;padding:12px;margin-bottom:10px}
+  .detail-card h4{font-size:.8rem;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+  .detail-card p{font-size:.68rem;color:var(--td);line-height:1.7}
+  .detail-card .formula{font-family:monospace;font-size:.6rem;background:var(--s2);padding:4px 8px;border-radius:4px;margin:4px 0;direction:ltr;text-align:center;color:var(--a)}
+  
+  /* ─── LEGEND ─── */
+  .legend{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;padding:10px;border-top:1px solid var(--b);background:var(--s);font-size:.6rem}
+  .legend-item{display:flex;align-items:center;gap:4px}
+  .legend-dot{width:10px;height:10px;border-radius:50%}
+  
+  /* ─── FLOW ARROWS ─── */
+  .flow-arrow{position:absolute;z-index:2;text-align:center;font-size:1.2rem;color:var(--a);opacity:.4}
+  
+  /* ─── SECTION BADGES ─── */
+  .section-badge{position:absolute;z-index:2;padding:4px 12px;border-radius:16px;font-size:.6rem;font-weight:700;text-align:center}
+  
+  /* Pulse */
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(56,189,248,.3)}50%{box-shadow:0 0 0 8px rgba(56,189,248,0)}}
+  .node.pulse{animation:pulse 2s ease-in-out infinite}
+  
+  /* Print button tooltip */
+  .tip{position:relative}
+  .tip::after{content:attr(data-tip);position:absolute;bottom:100%;left:50%;transform:translateX(-50%);background:var(--s2);color:var(--t);padding:4px 8px;border-radius:4px;font-size:.6rem;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s}
+  .tip:hover::after{opacity:1}
+</style>
+</head>
+<body>
+
+<div class="hero no-print">
+  <h1>🗺️ نقشه ارتباط ۲۱ شاخص پیمایشی با الگوریتم تصمیم‌یار</h1>
+  <p>روی هر شاخص کلیک کنید — خطوط ارتباط و جزئیات نمایش داده می‌شود</p>
+</div>
+
+<div class="toolbar no-print">
+  <button id="btnAnimate" onclick="toggleAnimation()">▶ انیمیشن جریان</button>
+  <button onclick="highlightAll()">🔗 نمایش همه خطوط</button>
+  <button onclick="clearHighlights()">✖ پاکسازی</button>
+  <button onclick="window.print()" class="tip" data-tip="ذخیره به‌صورت PDF">📄 خروجی PDF</button>
+</div>
+
+<div class="flow-wrap">
+  <div class="flow-canvas" id="canvas">
+    <svg id="svgLayer"></svg>
+    <!-- Nodes will be rendered by JS -->
+  </div>
+</div>
+
+<div class="legend no-print">
+  <div class="legend-item"><div class="legend-dot" style="background:#fb923c"></div>اجتماعی S</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#a78bfa"></div>فرهنگی C</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#22d3ee"></div>طبیعی N</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#34d399"></div>کالبدی P</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#10b981"></div>ظرفیت C</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#3b82f6"></div>دسترسی A</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#f59e0b"></div>استفاده U</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#8b5cf6"></div>تجربه E</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#ef4444"></div>پیامد O</div>
+  <div class="legend-item"><span style="color:var(--a)">━━</span>خط ارتباط</div>
+  <div class="legend-item"><span style="color:var(--g)">●</span>نقطه متحرک</div>
+</div>
+
+<!-- Detail Side Panel -->
+<div class="detail-panel" id="detailPanel">
+  <button class="close-btn" onclick="closeDetail()">✕</button>
+  <div id="detailContent"></div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════════
+
+const CAP_COLORS = {S:'#fb923c',C:'#a78bfa',N:'#22d3ee',P:'#34d399',H:'#f472b6',E:'#facc15',G:'#f87171',R:'#60a5fa'};
+const CHAIN_COLORS = {'ظرفیت':'#10b981','دسترسی':'#3b82f6','استفاده':'#f59e0b','تجربه':'#8b5cf6','پیامد':'#ef4444'};
+
+const INDICATORS = [
+  {id:'S1',name:'اعتماد همسایگی',cap:'S',chain:'ظرفیت',type:'core',w:1.2,
+   algo:['K_S','Q → تشخیص بی‌اعتمادی','تجویز اعتمادسازی'],
+   gaps:['G_CA','G_AU'],diag:'تشخیص بی‌اعتمادی به‌عنوان علت',presc:'اعتمادسازی همسایگی'},
+  {id:'S2',name:'تعلق محله‌ای',cap:'S',chain:'تجربه',type:'core',w:1.0,
+   algo:['K_S','Q → EXPERIENCE'],gaps:['G_UE'],
+   diag:'تشخیص فقدان تعلق',presc:'فعالیت هویت‌سازی'},
+  {id:'S3',name:'شبکه همکاری',cap:'S',chain:'ظرفیت',type:'core',w:1.0,
+   algo:['K_S','T → CAPACITY'],gaps:['G_CA'],
+   diag:'تشخیص فقدان شبکه',presc:'شبکه‌سازی همسایگی'},
+  {id:'C3',name:'هویت محله‌ای',cap:'C',chain:'تجربه',type:'core',w:1.0,
+   algo:['K_C','Q → EXPERIENCE'],gaps:['G_UE'],
+   diag:'تشخیص فقدان هویت',presc:'تقویت روایت محلی'},
+  {id:'C4',name:'مشارکت فرهنگی',cap:'C',chain:'استفاده',type:'core',w:0.8,
+   algo:['K_C','Q → USE'],gaps:['G_AU'],
+   diag:'تشخیص فقدان مشارکت',presc:'فعال‌سازی فرهنگی'},
+  {id:'C5',name:'انتقال هویت',cap:'C',chain:'پیامد',type:'core',w:0.8,
+   algo:['K_C','R → OUTCOME'],gaps:['G_EO'],
+   diag:'تشخیص فقدان بازتولید',presc:'برنامه نسل جوان'},
+  {id:'C1_S',name:'ادراک فضای سبز',cap:'N',chain:'ظرفیت',type:'perc',
+   algo:['Gap','N → C'],gaps:['G_CA'],obj:'N2',
+   diag:'شکاف ادراک با NDVI',presc:'هدفمندسازی فضای سبز'},
+  {id:'C2_S',name:'ادراک کیفیت هوا',cap:'N',chain:'ظرفیت',type:'perc',
+   algo:['Gap','N → C'],gaps:['G_CA'],obj:'N3',
+   diag:'شکاف ادراک با PM2.5',presc:'هدفمندسازی کیفیت هوا'},
+  {id:'C3_S',name:'ادراک آلودگی صوتی',cap:'P',chain:'ظرفیت',type:'perc',
+   algo:['Gap','P → C'],gaps:['G_CA'],
+   diag:'شکاف ادراک صوتی',presc:'کاهش آلودگی صوتی'},
+  {id:'A1',name:'ادراک حمل‌ونقل',cap:'P',chain:'دسترسی',type:'perc',
+   algo:['Gap','P → A'],gaps:['G_CA','G_AU'],obj:'P5',
+   diag:'شکاف ادراک حمل‌ونقل',presc:'بهبود حمل‌ونقل'},
+  {id:'A2',name:'ادراک خدمات',cap:'P',chain:'دسترسی',type:'perc',
+   algo:['Gap','P → A'],gaps:['G_CA','G_AU'],obj:'P4',
+   diag:'شکاف ادراک خدمات',presc:'بهبود خدمات پایه'},
+  {id:'A3',name:'ادراک پیاده‌پذیری',cap:'P',chain:'دسترسی',type:'perc',
+   algo:['Gap','P → A'],gaps:['G_CA','G_AU'],obj:'P2',
+   diag:'شکاف ادراک پیاده‌پذیری',presc:'بهبود شبکه پیاده'},
+  {id:'U1',name:'ادراک پیاده‌رو',cap:'P',chain:'استفاده',type:'perc',
+   algo:['Gap','P → U'],gaps:['G_AU','G_UE'],obj:'P3',
+   diag:'شکاف ادراک استفاده',presc:'بهسازی پیاده‌رو'},
+  {id:'U2',name:'ادراک روشنایی',cap:'P',chain:'استفاده',type:'perc',
+   algo:['Gap','P → U'],gaps:['G_AU','G_UE'],
+   diag:'شکاف ادراک روشنایی',presc:'روشنایی معابر'},
+  {id:'U3',name:'ادراک پارک',cap:'N',chain:'استفاده',type:'perc',
+   algo:['Gap','N → U'],gaps:['G_AU','G_UE'],obj:'N1',
+   diag:'شکاف ادراک پارک',presc:'بهبود فضای سبز'},
+  {id:'E1_S',name:'احساس امنیت',cap:'S',chain:'تجربه',type:'perc',
+   algo:['Gap','S → E'],gaps:['G_UE'],
+   diag:'شکاف احساس امنیت',presc:'امنیت تجربی'},
+  {id:'E2_S',name:'احساس تعلق',cap:'S',chain:'تجربه',type:'perc',
+   algo:['Gap','S → E'],gaps:['G_UE'],
+   diag:'شکاف احساس تعلق',presc:'فعالیت هویت‌سازی'},
+  {id:'E3_S',name:'اعتماد به همسایگان',cap:'S',chain:'تجربه',type:'perc',
+   algo:['Gap','S → E'],gaps:['G_UE'],
+   diag:'شکاف اعتماد',presc:'اعتمادسازی'},
+  {id:'O1',name:'رضایت از زندگی',cap:'S',chain:'پیامد',type:'perc',
+   algo:['Gap','Q → O'],gaps:['G_EO'],
+   diag:'شکاف رضایت',presc:'بهبود کیفیت'},
+  {id:'O2',name:'احساس تنهایی',cap:'S',chain:'پیامد',type:'perc',
+   algo:['Gap','Q → O'],gaps:['G_EO'],
+   diag:'تشخیص تنهایی',presc:'کاهش تنهایی'},
+  {id:'O3',name:'قصد ادامه سکونت',cap:'S',chain:'پیامد',type:'perc',
+   algo:['Gap','R → O'],gaps:['G_EO'],
+   diag:'شکاف قصد ماندن',presc:'ماندگاری'},
+];
+
+// Algorithm nodes (center column)
+const ALGO_NODES = [
+  {id:'INPUT',label:'📊 ورودی',sub:'داده خام Likert ۱–۵',x:'calc(50% - 80px)',y:'30px',w:160,color:'var(--a)'},
+  {id:'STD',label:'⚙️ استانداردسازی',sub:'Z = 100×(x−L)/(U−L)',x:'calc(50% - 100px)',y:'110px',w:200,color:'var(--a)'},
+  {id:'K_S',label:'🤝 K_S',sub:'امتیاز سرمایه اجتماعی',x:'calc(50% - 170px)',y:'210px',w:140,color:'#fb923c'},
+  {id:'K_C',label:'🎭 K_C',sub:'امتیاز سرمایه فرهنگی',x:'calc(50% + 30px)',y:'210px',w:140,color:'#a78bfa'},
+  {id:'C',label:'C',sub:'ظرفیت',x:'calc(50% - 220px)',y:'310px',w:80,color:'#10b981'},
+  {id:'A',label:'A',sub:'دسترسی',x:'calc(50% - 120px)',y:'310px',w:80,color:'#3b82f6'},
+  {id:'U',label:'U',sub:'استفاده',x:'calc(50% - 20px)',y:'310px',w:80,color:'#f59e0b'},
+  {id:'E',label:'E',sub:'تجربه',x:'calc(50% + 80px)',y:'310px',w:80,color:'#8b5cf6'},
+  {id:'O',label:'O',sub:'پیامد',x:'calc(50% + 180px)',y:'310px',w:80,color:'#ef4444'},
+  {id:'Q',label:'Q',sub:'کیفیت',x:'calc(50% - 140px)',y:'410px',w:100,color:'#a78bfa'},
+  {id:'T',label:'T',sub:'توانمندی',x:'calc(50% - 20px)',y:'410px',w:100,color:'#f59e0b'},
+  {id:'R',label:'R',sub:'بازتولید',x:'calc(50% + 100px)',y:'410px',w:100,color:'#10b981'},
+  {id:'G_CA',label:'G_CA',sub:'ظرفیت→دسترسی',x:'calc(50% - 180px)',y:'500px',w:110,color:'var(--r)'},
+  {id:'G_AU',label:'G_AU',sub:'دسترسی→استفاده',x:'calc(50% - 60px)',y:'500px',w:110,color:'var(--r)'},
+  {id:'G_UE',label:'G_UE',sub:'استفاده→تجربه',x:'calc(50% + 60px)',y:'500px',w:110,color:'var(--r)'},
+  {id:'G_EO',label:'G_EO',sub:'تجربه→پیامد',x:'calc(50% + 180px)',y:'500px',w:110,color:'var(--r)'},
+  {id:'GAP',label:'🔍 Gap Detection',sub:'شکاف ادراک-واقعیت',x:'calc(50% - 110px)',y:'580px',w:220,color:'var(--o)'},
+  {id:'DIAG',label:'🩺 تشخیص',sub:'یافتن گلوگاه',x:'calc(50% - 100px)',y:'660px',w:200,color:'var(--r)'},
+  {id:'PRESC',label:'💊 تجویز',sub:'سبد مداخله بهینه',x:'calc(50% - 100px)',y:'740px',w:200,color:'var(--g)'},
+];
+
+// ═══════════════════════════════════════════
+// RENDER
+// ═══════════════════════════════════════════
+
+let animationOn = false;
+let animInterval = null;
+let selectedInd = null;
+
+function renderAlgoNodes() {
+  const canvas = document.getElementById('canvas');
+  ALGO_NODES.forEach(n => {
+    const div = document.createElement('div');
+    div.className = 'node';
+    div.id = `node-${n.id}`;
+    div.style.left = n.x;
+    div.style.top = n.y;
+    div.style.width = n.w + 'px';
+    div.style.borderColor = n.color;
+    div.innerHTML = `<div class="node-label" style="color:${n.color}">${n.label}</div><div class="node-sub">${n.sub}</div>`;
+    canvas.appendChild(div);
+  });
+}
+
+function renderIndicators() {
+  const canvas = document.getElementById('canvas');
+  const startY = 60;
+  const gap = 48;
+  
+  INDICATORS.forEach((ind, i) => {
+    const color = CAP_COLORS[ind.cap] || '#94a3b8';
+    const div = document.createElement('div');
+    div.className = 'ind-node';
+    div.id = `ind-${ind.id}`;
+    div.style.top = (startY + i * gap) + 'px';
+    div.style.right = '20px';
+    div.onclick = () => selectIndicator(ind);
+    div.innerHTML = `
+      <div class="ind-dot" style="background:${color}"></div>
+      <div>
+        <div class="ind-text" style="color:${color}">${ind.id} — ${ind.name}</div>
+        <div class="ind-meta">${ind.type==='core'?'هسته':'ادراکی'} • ${ind.chain}</div>
+      </div>
+    `;
+    canvas.appendChild(div);
+  });
+}
+
+// ═══════════════════════════════════════════
+// SVG LINES
+// ═══════════════════════════════════════════
+
+function drawLine(x1,y1,x2,y2,color,id) {
+  const svg = document.getElementById('svgLayer');
+  const line = document.createElementNS('http://www.w3.org/2000/svg','line');
+  line.setAttribute('x1',x1);line.setAttribute('y1',y1);
+  line.setAttribute('x2',x2);line.setAttribute('y2',y2);
+  line.setAttribute('stroke',color);
+  line.setAttribute('data-id',id);
+  svg.appendChild(line);
+  return line;
+}
+
+function drawPath(x1,y1,x2,y2,color,id) {
+  const svg = document.getElementById('svgLayer');
+  const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+  const midY = (y1+y2)/2;
+  path.setAttribute('d',`M${x1},${y1} C${x1},${midY} ${x2},${midY} ${x2},${y2}`);
+  path.setAttribute('stroke',color);
+  path.setAttribute('data-id',id);
+  svg.appendChild(path);
+  return path;
+}
+
+function getNodeCenter(nodeId) {
+  const el = document.getElementById(`node-${nodeId}`);
+  if (!el) return null;
+  const canvas = document.getElementById('canvas');
+  const cr = canvas.getBoundingClientRect();
+  const r = el.getBoundingClientRect();
+  return {x: r.left - cr.left + r.width/2, y: r.top - cr.top + r.height/2};
+}
+
+function getIndCenter(indId) {
+  const el = document.getElementById(`ind-${indId}`);
+  if (!el) return null;
+  const canvas = document.getElementById('canvas');
+  const cr = canvas.getBoundingClientRect();
+  const r = el.getBoundingClientRect();
+  return {x: r.left - cr.left, y: r.top - cr.top + r.height/2};
+}
+
+// Map indicator to its algorithm target nodes
+function getIndTargets(ind) {
+  const targets = ['STD']; // All go through standardization
+  if (ind.cap === 'S') targets.push('K_S');
+  if (ind.cap === 'C') targets.push('K_C');
+  
+  // Chain stage
+  const chainMap = {'ظرفیت':'C','دسترسی':'A','استفاده':'U','تجربه':'E','پیامد':'O'};
+  targets.push(chainMap[ind.chain] || 'C');
+  
+  // Quality triad
+  if (ind.chain === 'تجربه') targets.push('Q');
+  if (ind.chain === 'استفاده') targets.push('T');
+  if (ind.chain === 'پیامد') { targets.push('R'); targets.push('Q'); }
+  
+  // Gaps
+  ind.gaps.forEach(g => targets.push(g));
+  
+  // Final
+  targets.push('GAP'); targets.push('DIAG'); targets.push('PRESC');
+  
+  return targets;
+}
+
+function drawAllLines() {
+  const svg = document.getElementById('svgLayer');
+  svg.innerHTML = '';
+  
+  INDICATORS.forEach(ind => {
+    const indPos = getIndCenter(ind.id);
+    if (!indPos) return;
+    
+    const targets = getIndTargets(ind);
+    const color = CAP_COLORS[ind.cap] || '#94a3b8';
+    
+    // Draw line to first target only (to keep it clean)
+    const firstTarget = targets[0];
+    const targetPos = getNodeCenter(firstTarget);
+    if (targetPos) {
+      drawLine(indPos.x, indPos.y, targetPos.x, targetPos.y, color, ind.id);
+    }
+  });
+  
+  // Draw internal algo connections
+  const algoConnections = [
+    ['STD','K_S','#fb923c'],['STD','K_C','#a78bfa'],
+    ['K_S','C','#10b981'],['K_S','E','#8b5cf6'],
+    ['K_C','C','#10b981'],['K_C','U','#f59e0b'],['K_C','O','#ef4444'],
+    ['C','Q','#a78bfa'],['A','Q','#a78bfa'],['U','T','#f59e0b'],['E','T','#f59e0b'],['E','Q','#a78bfa'],['O','R','#10b981'],['O','Q','#a78bfa'],
+    ['C','G_CA','#ef4444'],['A','G_CA','#ef4444'],
+    ['A','G_AU','#ef4444'],['U','G_AU','#ef4444'],
+    ['U','G_UE','#ef4444'],['E','G_UE','#ef4444'],
+    ['E','G_EO','#ef4444'],['O','G_EO','#ef4444'],
+    ['G_CA','GAP','#f59e0b'],['G_AU','GAP','#f59e0b'],['G_UE','GAP','#f59e0b'],['G_EO','GAP','#f59e0b'],
+    ['GAP','DIAG','#ef4444'],['DIAG','PRESC','#10b981'],
+  ];
+  
+  algoConnections.forEach(([from,to,color]) => {
+    const p1 = getNodeCenter(from);
+    const p2 = getNodeCenter(to);
+    if (p1 && p2) drawLine(p1.x, p1.y, p2.x, p2.y, color, `algo-${from}-${to}`);
+  });
+}
+
+// ═══════════════════════════════════════════
+// INTERACTION
+// ═══════════════════════════════════════════
+
+function selectIndicator(ind) {
+  selectedInd = ind;
+  // Highlight indicator node
+  document.querySelectorAll('.ind-node').forEach(el => el.classList.remove('sel'));
+  document.getElementById(`ind-${ind.id}`)?.classList.add('sel');
+  
+  // Highlight relevant algo nodes
+  document.querySelectorAll('.node').forEach(el => el.classList.remove('sel'));
+  const targets = getIndTargets(ind);
+  targets.forEach(t => document.getElementById(`node-${t}`)?.classList.add('sel'));
+  
+  // Highlight lines
+  document.querySelectorAll('#svgLayer line').forEach(l => l.classList.remove('hl'));
+  document.querySelectorAll('#svgLayer line[data-id="'+ind.id+'"]').forEach(l => l.classList.add('hl'));
+  
+  // Show detail panel
+  showDetail(ind);
+}
+
+function showDetail(ind) {
+  const color = CAP_COLORS[ind.cap];
+  const chainColor = CHAIN_COLORS[ind.chain];
+  const panel = document.getElementById('detailPanel');
+  document.getElementById('detailContent').innerHTML = `
+    <div class="detail-card" style="border-color:${color}">
+      <h4 style="color:${color}">${ind.id} — ${ind.name}</h4>
+      <p><strong>سرمایه:</strong> ${ind.cap} | <strong>لایه:</strong> ${ind.chain} | <strong>نوع:</strong> ${ind.type==='core'?'هسته CLASS D':'ادراکی'}</p>
+      ${ind.w ? `<p><strong>وزن:</strong> ${ind.w}</p>` : ''}
+    </div>
+    <div class="detail-card">
+      <h4>⚙️ نقش در الگوریتم</h4>
+      <ul style="padding-right:16px;font-size:.68rem;color:var(--td);line-height:1.8">
+        ${ind.algo.map(a => `<li>${a}</li>`).join('')}
+      </ul>
+    </div>
+    <div class="detail-card" style="border-color:var(--r)">
+      <h4>🩺 تشخیص</h4><p>${ind.diag}</p>
+    </div>
+    <div class="detail-card" style="border-color:var(--g)">
+      <h4>💊 تجویز</h4><p>${ind.presc}</p>
+    </div>
+    ${ind.obj ? `<div class="detail-card" style="border-color:var(--o)"><h4>🔍 جفت مقایسه</h4><p>شاخص عینی: <strong>${ind.obj}</strong> ↔ شاخص ادراکی: <strong>${ind.id}</strong></p><div class="formula">Gap = Z(${ind.obj}) − Z(${ind.id})</div></div>` : ''}
+    <div class="detail-card">
+      <h4>📉 شکاف‌های زنجیره</h4>
+      <div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:4px">
+        ${ind.gaps.map(g => `<span style="font-size:.6rem;padding:3px 8px;border-radius:4px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3)">${g}</span>`).join('')}
+      </div>
+    </div>
+  `;
+  panel.classList.add('open');
+}
+
+function closeDetail() {
+  document.getElementById('detailPanel').classList.remove('open');
+}
+
+function highlightAll() {
+  document.querySelectorAll('#svgLayer line').forEach(l => {l.classList.add('hl');l.style.opacity='0.4'});
+  document.querySelectorAll('.node').forEach(el => el.classList.add('pulse'));
+}
+
+function clearHighlights() {
+  document.querySelectorAll('#svgLayer line').forEach(l => {l.classList.remove('hl');l.style.opacity=''});
+  document.querySelectorAll('.node').forEach(el => el.classList.remove('sel','pulse'));
+  document.querySelectorAll('.ind-node').forEach(el => el.classList.remove('sel'));
+  closeDetail();
+}
+
+// ═══════════════════════════════════════════
+// ANIMATION
+// ═══════════════════════════════════════════
+
+function toggleAnimation() {
+  animationOn = !animationOn;
+  const btn = document.getElementById('btnAnimate');
+  btn.textContent = animationOn ? '⏸ توقف' : '▶ انیمیشن جریان';
+  btn.classList.toggle('active', animationOn);
+  
+  if (animationOn) startAnimation();
+  else stopAnimation();
+}
+
+function startAnimation() {
+  const svg = document.getElementById('svgLayer');
+  let dotIdx = 0;
+  
+  animInterval = setInterval(() => {
+    // Remove old dots
+    svg.querySelectorAll('.animated-dot').forEach(d => d.remove());
+    
+    // Create new dots on each highlighted line
+    const lines = svg.querySelectorAll('line.hl');
+    lines.forEach((line, i) => {
+      const circle = document.createElementNS('http://www.w3.org/2000/svg','circle');
+      circle.setAttribute('r','3');
+      circle.setAttribute('fill', line.getAttribute('stroke'));
+      circle.classList.add('animated-dot','active');
+      
+      const x1 = parseFloat(line.getAttribute('x1'));
+      const y1 = parseFloat(line.getAttribute('y1'));
+      const x2 = parseFloat(line.getAttribute('x2'));
+      const y2 = parseFloat(line.getAttribute('y2'));
+      
+      // Animate along the line
+      const anim = document.createElementNS('http://www.w3.org/2000/svg','animateMotion');
+      anim.setAttribute('dur', `${1.5 + Math.random()}s`);
+      anim.setAttribute('repeatCount','indefinite');
+      anim.setAttribute('path',`M${x1},${y1} L${x2},${y2}`);
+      circle.appendChild(anim);
+      
+      svg.appendChild(circle);
+    });
+  }, 2000);
+}
+
+function stopAnimation() {
+  if (animInterval) clearInterval(animInterval);
+  document.querySelectorAll('.animated-dot').forEach(d => d.remove());
+}
+
+// ═══════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderAlgoNodes();
+  renderIndicators();
+  // Wait for layout then draw lines
+  setTimeout(drawAllLines, 100);
+  window.addEventListener('resize', () => { drawAllLines(); });
+  
+  // Auto-select S1
+  setTimeout(() => selectIndicator(INDICATORS[0]), 500);
+});
+</script>
+</body>
+</html>

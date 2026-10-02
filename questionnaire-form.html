@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>پرسشنامه سنجش شاخص‌های محله</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap');
+
+  :root {
+    --primary: #2563eb;
+    --primary-light: #3b82f6;
+    --primary-dark: #1d4ed8;
+    --primary-bg: #eff6ff;
+    --success: #10b981;
+    --success-bg: #ecfdf5;
+    --warning: #f59e0b;
+    --warning-bg: #fffbeb;
+    --danger: #ef4444;
+    --danger-bg: #fef2f2;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-400: #9ca3af;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-800: #1f2937;
+    --gray-900: #111827;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: var(--gray-800);
+    line-height: 1.7;
+  }
+
+  /* ===== APP CONTAINER ===== */
+  .app {
+    max-width: 720px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background: var(--gray-50);
+    position: relative;
+  }
+
+  /* ===== HEADER ===== */
+  .header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    padding: 20px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .header h1 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  .header-subtitle {
+    font-size: 0.8rem;
+    opacity: 0.85;
+    margin-top: 2px;
+  }
+
+  .header-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+
+  /* ===== PROGRESS BAR ===== */
+  .progress-container {
+    background: rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 3px;
+    margin-top: 14px;
+  }
+
+  .progress-bar {
+    background: linear-gradient(90deg, #34d399, #a78bfa);
+    height: 6px;
+    border-radius: 20px;
+    transition: width 0.5s ease;
+    width: 0%;
+  }
+
+  .progress-text {
+    font-size: 0.75rem;
+    opacity: 0.9;
+    margin-top: 6px;
+    text-align: center;
+  }
+
+  /* ===== STEP INDICATOR ===== */
+  .step-pills {
+    display: flex;
+    gap: 6px;
+    padding: 12px 20px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    background: white;
+    border-bottom: 1px solid var(--gray-200);
+    position: sticky;
+    top: 110px;
+    z-index: 99;
+  }
+
+  .step-pills::-webkit-scrollbar { display: none; }
+
+  .step-pill {
+    flex-shrink: 0;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 2px solid var(--gray-200);
+    background: white;
+    color: var(--gray-500);
+    transition: var(--transition);
+    white-space: nowrap;
+  }
+
+  .step-pill:hover {
+    border-color: var(--primary-light);
+    color: var(--primary);
+  }
+
+  .step-pill.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+  }
+
+  .step-pill.completed {
+    background: var(--success);
+    border-color: var(--success);
+    color: white;
+  }
+
+  .step-pill.completed::before {
+    content: '✓ ';
+  }
+
+  /* ===== SECTIONS ===== */
+  .section {
+    display: none;
+    padding: 20px;
+    animation: fadeIn 0.4s ease;
+  }
+
+  .section.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-header {
+    margin-bottom: 20px;
+  }
+
+  .section-icon {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--gray-900);
+    margin-bottom: 4px;
+  }
+
+  .section-desc {
+    font-size: 0.85rem;
+    color: var(--gray-500);
+    line-height: 1.8;
+  }
+
+  /* ===== CARDS ===== */
+  .card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--gray-100);
+    transition: var(--transition);
+  }
+
+  .card:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  .indicator-card {
+    border-right: 4px solid var(--primary);
+  }
+
+  .indicator-card.normative {
+    border-right-color: var(--primary);
+  }
+
+  .indicator-card.behavioral {
+    border-right-color: var(--success);
+  }
+
+  /* ===== INDICATOR HEADER ===== */
+  .indicator-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--gray-100);
+  }
+
+  .indicator-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .indicator-badge.normative {
+    background: var(--primary-bg);
+    color: var(--primary);
+  }
+
+  .indicator-badge.behavioral {
+    background: var(--success-bg);
+    color: var(--success);
+  }
+
+  .indicator-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gray-800);
+  }
+
+  .indicator-goal {
+    font-size: 0.8rem;
+    color: var(--gray-500);
+    margin-top: 2px;
+  }
+
+  /* ===== QUESTIONS ===== */
+  .question {
+    margin-bottom: 20px;
+    padding: 14px;
+    border-radius: var(--radius-sm);
+    background: var(--gray-50);
+    transition: var(--transition);
+  }
+
+  .question:last-child {
+    margin-bottom: 0;
+  }
+
+  .question-text {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--gray-700);
+    margin-bottom: 12px;
+    line-height: 1.9;
+  }
+
+  .question-code {
+    display: inline-block;
+    background: var(--primary-bg);
+    color: var(--primary);
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  /* ===== LIKERT SCALE ===== */
+  .likert-scale {
+    display: flex;
+    gap: 6px;
+    direction: rtl;
+  }
+
+  .likert-option {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 4px;
+    border-radius: var(--radius-sm);
+    border: 2px solid var(--gray-200);
+    background: white;
+    cursor: pointer;
+    transition: var(--transition);
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .likert-option:hover {
+    border-color: var(--primary-light);
+    background: var(--primary-bg);
+  }
+
+  .likert-option:active {
+    transform: scale(0.95);
+  }
+
+  .likert-option.selected {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+  }
+
+  .likert-number {
+    font-size: 1.1rem;
+    font-weight: 700;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--gray-100);
+    transition: var(--transition);
+  }
+
+  .likert-option.selected .likert-number {
+    background: rgba(255,255,255,0.25);
+  }
+
+  .likert-label {
+    font-size: 0.65rem;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.3;
+    color: var(--gray-600);
+    transition: var(--transition);
+  }
+
+  .likert-option.selected .likert-label {
+    color: white;
+  }
+
+  /* ===== DEMOGRAPHICS ===== */
+  .radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .radio-group.horizontal {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .radio-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    border: 2px solid var(--gray-200);
+    background: white;
+    cursor: pointer;
+    transition: var(--transition);
+    user-select: none;
+  }
+
+  .radio-option:hover {
+    border-color: var(--primary-light);
+    background: var(--primary-bg);
+  }
+
+  .radio-option:active {
+    transform: scale(0.98);
+  }
+
+  .radio-option.selected {
+    border-color: var(--primary);
+    background: var(--primary-bg);
+  }
+
+  .radio-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--gray-300);
+    flex-shrink: 0;
+    position: relative;
+    transition: var(--transition);
+  }
+
+  .radio-option.selected .radio-dot {
+    border-color: var(--primary);
+    background: var(--primary);
+  }
+
+  .radio-option.selected .radio-dot::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+  }
+
+  .radio-text {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--gray-700);
+  }
+
+  /* ===== TEXT INPUT ===== */
+  .text-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-sm);
+    font-family: 'Vazirmatn', sans-serif;
+    font-size: 0.9rem;
+    color: var(--gray-800);
+    background: white;
+    transition: var(--transition);
+    outline: none;
+  }
+
+  .text-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  }
+
+  .text-input::placeholder {
+    color: var(--gray-400);
+  }
+
+  textarea.text-input {
+    min-height: 100px;
+    resize: vertical;
+    line-height: 1.8;
+  }
+
+  /* ===== FORM LABEL ===== */
+  .form-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--gray-700);
+    margin-bottom: 8px;
+  }
+
+  .form-group {
+    margin-bottom: 18px;
+  }
+
+  .form-hint {
+    font-size: 0.75rem;
+    color: var(--gray-400);
+    margin-top: 4px;
+  }
+
+  /* ===== NAVIGATION ===== */
+  .nav-buttons {
+    display: flex;
+    gap: 12px;
+    padding: 16px 20px;
+    background: white;
+    border-top: 1px solid var(--gray-200);
+    position: sticky;
+    bottom: 0;
+    z-index: 100;
+  }
+
+  .btn {
+    flex: 1;
+    padding: 14px 20px;
+    border-radius: var(--radius-sm);
+    font-family: 'Vazirmatn', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .btn:active {
+    transform: scale(0.97);
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+  }
+
+  .btn-secondary {
+    background: var(--gray-100);
+    color: var(--gray-600);
+  }
+
+  .btn-secondary:hover {
+    background: var(--gray-200);
+  }
+
+  .btn-success {
+    background: linear-gradient(135deg, var(--success), #059669);
+    color: white;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+  }
+
+  .btn-danger {
+    background: var(--danger-bg);
+    color: var(--danger);
+    border: 1px solid var(--danger);
+  }
+
+  .btn-sm {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+  }
+
+  .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* ===== RESULTS ===== */
+  .results-section {
+    padding: 20px;
+    animation: fadeIn 0.5s ease;
+  }
+
+  .score-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--gray-100);
+  }
+
+  .score-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .score-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--gray-800);
+  }
+
+  .score-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+  }
+
+  .score-bar {
+    height: 8px;
+    background: var(--gray-100);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+
+  .score-fill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 1s ease;
+  }
+
+  .score-level {
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .score-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .level-critical { color: #dc2626; }
+  .level-low { color: #ea580c; }
+  .level-medium { color: #ca8a04; }
+  .level-good { color: #16a34a; }
+  .level-excellent { color: #0d9488; }
+
+  /* ===== SUMMARY TABLE ===== */
+  .summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+  }
+
+  .summary-table th {
+    background: var(--gray-100);
+    padding: 10px 12px;
+    text-align: right;
+    font-weight: 600;
+    color: var(--gray-700);
+    border-bottom: 2px solid var(--gray-200);
+  }
+
+  .summary-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--gray-100);
+    color: var(--gray-600);
+  }
+
+  .summary-table tr:hover td {
+    background: var(--gray-50);
+  }
+
+  /* ===== EMPTY STATE ===== */
+  .empty-state {
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .empty-icon {
+    font-size: 3rem;
+    margin-bottom: 12px;
+  }
+
+  .empty-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gray-700);
+    margin-bottom: 6px;
+  }
+
+  .empty-desc {
+    font-size: 0.85rem;
+    color: var(--gray-400);
+  }
+
+  /* ===== TOAST ===== */
+  .toast {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--gray-800);
+    color: white;
+    padding: 12px 24px;
+    border-radius: var(--radius);
+    font-size: 0.85rem;
+    font-weight: 500;
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* ===== MODAL ===== */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.2s ease;
+  }
+
+  .modal-overlay.show {
+    display: flex;
+  }
+
+  .modal {
+    background: white;
+    border-radius: var(--radius);
+    padding: 28px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    animation: scaleIn 0.3s ease;
+  }
+
+  @keyframes scaleIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  .modal-icon {
+    font-size: 3rem;
+    margin-bottom: 12px;
+  }
+
+  .modal-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .modal-desc {
+    font-size: 0.85rem;
+    color: var(--gray-500);
+    margin-bottom: 20px;
+    line-height: 1.8;
+  }
+
+  .modal-buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 480px) {
+    .header { padding: 16px; }
+    .header h1 { font-size: 1rem; }
+    .section { padding: 16px; }
+    .likert-label { font-size: 0.6rem; }
+    .likert-option { padding: 8px 2px; }
+    .likert-number { width: 28px; height: 28px; font-size: 1rem; }
+    .nav-buttons { padding: 12px 16px; }
+    .step-pills { padding: 10px 16px; }
+  }
+
+  @media (min-width: 768px) {
+    .likert-option { padding: 14px 8px; }
+    .likert-number { width: 36px; height: 36px; font-size: 1.2rem; }
+    .likert-label { font-size: 0.7rem; }
+  }
+
+  /* ===== ANIMATIONS ===== */
+  .question {
+    transition: background 0.3s ease;
+  }
+
+  .question.answered {
+    background: var(--success-bg);
+    border-left: 3px solid var(--success);
+  }
+
+  /* ===== SCROLLBAR ===== */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--gray-300); border-radius: 4px; }
+
+  /* ===== PRINT ===== */
+  @media print {
+    body { background: white; }
+    .header, .nav-buttons, .step-pills, .toast { display: none !important; }
+    .section { display: block !important; page-break-inside: avoid; }
+    .card { box-shadow: none; border: 1px solid #ddd; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app" id="app">
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-content">
+      <div>
+        <h1>📋 پرسشنامه سنجش شاخص‌های محله</h1>
+        <div class="header-subtitle">سیستم تصمیم‌یار جامع محله</div>
+      </div>
+      <div class="header-icon">🏘️</div>
+    </div>
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="progress-text" id="progressText">۰٪ تکمیل شده</div>
+  </div>
+
+  <!-- STEP PILLS -->
+  <div class="step-pills" id="stepPills"></div>
+
+  <!-- SECTIONS -->
+  <div id="sectionsContainer"></div>
+
+  <!-- NAVIGATION -->
+  <div class="nav-buttons" id="navButtons">
+    <button class="btn btn-secondary" id="btnPrev" onclick="prevSection()" style="display:none;">
+      ← قبلی
+    </button>
+    <button class="btn btn-primary" id="btnNext" onclick="nextSection()">
+      بعدی →
+    </button>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal"></div>
+  </div>
+</div>
+
+<script>
+// ===== DATA =====
+const QUESTIONNAIRE = {
+  demographics: [
+    {
+      id: 'gender',
+      label: 'جنسیت',
+      type: 'radio',
+      options: ['مرد', 'زن']
+    },
+    {
+      id: 'age',
+      label: 'سن',
+      type: 'radio',
+      options: ['۱۸-۲۵ سال', '۲۶-۳۵ سال', '۳۶-۴۵ سال', '۴۶-۵۵ سال', '۵۶-۶۵ سال', 'بالای ۶۵ سال']
+    },
+    {
+      id: 'marital',
+      label: 'وضعیت تأهل',
+      type: 'radio',
+      options: ['مجرد', 'متاهل', 'مطلقه', 'بیوه']
+    },
+    {
+      id: 'education',
+      label: 'میزان تحصیلات',
+      type: 'radio',
+      options: ['زیر دیپلم', 'دیپلم', 'کاردانی', 'کارشناسی', 'کارشناسی ارشد', 'دکتری و بالاتر']
+    },
+    {
+      id: 'employment',
+      label: 'وضعیت اشتغال',
+      type: 'radio',
+      options: ['شاغل تمام‌وقت', 'شاغل نیمه‌وقت', 'خوداشتغال', 'بیکار', 'خانه‌دار', 'بازنشسته', 'محصل/دانشجو']
+    },
+    {
+      id: 'residence_duration',
+      label: 'مدت سکونت در این محله',
+      type: 'radio',
+      options: ['کمتر از ۱ سال', '۱-۵ سال', '۶-۱۰ سال', '۱۱-۲۰ سال', 'بیش از ۲۰ سال']
+    },
+    {
+      id: 'housing',
+      label: 'وضعیت مسکن',
+      type: 'radio',
+      options: ['مالکیت شخصی', 'اجاره', 'رهن', 'مسکن سازمانی/دولتی', 'زندگی با اقوام']
+    },
+    {
+      id: 'family_size',
+      label: 'تعداد اعضای خانواده',
+      type: 'radio',
+      options: ['۱-۲ نفر', '۳-۴ نفر', '۵-۶ نفر', 'بیش از ۶ نفر']
+    },
+    {
+      id: 'neighborhood',
+      label: 'نام محله',
+      type: 'text',
+      placeholder: 'نام محله خود را وارد کنید'
+    },
+    {
+      id: 'city',
+      label: 'نام شهر',
+      type: 'text',
+      placeholder: 'نام شهر خود را وارد کنید'
+    }
+  ],
+  indicators: [
+    // --- Normative ---
+    {
+      id: 1, name: 'اعتماد بین‌فردی به همسایگان', type: 'normative',
+      goal: 'سنجش میزان باور فرد به صداقت، قابلیت اتکا و نیّت خوب همسایگان',
+      items: [
+        'به نظر من بیشتر همسایگانم قابل اعتماد هستند.',
+        'اگر وسیله‌ای از من در راهروی مشاعات جا بماند، مطمئنم همسایه‌ای آن را برمی‌گرداند.',
+        'می‌توانم اسرار شخصی خود را با یکی از همسایگان در میان بگذارم.',
+        'همسایگانم در صورت نیاز من کمک می‌کنند حتی اگر چیزی عایدشان نشود.',
+        'بیشتر همسایگانم در صحبت‌هایشان صادق هستند.'
+      ]
+    },
+    {
+      id: 2, name: 'عمق اعتماد به نهادهای محلی', type: 'normative',
+      goal: 'سنجش باور به صداقت، شفافیت و کارآمدی نهادهای محلی',
+      items: [
+        'به نظر من شورایاری محله صادقانه عمل می‌کند.',
+        'معتقدم شهرداری محله در تصمیم‌گیری‌ها شفاف است.',
+        'نهادهای محله‌ای (مسجد، هیئت، کانون) واقعاً برای رفع مشکلات مردم تلاش می‌کنند.',
+        'اگر به نهادهای محلی مراجعه کنم، مطمئنم مشکلم رسیدگی می‌شود.',
+        'به نظر من نهادهای محلی پاسخگوی نیازهای واقعی ساکنان هستند.'
+      ]
+    },
+    {
+      id: 3, name: 'شدت احساس تعلق و هویت محله‌ای', type: 'normative',
+      goal: 'سنجش میزان شناسایی فرد با محله و احساس بخشی از آن',
+      items: [
+        'من خودم را یکی از اعضای این محله می‌دانم.',
+        'به محله‌ام افتخار می‌کنم.',
+        'اگر کسی از محله‌ام انتقاد کند، ناراحت می‌شوم.',
+        'احساس می‌کنم بخشی از تاریخ و هویت این محله هستم.',
+        'دوست دارم فرزندانم هم در این محله بزرگ شوند.'
+      ]
+    },
+    {
+      id: 4, name: 'باور به اثربخشی مشارکت جمعی', type: 'normative',
+      goal: 'سنجش باور به اینکه مشارکت واقعاً می‌تواند تأثیرگذار باشد',
+      items: [
+        'معتقدم اگر مردم محله در تصمیم‌گیری‌ها مشارکت کنند، نتیجه بهتری حاصل می‌شود.',
+        'صدای مردم محله واقعاً شنیده می‌شود.',
+        'مشارکت در جلسات محله‌ای می‌تواند مشکلات را حل کند.',
+        'معتقدم هر شهروند می‌تواند در بهبود وضعیت محله نقش داشته باشد.',
+        'پیگیری جمعی مشکلات از طریق نامه یا مراجعه به مسئولان مؤثر است.'
+      ]
+    },
+    {
+      id: 5, name: 'پذیرش فرهنگی و تحمل تفاوت‌ها', type: 'normative',
+      goal: 'سنجش میزان پذیرش ساکنان با پیشینه‌های مختلف فرهنگی، مذهبی و قومی',
+      items: [
+        'من با همسایگانی که پیشینه فرهنگی متفاوتی دارند راحت زندگی می‌کنم.',
+        'حضور اقوام مختلف در محله برایم خوشایند است.',
+        'تفاوت سبک زندگی همسایگان مزاحمتی برایم ایجاد نمی‌کند.',
+        'من به عقاید مذهبی و فرهنگی دیگران احترام می‌گذارم.',
+        'تنوع فرهنگی در محله باعث غنای زندگی می‌شود.'
+      ]
+    },
+    {
+      id: 6, name: 'ادراک حمایت و انسجام اجتماعی', type: 'normative',
+      goal: 'سنجش حس کمک و همبستگی از سوی جامعه محلی',
+      items: [
+        'در صورت بروز مشکل، می‌توانم روی همسایگانم حساب کنم.',
+        'همسایگانم در مراسم شادی و غم یکدیگر شرکت می‌کنند.',
+        'احساس می‌کنم اهالی محله به فکر یکدیگر هستند.',
+        'در این محله کسی تنها نیست.',
+        'اهالی محله در برابر مشکلات مشترک همدلی نشان می‌دهند.'
+      ]
+    },
+    {
+      id: 7, name: 'شکاف بین‌نسلی در ادراک کیفیت زندگی', type: 'normative',
+      goal: 'سنجش تفاوت ادراک نسل‌های مختلف از کیفیت زندگی محله',
+      items: [
+        'نسل جوان محله از وضعیت زندگی رضایت کمتری نسبت به نسل قدیم دارد.',
+        'جوانان محله آینده خود را در این محله نمی‌بینند.',
+        'بین دیدگاه پدران و فرزندان درباره کیفیت محله تفاوت زیادی وجود دارد.',
+        'نسل جوان کمتر از نسل قدیم احساس تعلق به محله می‌کند.',
+        'نیازهای نسل جوان محله در برنامه‌ریزی‌ها لحاظ نمی‌شود.'
+      ]
+    },
+    {
+      id: 8, name: 'ادراک تاب‌آوری جمعی در بحران', type: 'normative',
+      goal: 'سنجش باور به توان جمعی برای بازیابی پس از بحران',
+      items: [
+        'معتقدم در صورت بروز بحران (زلزله، سیل و...) اهالی محله می‌توانند به هم کمک کنند.',
+        'محله ما توانایی عبور از مشکلات بزرگ را دارد.',
+        'در بحران‌های گذشته، اهالی محله با هم همکاری کردند.',
+        'معتقدم محله ما پس از هر مشکلی دوباره سرپا می‌شود.',
+        'اهالی محله در شرایط سخت فداکاری نشان می‌دهند.'
+      ]
+    },
+    {
+      id: 9, name: 'محرومیت نسبی ادراک‌شده', type: 'normative',
+      goal: 'سنجش احساس محرومیت نسبت به محلات دیگر شهر',
+      items: [
+        'احساس می‌کنم محله ما نسبت به سایر محله‌ها محروم‌تر است.',
+        'امکانات و خدمات کمتری نسبت به محلات دیگر داریم.',
+        'وقتی به محلات برخوردار شهر می‌روم، احساس بدی پیدا می‌کنم.',
+        'به نظر من تبعیضی در توزیع امکانات بین محلات وجود دارد.',
+        'ساکنان محله ما از حق و حقوق شهری خود بهره‌مند نیستند.'
+      ]
+    },
+    {
+      id: 10, name: 'احساس کنترل بر سرنوشت محلی', type: 'normative',
+      goal: 'سنجش باور به اینکه ساکنان می‌توانند آینده محله را تغییر دهند',
+      items: [
+        'معتقدم مردم محله می‌توانند در سرنوشت خود مؤثر باشند.',
+        'ما می‌توانیم مسئولان را مجبور به پاسخگویی کنیم.',
+        'با پیگیری جمعی می‌توانیم مشکلات محله را حل کنیم.',
+        'آینده محله به تصمیمات خود ما بستگی دارد.',
+        'من می‌توانم در تغییرات مثبت محله نقش داشته باشم.'
+      ]
+    },
+    {
+      id: 11, name: 'احساس امنیت روانی و اجتماعی', type: 'normative',
+      goal: 'سنجش حس آرامش و امنیت در تعاملات اجتماعی',
+      items: [
+        'در این محله احساس آرامش می‌کنم.',
+        'شب‌ها بدون نگرانی در خیابان‌های محله تردد می‌کنم.',
+        'فرزندانم می‌توانند آزادانه در محله بازی کنند.',
+        'در تعامل با همسایگان احساس امنیت می‌کنم.',
+        'احساس می‌کنم محله ما از نظر اجتماعی امن است.'
+      ]
+    },
+    {
+      id: 12, name: 'کارآمدی جمعی ادراک‌شده', type: 'normative',
+      goal: 'سنجش باور به توان جمعی برای مداخله در مسائل محلی',
+      items: [
+        'معتقدم اهالی محله می‌توانند با همکاری هم مشکلات را حل کنند.',
+        'وقتی مشکلی پیش می‌آید، مردم محله با هم هماهنگ می‌شوند.',
+        'ما در محله توانایی سازماندهی جمعی برای حل مسائل را داریم.',
+        'معتقدم مردم محله می‌توانند از منافع خود دفاع کنند.',
+        'در صورت تهدید منافع محله، مردم با هم واکنش نشان می‌دهند.'
+      ]
+    },
+    {
+      id: 13, name: 'تحمل بی‌نظمی', type: 'normative',
+      goal: 'سنجش میزان تحمل شهروندان نسبت به نقض قواعد محلی',
+      items: [
+        'وقتی کسی در محله قانون را رعایت نمی‌کند، ناراحت می‌شوم.',
+        'نظم و انضباط در محله برایم مهم است.',
+        'نقض قوانین محلی (پارک غیرمجاز، سر و صدای زیاد و...) برایم آزاردهنده است.',
+        'معتقدم همه ساکنان باید قوانین محلی را رعایت کنند.',
+        'بی‌نظمی در محله باعث کاهش کیفیت زندگی می‌شود.'
+      ]
+    },
+    {
+      id: 14, name: 'اعتماد به آینده محله', type: 'normative',
+      goal: 'سنجش باور به اینکه محله در آینده بهتر خواهد شد',
+      items: [
+        'معتقدم آینده محله ما بهتر از وضعیت فعلی خواهد بود.',
+        'سرمایه‌گذاری در این محله آینده خوبی دارد.',
+        'معتقدم مشکلات فعلی محله موقتی است و حل خواهد شد.',
+        'در آینده محله ما جای بهتری برای زندگی خواهد شد.',
+        'به آینده این محله امیدوارم.'
+      ]
+    },
+    {
+      id: 15, name: 'احساس خطر جابجایی', type: 'normative',
+      goal: 'سنجش ترس از حاشیه‌نشینی یا جابجایی اجباری',
+      items: [
+        'نگرانم که مجبور شوم محله را ترک کنم.',
+        'احساس می‌کنم آینده سکونت من در این محله نامطمئن است.',
+        'ممکن است به دلیل افزایش اجاره یا تخریب مجبور به جابجایی شوم.',
+        'نگرانم که محله ما به حاشیه شهر تبدیل شود.',
+        'احساس می‌کنم حقوق ساکنان دائمی محله در خطر است.'
+      ]
+    },
+    // --- Behavioral ---
+    {
+      id: 16, name: 'تعداد و نوع تعاملات رودررو حضوری', type: 'behavioral',
+      goal: 'سنجش فراوانی و کیفیت ملاقات‌های حضوری با همسایگان',
+      items: [
+        'من با همسایگانم در راهرو یا حیاط صحبت می‌کنم.',
+        'حداقل هفته‌ای یک بار با همسایگانم تعامل حضوری دارم.',
+        'با برخی همسایگانم روابط صمیمانه دارم.',
+        'در مکان‌های عمومی محله (پارک، نانوایی، مسجد) با همسایگان برخورد می‌کنم.',
+        'تعاملات من با همسایگان صرفاً از نوع سلام و علیک سطحی نیست.'
+      ]
+    },
+    {
+      id: 17, name: 'مشارکت فعال در تصمیم‌گیری محله', type: 'behavioral',
+      goal: 'سنجش حضور و ابراز نظر در فرآیندهای تصمیم‌گیری محلی',
+      items: [
+        'من در جلسات شورایاری یا هیئت امنا شرکت کرده‌ام.',
+        'نظراتم را در مورد مسائل محله بیان می‌کنم.',
+        'در انتخابات شورایاری شرکت کرده‌ام.',
+        'مشکلات محله را از طریق مراجع رسمی پیگیری کرده‌ام.',
+        'در طرح‌ها و برنامه‌های محله مشارکت فعال داشته‌ام.'
+      ]
+    },
+    {
+      id: 18, name: 'تمایل درونی به مشارکت داوطلبانه', type: 'behavioral',
+      goal: 'سنجش آمادگی نهفته برای کمک داوطلبانه',
+      items: [
+        'اگر فرصت داشته باشم، دوست دارم در فعالیت‌های محله‌ای مشارکت کنم.',
+        'حاضرم وقت خود را برای بهبود محله صرف کنم.',
+        'اگر از من کمک خواسته شود، دریغ نمی‌کنم.',
+        'تمایل دارم در نظافت و زیباسازی مشاعات مشارکت کنم.',
+        'دوست دارم در برنامه‌های فرهنگی و اجتماعی محله نقش داشته باشم.'
+      ]
+    },
+    {
+      id: 19, name: 'تعهد اخلاقی ادراک‌شده به حفاظت اموال مشترک', type: 'behavioral',
+      goal: 'سنجش احساس مسئولیت اخلاقی نسبت به فضاهای مشترک',
+      items: [
+        'معتقدم حفاظت از فضای سبز وظیفه همه ساکنان است.',
+        'اگر کسی به اموال مشاع آسیب بزند، احساس بدی پیدا می‌کنم.',
+        'من خودم از اموال مشاع مراقبت می‌کنم.',
+        'معتقدم هر ساکن مسئول حفاظت از بخشی از محله است.',
+        'تخریب اموال عمومی برایم مثل تخریب مال شخصی ناراحت‌کننده است.'
+      ]
+    },
+    {
+      id: 20, name: 'الگوی تعارض و حل تعارض', type: 'behavioral',
+      goal: 'سنجش نحوه بروز و مدیریت اختلافات در سطح محله',
+      items: [
+        'اختلافات بین همسایگان به ندرت پیش می‌آید.',
+        'وقتی اختلافی پیش می‌آید، ساکنان سعی می‌کنند آرام حل کنند.',
+        'در محله ما از واسطه‌ها و بزرگترها برای حل اختلاف استفاده می‌شود.',
+        'من ترجیح می‌دهم اختلافاتم با همسایگان را گفتگو کنم نه دعوا.',
+        'در محله ما فرهنگ گفتگو و مدارا حاکم است.'
+      ]
+    },
+    {
+      id: 21, name: 'الگوی ارتباط‌سازی در فضاهای سوم', type: 'behavioral',
+      goal: 'سنجش نوع و عمق ارتباطات شکل‌گرفته در پارک، کافه، مسجد و غیره',
+      items: [
+        'من در پارک یا فضای سبز محله با همسایگان آشنا شده‌ام.',
+        'در مسجد یا نماز جمعه با ساکنان محله ارتباط دارم.',
+        'از فضاهای عمومی محله (کافه، نانوایی، سوپرمارکت) برای معاشرت استفاده می‌کنم.',
+        'دوستان صمیمی من از همسایگان محله هستند.',
+        'فضاهای عمومی محله نقش مهمی در شکل‌گیری روابط اجتماعی ما دارند.'
+      ]
+    },
+    {
+      id: 22, name: 'الگوی اطلاع‌رسانی و جریان اخبار محلی', type: 'behavioral',
+      goal: 'سنجش کانال‌های اطلاع‌رسانی غیردیجیتال محلی',
+      items: [
+        'اخبار و اطلاعات محله را از همسایگان دریافت می‌کنم.',
+        'واسطه‌ها و بزرگترهای محله در اطلاع‌رسانی نقش دارند.',
+        'من اخبار محله را از طریق گفتگوهای رودررو دنبال می‌کنم.',
+        'اطلاعات مهم محله از طریق شبکه‌های اجتماعی محلی (گروه‌های پیام‌رسان) منتشر می‌شود.',
+        'من از وقایع و رویدادهای محله باخبر هستم.'
+      ]
+    },
+    {
+      id: 23, name: 'اهمیت‌دهی به غیرت و آبروی محلی', type: 'behavioral',
+      goal: 'سنجش نقش فرهنگ غیرت و حیثیت در رفتارهای اجتماعی محله',
+      items: [
+        'من آبروی محله‌ام برایم مهم است.',
+        'دوست ندارم کسی درباره محله من بد بگوید.',
+        'رفتار من در خارج از محله نماینده آبروی محله است.',
+        'اهالی محله برای حفظ آبرو و حیثیت محله تلاش می‌کنند.',
+        'غیرت و حیثیت در فرهنگ محله ما اهمیت زیادی دارد.'
+      ]
+    }
+  ],
+  openQuestions: [
+    { id: 'open1', label: 'بزرگ‌ترین مشکل فعلی محله شما چیست؟' },
+    { id: 'open2', label: 'مهم‌ترین نقطه قوت محله شما چیست؟' },
+    { id: 'open3', label: 'اگر بتوانید یک چیز در محله تغییر دهید، چه چیزی خواهد بود؟' }
+  ]
+};
+
+const LIKERT_LABELS = ['کاملاً مخالفم', 'مخالفم', 'نه مخالفم\nنه موافق', 'موافقم', 'کاملاً موافقم'];
+
+// ===== STATE =====
+let currentSection = 0;
+let answers = {};
+let completedSections = new Set();
+
+// ===== SECTIONS LIST =====
+const sections = [
+  { id: 'intro', title: 'آغاز', icon: '📋', type: 'intro' },
+  { id: 'demographics', title: 'مشخصات', icon: '👤', type: 'demographics' },
+  ...QUESTIONNAIRE.indicators.map(ind => ({
+    id: `indicator-${ind.id}`,
+    title: `شاخص ${ind.id}`,
+    icon: ind.type === 'normative' ? '🔵' : '🟢',
+    type: 'indicator',
+    data: ind
+  })),
+  { id: 'open', title: 'سؤالات باز', icon: '✍️', type: 'open' },
+  { id: 'results', title: 'نتایج', icon: '📊', type: 'results' }
+];
+
+// ===== INIT =====
+function init() {
+  loadAnswers();
+  renderStepPills();
+  renderSections();
+  goToSection(currentSection);
+}
+
+// ===== SAVE / LOAD =====
+function saveAnswers() {
+  try {
+    localStorage.setItem('questionnaire_answers', JSON.stringify(answers));
+    localStorage.setItem('questionnaire_current', currentSection.toString());
+    localStorage.setItem('questionnaire_completed', JSON.stringify([...completedSections]));
+  } catch(e) {}
+}
+
+function loadAnswers() {
+  try {
+    const saved = localStorage.getItem('questionnaire_answers');
+    if (saved) answers = JSON.parse(saved);
+    const savedCurrent = localStorage.getItem('questionnaire_current');
+    if (savedCurrent) currentSection = parseInt(savedCurrent);
+    const savedCompleted = localStorage.getItem('questionnaire_completed');
+    if (savedCompleted) completedSections = new Set(JSON.parse(savedCompleted));
+  } catch(e) {}
+}
+
+// ===== RENDER STEP PILLS =====
+function renderStepPills() {
+  const container = document.getElementById('stepPills');
+  container.innerHTML = sections.map((s, i) => {
+    let cls = 'step-pill';
+    if (i === currentSection) cls += ' active';
+    else if (completedSections.has(i)) cls += ' completed';
+    return `<div class="${cls}" onclick="goToSection(${i})" title="${s.title}">${s.icon} ${s.title}</div>`;
+  }).join('');
+
+  // Scroll active pill into view
+  setTimeout(() => {
+    const activePill = container.querySelector('.active');
+    if (activePill) {
+      activePill.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
+  }, 100);
+}
+
+// ===== RENDER SECTIONS =====
+function renderSections() {
+  const container = document.getElementById('sectionsContainer');
+  container.innerHTML = sections.map((s, i) => {
+    let content = '';
+    switch(s.type) {
+      case 'intro': content = renderIntro(); break;
+      case 'demographics': content = renderDemographics(); break;
+      case 'indicator': content = renderIndicator(s.data); break;
+      case 'open': content = renderOpenQuestions(); break;
+      case 'results': content = renderResults(); break;
+    }
+    return `<div class="section" id="section-${i}">${content}</div>`;
+  }).join('');
+}
+
+// ===== RENDER: INTRO =====
+function renderIntro() {
+  return `
+    <div class="section-header" style="text-align:center;">
+      <div class="section-icon">📋</div>
+      <div class="section-title">پرسشنامه سنجش شاخص‌های هنجاری و رفتاری محله</div>
+      <div class="section-desc" style="margin-top:12px;">
+        این پرسشنامه به منظور شناخت بهتر وضعیت محله سکونت شما طراحی شده است.
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:12px;">📝 راهنمای اجرا</h3>
+      <ul style="font-size:0.85rem;color:var(--gray-600);line-height:2;padding-right:16px;">
+        <li><strong>زمان اجرا:</strong> ۲۵-۳۵ دقیقه</li>
+        <li><strong>شرایط:</strong> بدون حضور اعضای خانواده یا دوستان</li>
+        <li><strong>رازداری:</strong> تمام پاسخ‌ها محرمانه بوده و صرفاً برای اهداف پژوهشی استفاده می‌شود</li>
+      </ul>
+    </div>
+
+    <div class="card" style="background:var(--primary-bg);border:1px solid rgba(37,99,235,0.15);">
+      <div style="font-size:0.85rem;color:var(--gray-700);line-height:2;font-style:italic;">
+        «با سلام و احترام. این پرسشنامه به منظور شناخت بهتر وضعیت محله سکونت شما طراحی شده است. پاسخ‌های شما کاملاً محرمانه بوده و فقط به صورت تجمیعی در تحقیق استفاده خواهد شد. لطفاً به هر سؤال با دقت و صداقت پاسخ دهید. از شما سپاسگزاریم.»
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:12px;">⚖️ مقیاس پاسخ‌گویی</h3>
+      <div style="display:flex;gap:6px;margin-bottom:12px;">
+        ${LIKERT_LABELS.map((l, i) => `
+          <div style="flex:1;text-align:center;padding:8px 4px;border-radius:8px;background:var(--gray-50);border:1px solid var(--gray-200);">
+            <div style="font-size:1.2rem;font-weight:700;color:var(--primary);">${i + 1}</div>
+            <div style="font-size:0.65rem;color:var(--gray-500);line-height:1.4;">${l.replace('\n', '<br>')}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:8px;">📊 ساختار پرسشنامه</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:0.8rem;">
+        <div style="padding:10px;border-radius:8px;background:var(--primary-bg);text-align:center;">
+          <div style="font-size:1.5rem;font-weight:800;color:var(--primary);">۱۵</div>
+          <div style="color:var(--gray-600);">شاخص هنجاری</div>
+        </div>
+        <div style="padding:10px;border-radius:8px;background:var(--success-bg);text-align:center;">
+          <div style="font-size:1.5rem;font-weight:800;color:var(--success);">۸</div>
+          <div style="color:var(--gray-600);">شاخص رفتاری</div>
+        </div>
+        <div style="padding:10px;border-radius:8px;background:var(--warning-bg);text-align:center;">
+          <div style="font-size:1.5rem;font-weight:800;color:var(--warning);">۱۱۵</div>
+          <div style="color:var(--gray-600);">گویه (سؤال)</div>
+        </div>
+        <div style="padding:10px;border-radius:8px;background:var(--danger-bg);text-align:center;">
+          <div style="font-size:1.5rem;font-weight:800;color:var(--danger);">۳</div>
+          <div style="color:var(--gray-600);">سؤال باز</div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ===== RENDER: DEMOGRAPHICS =====
+function renderDemographics() {
+  return `
+    <div class="section-header">
+      <div class="section-icon">👤</div>
+      <div class="section-title">بخش اول: مشخصات جمعیت‌شناختی</div>
+      <div class="section-desc">این اطلاعات صرفاً برای تحلیل آماری استفاده می‌شود و هیچ‌گونه اطلاعات هویتی ذخیره نخواهد شد.</div>
+    </div>
+    ${QUESTIONNAIRE.demographics.map(field => `
+      <div class="card">
+        <div class="form-label">${field.label}</div>
+        ${field.type === 'radio' ? `
+          <div class="radio-group">
+            ${field.options.map(opt => `
+              <div class="radio-option ${answers[field.id] === opt ? 'selected' : ''}"
+                   onclick="selectDemographic('${field.id}', '${opt.replace(/'/g, "\\'")}', this)">
+                <div class="radio-dot"></div>
+                <div class="radio-text">${opt}</div>
+              </div>
+            `).join('')}
+          </div>
+        ` : `
+          <input type="text" class="text-input" placeholder="${field.placeholder || ''}"
+                 value="${answers[field.id] || ''}"
+                 oninput="answers['${field.id}'] = this.value; saveAnswers();">
+        `}
+      </div>
+    `).join('')}
+  `;
+}
+
+function selectDemographic(fieldId, value, el) {
+  answers[fieldId] = value;
+  saveAnswers();
+  const group = el.parentElement;
+  group.querySelectorAll('.radio-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+// ===== RENDER: INDICATOR =====
+function renderIndicator(ind) {
+  const totalItems = ind.items.length;
+  const answeredCount = ind.items.filter((_, i) => answers[`q${ind.id}_${i+1}`] != null).length;
+
+  return `
+    <div class="section-header">
+      <div class="section-icon">${ind.type === 'normative' ? '🔵' : '🟢'}</div>
+      <div class="section-title">شاخص ${ind.id}: ${ind.name}</div>
+      <div class="section-desc">${ind.goal}</div>
+      <div style="margin-top:8px;font-size:0.8rem;color:var(--gray-400);">
+        پاسخ داده شده: ${answeredCount} از ${totalItems}
+      </div>
+    </div>
+
+    <div class="indicator-card ${ind.type}">
+      ${ind.items.map((item, i) => {
+        const qId = `q${ind.id}_${i+1}`;
+        const answered = answers[qId] != null;
+        return `
+          <div class="question ${answered ? 'answered' : ''}" id="question-${qId}">
+            <div class="question-text">
+              <span class="question-code">${ind.id}-${i+1}</span>
+              ${item}
+            </div>
+            <div class="likert-scale">
+              ${[1,2,3,4,5].map(val => `
+                <div class="likert-option ${answers[qId] === val ? 'selected' : ''}"
+                     onclick="selectAnswer('${qId}', ${val}, this)">
+                  <div class="likert-number">${val}</div>
+                  <div class="likert-label">${LIKERT_LABELS[val-1].replace('\n', '<br>')}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }).join('')}
+    </div>
+  `;
+}
+
+function selectAnswer(qId, value, el) {
+  answers[qId] = value;
+  saveAnswers();
+
+  // Update UI
+  const scale = el.parentElement;
+  scale.querySelectorAll('.likert-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+
+  // Mark question as answered
+  const questionEl = el.closest('.question');
+  if (questionEl) questionEl.classList.add('answered');
+
+  // Update progress
+  updateProgress();
+}
+
+// ===== RENDER: OPEN QUESTIONS =====
+function renderOpenQuestions() {
+  return `
+    <div class="section-header">
+      <div class="section-icon">✍️</div>
+      <div class="section-title">بخش چهارم: سؤالات باز</div>
+      <div class="section-desc">پاسخ‌های شما در این بخش کاملاً اختیاری است.</div>
+    </div>
+
+    ${QUESTIONNAIRE.openQuestions.map((q, i) => `
+      <div class="card">
+        <div class="form-label">سؤال ${i+1}</div>
+        <div style="font-size:0.9rem;font-weight:500;color:var(--gray-700);margin-bottom:12px;line-height:1.9;">
+          ${q.label}
+        </div>
+        <textarea class="text-input" placeholder="پاسخ خود را اینجا بنویسید..."
+                  oninput="answers['${q.id}'] = this.value; saveAnswers();">${answers[q.id] || ''}</textarea>
+      </div>
+    `).join('')}
+  `;
+}
+
+// ===== RENDER: RESULTS =====
+function renderResults() {
+  const indicatorScores = QUESTIONNAIRE.indicators.map(ind => {
+    const scores = ind.items.map((_, i) => answers[`q${ind.id}_${i+1}`] || 0);
+    const validScores = scores.filter(s => s > 0);
+    const avg = validScores.length > 0 ? validScores.reduce((a, b) => a + b, 0) / validScores.length : 0;
+    return { ...ind, score: avg, answered: validScores.length, total: ind.items.length };
+  });
+
+  const normativeScores = indicatorScores.filter(i => i.type === 'normative');
+  const behavioralScores = indicatorScores.filter(i => i.type === 'behavioral');
+
+  const normativeAvg = normativeScores.reduce((a, b) => a + b.score, 0) / normativeScores.filter(i => i.score > 0).length;
+  const behavioralAvg = behavioralScores.reduce((a, b) => a + b.score, 0) / behavioralScores.filter(i => i.score > 0).length;
+  const totalAvg = (normativeAvg + behavioralAvg) / 2;
+
+  function getScoreLevel(score) {
+    if (score === 0) return { label: 'بدون پاسخ', color: 'var(--gray-400)', bg: 'var(--gray-100)', cls: '' };
+    if (score <= 1.8) return { label: 'بسیار پایین — وضعیت بحرانی', color: '#dc2626', bg: '#fef2f2', cls: 'level-critical' };
+    if (score <= 2.6) return { label: 'پایین — وضعیت نامطلوب', color: '#ea580c', bg: '#fff7ed', cls: 'level-low' };
+    if (score <= 3.4) return { label: 'متوسط — وضعیت قابل قبول', color: '#ca8a04', bg: '#fefce8', cls: 'level-medium' };
+    if (score <= 4.2) return { label: 'خوب — وضعیت مطلوب', color: '#16a34a', bg: '#f0fdf4', cls: 'level-good' };
+    return { label: 'بسیار خوب — وضعیت ممتاز', color: '#0d9488', bg: '#f0fdfa', cls: 'level-excellent' };
+  }
+
+  const totalLevel = getScoreLevel(totalAvg);
+
+  // Count answered questions
+  const totalAnswered = Object.keys(answers).filter(k => k.startsWith('q')).length;
+
+  return `
+    <div class="section-header" style="text-align:center;">
+      <div class="section-icon">📊</div>
+      <div class="section-title">نتایج تحلیل</div>
+      <div class="section-desc">پاسخ‌های ثبت شده: ${totalAnswered} از ۱۱۵ گویه</div>
+    </div>
+
+    <!-- Overall Score -->
+    <div class="score-card" style="text-align:center;padding:28px;">
+      <div style="font-size:0.9rem;font-weight:600;color:var(--gray-500);margin-bottom:8px;">شاخص کلی محله</div>
+      <div class="score-value" style="font-size:3rem;background:linear-gradient(135deg,${totalLevel.color},var(--primary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">
+        ${totalAvg > 0 ? totalAvg.toFixed(2) : '—'}
+      </div>
+      <div class="score-level ${totalLevel.cls}" style="justify-content:center;font-size:1rem;margin-top:4px;">
+        <div class="score-dot" style="background:${totalLevel.color};"></div>
+        ${totalLevel.label}
+      </div>
+      <div class="score-bar" style="margin-top:16px;max-width:300px;margin-left:auto;margin-right:auto;">
+        <div class="score-fill" style="width:${totalAvg * 20}%;background:${totalLevel.color};"></div>
+      </div>
+    </div>
+
+    <!-- Category Scores -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+      ${[
+        { label: 'شاخص هنجاری', score: normativeAvg, icon: '🔵' },
+        { label: 'شاخص رفتاری', score: behavioralAvg, icon: '🟢' }
+      ].map(cat => {
+        const level = getScoreLevel(cat.score);
+        return `
+          <div class="score-card" style="text-align:center;">
+            <div style="font-size:1.5rem;margin-bottom:4px;">${cat.icon}</div>
+            <div style="font-size:0.8rem;font-weight:600;color:var(--gray-500);">${cat.label}</div>
+            <div class="score-value" style="color:${level.color};margin:8px 0;">${cat.score > 0 ? cat.score.toFixed(2) : '—'}</div>
+            <div class="score-bar">
+              <div class="score-fill" style="width:${cat.score * 20}%;background:${level.color};"></div>
+            </div>
+            <div class="score-level ${level.cls}" style="justify-content:center;margin-top:6px;font-size:0.75rem;">
+              ${level.label}
+            </div>
+          </div>
+        `;
+      }).join('')}
+    </div>
+
+    <!-- Detailed Scores -->
+    <div class="score-card">
+      <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:16px;">📋 جزئیات نمرات شاخص‌ها</h3>
+      <div style="overflow-x:auto;">
+        <table class="summary-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>نام شاخص</th>
+              <th>نوع</th>
+              <th>نمره</th>
+              <th>وضعیت</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${indicatorScores.map(ind => {
+              const level = getScoreLevel(ind.score);
+              return `
+                <tr>
+                  <td style="font-weight:700;">${ind.id}</td>
+                  <td style="font-weight:500;">${ind.name}</td>
+                  <td>
+                    <span style="padding:2px 8px;border-radius:6px;font-size:0.7rem;font-weight:600;
+                      background:${ind.type === 'normative' ? 'var(--primary-bg)' : 'var(--success-bg)'};
+                      color:${ind.type === 'normative' ? 'var(--primary)' : 'var(--success)'};">
+                      ${ind.type === 'normative' ? 'هنجاری' : 'رفتاری'}
+                    </span>
+                  </td>
+                  <td style="font-weight:700;color:${level.color};">${ind.score > 0 ? ind.score.toFixed(2) : '—'}</td>
+                  <td>
+                    <span class="score-level ${level.cls}" style="font-size:0.75rem;">
+                      <span class="score-dot" style="background:${level.color};width:8px;height:8px;"></span>
+                      ${ind.score > 0 ? level.label.split('—')[0].trim() : `${ind.answered}/${ind.total}`}
+                    </span>
+                  </td>
+                </tr>
+              `;
+            }).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Score Interpretation Guide -->
+    <div class="score-card">
+      <h3 style="font-size:0.95rem;font-weight:700;margin-bottom:12px;">📖 راهنمای تفسیر نمرات</h3>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        ${[
+          { range: '۱.۰۰ - ۱.۸۰', label: 'بسیار پایین', desc: 'وضعیت بحرانی — نیاز به مداخله فوری', color: '#dc2626' },
+          { range: '۱.۸۱ - ۲.۶۰', label: 'پایین', desc: 'وضعیت نامطلوب — نیاز به برنامه‌ریزی اصلاحی', color: '#ea580c' },
+          { range: '۲.۶۱ - ۳.۴۰', label: 'متوسط', desc: 'وضعیت قابل قبول — نیاز به بهبود تدریجی', color: '#ca8a04' },
+          { range: '۳.۴۱ - ۴.۲۰', label: 'خوب', desc: 'وضعیت مطلوب — حفظ و تقویت', color: '#16a34a' },
+          { range: '۴.۲۱ - ۵.۰۰', label: 'بسیار خوب', desc: 'وضعیت ممتاز — الگوبرداری', color: '#0d9488' }
+        ].map(l => `
+          <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:var(--gray-50);border-right:3px solid ${l.color};">
+            <div class="score-dot" style="background:${l.color};flex-shrink:0;"></div>
+            <div style="flex:1;">
+              <div style="font-size:0.8rem;font-weight:600;color:var(--gray-700);">${l.label} (${l.range})</div>
+              <div style="font-size:0.75rem;color:var(--gray-500);">${l.desc}</div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div style="display:flex;gap:10px;margin-top:8px;">
+      <button class="btn btn-secondary" onclick="exportJSON()" style="flex:1;">
+        📥 خروجی JSON
+      </button>
+      <button class="btn btn-danger" onclick="confirmReset()" style="flex:1;">
+        🗑️ پاک کردن
+      </button>
+    </div>
+  `;
+}
+
+// ===== NAVIGATION =====
+function goToSection(index) {
+  if (index < 0 || index >= sections.length) return;
+
+  // Mark previous as completed
+  if (currentSection < sections.length) {
+    completedSections.add(currentSection);
+  }
+
+  currentSection = index;
+  saveAnswers();
+
+  // Hide all sections, show current
+  document.querySelectorAll('.section').forEach((s, i) => {
+    s.classList.toggle('active', i === index);
+  });
+
+  // Update step pills
+  renderStepPills();
+
+  // Update nav buttons
+  document.getElementById('btnPrev').style.display = index > 0 ? 'flex' : 'none';
+
+  const btnNext = document.getElementById('btnNext');
+  if (index === sections.length - 1) {
+    btnNext.style.display = 'none';
+  } else if (index === sections.length - 2) {
+    btnNext.innerHTML = '📊 مشاهده نتایج';
+    btnNext.className = 'btn btn-success';
+    btnNext.style.display = 'flex';
+  } else {
+    btnNext.innerHTML = 'بعدی →';
+    btnNext.className = 'btn btn-primary';
+    btnNext.style.display = 'flex';
+  }
+
+  // Re-render results when entering results section
+  if (sections[index].type === 'results') {
+    const resultsSection = document.getElementById(`section-${index}`);
+    resultsSection.innerHTML = renderResults();
+  }
+
+  // Update progress
+  updateProgress();
+
+  // Scroll to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function nextSection() {
+  if (currentSection < sections.length - 1) {
+    goToSection(currentSection + 1);
+  }
+}
+
+function prevSection() {
+  if (currentSection > 0) {
+    goToSection(currentSection - 1);
+  }
+}
+
+// ===== PROGRESS =====
+function updateProgress() {
+  const totalQuestions = QUESTIONNAIRE.indicators.reduce((a, b) => a + b.items.length, 0);
+  const answeredQuestions = Object.keys(answers).filter(k => k.startsWith('q')).length;
+  const percentage = Math.round((answeredQuestions / totalQuestions) * 100);
+
+  document.getElementById('progressBar').style.width = `${percentage}%`;
+  document.getElementById('progressText').textContent = `پاسخ داده شده: ${answeredQuestions} از ${totalQuestions} (${percentage}٪)`;
+}
+
+// ===== EXPORT =====
+function exportJSON() {
+  const data = {
+    timestamp: new Date().toISOString(),
+    demographics: {},
+    indicators: {},
+    openQuestions: {},
+    scores: {}
+  };
+
+  // Demographics
+  QUESTIONNAIRE.demographics.forEach(f => {
+    data.demographics[f.id] = answers[f.id] || null;
+  });
+
+  // Indicators
+  QUESTIONNAIRE.indicators.forEach(ind => {
+    data.indicators[ind.id] = {
+      name: ind.name,
+      type: ind.type,
+      items: ind.items.map((item, i) => ({
+        text: item,
+        score: answers[`q${ind.id}_${i+1}`] || null
+      }))
+    };
+
+    const scores = ind.items.map((_, i) => answers[`q${ind.id}_${i+1}`] || 0).filter(s => s > 0);
+    data.scores[ind.id] = scores.length > 0 ? (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(2) : null;
+  });
+
+  // Open Questions
+  QUESTIONNAIRE.openQuestions.forEach(q => {
+    data.openQuestions[q.id] = answers[q.id] || null;
+  });
+
+  // Download
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `questionnaire-${new Date().toISOString().slice(0, 10)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+
+  showToast('فایل JSON با موفقیت دانلود شد ✓');
+}
+
+// ===== RESET =====
+function confirmReset() {
+  const modal = document.getElementById('modal');
+  modal.innerHTML = `
+    <div class="modal-icon">⚠️</div>
+    <div class="modal-title">پاک کردن پاسخ‌ها</div>
+    <div class="modal-desc">آیا مطمئن هستید؟ تمام پاسخ‌های شما پاک خواهد شد.</div>
+    <div class="modal-buttons">
+      <button class="btn btn-secondary" onclick="closeModal()" style="flex:1;">انصراف</button>
+      <button class="btn btn-danger" onclick="resetAll()" style="flex:1;">بله، پاک شود</button>
+    </div>
+  `;
+  document.getElementById('modalOverlay').classList.add('show');
+}
+
+function resetAll() {
+  answers = {};
+  completedSections.clear();
+  currentSection = 0;
+  localStorage.removeItem('questionnaire_answers');
+  localStorage.removeItem('questionnaire_current');
+  localStorage.removeItem('questionnaire_completed');
+  closeModal();
+  init();
+  showToast('تمام پاسخ‌ها پاک شد ✓');
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('show');
+}
+
+// ===== TOAST =====
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3000);
+}
+
+// ===== KEYBOARD NAVIGATION =====
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+    if (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+      e.preventDefault();
+      prevSection();
+    }
+  } else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
+    if (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+      e.preventDefault();
+      nextSection();
+    }
+  }
+});
+
+// ===== START =====
+init();
+</script>
+</body>
+</html>

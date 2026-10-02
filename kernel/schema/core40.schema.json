@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DecisionCore(40)",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "کد": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "سرمایه": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "شاخص": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "تعریف/فرمول عملیاتی": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "صورت": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "مخرج": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "واحد": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "جهت": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "نقش سیستم": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "منبع اصلی": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "جریان شاهد": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "تناوب پیشنهادی": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "تفکیک عدالت": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "کنترل کیفیت": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    },
+    "آستانه/هدف": {
+      "type": [
+        "string",
+        "number",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "کد"
+  ]
+}

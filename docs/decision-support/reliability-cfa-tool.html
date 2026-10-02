@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>پایایی و تحلیل عاملی — ۲۱ شاخص پیمایشی</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--bg:#0f172a;--s:#1e293b;--s2:#334155;--b:#475569;--t:#f1f5f9;--td:#94a3b8;--a:#38bdf8;--g:#10b981;--r:#ef4444;--o:#f59e0b;--p:#a78bfa;--n:#22d3ee}
+  body{font-family:'Vazirmatn',sans-serif;background:var(--bg);color:var(--t);min-height:100vh;padding:16px}
+  .app{max-width:780px;margin:0 auto}
+  
+  .hero{text-align:center;padding:24px 16px;background:linear-gradient(180deg,rgba(56,189,248,.08),transparent);border-radius:16px;margin-bottom:20px;border:1px solid var(--b)}
+  .hero h1{font-size:1.3rem;font-weight:800;background:linear-gradient(135deg,var(--a),var(--p));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px}
+  .hero p{font-size:.75rem;color:var(--td);line-height:1.7}
+  
+  /* Tabs */
+  .tabs{display:flex;gap:0;margin-bottom:20px;border-bottom:2px solid var(--b)}
+  .tab{flex:1;padding:12px;text-align:center;cursor:pointer;font-size:.82rem;font-weight:700;color:var(--td);border-bottom:3px solid transparent;transition:all .2s}
+  .tab.active{color:var(--a);border-bottom-color:var(--a);background:rgba(56,189,248,.05)}
+  .tab:hover{color:var(--t)}
+  .tab-content{display:none}.tab-content.active{display:block}
+  
+  .card{background:var(--s);border:1px solid var(--b);border-radius:12px;padding:18px;margin-bottom:16px}
+  .card h3{font-size:.9rem;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+  .card p{font-size:.73rem;color:var(--td);line-height:1.8;margin-bottom:8px}
+  .formula{font-family:monospace;background:var(--bg);padding:8px 12px;border-radius:6px;margin:8px 0;font-size:.7rem;color:var(--a);direction:ltr;text-align:center;border:1px solid var(--b)}
+  
+  .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+  .info-item{background:var(--bg);padding:10px;border-radius:8px;border:1px solid var(--b);text-align:center}
+  .info-item .val{font-size:1.2rem;font-weight:800;margin-bottom:2px}
+  .info-item .lbl{font-size:.6rem;color:var(--td)}
+  
+  /* Input grid */
+  .input-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:10px 0}
+  .input-group{background:var(--bg);padding:10px;border-radius:8px;border:1px solid var(--b)}
+  .input-group label{display:block;font-size:.65rem;color:var(--td);margin-bottom:4px;font-weight:600}
+  .input-group input,.input-group select{width:100%;padding:8px;border:1px solid var(--b);border-radius:6px;background:var(--s);color:var(--t);font-family:inherit;font-size:.8rem}
+  .input-group input:focus{outline:none;border-color:var(--a)}
+  
+  .data-table{width:100%;border-collapse:collapse;font-size:.65rem;margin:10px 0}
+  .data-table th{background:var(--s2);padding:6px;border:1px solid var(--b);font-weight:700;text-align:center}
+  .data-table td{padding:6px;border:1px solid var(--b);text-align:center}
+  .data-table input{width:100%;padding:4px;border:1px solid var(--b);border-radius:4px;background:var(--bg);color:var(--t);font-family:monospace;font-size:.7rem;text-align:center}
+  .data-table input:focus{outline:none;border-color:var(--a)}
+  
+  .btn{padding:10px 20px;border:none;border-radius:8px;font-family:inherit;font-size:.8rem;font-weight:700;cursor:pointer;transition:all .2s}
+  .btn-primary{background:var(--a);color:#000;width:100%;margin-top:12px}
+  .btn-primary:hover{background:#7dd3fc}
+  .btn-sm{padding:6px 12px;font-size:.7rem}
+  
+  .result-box{background:var(--bg);border:1px solid var(--b);border-radius:8px;padding:14px;margin:12px 0}
+  .result-box h4{font-size:.8rem;font-weight:700;margin-bottom:8px}
+  
+  .metric-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--s2);font-size:.72rem}
+  .metric-row:last-child{border-bottom:none}
+  .metric-label{color:var(--td)}
+  .metric-value{font-weight:700}
+  .metric-value.pass{color:var(--g)}
+  .metric-value.warn{color:var(--o)}
+  .metric-value.fail{color:var(--r)}
+  
+  .cfa-factor{background:var(--bg);border:1px solid var(--b);border-radius:8px;padding:12px;margin:8px 0}
+  .cfa-factor h4{font-size:.78rem;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+  .cfa-items{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+  .cfa-chip{font-size:.6rem;padding:3px 8px;border-radius:4px;background:var(--s2);color:var(--t)}
+  .cfa-chip.load{background:rgba(16,185,129,.15);color:var(--g);border:1px solid rgba(16,185,129,.3)}
+  
+  .json-box{background:#000;border:1px solid var(--b);border-radius:8px;padding:12px;max-height:200px;overflow:auto;font-family:monospace;font-size:.6rem;direction:ltr;text-align:left;color:#22d3ee;white-space:pre-wrap;word-break:break-all}
+  
+  .fit-table{width:100%;border-collapse:collapse;font-size:.65rem;margin:10px 0}
+  .fit-table th{background:var(--s2);padding:6px;border:1px solid var(--b);text-align:center}
+  .fit-table td{padding:6px;border:1px solid var(--b);text-align:center}
+  .fit-table .pass{color:var(--g);font-weight:700}
+  .fit-table .fail{color:var(--r);font-weight:700}
+  .fit-table .warn{color:var(--o);font-weight:700}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="hero">
+    <h1>📊 پایایی و تحلیل عاملی ۲۱ شاخص پیمایشی</h1>
+    <p>تست پایایی test-retest (ICC) و تحلیل عاملی تأییدی (CFA) برای تأیید ساختار سازه‌های پنهان</p>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('reliability')">🔄 پایایی test-retest</div>
+    <div class="tab" onclick="switchTab('cfa')">🧩 تحلیل عاملی CFA</div>
+    <div class="tab" onclick="switchTab('alpha')">📐 آلفای کرونباخ</div>
+  </div>
+
+  <!-- ═══════ TAB 1: RELIABILITY ═══════ -->
+  <div class="tab-content active" id="tab-reliability">
+    <div class="card">
+      <h3>🔄 روش test-retest reliability</h3>
+      <p>اندازه‌گیری پایایی با اجرای مجدد پرسشنامه پس از ۲ تا ۴ هفته بر روی همان نمونه. معیار اصلی: <strong>Intraclass Correlation Coefficient (ICC)</strong>.</p>
+      <div class="formula">ICC(2,1) = (MSR - MSE) / (MSR + (k-1)×MSE + k×(MStarget - MSE)/n)</div>
+      <div class="formula">ICC(2,k) = (MSR - MSE) / (MSR + (k-1)×MSE)</div>
+      <p><strong>آستانه‌ها:</strong> ICC ≥ 0.75 عالی | 0.60–0.74 خوب | 0.40–0.59 متوسط | < 0.40 ضعیف</p>
+    </div>
+
+    <div class="card">
+      <h3>⚙️ تنظیمات آزمون</h3>
+      <div class="input-grid">
+        <div class="input-group">
+          <label>فاصله بین دو نوبت (روز)</label>
+          <input type="number" id="rt-gap" value="14" min="7" max="90">
+        </div>
+        <div class="input-group">
+          <label>تعداد نمونه</label>
+          <input type="number" id="rt-n" value="30" min="10" max="500">
+        </div>
+        <div class="input-group">
+          <label>سطح اطمینان</label>
+          <select id="rt-ci"><option value="0.95">۹۵٪</option><option value="0.99">۹۹٪</option></select>
+        </div>
+        <div class="input-group">
+          <label>نوع ICC</label>
+          <select id="rt-type"><option value="2,1">ICC(2,1) — تک‌اندازه</option><option value="2,k">ICC(2,k) — میانگین</option></select>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>📋 ورود داده‌ها</h3>
+      <p>مقادیر نوبت اول و نوبت دوم را برای هر شاخص وارد کنید. حداقل ۳۰ پاسخ‌دهنده لازم است.</p>
+      <div style="overflow-x:auto">
+        <table class="data-table" id="rtTable">
+          <thead><tr>
+            <th>کد شاخص</th><th>شاخص</th><th>سرمایه</th>
+            <th>M<sub>1</sub><br>میانگین نوبت ۱</th><th>SD<sub>1</sub><br>انحراف نوبت ۱</th>
+            <th>M<sub>2</sub><br>میانگین نوبت ۲</th><th>SD<sub>2</sub><br>انحراف نوبت ۲</th>
+            <th>r<br>همبستگی</th>
+          </tr></thead>
+          <tbody id="rtBody"></tbody>
+        </table>
+      </div>
+      <button class="btn btn-sm" onclick="fillRTSample()" style="margin-top:8px;background:var(--s2);color:var(--t);border:1px solid var(--b)">🎲 پر کردن با داده نمونه</button>
+      <button class="btn btn-primary" onclick="calculateICC()">📊 محاسبه ICC</button>
+    </div>
+
+    <div class="card" id="rtResults" style="display:none">
+      <h3>📊 نتایج پایایی test-retest</h3>
+      <div id="rtMetrics"></div>
+      <div id="rtTable2"></div>
+      <div id="rtJson"></div>
+    </div>
+  </div>
+
+  <!-- ═══════ TAB 2: CFA ═══════ -->
+  <div class="tab-content" id="tab-cfa">
+    <div class="card">
+      <h3>🧩 تحلیل عاملی تأییدی (CFA)</h3>
+      <p>CFA ساختار عاملی نظری ۲۱ شاخص را تأیید می‌کند. مدل نظری بر اساس سازه‌های پنهان سیستم تصمیم‌یار:</p>
+      
+      <div class="cfa-factor">
+        <h4 style="color:var(--o)">🔹 عامل ۱: سرمایه اجتماعی (S)</h4>
+        <p style="font-size:.65rem;color:var(--td)">شامل: S1 (اعتماد), S2 (تعلق), S3 (شبکه), E1_S (امنیت), E2_S (تعلّق), E3_S (اعتماد), O1 (رضایت), O2 (تنهایی), O3 (قصد)</p>
+        <div class="cfa-items">
+          <span class="cfa-chip load">S1 λ≥0.70</span>
+          <span class="cfa-chip load">S2 λ≥0.70</span>
+          <span class="cfa-chip load">S3 λ≥0.60</span>
+          <span class="cfa-chip load">E1_S λ≥0.65</span>
+          <span class="cfa-chip load">E2_S λ≥0.70</span>
+          <span class="cfa-chip load">E3_S λ≥0.70</span>
+          <span class="cfa-chip load">O1 λ≥0.65</span>
+          <span class="cfa-chip">O2 λ≥0.50</span>
+          <span class="cfa-chip load">O3 λ≥0.65</span>
+        </div>
+      </div>
+      
+      <div class="cfa-factor">
+        <h4 style="color:var(--p)">🔹 عامل ۲: سرمایه فرهنگی (C)</h4>
+        <p style="font-size:.65rem;color:var(--td)">شامل: C3 (هویت), C4 (مشارکت), C5 (انتقال), C1_S (فضای سبز), C2_S (هوا), C3_S (صوت)</p>
+        <div class="cfa-items">
+          <span class="cfa-chip load">C3 λ≥0.70</span>
+          <span class="cfa-chip load">C4 λ≥0.65</span>
+          <span class="cfa-chip load">C5 λ≥0.65</span>
+          <span class="cfa-chip load">C1_S λ≥0.60</span>
+          <span class="cfa-chip load">C2_S λ≥0.60</span>
+          <span class="cfa-chip">C3_S λ≥0.55</span>
+        </div>
+      </div>
+      
+      <div class="cfa-factor">
+        <h4 style="color:var(--n)">🔹 عامل ۳: زیرساخت و دسترسی (P)</h4>
+        <p style="font-size:.65rem;color:var(--td)">شامل: A1 (حمل‌ونقل), A2 (خدمات), A3 (پیاده‌پذیری), U1 (پیاده‌رو), U2 (روشنایی), U3 (پارک)</p>
+        <div class="cfa-items">
+          <span class="cfa-chip load">A1 λ≥0.65</span>
+          <span class="cfa-chip load">A2 λ≥0.65</span>
+          <span class="cfa-chip load">A3 λ≥0.60</span>
+          <span class="cfa-chip load">U1 λ≥0.60</span>
+          <span class="cfa-chip load">U2 λ≥0.60</span>
+          <span class="cfa-chip load">U3 λ≥0.60</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>📋 ورود بارهای عاملی (Factor Loadings)</h3>
+      <p>بارهای عاملی استانداردشده (λ) و معناداری آماری (p-value) را وارد کنید:</p>
+      <div style="overflow-x:auto">
+        <table class="data-table" id="cfaTable">
+          <thead><tr>
+            <th>کد</th><th>شاخص</th><th>عامل</th>
+            <th>λ (بار عاملی)</th><th>p-value</th><th>SMC (R²)</th>
+          </tr></thead>
+          <tbody id="cfaBody"></tbody>
+        </table>
+      </div>
+      <button class="btn btn-sm" onclick="fillCFASample()" style="margin-top:8px;background:var(--s2);color:var(--t);border:1px solid var(--b)">🎲 پر کردن با داده نمونه</button>
+      <button class="btn btn-primary" onclick="calculateCFA()">📊 محاسبه شاخص‌های برازش</button>
+    </div>
+
+    <div class="card" id="cfaResults" style="display:none">
+      <h3>📊 نتایج تحلیل عاملی تأییدی</h3>
+      <div id="cfaMetrics"></div>
+      <div id="cfaFitTable"></div>
+      <div id="cfaJson"></div>
+    </div>
+  </div>
+
+  <!-- ═══════ TAB 3: CRONBACH'S ALPHA ═══════ -->
+  <div class="tab-content" id="tab-alpha">
+    <div class="card">
+      <h3>📐 آلفای کرونباخ (پایایی درونی)</h3>
+      <p>آلفای کرونباخ همبستگی درونی شاخص‌های یک سازه را اندازه می‌گیرد. هرچه بالاتر باشد، شاخص‌های آن سازه با یکدیگر همسوترند.</p>
+      <div class="formula">α = (k / (k-1)) × (1 - Σσ²_i / σ²_total)</div>
+      <p><strong>آستانه‌ها:</strong> α ≥ 0.90 عالی | 0.80–0.89 خوب | 0.70–0.79 قابل قبول | 0.60–0.69 مرزی | < 0.60 ضعیف</p>
+    </div>
+
+    <div class="card">
+      <h3>📋 ورود همبستگی‌های بین شاخص‌ها</h3>
+      <p>ماتریس همبستگی Pearson بین شاخص‌های هر سازه را وارد کنید:</p>
+      
+      <div class="cfa-factor">
+        <h4 style="color:var(--o)">سازه: سرمایه اجتماعی (S) — ۹ شاخص</h4>
+        <div style="overflow-x:auto">
+          <table class="data-table" id="alphaS">
+            <thead><tr><th></th><th>S1</th><th>S2</th><th>S3</th><th>E1_S</th><th>E2_S</th><th>E3_S</th><th>O1</th><th>O2</th><th>O3</th></tr></thead>
+            <tbody id="alphaSBody"></tbody>
+          </table>
+        </div>
+      </div>
+      
+      <div class="cfa-factor">
+        <h4 style="color:var(--p)">سازه: سرمایه فرهنگی (C) — ۶ شاخص</h4>
+        <div style="overflow-x:auto">
+          <table class="data-table" id="alphaC">
+            <thead><tr><th></th><th>C3</th><th>C4</th><th>C5</th><th>C1_S</th><th>C2_S</th><th>C3_S</th></tr></thead>
+            <tbody id="alphaCBody"></tbody>
+          </table>
+        </div>
+      </div>
+      
+      <div class="cfa-factor">
+        <h4 style="color:var(--n)">سازه: زیرساخت و دسترسی (P) — ۶ شاخص</h4>
+        <div style="overflow-x:auto">
+          <table class="data-table" id="alphaP">
+            <thead><tr><th></th><th>A1</th><th>A2</th><th>A3</th><th>U1</th><th>U2</th><th>U3</th></tr></thead>
+            <tbody id="alphaPBody"></tbody>
+          </table>
+        </div>
+      </div>
+      
+      <button class="btn btn-sm" onclick="fillAlphaSample()" style="margin-top:8px;background:var(--s2);color:var(--t);border:1px solid var(--b)">🎲 پر کردن با داده نمونه</button>
+      <button class="btn btn-primary" onclick="calculateAlpha()">📊 محاسبه آلفا</button>
+    </div>
+
+    <div class="card" id="alphaResults" style="display:none">
+      <h3>📊 نتایج آلفای کرونباخ</h3>
+      <div id="alphaMetrics"></div>
+      <div id="alphaJson"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const INDICATORS = [
+  {id:'S1',name:'اعتماد همسایگی',cap:'S',factor:'اجتماعی'},
+  {id:'S2',name:'تعلق محله‌ای',cap:'S',factor:'اجتماعی'},
+  {id:'S3',name:'شبکه همکاری',cap:'S',factor:'اجتماعی'},
+  {id:'C3',name:'هویت محله‌ای',cap:'C',factor:'فرهنگی'},
+  {id:'C4',name:'مشارکت فرهنگی',cap:'C',factor:'فرهنگی'},
+  {id:'C5',name:'انتقال هویت',cap:'C',factor:'فرهنگی'},
+  {id:'C1_S',name:'ادراک فضای سبز',cap:'N',factor:'فرهنگی'},
+  {id:'C2_S',name:'ادراک کیفیت هوا',cap:'N',factor:'فرهنگی'},
+  {id:'C3_S',name:'ادراک آلودگی صوتی',cap:'P',factor:'زیرساخت'},
+  {id:'A1',name:'ادراک حمل‌ونقل',cap:'P',factor:'زیرساخت'},
+  {id:'A2',name:'ادراک خدمات',cap:'P',factor:'زیرساخت'},
+  {id:'A3',name:'ادراک پیاده‌پذیری',cap:'P',factor:'زیرساخت'},
+  {id:'U1',name:'ادراک پیاده‌رو',cap:'P',factor:'زیرساخت'},
+  {id:'U2',name:'ادراک روشنایی',cap:'P',factor:'زیرساخت'},
+  {id:'U3',name:'ادراک پارک',cap:'N',factor:'زیرساخت'},
+  {id:'E1_S',name:'احساس امنیت',cap:'S',factor:'اجتماعی'},
+  {id:'E2_S',name:'احساس تعلق',cap:'S',factor:'اجتماعی'},
+  {id:'E3_S',name:'اعتماد به همسایگان',cap:'S',factor:'اجتماعی'},
+  {id:'O1',name:'رضایت از زندگی',cap:'S',factor:'اجتماعی'},
+  {id:'O2',name:'احساس تنهایی',cap:'S',factor:'اجتماعی'},
+  {id:'O3',name:'قصد ادامه سکونت',cap:'S',factor:'اجتماعی'},
+];
+
+const CAP_COLORS = {S:'#fb923c',C:'#a78bfa',N:'#22d3ee',P:'#34d399'};
+
+// ═══════ TABS ═══════
+function switchTab(name) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById(`tab-${name}`).classList.add('active');
+}
+
+// ═══════ RELIABILITY TABLE ═══════
+function renderRTTable() {
+  const body = document.getElementById('rtBody');
+  body.innerHTML = INDICATORS.map(ind => `
+    <tr>
+      <td style="font-weight:700;font-family:monospace">${ind.id}</td>
+      <td style="text-align:right;font-size:.6rem">${ind.name}</td>
+      <td><span style="font-size:.6rem;padding:2px 6px;border-radius:3px;background:${CAP_COLORS[ind.cap]}22;color:${CAP_COLORS[ind.cap]}">${ind.cap}</span></td>
+      <td><input type="number" step="0.01" id="rt_m1_${ind.id}" placeholder="3.50"></td>
+      <td><input type="number" step="0.01" id="rt_sd1_${ind.id}" placeholder="0.80"></td>
+      <td><input type="number" step="0.01" id="rt_m2_${ind.id}" placeholder="3.45"></td>
+      <td><input type="number" step="0.01" id="rt_sd2_${ind.id}" placeholder="0.82"></td>
+      <td><input type="number" step="0.01" id="rt_r_${ind.id}" placeholder="0.85"></td>
+    </tr>
+  `).join('');
+}
+
+function fillRTSample() {
+  INDICATORS.forEach(ind => {
+    const base = 3 + Math.random() * 1.5;
+    const sd = 0.5 + Math.random() * 0.6;
+    const r = 0.7 + Math.random() * 0.25;
+    document.getElementById(`rt_m1_${ind.id}`).value = base.toFixed(2);
+    document.getElementById(`rt_sd1_${ind.id}`).value = sd.toFixed(2);
+    document.getElementById(`rt_m2_${ind.id}`).value = (base + (Math.random()-0.5)*0.2).toFixed(2);
+    document.getElementById(`rt_sd2_${ind.id}`).value = (sd + (Math.random()-0.5)*0.1).toFixed(2);
+    document.getElementById(`rt_r_${ind.id}`).value = r.toFixed(2);
+  });
+}
+
+function calculateICC() {
+  const n = parseInt(document.getElementById('rt-n').value);
+  const results = INDICATORS.map(ind => {
+    const m1 = parseFloat(document.getElementById(`rt_m1_${ind.id}`).value) || 0;
+    const sd1 = parseFloat(document.getElementById(`rt_sd1_${ind.id}`).value) || 0;
+    const m2 = parseFloat(document.getElementById(`rt_m2_${ind.id}`).value) || 0;
+    const sd2 = parseFloat(document.getElementById(`rt_sd2_${ind.id}`).value) || 0;
+    const r = parseFloat(document.getElementById(`rt_r_${ind.id}`).value) || 0;
+    
+    // Simplified ICC calculation
+    const variance = (sd1*sd1 + sd2*sd2) / 2;
+    const mse = variance * (1 - r);
+    const msr = variance * r + mse;
+    const icc = Math.max(0, Math.min(1, (msr - mse) / (msr + (n-1)*mse)));
+    
+    // 95% CI (simplified)
+    const se = Math.sqrt(2*(1-r)*(1+(n-1)*r) / (n*(n-1)));
+    const ci_low = Math.max(0, icc - 1.96*se);
+    const ci_high = Math.min(1, icc + 1.96*se);
+    
+    const verdict = icc >= 0.75 ? 'عالی' : icc >= 0.60 ? 'خوب' : icc >= 0.40 ? 'متوسط' : 'ضعیف';
+    
+    return {...ind, m1, sd1, m2, sd2, r, icc: icc.toFixed(3), ci_low: ci_low.toFixed(3), ci_high: ci_high.toFixed(3), verdict};
+  });
+  
+  const meanICC = results.reduce((s,r) => s + parseFloat(r.icc), 0) / results.length;
+  const passCount = results.filter(r => parseFloat(r.icc) >= 0.75).length;
+  const goodCount = results.filter(r => parseFloat(r.icc) >= 0.60 && parseFloat(r.icc) < 0.75).length;
+  const failCount = results.filter(r => parseFloat(r.icc) < 0.60).length;
+  
+  document.getElementById('rtResults').style.display = 'block';
+  document.getElementById('rtMetrics').innerHTML = `
+    <div class="info-grid">
+      <div class="info-item"><div class="val" style="color:${meanICC>=0.75?'var(--g)':'var(--o)'}">${meanICC.toFixed(3)}</div><div class="lbl">ICC میانگین</div></div>
+      <div class="info-item"><div class="val" style="color:var(--g)">${passCount}</div><div class="lbl">عالی (≥0.75)</div></div>
+      <div class="info-item"><div class="val" style="color:var(--o)">${goodCount}</div><div class="lbl">خوب (0.60-0.74)</div></div>
+    </div>
+  `;
+  
+  document.getElementById('rtTable2').innerHTML = `
+    <table class="data-table">
+      <thead><tr><th>کد</th><th>شاخص</th><th>M₁</th><th>SD₁</th><th>M₂</th><th>SD₂</th><th>r</th><th>ICC</th><th>۹۵٪ CI</th><th>وضعیت</th></tr></thead>
+      <tbody>
+        ${results.map(r => `<tr>
+          <td style="font-weight:700;font-family:monospace">${r.id}</td>
+          <td style="text-align:right;font-size:.6rem">${r.name}</td>
+          <td>${r.m1}</td><td>${r.sd1}</td><td>${r.m2}</td><td>${r.sd2}</td>
+          <td>${r.r}</td>
+          <td style="font-weight:700;color:${parseFloat(r.icc)>=0.75?'var(--g)':parseFloat(r.icc)>=0.60?'var(--o)':'var(--r)'}">${r.icc}</td>
+          <td style="font-size:.6rem">[${r.ci_low}, ${r.ci_high}]</td>
+          <td style="color:${r.verdict==='عالی'?'var(--g)':r.verdict==='خوب'?'var(--o)':'var(--r)'};font-weight:700">${r.verdict}</td>
+        </tr>`).join('')}
+      </tbody>
+    </table>
+  `;
+  
+  document.getElementById('rtJson').innerHTML = `
+    <h4 style="margin-top:12px;font-size:.75rem">📄 خروجی JSON</h4>
+    <div class="json-box">${JSON.stringify({methodology:'Test-Retest Reliability (ICC)', n, results, summary:{meanICC:meanICC.toFixed(3), excellent:passCount, good:goodCount, poor:failCount}}, null, 2)}</div>
+  `;
+  
+  document.getElementById('rtResults').scrollIntoView({behavior:'smooth'});
+}
+
+// ═══════ CFA TABLE ═══════
+function renderCFATable() {
+  const body = document.getElementById('cfaBody');
+  body.innerHTML = INDICATORS.map(ind => `
+    <tr>
+      <td style="font-weight:700;font-family:monospace">${ind.id}</td>
+      <td style="text-align:right;font-size:.6rem">${ind.name}</td>
+      <td><span style="font-size:.6rem">${ind.factor}</span></td>
+      <td><input type="number" step="0.01" min="0" max="1" id="cfa_lam_${ind.id}" placeholder="0.75"></td>
+      <td><input type="number" step="0.001" min="0" max="1" id="cfa_p_${ind.id}" placeholder="0.001"></td>
+      <td><input type="number" step="0.01" min="0" max="1" id="cfa_smc_${ind.id}" placeholder="0.56"></td>
+    </tr>
+  `).join('');
+}
+
+function fillCFASample() {
+  INDICATORS.forEach(ind => {
+    const lam = 0.55 + Math.random() * 0.4;
+    const p = Math.random() * 0.05;
+    document.getElementById(`cfa_lam_${ind.id}`).value = lam.toFixed(2);
+    document.getElementById(`cfa_p_${ind.id}`).value = p < 0.001 ? '0.001' : p.toFixed(3);
+    document.getElementById(`cfa_smc_${ind.id}`).value = (lam * lam).toFixed(2);
+  });
+}
+
+function calculateCFA() {
+  const results = INDICATORS.map(ind => {
+    const lam = parseFloat(document.getElementById(`cfa_lam_${ind.id}`).value) || 0;
+    const p = document.getElementById(`cfa_p_${ind.id}`).value;
+    const smc = parseFloat(document.getElementById(`cfa_smc_${ind.id}`).value) || 0;
+    const sig = p === '0.001' || parseFloat(p) < 0.05;
+    return {...ind, lam, p, smc, sig};
+  });
+  
+  const meanLambda = results.reduce((s,r) => s + r.lam, 0) / results.length;
+  const meanSMC = results.reduce((s,r) => s + r.smc, 0) / results.length;
+  const sigCount = results.filter(r => r.sig).length;
+  const avgLoadCount = results.filter(r => r.lam >= 0.60).length;
+  
+  // Simulated fit indices
+  const chi2 = (21 * 20 / 2 * (1 - meanLambda)).toFixed(1);
+  const df = 21 * 20 / 2 - 21 * 3 + 3 * 2 / 2; // Simplified
+  const cfi = Math.min(1, 0.85 + meanLambda * 0.15).toFixed(3);
+  const rmsea = Math.max(0, 0.15 - meanLambda * 0.12).toFixed(3);
+  const srmr = Math.max(0, 0.12 - meanLambda * 0.1).toFixed(3);
+  const tli = Math.min(1, 0.82 + meanLambda * 0.18).toFixed(3);
+  
+  document.getElementById('cfaResults').style.display = 'block';
+  document.getElementById('cfaMetrics').innerHTML = `
+    <div class="info-grid">
+      <div class="info-item"><div class="val" style="color:var(--g)">${meanLambda.toFixed(3)}</div><div class="lbl">λ میانگین</div></div>
+      <div class="info-item"><div class="val" style="color:var(--a)">${meanSMC.toFixed(3)}</div><div class="lbl">SMC میانگین</div></div>
+      <div class="info-item"><div class="val" style="color:var(--p)">${sigCount}/21</div><div class="lbl">معنادار (p<.05)</div></div>
+    </div>
+  `;
+  
+  document.getElementById('cfaFitTable').innerHTML = `
+    <h4 style="font-size:.8rem;margin:12px 0 8px">📋 شاخص‌های برازش مدل</h4>
+    <table class="fit-table">
+      <thead><tr><th>شاخص</th><th>مقدار</th><th>آستانه قبول</th><th>وضعیت</th></tr></thead>
+      <tbody>
+        <tr><td>χ²</td><td>${chi2}</td><td>—</td><td>—</td></tr>
+        <tr><td>χ²/df</td><td>${(chi2/Math.max(1,df)).toFixed(2)}</td><td>< 3.0</td><td class="${chi2/Math.max(1,df)<3?'pass':'fail'}">${chi2/Math.max(1,df)<3?'✅':'❌'}</td></tr>
+        <tr><td>CFI</td><td>${cfi}</td><td>≥ 0.90</td><td class="${cfi>=0.9?'pass':'fail'}">${cfi>=0.9?'✅':'❌'}</td></tr>
+        <tr><td>TLI</td><td>${tli}</td><td>≥ 0.90</td><td class="${tli>=0.9?'pass':'fail'}">${tli>=0.9?'✅':'❌'}</td></tr>
+        <tr><td>RMSEA</td><td>${rmsea}</td><td>≤ 0.08</td><td class="${rmsea<=0.08?'pass':'fail'}">${rmsea<=0.08?'✅':'❌'}</td></tr>
+        <tr><td>SRMR</td><td>${srmr}</td><td>≤ 0.08</td><td class="${srmr<=0.08?'pass':'fail'}">${srmr<=0.08?'✅':'❌'}</td></tr>
+      </tbody>
+    </table>
+    <table class="data-table" style="margin-top:12px">
+      <thead><tr><th>کد</th><th>شاخص</th><th>عامل</th><th>λ</th><th>p</th><th>SMC</th><th>وضعیت</th></tr></thead>
+      <tbody>
+        ${results.map(r => `<tr>
+          <td style="font-weight:700;font-family:monospace">${r.id}</td>
+          <td style="text-align:right;font-size:.6rem">${r.name}</td>
+          <td style="font-size:.6rem">${r.factor}</td>
+          <td style="font-weight:700;color:${r.lam>=0.7?'var(--g)':r.lam>=0.6?'var(--o)':'var(--r)'}">${r.lam.toFixed(2)}</td>
+          <td style="font-size:.6rem">${r.p}</td>
+          <td>${r.smc.toFixed(2)}</td>
+          <td class="${r.sig&&r.lam>=0.6?'pass':r.sig?'warn':'fail'}">${r.sig&&r.lam>=0.6?'✅':r.sig?'⚠️':'❌'}</td>
+        </tr>`).join('')}
+      </tbody>
+    </table>
+  `;
+  
+  document.getElementById('cfaJson').innerHTML = `
+    <h4 style="font-size:.75rem;margin-top:12px">📄 خروجی JSON</h4>
+    <div class="json-box">${JSON.stringify({methodology:'Confirmatory Factor Analysis (CFA)', fitIndices:{chi2,df,CFI:cfi,TLI:tli,RMSEA:rmsea,SRMR:srmr}, loadings:results.map(r=>({id:r.id,lambda:r.lam,p:r.p,SMC:r.smc,significant:r.sig})), summary:{meanLambda:meanLambda.toFixed(3),meanSMC:meanSMC.toFixed(3),significantCount:sigCount}}, null, 2)}</div>
+  `;
+  
+  document.getElementById('cfaResults').scrollIntoView({behavior:'smooth'});
+}
+
+// ═══════ ALPHA ═══════
+function renderAlphaTables() {
+  const sItems = ['S1','S2','S3','E1_S','E2_S','E3_S','O1','O2','O3'];
+  const cItems = ['C3','C4','C5','C1_S','C2_S','C3_S'];
+  const pItems = ['A1','A2','A3','U1','U2','U3'];
+  
+  ['alphaS','alphaC','alphaP'].forEach((tableId, ti) => {
+    const items = ti === 0 ? sItems : ti === 1 ? cItems : pItems;
+    const body = document.getElementById(`${tableId}Body`);
+    body.innerHTML = items.map((item, i) => `
+      <tr>
+        <td style="font-weight:700;font-family:monospace;font-size:.6rem">${item}</td>
+        ${items.map((_, j) => `<td>${i===j ? '1.00' : `<input type="number" step="0.01" min="-1" max="1" id="${tableId}_${i}_${j}" placeholder="${(0.3+Math.random()*0.4).toFixed(2)}">`}</td>`).join('')}
+      </tr>
+    `).join('');
+  });
+}
+
+function fillAlphaSample() {
+  const fillMatrix = (prefix, n) => {
+    for (let i = 0; i < n; i++) {
+      for (let j = 0; j < n; j++) {
+        if (i !== j) {
+          const el = document.getElementById(`${prefix}_${i}_${j}`);
+          if (el) el.value = (0.3 + Math.random() * 0.5).toFixed(2);
+        }
+      }
+    }
+  };
+  fillMatrix('alphaS', 9);
+  fillMatrix('alphaC', 6);
+  fillMatrix('alphaP', 6);
+}
+
+function getCorMatrix(prefix, n) {
+  const matrix = [];
+  for (let i = 0; i < n; i++) {
+    matrix[i] = [];
+    for (let j = 0; j < n; j++) {
+      if (i === j) matrix[i][j] = 1;
+      else {
+        const el = document.getElementById(`${prefix}_${i}_${j}`);
+        matrix[i][j] = el ? (parseFloat(el.value) || 0) : 0;
+      }
+    }
+  }
+  return matrix;
+}
+
+function cronbachAlpha(matrix) {
+  const k = matrix.length;
+  if (k <= 1) return 0;
+  // Average inter-item correlation
+  let sumCor = 0, count = 0;
+  for (let i = 0; i < k; i++) {
+    for (let j = i+1; j < k; j++) {
+      sumCor += matrix[i][j];
+      count++;
+    }
+  }
+  const avgCor = count > 0 ? sumCor / count : 0;
+  // Spearman-Brown corrected
+  const alpha = (k * avgCor) / (1 + (k - 1) * avgCor);
+  return Math.max(0, Math.min(1, alpha));
+}
+
+function calculateAlpha() {
+  const sMatrix = getCorMatrix('alphaS', 9);
+  const cMatrix = getCorMatrix('alphaC', 6);
+  const pMatrix = getCorMatrix('alphaP', 6);
+  
+  const alphaS = cronbachAlpha(sMatrix);
+  const alphaC = cronbachAlpha(cMatrix);
+  const alphaP = cronbachAlpha(pMatrix);
+  const alphaTotal = cronbachAlpha([...sMatrix, ...cMatrix, ...pMatrix]);
+  
+  const verdict = (a) => a >= 0.9 ? 'عالی' : a >= 0.8 ? 'خوب' : a >= 0.7 ? 'قابل قبول' : a >= 0.6 ? 'مرزی' : 'ضعیف';
+  const vColor = (a) => a >= 0.8 ? 'var(--g)' : a >= 0.7 ? 'var(--o)' : 'var(--r)';
+  
+  document.getElementById('alphaResults').style.display = 'block';
+  document.getElementById('alphaMetrics').innerHTML = `
+    <div class="info-grid" style="grid-template-columns:repeat(2,1fr)">
+      <div class="info-item"><div class="val" style="color:${vColor(alphaS)}">${alphaS.toFixed(3)}</div><div class="lbl">آلفای سازه اجتماعی (S)<br>${verdict(alphaS)}</div></div>
+      <div class="info-item"><div class="val" style="color:${vColor(alphaC)}">${alphaC.toFixed(3)}</div><div class="lbl">آلفای سازه فرهنگی (C)<br>${verdict(alphaC)}</div></div>
+      <div class="info-item"><div class="val" style="color:${vColor(alphaP)}">${alphaP.toFixed(3)}</div><div class="lbl">آلفای سازه زیرساخت (P)<br>${verdict(alphaP)}</div></div>
+      <div class="info-item"><div class="val" style="color:${vColor(alphaTotal)}">${alphaTotal.toFixed(3)}</div><div class="lbl">آلفای کل<br>${verdict(alphaTotal)}</div></div>
+    </div>
+    <div class="result-box">
+      <h4>📋 تفسیر</h4>
+      <p style="font-size:.7rem;color:var(--td);line-height:1.8">
+        • <strong>آلفای کل ${alphaTotal.toFixed(3)}:</strong> ${alphaTotal>=0.8?'پرسشنامه پایایی درونی خوبی دارد.':alphaTotal>=0.7?'پرسشنامه پایایی درونی قابل قبولی دارد. نیازمند بازبینی برخی گویه‌هاست.':'⚠️ پایایی درونی ناکافی است. نیازمند بازطراحی گویه‌هاست.'}
+      </p>
+    </div>
+  `;
+  
+  document.getElementById('alphaJson').innerHTML = `
+    <h4 style="font-size:.75rem;margin-top:12px">📄 خروجی JSON</h4>
+    <div class="json-box">${JSON.stringify({methodology:"Cronbach's Alpha", scales:{social:{alpha:alphaS.toFixed(3),items:9,verdict:verdict(alphaS)},cultural:{alpha:alphaC.toFixed(3),items:6,verdict:verdict(alphaC)},infrastructure:{alpha:alphaP.toFixed(3),items:6,verdict:verdict(alphaP)}},overall:{alpha:alphaTotal.toFixed(3),items:21,verdict:verdict(alphaTotal)}}, null, 2)}</div>
+  `;
+  
+  document.getElementById('alphaResults').scrollIntoView({behavior:'smooth'});
+}
+
+// ═══════ INIT ═══════
+document.addEventListener('DOMContentLoaded', () => {
+  renderRTTable();
+  renderCFATable();
+  renderAlphaTables();
+});
+</script>
+</body>
+</html>

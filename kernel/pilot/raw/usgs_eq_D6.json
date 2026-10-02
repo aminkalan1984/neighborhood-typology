@@ -1,0 +1,1 @@
+{"type": "FeatureCollection", "metadata": {"generated": 1788310142000, "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&minlatitude=35.7006576&maxlatitude=35.7521851&minlongitude=51.377614&maxlongitude=51.4275001&starttime=1900-01-01&minmagnitude=3.0", "title": "USGS Earthquakes", "status": 200, "api": "2.7.0", "count": 0}, "features": []}

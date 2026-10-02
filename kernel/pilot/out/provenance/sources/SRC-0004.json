@@ -1,0 +1,12 @@
+{
+  "source_id": "SRC-0004",
+  "source_name": "Copernicus DEM GLO-30 via OpenTopography",
+  "provider": "ESA/Copernicus via OpenTopography",
+  "dataset_id": "COP30",
+  "url_api": "https://portal.opentopography.org/API/globaldem",
+  "tier": "validated-scientific",
+  "is_official": true,
+  "is_proxy": false,
+  "license": null,
+  "access_method": "OpenTopography globaldem API (API key required)"
+}

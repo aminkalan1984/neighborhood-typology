@@ -1,0 +1,137 @@
+{
+  "generated_at": "2026-09-02",
+  "pilot": {
+    "id": "IR-THR-D6",
+    "name_fa": "منطقه ۶ شهر تهران",
+    "name_en": "Tehran District 6",
+    "osm_relation": 6729037,
+    "boundary_version": "v1",
+    "boundary_area_km2": 21.403,
+    "metric_crs": "EPSG:32639",
+    "is_proxy": true,
+    "boundary_hash": "sha256:c09b482466e6ab38f914cbf4536b7403683e09d2ebfc22b4c8e57fdb3e239b43"
+  },
+  "test_evidence": {
+    "formula_tests": "TESTS: 18/18 passed",
+    "ingestion_tests": "INGESTION TESTS: 27/27 passed",
+    "gis_tests": "GIS TESTS: 18/18 passed",
+    "rc": {
+      "formula": 0,
+      "ingestion": 0,
+      "gis": 0
+    }
+  },
+  "reproducibility": {
+    "fp": "sha256:62e670ae94ac491b9c8ffc91bde99db33abf2d3702e91621c96360c1524d9690",
+    "identical": true
+  },
+  "MVP1_gate": {
+    "A_what_built": "Ingestion Service (multi-format loaders, structured validators, full provenance/lineage, manual-approval workflow, calculation GATE) + real ingestion of a verified OSM boundary and 6 real indicator inputs (parks/schools/bus-stops counts, nearest park/school distance, regional nearest earthquake) with DEM correctly ACCESS_REQUIRED.",
+    "B_evidence": {
+      "checks": {
+        "real_data_ingested": "PASS",
+        "source_registered": "PASS",
+        "timestamp_present": "PASS",
+        "spatial_extent_valid": "PASS",
+        "crs_valid": "PASS",
+        "lineage_reconstructable": "PASS",
+        "missing_not_zero": "PASS",
+        "invalid_blocks_calc": "PASS",
+        "value_traceable_to_source": "PASS",
+        "contract_tests": "PASS"
+      },
+      "ingestion_tests": "INGESTION TESTS: 27/27 passed",
+      "real_records": [
+        {
+          "code": "PHY-003",
+          "op": "count_within_boundary",
+          "status": "PROXY",
+          "value": 115.0,
+          "is_proxy": true
+        },
+        {
+          "code": "PHY-001",
+          "op": "count_within_boundary",
+          "status": "PROXY",
+          "value": 68.0,
+          "is_proxy": true
+        },
+        {
+          "code": "PHY-002",
+          "op": "count_within_boundary",
+          "status": "PROXY",
+          "value": 259.0,
+          "is_proxy": true
+        },
+        {
+          "code": "PHY-003",
+          "op": "distance(euclidean_proxy_for_network)",
+          "status": "PROXY",
+          "value": 114.28,
+          "is_proxy": true
+        },
+        {
+          "code": "PHY-001",
+          "op": "distance(euclidean_proxy_for_network)",
+          "status": "PROXY",
+          "value": 253.28,
+          "is_proxy": true
+        },
+        {
+          "code": "ONL-011",
+          "op": "nearest_epicenter_distance",
+          "status": "PROXY",
+          "value": 40.703,
+          "is_proxy": true
+        },
+        {
+          "code": "ONL-001",
+          "op": "dem_zonal_mean",
+          "status": "ACCESS_REQUIRED",
+          "value": null,
+          "is_proxy": false
+        }
+      ],
+      "lineage_levels": 10
+    },
+    "C_limitations": [
+      "Boundary is OSM public substitute (is_proxy=true); official municipal GIS = ACCESS_REQUIRED (SRC-0002).",
+      "All PHY standardized 0–100 scores withheld = PENDING_VALIDATION (FLAG-2: direction ambiguity + L/U uncalibrated + unit mismatch).",
+      "Copernicus DEM (ONL-001/002) = ACCESS_REQUIRED (OpenTopography needs API key; HTTP 401). No number produced.",
+      "District-level (admin_level=9), not micro-neighborhood; POI counts are OSM-completeness-limited supply proxies."
+    ],
+    "D_gate_decision": "CONDITIONAL PASS"
+  },
+  "GIS_gate": {
+    "A_what_built": "GIS Service: append-only NeighborhoodBoundaryVersion store with never-guess (provenance-required) guard + audit trail; CRS validation; deterministic Iran UTM metric-CRS selection (EPSG:32639); topology validation with logged make_valid; spatial coverage; distance helper that refuses silent Euclidean-for-network (explicit labeled proxy opt-in). Real boundary v1 registered + validated + reprojected.",
+    "B_evidence": {
+      "checks": {
+        "crs_correct": "PASS",
+        "topology_validated": "PASS",
+        "spatial_coverage_validated": "PASS",
+        "network_not_silently_euclidean": "PASS",
+        "reproducibility": "PASS",
+        "no_silent_spatial_fallback": "PASS",
+        "explicit_proxy_labeling": "PASS",
+        "boundary_versioned_append_only": "PASS",
+        "never_guess_guard": "PASS",
+        "contract_tests": "PASS"
+      },
+      "gis_tests": "GIS TESTS: 18/18 passed",
+      "boundary": {
+        "version": "v1",
+        "area_km2": 21.403,
+        "metric_crs": "EPSG:32639",
+        "hash": "sha256:c09b482466e6ab38f914cbf4536b7403683e09d2ebfc22b4c8e57fdb3e239b43",
+        "is_proxy": true
+      },
+      "reproducibility_identical": true
+    },
+    "C_limitations": [
+      "Boundary provenance is OSM (ODbL), not the official Tehran municipality SDI.",
+      "No routable OSM road network wired → network distance uses EXPLICIT labeled Euclidean proxy (not silent).",
+      "Only District-6 proven; multi-neighborhood + official-boundary v2 ingestion is future work."
+    ],
+    "D_gate_decision": "CONDITIONAL PASS"
+  }
+}
