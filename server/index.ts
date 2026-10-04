@@ -156,6 +156,11 @@ app.set('trust proxy', Number(process.env.TRUST_PROXY_HOPS || 1));
 
 // ---------- سلامت سرویس (برای Docker healthcheck / PaaS / مانیتورینگ) ----------
 const SERVICE_STARTED_AT = new Date().toISOString();
+app.get('/health', (_req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
+// ---------- سلامت سرویس (برای Docker healthcheck / PaaS / مانیتورینگ) ----------
 app.get('/api/health', (_req, res) => {
   const distIndex = fs.existsSync(path.join(DIST_DIR, 'index.html'));
   res.json({
