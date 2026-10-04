@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neighborhood-typology/kernel/schema/observation.schema.json",
+  "title": "Raw Observation",
+  "description": "Canonical raw observation record of the Observation Ledger (§9). Every datum entering the kernel must be one of these. Missing is never 0, proxy is never observed.",
+  "type": "object",
+  "required": ["observation_id", "indicator_code", "status", "evidence_stream"],
+  "additionalProperties": false,
+  "properties": {
+    "observation_id": { "type": "string", "minLength": 1 },
+    "indicator_code": {
+      "type": "string", "minLength": 1,
+      "description": "Canonical id resolved against indicator_registry.json. UNMAPPED codes never reach here (§7.5)."
+    },
+    "raw_value": {
+      "type": ["number", "string", "null"],
+      "description": "Raw measured value. MUST be null unless status is OBSERVED/ESTIMATED/PROXY."
+    },
+    "unit": { "type": ["string", "null"] },
+    "numerator": { "type": ["number", "null"] },
+    "denominator": { "type": ["number", "null"] },
+    "geometry": { "type": ["object", "null"], "description": "GeoJSON geometry when the observation is spatial." },
+    "spatial_unit": { "type": ["string", "null"] },
+    "spatial_resolution": { "type": ["string", "null"] },
+    "boundary_version": { "type": ["string", "null"] },
+    "observed_at": { "type": ["string", "null"], "format": "date-time" },
+    "reference_period": { "type": ["string", "null"] },
+    "data_vintage": { "type": ["string", "null"] },
+    "population_group": { "type": ["string", "null"] },
+    "sample_size": { "type": ["integer", "null"], "minimum": 0 },
+    "sampling_weight": { "type": ["number", "null"] },
+    "source_id": { "type": ["string", "null"] },
+    "provider": { "type": ["string", "null"] },
+    "dataset_id": { "type": ["string", "null"] },
+    "dataset_version": { "type": ["string", "null"] },
+    "license": { "type": ["string", "null"] },
+    "acquisition_method": { "type": ["string", "null"] },
+    "processing_method": { "type": ["string", "null"] },
+    "formula_version": { "type": ["string", "null"] },
+    "evidence_stream": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "enum": ["objective", "spatial", "behavioral", "perceptual"] },
+      "description": "§10: perceptual != objective. Streams stay separate; two feeds of the same base data are NOT two streams (§58)."
+    },
+    "status": {
+      "enum": ["OBSERVED", "ESTIMATED", "PROXY", "MISSING", "SUPPRESSED", "NOT_RECORDED", "PENDING_VALIDATION", "ACCESS_REQUIRED"],
+      "description": "§12 observation status model."
+    },
+    "proxy": { "type": "boolean", "default": false },
+    "proxy_definition": { "type": ["string", "null"] },
+    "proxy_reason": { "type": ["string", "null"] },
+    "known_bias": { "type": ["string", "null"] },
+    "proxy_validation_status": { "type": ["string", "null"] },
+    "estimated": { "type": "boolean", "default": false },
+    "observed": { "type": "boolean", "default": false },
+    "quality_score": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+    "coverage": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+    "missingness": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+    "uncertainty": { "type": ["number", "null"], "minimum": 0 },
+    "source_tier": {
+      "type": ["integer", "null"], "minimum": 1, "maximum": 6,
+      "description": "§54 six-tier source architecture. Tier 6 = proxy/auxiliary (OSM lives here, not authoritative)."
+    },
+    "quality_checks": { "type": "array", "items": { "type": "object" } },
+    "provenance_value_id": { "type": ["string", "null"] },
+    "notes_fa": { "type": ["string", "null"] }
+  },
+  "allOf": [
+    {
+      "description": "§10 golden rule — only OBSERVED/ESTIMATED/PROXY may carry a number.",
+      "if": { "properties": { "status": { "not": { "enum": ["OBSERVED", "ESTIMATED", "PROXY"] } } }, "required": ["status"] },
+      "then": { "properties": { "raw_value": { "type": "null" } } }
+    },
+    {
+      "description": "§57 proxy law — a proxy must be labelled and justified.",
+      "if": { "properties": { "proxy": { "const": true } }, "required": ["proxy"] },
+      "then": { "properties": { "status": { "const": "PROXY" } }, "required": ["proxy_definition", "proxy_reason"] }
+    }
+  ]
+}

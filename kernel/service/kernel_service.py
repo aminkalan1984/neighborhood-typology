@@ -38,6 +38,11 @@ from engine.calc_run import CalcRun, sha  # noqa: E402
 from engine.confidence import ConfidenceEngine  # noqa: E402
 from engine.bottleneck import detect_bottleneck  # noqa: E402
 from engine.calc_engine import METHODOLOGY_VERSION  # noqa: E402
+from engine.pipeline import run_decision_support  # noqa: E402
+from engine.observation import (  # noqa: E402
+    DataQualityGate, Observation, ObservationError, ObservationLedger,
+)
+from engine.registry import IndicatorRegistry  # noqa: E402
 from ingestion.ingest import IngestionService, IngestionRecord  # noqa: E402
 from ingestion.provenance_ext import ProvenanceStore  # noqa: E402
 from engine.status import Measurement  # noqa: E402
@@ -55,6 +60,11 @@ DEFAULT_PORT = int(os.environ.get("KERNEL_SERVICE_PORT", "4105"))
 SERVICE_VERSION = "kernel-service-v0.1"
 
 REGISTRY_FILES = {
+    # §7 — the single master indicator registry
+    "indicator_registry": "indicator_registry.json",
+    "core40_mapping": "core40_mapping.json",
+    "interventions": "intervention_registry.json",
+    # source layers (inputs to the build, served read-only for audit)
     "registry_419": "registry_419.json",
     "core_40": "core_40.json",
     "online_83": "online_83.json",
@@ -67,8 +77,9 @@ REGISTRY_FILES = {
 }
 
 # large registries are truncated per-request so the API stays responsive
-TRUNCATE_RECORDS = {"registry_419": 80, "online_83": 83, "core_40": 40,
-                    "procedures_25": 25, "questionnaire_15": 15, "sources_23": 23}
+TRUNCATE_RECORDS = {"indicator_registry": 120, "registry_419": 80, "online_83": 83,
+                    "core_40": 40, "procedures_25": 25, "questionnaire_15": 15,
+                    "sources_23": 23}
 
 UNIT_BY_OP = {"count_within_boundary": "count",
               "distance(euclidean_proxy_for_network)": "meter",
@@ -147,6 +158,65 @@ def _publish_gate(result: dict, wmeta: dict) -> dict:
         "n_valid_standardized_scores": n_valid,
         "reasons": reasons,
         "rule": "kernel = مرجع رسمی محاسبات؛ انتشار عدد بدون گذر از Gate ممنوع است",
+    }
+
+
+def _indicator_registry() -> IndicatorRegistry:
+    return IndicatorRegistry(REG)
+
+
+def _indicator_registry_summary() -> dict:
+    """Single-registry catalog for the API — no second indicator reference."""
+    reg = _indicator_registry()
+    return {
+        "version": reg.version,
+        "file": "indicator_registry.json",
+        "counts": reg.counts,
+        "unmapped_codes": sorted(reg.unmapped_codes),
+        "calibration": {"version": reg.calibration_version,
+                        "calibrated": reg.calibration_calibrated},
+        "weights": reg.weight_meta(),
+        "note_fa": ("مرجع واحد معنایی شاخص‌ها (§۷). registry_419/core_40/online_83 دیگر "
+                    "رجیستر مستقل نیستند و فقط ورودی ساخت همین فایل‌اند."),
+    }
+
+
+def _drilldown_payload(run: dict, observation_id: str) -> dict:
+    """§74 drill-down: Q -> Capital -> Indicator -> Standardized -> Raw -> Observation -> Source -> Version."""
+    rows = run.get("standardized_values") or []
+    row = next((r for r in rows if r.get("observation_id") == observation_id), None)
+    if row is None:
+        return {"error": {"code": "INVALID_INPUT",
+                          "message": f"no drilldown for observation {observation_id} in run {run.get('run_id')}"}}
+    ledger = {o.get("observation_id"): o for o in (run.get("observation_ledger") or {}).get("observations", [])}
+    obs = ledger.get(observation_id) or {}
+    cap = (run.get("capital_scores") or {}).get(row.get("capital")) or {}
+    return {
+        "run_id": run.get("run_id"),
+        "observation_id": observation_id,
+        "chain": [
+            {"level": "qtr", "values": {k: (v or {}).get("value") for k, v in (run.get("qtr") or {}).items()}},
+            {"level": "capital", "code": row.get("capital"), "value": cap.get("value"),
+             "coverage": cap.get("coverage"), "status": cap.get("status")},
+            {"level": "indicator", "code": row.get("indicator_code"), "title": row.get("title"),
+             "chain_stage": row.get("chain_stage"), "qtr_target": row.get("qtr_target"),
+             "direction": row.get("direction"), "role": row.get("role")},
+            {"level": "standardized", "value": row.get("standardized"),
+             "status": row.get("standardization_status"), "reasons": row.get("standardization_reasons")},
+            {"level": "raw_value", "value": row.get("raw_value"), "unit": row.get("unit"),
+             "status": row.get("status"), "is_proxy": row.get("is_proxy")},
+            {"level": "observation", "observation": obs},
+            {"level": "source", "source_id": obs.get("source_id"), "provider": obs.get("provider"),
+             "dataset_id": obs.get("dataset_id"), "dataset_version": obs.get("dataset_version"),
+             "license": obs.get("license"), "source_tier": obs.get("source_tier")},
+            {"level": "method", "acquisition_method": obs.get("acquisition_method"),
+             "processing_method": obs.get("processing_method"), "formula_version": obs.get("formula_version")},
+            {"level": "version", "versions": run.get("versions"),
+             "fingerprint": run.get("fingerprint")},
+            {"level": "confidence", "confidence": row.get("confidence")},
+            {"level": "uncertainty", "uncertainty": row.get("uncertainty")},
+        ],
+        "rule_fa": "هیچ عدد مهمی بدون این مسیر نمایش داده نمی‌شود (§۷۴).",
     }
 
 
@@ -482,6 +552,8 @@ class Handler(BaseHTTPRequestHandler):
                 "status": "ok",
                 "kernel_root": KROOT,
                 "engine": {"calc_run_family": "CALC-v0.2",
+                           "pipeline": "NDK-pipeline-v1",
+                           "entry_point": "kernel.engine.pipeline.run_decision_support",
                            "stages": CalcRun.STAGE_LIST},
                 "registry_meta": meta,
                 "gate_summary": {
@@ -561,6 +633,66 @@ class Handler(BaseHTTPRequestHandler):
                 raise FileNotFoundError("gate report missing")
             return self._send(200, gate)
 
+        # ---- canonical Decision Support API (§63) ----------------------------
+        if path == "/v1/decision-support/registries":
+            return self._send(200, {"indicator_registry": _indicator_registry_summary(),
+                                    "registries": _registry_meta()})
+
+        if path == "/v1/decision-support/sources":
+            inv = _load_json_if(os.path.join(REG, "source_inventory.json")) or {}
+            src = _load_json_if(os.path.join(REG, "sources_23.json")) or {}
+            return self._send(200, {"source_registry": {
+                "tiers": {"1": "رسمی مرجع", "2": "رسمی مشتق/GIS", "3": "علمی سنجش‌ازدور",
+                          "4": "API بازتولیدپذیر", "5": "پیمایش/میدانی اعتبارسنجی‌شده",
+                          "6": "پروکسی/کمکی (OSM اینجاست، نه مرجع خودکار)"},
+                "inventory_count": len(inv.get("records", inv) if isinstance(inv, dict) else []),
+                "records": src.get("records", [])[:50],
+                "note_fa": "OSM در جایگاه «open auxiliary / operational GIS» است، نه مرجع خودکار (§۵۴).",
+            }})
+
+        m = re.fullmatch(r"/v1/decision-support/runs/([^/]+)/drilldown/([^/]+)", path)
+        if m:
+            run_id, oid = m.group(1), m.group(2)
+            run = _RUNS.get(run_id)
+            if not run:
+                return self._send(*_error("INVALID_INPUT", f"unknown run_id: {run_id}", 404))
+            payload = _drilldown_payload(run, oid)
+            if "error" in payload:
+                return self._send(*_error("INVALID_INPUT", payload["error"]["message"], 404))
+            return self._send(200, payload)
+
+        m = re.fullmatch(r"/v1/decision-support/runs/([^/]+)/(assessment|diagnosis|interventions|evaluation)", path)
+        if m:
+            run_id, section = m.group(1), m.group(2)
+            run = _RUNS.get(run_id)
+            if not run:
+                return self._send(*_error("INVALID_INPUT", f"unknown run_id: {run_id}", 404))
+            mapping = {
+                "assessment": ["capital_scores", "caueo", "qtr", "confidence", "uncertainty", "publication_gate"],
+                "diagnosis": ["bottleneck", "bottleneck_address", "causal_diagnosis", "equity", "vulnerability", "risk"],
+                "interventions": ["intervention_portfolio"],
+                "evaluation": ["evaluation_plan"],
+            }
+            return self._send(200, {"run_id": run_id, "section": section,
+                                    "versions": run.get("versions"),
+                                    "fingerprint": run.get("fingerprint"),
+                                    "data": {k: run.get(k) for k in mapping[section]}})
+
+        m = re.fullmatch(r"/v1/decision-support/runs/([^/]+)", path)
+        if m:
+            run = _RUNS.get(m.group(1))
+            if not run:
+                return self._send(*_error("INVALID_INPUT", f"unknown run_id: {m.group(1)}", 404))
+            return self._send(200, run)
+
+        m = re.fullmatch(r"/v1/decision-support/neighborhoods/([^/]+)/boundary", path)
+        if m:
+            payload = _boundary_payload(m.group(1))
+            if not payload:
+                return self._send(*_error("SOURCE_UNAVAILABLE",
+                                          f"no boundary registered for {m.group(1)} (بدون جعل مرز)", 404))
+            return self._send(200, payload)
+
         return self._send(*_error("INVALID_INPUT", f"no route: {path}", 404))
 
     # ---- POST routes ----
@@ -581,6 +713,57 @@ class Handler(BaseHTTPRequestHandler):
                 neighborhood = body.get("neighborhood")
             result = run_full_pipeline(records, neighborhood, data_version,
                                        weight_override=body.get("weight_override"))
+            _RUNS[result["run_id"]] = result
+            return self._send(200, result)
+
+        # ---- canonical Decision Support API (§63, §64) ------------------------
+        # Every route below ends in NeighborhoodDecisionKernel.run(...) — i.e.
+        # engine.pipeline.run_decision_support. Nothing is computed here.
+        if path == "/v1/decision-support/observations":
+            obs = body.get("observations")
+            if not isinstance(obs, list) or not obs:
+                return self._send(*_error("INVALID_INPUT", "observations must be a non-empty list", 422))
+            try:
+                ledger = ObservationLedger()
+                for raw in obs:
+                    ledger.add(Observation(**(raw if isinstance(raw, dict) else {})))
+            except ObservationError as e:
+                return self._send(*_error("INVALID_INPUT", str(e), 422))
+            gate = DataQualityGate(_indicator_registry()).apply(ledger)
+            return self._send(200, {
+                "accepted": True,
+                "n_observations": len(obs),
+                "status_counts": ledger.status_counts(),
+                "quality_gate": {"n_admitted": gate["n_admitted"], "n_rejected": gate["n_rejected"],
+                                 "coverage": gate["coverage"],
+                                 "rejected": [{"observation_id": r["observation"]["observation_id"],
+                                               "indicator_code": r["observation"]["indicator_code"],
+                                               "status": r["observation"]["status"],
+                                               "decision_fa": r["gate"]["decision_fa"]}
+                                              for r in gate["rejected"]]},
+                "note_fa": "ثبت مشاهده عددی تولید نمی‌کند؛ عدد فقط از اجرای Kernel می‌آید.",
+            })
+
+        if path == "/v1/decision-support/runs":
+            obs = body.get("observations")
+            if not isinstance(obs, list) or not obs:
+                return self._send(*_error("INVALID_INPUT", "observations must be a non-empty list", 422))
+            data_version = str(body.get("data_version") or "unspecified").strip() or "unspecified"
+            try:
+                result = run_decision_support(
+                    observations=obs,
+                    neighborhood=body.get("neighborhood"),
+                    boundary=body.get("boundary"),
+                    equity_inputs=body.get("equity_inputs"),
+                    risk_inputs=body.get("risk_inputs"),
+                    vulnerability_inputs=body.get("vulnerability_inputs"),
+                    intervention_candidates=body.get("intervention_candidates"),
+                    portfolio_constraints=body.get("portfolio_constraints"),
+                    causal_evidence=body.get("causal_evidence"),
+                    data_version=data_version,
+                ).as_dict()
+            except ObservationError as e:
+                return self._send(*_error("INVALID_INPUT", str(e), 422))
             _RUNS[result["run_id"]] = result
             return self._send(200, result)
 

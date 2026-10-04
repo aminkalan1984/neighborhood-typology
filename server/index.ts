@@ -16,7 +16,6 @@ import { Readable } from 'node:stream';
 import { fileURLToPath } from 'node:url';
 import { LOADED_ENV_FILES } from './loadEnv';
 import { createTypologyRouter } from './typologyRouter';
-import { buildDecisionSupportRouter } from './decisionSupportRouter';
 import { createExternalDataProxyRouter } from './externalDataProxy';
 import { buildKernelRouter } from './kernelRouter';
 import { createSatelliteRouter, SatelliteMetadataStore, SatelliteStacService } from './satelliteStac';
@@ -376,7 +375,8 @@ app.use('/api/external-data', createExternalDataProxyRouter());
 const satelliteMetadataStore = new SatelliteMetadataStore();
 const satelliteStacService = new SatelliteStacService({ store: satelliteMetadataStore });
 app.use('/api/typology', createTypologyRouter({ satelliteCatalog: satelliteMetadataStore.catalog }));
-app.use('/api/decision-support', buildDecisionSupportRouter({ satelliteCatalog: satelliteMetadataStore.catalog }));
+// تصمیم‌یار جامع: تنها دروازهٔ محاسبات، هستهٔ kernel است. موتور موازی TypeScript حذف شد؛
+// همهٔ تحلیل‌ها از مسیر /api/kernel/* (server/kernelRouter.ts) عبور می‌کنند.
 // دروازهٔ عمومی منابع (P0): منیفست اعلانی + کانکتور مشترک + کش دو‌لایه.
 // یک route برای همهٔ transport‌ها؛ افزودن منبع جدید فقط منیفست/کانکتور می‌خواهد.
 app.use('/api/sources', createSourceRouter({

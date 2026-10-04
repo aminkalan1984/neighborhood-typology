@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neighborhood-typology/kernel/schema/assessment.schema.json",
+  "title": "Assessment",
+  "description": "8 Capitals x C-A-U-E-O -> K/Q/T/R assessment (§23-§27). Score and Confidence are ALWAYS separate (§21).",
+  "type": "object",
+  "required": ["capitals", "caueo", "qtr"],
+  "properties": {
+    "capitals": {
+      "type": "object",
+      "description": "One entry per capital code. Kj = Sum(w_i*Z_i)/Sum(w_i) over qualified indicators only.",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["status"],
+        "properties": {
+          "value": { "type": ["number", "null"] },
+          "status": { "type": "string" },
+          "coverage": { "type": ["number", "null"] },
+          "confidence": { "type": ["object", "null"] },
+          "uncertainty": { "type": ["object", "null"] },
+          "n_qualified": { "type": ["integer", "null"] },
+          "formula_id": { "type": ["string", "null"] },
+          "abstention_reason_fa": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "caueo": {
+      "type": "object",
+      "description": "C/A/U/E/O per capital, plus the four gaps. A gap is published ONLY when both endpoints have sufficient coverage (§24).",
+      "properties": {
+        "stages": { "type": "object" },
+        "gaps": { "type": "object" }
+      }
+    },
+    "qtr": {
+      "type": "object",
+      "description": "K, Q, T, R as FOUR SEPARATE results — never collapsed into one composite (§25-§27).",
+      "properties": {
+        "K": { "type": "object" },
+        "Q": { "type": "object" },
+        "T": { "type": "object" },
+        "R": { "type": "object" }
+      }
+    },
+    "trend": { "type": ["object", "null"] },
+    "diagnostic_profile": {
+      "type": ["object", "null"],
+      "description": "§28: replaces the fixed A/B/C/D/E diagnostic types unless those are registered, tested and validated.",
+      "properties": {
+        "K": {}, "Q": {}, "T": {}, "R": {},
+        "chain_gaps": {}, "equity": {}, "risk": {}, "trend": {}, "confidence": {}
+      }
+    },
+    "publication_gate": { "type": "object" }
+  }
+}

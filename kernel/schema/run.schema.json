@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neighborhood-typology/kernel/schema/run.schema.json",
+  "title": "CalculationRun",
+  "description": "The single official CalculationRun record (§62). Every number in the product traces back to exactly one of these.",
+  "type": "object",
+  "required": ["run_id", "created_at", "calculation_version", "fingerprint", "publication_gate"],
+  "properties": {
+    "run_id": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "data_version": { "type": "string" },
+    "boundary_version": { "type": ["string", "null"] },
+    "indicator_version": { "type": "string" },
+    "methodology_version": { "type": "string" },
+    "weight_version": { "type": "string" },
+    "threshold_version": { "type": "string" },
+    "calculation_version": { "type": "string" },
+    "inputs": { "type": "object" },
+    "observations": { "type": "array", "items": { "type": "object" } },
+    "standardized_values": { "type": "array", "items": { "type": "object" } },
+    "confidence": { "type": "object" },
+    "uncertainty": { "type": "object" },
+    "capital_scores": { "type": "object" },
+    "caueo": { "type": "object" },
+    "qtr": { "type": "object" },
+    "equity": { "type": "object" },
+    "vulnerability": { "type": "object" },
+    "risk": { "type": "object" },
+    "bottleneck": { "type": "object" },
+    "causal_diagnosis": { "type": "object" },
+    "intervention_portfolio": { "type": "object" },
+    "evaluation_plan": { "type": "object" },
+    "publication_gate": {
+      "type": "object",
+      "required": ["level", "can_publish_numeric_scores"],
+      "properties": {
+        "level": { "enum": ["EVIDENCE_ONLY", "PROVISIONAL", "VERIFIED", "VALIDATED"] },
+        "can_publish_numeric_scores": { "type": "boolean" },
+        "reasons": { "type": "array", "items": { "type": "string" } },
+        "decision_withheld": { "type": "boolean" },
+        "what_is_known": { "type": "array", "items": { "type": "string" } },
+        "what_is_unknown": { "type": "array", "items": { "type": "string" } },
+        "why_unknown": { "type": "array", "items": { "type": "string" } },
+        "what_would_unblock": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "fingerprint": {
+      "type": "string", "pattern": "^sha256:[0-9a-f]{64}$",
+      "description": "§61 reproducibility. Two runs of identical input+versions MUST produce the same fingerprint."
+    },
+    "versions": { "type": "object" }
+  }
+}

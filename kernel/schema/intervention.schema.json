@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neighborhood-typology/kernel/schema/intervention.schema.json",
+  "title": "Intervention",
+  "description": "Intervention Knowledge Base entry (§42-§47). No prescription is ever generated from LLM text alone.",
+  "type": "object",
+  "required": ["id", "name_fa", "family", "target_capital", "target_transition"],
+  "properties": {
+    "id": { "type": "string" },
+    "name_fa": { "type": "string" },
+    "family": {
+      "enum": ["capacity_building", "access_improvement", "friction_reduction", "quality_improvement",
+                "behavioral_activation", "economic_activation", "governance_improvement",
+                "network_activation", "environmental_mitigation", "resilience",
+                "social_capital", "cultural_activation"]
+    },
+    "target_capital": { "type": "string" },
+    "target_transition": { "type": "string" },
+    "target_problem": { "type": ["string", "null"] },
+    "target_group": { "type": ["string", "null"] },
+    "required_inputs": { "type": "array", "items": { "type": "string" } },
+    "responsible_actor": { "type": ["string", "null"] },
+    "legal_requirements": { "type": ["string", "null"] },
+    "dependencies": { "type": "array", "items": { "type": "string" } },
+    "capex": { "type": ["number", "null"] },
+    "opex": { "type": ["number", "null"] },
+    "duration_months": { "type": ["number", "null"] },
+    "reach": { "type": ["number", "null"] },
+    "expected_output_fa": { "type": ["string", "null"] },
+    "expected_outcome_fa": { "type": ["string", "null"] },
+    "expected_impact_fa": { "type": ["string", "null"] },
+    "evidence_strength": {
+      "enum": ["none", "theoretical", "observational", "quasi_experimental", "experimental"],
+      "description": "§42. An intervention with no evidence cannot be ranked as if it had some."
+    },
+    "equity_effect_fa": { "type": ["string", "null"] },
+    "risk_fa": { "type": ["string", "null"] },
+    "side_effects_fa": { "type": ["string", "null"] },
+    "monitoring_indicators": { "type": "array", "items": { "type": "string" } },
+    "stop_rules": { "type": "array", "items": { "type": "string" } },
+    "scale_rule_fa": { "type": ["string", "null"] },
+    "lifecycle_state": {
+      "enum": ["PROPOSED", "APPROVED", "BASELINE", "RUNNING", "COMPLETED", "EVALUATED", "SCALED", "MODIFIED", "STOPPED"],
+      "description": "§47."
+    },
+    "registry_version": { "type": "string" }
+  }
+}

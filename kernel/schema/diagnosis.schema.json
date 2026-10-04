@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neighborhood-typology/kernel/schema/diagnosis.schema.json",
+  "title": "Diagnosis",
+  "description": "Bottleneck + causal diagnosis (§33-§37). No bottleneck is guessed; no causal proof is fabricated.",
+  "type": "object",
+  "required": ["bottleneck", "causal"],
+  "properties": {
+    "bottleneck": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": { "enum": ["OBSERVED", "NO_BOTTLENECK_DETERMINABLE", "INSUFFICIENT_COVERAGE", "WAITING_FOR_DATA"] },
+        "primary_bottleneck": { "type": ["object", "null"] },
+        "base_deficiency": { "type": "object" },
+        "stage_scores": { "type": "object" },
+        "chain_gaps": { "type": "object" },
+        "gap_ranking": { "type": "array", "items": { "type": "object" } },
+        "address": {
+          "type": ["object", "null"],
+          "description": "§34 five-dimensional address: Capital x Transition x Location x Group x Time.",
+          "properties": {
+            "capital": {}, "transition": {}, "location": {}, "group": {}, "time": {}
+          }
+        },
+        "decomposition": { "type": "object" },
+        "needed_data": { "type": "array", "items": { "type": "string" } },
+        "ai_independent": { "const": true },
+        "confidence": { "type": ["object", "null"] }
+      }
+    },
+    "causal": {
+      "type": "object",
+      "properties": {
+        "status": { "enum": ["NOT_ASSESSED", "HYPOTHESES_GENERATED", "INSUFFICIENT_EVIDENCE"] },
+        "hypotheses": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["hypothesis_id", "family", "causal_status"],
+            "properties": {
+              "hypothesis_id": { "type": "string" },
+              "family": {
+                "enum": ["cost", "security", "quality", "time", "physical_barrier", "information",
+                          "norm", "governance", "market", "institutional", "environmental"]
+              },
+              "hypothesis_fa": { "type": "string" },
+              "mechanism_fa": { "type": "string" },
+              "required_evidence": { "type": "array", "items": { "type": "string" } },
+              "alternative_explanation_fa": { "type": "string" },
+              "evidence_found": { "type": "array", "items": { "type": "string" } },
+              "evidence_missing": { "type": "array", "items": { "type": "string" } },
+              "test_design_fa": { "type": "string" },
+              "causal_status": {
+                "enum": ["INITIAL", "CONVERGENT", "TESTED", "REJECTED", "UNRESOLVED"],
+                "description": "§37. CONVERGENT is never causal proof."
+              },
+              "confidence": { "type": ["object", "null"] },
+              "generated_by": { "enum": ["kernel_rule", "llm_candidate", "expert"] }
+            }
+          }
+        },
+        "ai_boundary_fa": { "type": "string" }
+      }
+    }
+  }
+}

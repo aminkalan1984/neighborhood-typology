@@ -1,0 +1,49 @@
+{
+  "registry": "intervention_registry",
+  "version": "INT-v1",
+  "role_fa": "پایگاه دانش مداخلات (§۴۲). هیچ تجویزی صرفاً از متن LLM تولید نمی‌شود؛ هر مداخله باید اینجا ثبت شود.",
+  "families_fa": {
+    "capacity_building": "ظرفیت‌سازی",
+    "access_improvement": "بهبود دسترسی",
+    "friction_reduction": "کاهش اصطکاک",
+    "quality_improvement": "بهبود کیفیت",
+    "behavioral_activation": "فعال‌سازی رفتاری",
+    "economic_activation": "فعال‌سازی اقتصادی",
+    "governance_improvement": "بهبود حکمرانی",
+    "network_activation": "فعال‌سازی شبکه",
+    "environmental_mitigation": "تعدیل محیطی",
+    "resilience": "تاب‌آوری",
+    "social_capital": "سرمایه اجتماعی",
+    "cultural_activation": "فعال‌سازی فرهنگی"
+  },
+  "status_fa": "نسخهٔ فعلی فقط خانواده‌ها و قالب‌های الزامی را تعریف می‌کند. هیچ مداخلهٔ مشخصی با هزینه/اثر عددی ثبت نشده است، چون ثبت عدد بدون منبع و شاهد ممنوع است (§۴۲، §۸۳). مداخلهٔ واقعی باید توسط مالک روش‌شناسی با شواهد پر شود.",
+  "interventions": [],
+  "templates": {
+    "note_fa": "قالب الزامی برای ثبت هر مداخله. فیلدهای خالی باید خالی بمانند؛ پرکردن حدسی ممنوع است.",
+    "required_fields": [
+      "id", "name_fa", "family", "target_capital", "target_transition",
+      "target_problem", "target_group", "required_inputs",
+      "responsible_actor", "legal_requirements", "dependencies",
+      "capex", "opex", "duration_months", "reach",
+      "expected_output_fa", "expected_outcome_fa", "expected_impact_fa",
+      "evidence_strength", "equity_effect_fa", "risk_fa", "side_effects_fa",
+      "monitoring_indicators", "stop_rules", "scale_rule_fa", "lifecycle_state"
+    ]
+  },
+  "harm_filters": {
+    "note_fa": "هر مداخله پیش از تصویب باید از این فیلترها عبور کند (§۴۶). Q↑ به‌تنهایی دلیل کافی برای Scale نیست.",
+    "filters": [
+      {"id": "displacement", "label_fa": "جابه‌جایی ساکنان/فعالیت"},
+      {"id": "rent_increase", "label_fa": "افزایش اجاره"},
+      {"id": "land_value_shock", "label_fa": "شوک ارزش زمین"},
+      {"id": "traffic_transfer", "label_fa": "انتقال ترافیک"},
+      {"id": "pollution_transfer", "label_fa": "انتقال آلودگی"},
+      {"id": "social_exclusion", "label_fa": "طرد اجتماعی"},
+      {"id": "cultural_loss", "label_fa": "فقدان فرهنگی"},
+      {"id": "environmental_damage", "label_fa": "آسیب محیطی"},
+      {"id": "unequal_benefit", "label_fa": "نفع نابرابر"},
+      {"id": "dependency", "label_fa": "وابستگی"}
+    ]
+  },
+  "lifecycle": ["PROPOSED", "APPROVED", "BASELINE", "RUNNING", "COMPLETED", "EVALUATED", "SCALED", "MODIFIED", "STOPPED"]
+}
