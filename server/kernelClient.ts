@@ -145,6 +145,15 @@ export interface KernelClient {
   boundary(neighborhoodId: string): Promise<KernelBoundary>;
   registries(): Promise<Record<string, unknown>>;
   drilldown(runId: string, valueId: string): Promise<{ status: number; payload: unknown }>;
+  // ---- canonical Decision Support API (§63) — thin pass-through, no computation
+  decisionSupportRegistries(): Promise<Record<string, unknown>>;
+  decisionSupportSources(): Promise<Record<string, unknown>>;
+  decisionSupportObservations(req: { observations: unknown[] }): Promise<Record<string, unknown>>;
+  decisionSupportRun(req: Record<string, unknown>): Promise<Record<string, unknown>>;
+  decisionSupportRunById(runId: string): Promise<Record<string, unknown>>;
+  decisionSupportRunSection(runId: string, section: string): Promise<Record<string, unknown>>;
+  decisionSupportDrilldown(runId: string, observationId: string): Promise<Record<string, unknown>>;
+  decisionSupportBoundary(neighborhoodId: string): Promise<Record<string, unknown>>;
 }
 
 export const kernelClient: KernelClient = {
@@ -181,6 +190,68 @@ export const kernelClient: KernelClient = {
   async drilldown(runId, valueId) {
     await ensureKernelService();
     return fetchJson<unknown>('GET', `/v1/calculation-runs/${encodeURIComponent(runId)}/drilldown/${encodeURIComponent(valueId)}`);
+  },
+
+  // ---- canonical Decision Support API (§63) --------------------------------
+  // Each method forwards to the kernel service and surfaces a kernel error as
+  // an HTTP-shaped error. No number is created, adjusted or substituted here.
+  async decisionSupportRegistries() {
+    await ensureKernelService();
+    const { status, payload } = await fetchJson<Record<string, unknown>>('GET', '/v1/decision-support/registries');
+    if (status !== 200) throw kernelErrorToHttp(status, payload);
+    return payload;
+  },
+
+  async decisionSupportSources() {
+    await ensureKernelService();
+    const { status, payload } = await fetchJson<Record<string, unknown>>('GET', '/v1/decision-support/sources');
+    if (status !== 200) throw kernelErrorToHttp(status, payload);
+    return payload;
+  },
+
+  async decisionSupportObservations(req) {
+    await ensureKernelService();
+    const { status, payload } = await fetchJson<Record<string, unknown>>('POST', '/v1/decision-support/observations', req);
+    if (status !== 200) throw kernelErrorToHttp(status, payload);
+    return payload;
+  },
+
+  async decisionSupportRun(req) {
+    await ensureKernelService();
+    const { status, payload } = await fetchJson<Record<string, unknown>>('POST', '/v1/decision-support/runs', req);
+    if (status !== 200) throw kernelErrorToHttp(status, payload);
+    return payload;
+  },
+
+  async decisionSupportRunById(runId) {
+    await ensureKernelService();
+    const { status, payload } = await fetchJson<Record<string, unknown>>('GET', `/v1/decision-support/runs/${encodeURIComponent(runId)}`);
+    if (status !== 200) throw kernelErrorToHttp(status, payload);
+    return payload;
+  },
+
+  async decisionSupportRunSection(runId, section) {
+    await ensureKernelService();
+    const { status, payload } = await fetchJson<Record<string, unknown>>(
+      'GET', `/v1/decision-support/runs/${encodeURIComponent(runId)}/${encodeURIComponent(section)}`);
+    if (status !== 200) throw kernelErrorToHttp(status, payload);
+    return payload;
+  },
+
+  async decisionSupportDrilldown(runId, observationId) {
+    await ensureKernelService();
+    const { status, payload } = await fetchJson<Record<string, unknown>>(
+      'GET', `/v1/decision-support/runs/${encodeURIComponent(runId)}/drilldown/${encodeURIComponent(observationId)}`);
+    if (status !== 200) throw kernelErrorToHttp(status, payload);
+    return payload;
+  },
+
+  async decisionSupportBoundary(neighborhoodId) {
+    await ensureKernelService();
+    const { status, payload } = await fetchJson<Record<string, unknown>>(
+      'GET', `/v1/decision-support/neighborhoods/${encodeURIComponent(neighborhoodId)}/boundary`);
+    if (status !== 200) throw kernelErrorToHttp(status, payload);
+    return payload;
   },
 };
 

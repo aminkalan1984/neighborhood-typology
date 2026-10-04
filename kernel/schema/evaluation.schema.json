@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neighborhood-typology/kernel/schema/evaluation.schema.json",
+  "title": "Evaluation",
+  "description": "Impact evaluation + learning (§48-§52). No impact claim without a valid baseline.",
+  "type": "object",
+  "required": ["intervention_id", "method", "identifiability"],
+  "properties": {
+    "intervention_id": { "type": "string" },
+    "method": {
+      "enum": ["before_after", "difference_in_differences", "matched_comparison",
+                "interrupted_time_series", "synthetic_control", "regression",
+                "quasi_experimental", "randomized_experiment", "NOT_SELECTED"],
+      "description": "§49. The chosen method must be recorded."
+    },
+    "method_selection_reason_fa": { "type": ["string", "null"] },
+    "identifiability": {
+      "enum": ["IDENTIFIABLE", "NOT_IDENTIFIABLE"],
+      "description": "§50. A change without a valid baseline is NOT_IDENTIFIABLE, never a silent number."
+    },
+    "baseline": {
+      "type": ["object", "null"],
+      "properties": { "captured_at": {}, "values": {}, "boundary_version": {}, "data_version": {} }
+    },
+    "kpis": {
+      "type": "object",
+      "properties": {
+        "output": { "type": "array", "items": { "type": "string" } },
+        "outcome": { "type": "array", "items": { "type": "string" } },
+        "impact": { "type": "array", "items": { "type": "string" } },
+        "side_effect": { "type": "array", "items": { "type": "string" } },
+        "stop_rule": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "delta": {
+      "type": "object",
+      "properties": {
+        "Q_before": {}, "Q_after": {}, "delta_Q": {},
+        "T_before": {}, "T_after": {}, "delta_T": {},
+        "R_before": {}, "R_after": {}, "delta_R": {}
+      }
+    },
+    "learning": {
+      "type": ["object", "null"],
+      "description": "§51: learning is a rule, not a log line.",
+      "properties": {
+        "rule_id": {}, "context_fa": {}, "intervention_fa": {}, "result_fa": {},
+        "failure_fa": {}, "success_fa": {}, "evidence": {}, "confidence": {}, "rule_fa": {}
+      }
+    },
+    "living_memory": {
+      "type": ["object", "null"],
+      "description": "§52: versioned memory entry.",
+      "properties": {
+        "memory_id": {}, "created_at": {}, "evidence": {}, "context_fa": {},
+        "rule_fa": {}, "confidence": {}, "applications": {}, "failures": {}, "superseded_by": {}
+      }
+    }
+  }
+}

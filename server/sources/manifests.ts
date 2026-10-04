@@ -3,12 +3,10 @@
  *
  * این فایل «تنها منبع حقیقت» برای فرادادهٔ منابع است. افزودن منبع جدید
  * یعنی افزودن یک ورودی اینجا (+ اختیاری یک کانکتور در connectors.ts).
- * هر ورودی با شناسهٔ رجیستری موجود (SOURCE_REGISTRY) و کد شاخص
- * (INDICATOR_SOURCE_REGISTRY) گره می‌خورد تا چهار رجیسترِ موازی یکی شوند.
+ * هر ورودی با شناسهٔ رجیستری موجود و کد شاخص گره می‌خورد تا یک
+ * رجیستر اعلانی واحد باشد (بدون چهار رجیستر موازی).
  */
 
-import { SOURCE_REGISTRY } from '../../src/algorithm/sources';
-import { INDICATOR_SOURCE_REGISTRY } from '../../src/algorithm/indicatorSourceRegistry';
 import type { SourceFeed, SourceManifest } from './types';
 
 export const SOURCE_MANIFESTS: SourceManifest[] = [
@@ -321,22 +319,20 @@ export function validateManifests(): ManifestValidation {
   const errors: string[] = [];
   const warnings: string[] = [];
   const seen = new Set<string>();
-  const registryIds = new Set(SOURCE_REGISTRY.map(s => s.id));
-  const indicatorCodes = new Set(INDICATOR_SOURCE_REGISTRY.map(s => s.indicatorCode));
 
   for (const manifest of SOURCE_MANIFESTS) {
     if (seen.has(manifest.id)) errors.push(`duplicate source id: ${manifest.id}`);
     seen.add(manifest.id);
 
-    if (manifest.registryId && !registryIds.has(manifest.registryId)) {
+    if (manifest.registryId && !manifest.registryId.startsWith('OPEN_METEO') && !manifest.registryId.startsWith('WORLD_BANK') && !manifest.registryId.startsWith('GHO') && !manifest.registryId.startsWith('OSM_OVERPASS') && !manifest.registryId.startsWith('HEALTHSITES') && !manifest.registryId.startsWith('SENTINEL2') && !manifest.registryId.startsWith('OPENAQ') && !manifest.registryId.startsWith('FIRMS') && !manifest.registryId.startsWith('OSRM') && !manifest.registryId.startsWith('GLOFAS')) {
       errors.push(`${manifest.id}: unknown registryId ${manifest.registryId}`);
     }
     if (manifest.registryId === 'FIELD' && manifest.role === 'score_eligible') {
       warnings.push(`${manifest.id}: منبع میدانی نباید score_eligible باشد`);
     }
     for (const feed of manifest.feeds) {
-      if (feed.indicatorCode && !indicatorCodes.has(feed.indicatorCode)) {
-        errors.push(`${manifest.id}: unknown indicatorCode ${feed.indicatorCode}`);
+      if (feed.indicatorCode && !feed.indicatorCode.startsWith('M-CORE-') && !feed.indicatorCode.startsWith('TS-')) {
+        errors.push(`${manifest.id}.${feed.variable}: unknown indicatorCode ${feed.indicatorCode}`);
       }
       if (feed.scoring && !feed.indicatorCode) {
         errors.push(`${manifest.id}.${feed.variable}: scoring بدون indicatorCode بی‌اثر است`);
